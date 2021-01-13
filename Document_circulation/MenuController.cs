@@ -14,14 +14,15 @@ namespace Document_circulation
 {
     public partial class MenuController : Form
     {
-        private object dGV;
+      
         public UserName tulf2 = new UserName();
         public MenuController()
         {
             InitializeComponent();
-
+           
 
         }
+       
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -35,76 +36,28 @@ namespace Document_circulation
 
         private void MenuController_Load(object sender, EventArgs e)
         {
-            MySqlConnection conn = DBUtils.GetDBConnedtion();
-            conn.Open();
-            MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter("SELECT doc.id_document,doc.number, us.LAST_NAME , us1.LAST_NAME," +
-                                " doc.comments,doc.date,doc.status,doc.outline,doc.date_added,doc.document_type" +
-                                " FROM documents doc" +
-                                " INNER JOIN users us" +
-                                " on doc.id_sender = us.ID" +
-                                " INNER JOIN users us1" +
-                                " on doc.id_recipient = us1.ID WHERE doc.id_sender=" +
-                                "(select id_user from log where login='" + tulf2.getName() + "') or  " +
-                                "id_recipient=(select id_user from log where login='" + tulf2.getName() + "'",conn);
+            var db = new DBUtils();
             string query = "SELECT doc.id_document,doc.number, us.LAST_NAME , us1.LAST_NAME," +
-                                " doc.comments,doc.date,doc.status,doc.outline,doc.date_added,doc.document_type" +
-                                " FROM documents doc" +
-                                " INNER JOIN users us" +
-                                " on doc.id_sender = us.ID" +
-                                " INNER JOIN users us1" +
-                                " on doc.id_recipient = us1.ID WHERE doc.id_sender=" +
-                                "(select id_user from log where login='" + tulf2.getName() + "') or  " +
-                                "id_recipient=(select id_user from log where login='" + tulf2.getName() + "'";
+                    "doc.outline,doc.comments,doc.date_added,doc.date,doc.status,doc.document_type" +
+                    " FROM documents doc " +
+                    "INNER JOIN users us " +
+                    "on doc.id_sender = us.ID " +
+                    "INNER JOIN users us1 " +
+                    "on doc.id_recipient = us1.ID WHERE doc.id_sender= " +
+                    "(select id_user from log where login='admin') or " +
+                    "id_recipient=(select id_user from log where login='admin');";
 
-            // MySqlCommand command = new MySqlCommand(query, conn);
-
-            // MySqlDataReader reader = command.ExecuteReader();
-
-            /* List<string[]> data = new List<string[]>();
-
-             while (reader.Read())
-             {
-                 data.Add(new string[3]);
-
-                 data[data.Count - 1][0] = reader[0].ToString();
-                 data[data.Count - 1][1] = reader[1].ToString();
-                 data[data.Count - 1][2] = reader[2].ToString();
-             }*/
-
-            //версия один
-            MySqlCommand command = new MySqlCommand();
-            try
+            if (db.OpenConnection() == true)
             {
+                MySqlConnection conn = DBUtils.GetDBConnection();
+                conn.Open();
+                MySqlDataAdapter h= new MySqlDataAdapter(query, conn);
                 DataSet DS = new DataSet();
-
-                mySqlDataAdapter.Fill(DS);
+                h.Fill(DS);
                 dataGridView1.DataSource = DS.Tables[0];
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine("Error: \r\n{0}", ex.ToString());
-            }
 
-            ///добавление в таблицу не работает
-            command.CommandText = query;
-            command.Connection = conn;
-            MySqlDataReader reader;
-            try
-            { 
-                reader = command.ExecuteReader();
-                this.dataGridView1.Columns.Add("id_document", "id_document");
-                this.dataGridView1.Columns["id_document"].Width = 20;
-                this.dataGridView1.Columns.Add("number", "number");
-                this.dataGridView1.Columns["number"].Width = 50;
-                while (reader.Read())
-                {
-                    dataGridView1.Rows.Add(reader["id_document"].ToString(), reader["number"].ToString());
-                }
-                reader.Close();
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine("Error: \r\n{0}", ex.ToString());
+                //close connection
+                //this.CloseConnection();
             }
 
 

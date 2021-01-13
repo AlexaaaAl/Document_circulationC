@@ -17,7 +17,7 @@ namespace Document_circulation
         public Form1()
         {
             InitializeComponent();
-            MySqlConnection conn = DBUtils.GetDBConnedtion();
+            MySqlConnection conn = DBUtils.GetDBConnection();
             try
             {
                 conn.Open(); ; // Открываем соединение
@@ -39,7 +39,7 @@ namespace Document_circulation
         private void button1_Click(object sender, EventArgs e)
         {
            
-            MySqlConnection conn = DBUtils.GetDBConnedtion();
+            MySqlConnection conn = DBUtils.GetDBConnection();
             string CommandText = "SELECT * FROM log WHERE login='" + textBox1.Text + "' AND password='" + textBox2.Text + "'";
             MySqlCommand myCommand = new MySqlCommand(CommandText, conn);
             conn.Open();
@@ -55,6 +55,7 @@ namespace Document_circulation
                     MenuController f2 = new MenuController();
                     f2.tulf2.setName(textBox1.Text);
                     f2.Show();
+                    
                 }
             }
             catch
