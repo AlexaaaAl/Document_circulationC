@@ -32,5 +32,16 @@ namespace Document_circulation.Properties {
                 return ((string)(this["ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Driver={MySQL ODBC 8.0 ANSI Driver};server=192.168.50.10;database=document_circul" +
+            "ation;uid=root")]
+        public string document_circulationConnectionString {
+            get {
+                return ((string)(this["document_circulationConnectionString"]));
+            }
+        }
     }
 }
