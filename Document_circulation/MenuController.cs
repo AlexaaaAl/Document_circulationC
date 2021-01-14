@@ -19,8 +19,6 @@ namespace Document_circulation
         public MenuController()
         {
             InitializeComponent();
-           
-
         }
        
 
@@ -44,9 +42,9 @@ namespace Document_circulation
                     "on doc.id_sender = us.ID " +
                     "INNER JOIN users us1 " +
                     "on doc.id_recipient = us1.ID WHERE doc.id_sender= " +
-                    "(select id_user from log where login='admin') or " +
-                    "id_recipient=(select id_user from log where login='admin');";
-
+                    "(select id_user from log where login='"+ tulf2.getName()+ 
+                    "') or id_recipient=(select id_user from log where login='" +
+                    tulf2.getName() + "');";
             if (db.OpenConnection() == true)
             {
                 MySqlConnection conn = DBUtils.GetDBConnection();
@@ -55,9 +53,6 @@ namespace Document_circulation
                 DataSet DS = new DataSet();
                 h.Fill(DS);
                 dataGridView1.DataSource = DS.Tables[0];
-
-                //close connection
-                //this.CloseConnection();
             }
 
 
