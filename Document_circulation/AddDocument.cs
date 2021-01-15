@@ -31,5 +31,20 @@ namespace Document_circulation
         {
 
         }
+
+        private void AddDocument_Load(object sender, EventArgs e)
+        {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "document_circulation_pathDataSet1.documents". При необходимости она может быть перемещена или удалена.
+            this.documentsTableAdapter1.Fill(this.document_circulation_pathDataSet1.documents);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "document_circulation_pathDataSet1.users". При необходимости она может быть перемещена или удалена.
+            this.usersTableAdapter1.Fill(this.document_circulation_pathDataSet1.users);
+
+
+        }
+
+        private void usersBindingSource4_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

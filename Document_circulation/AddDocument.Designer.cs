@@ -29,6 +29,7 @@ namespace Document_circulation
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -39,6 +40,7 @@ namespace Document_circulation
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.document_circulation_pathDataSet = new Document_circulation.document_circulation_pathDataSet();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -47,6 +49,21 @@ namespace Document_circulation
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.usersTableAdapter = new Document_circulation.document_circulation_pathDataSetTableAdapters.usersTableAdapter();
+            this.documentsTableAdapter = new Document_circulation.document_circulation_pathDataSetTableAdapters.documentsTableAdapter();
+            this.document_circulation_pathDataSet1 = new Document_circulation.document_circulation_pathDataSet1();
+            this.usersBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
+            this.usersTableAdapter1 = new Document_circulation.document_circulation_pathDataSet1TableAdapters.usersTableAdapter();
+            this.documentsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.documentsTableAdapter1 = new Document_circulation.document_circulation_pathDataSet1TableAdapters.documentsTableAdapter();
+            this.documentsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // checkBox1
@@ -81,12 +98,14 @@ namespace Document_circulation
             // 
             // comboBox1
             // 
+            this.comboBox1.DisplayMember = "status";
             this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(157, 247);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(367, 29);
             this.comboBox1.TabIndex = 3;
+            this.comboBox1.ValueMember = "status";
             // 
             // listBox1
             // 
@@ -101,6 +120,7 @@ namespace Document_circulation
             // 
             // richTextBox1
             // 
+            this.richTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentsBindingSource2, "status", true));
             this.richTextBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.richTextBox1.Location = new System.Drawing.Point(115, 162);
             this.richTextBox1.Name = "richTextBox1";
@@ -141,12 +161,20 @@ namespace Document_circulation
             // 
             // comboBox2
             // 
+            this.comboBox2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.comboBox2.DisplayMember = "LAST_NAME";
             this.comboBox2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(275, 296);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(249, 29);
             this.comboBox2.TabIndex = 9;
+            this.comboBox2.ValueMember = "LAST_NAME";
+            // 
+            // document_circulation_pathDataSet
+            // 
+            this.document_circulation_pathDataSet.DataSetName = "document_circulation_pathDataSet";
+            this.document_circulation_pathDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // button3
             // 
@@ -228,6 +256,48 @@ namespace Document_circulation
             this.panel1.Size = new System.Drawing.Size(781, 32);
             this.panel1.TabIndex = 17;
             // 
+            // usersBindingSource
+            // 
+            this.usersBindingSource.DataMember = "users";
+            this.usersBindingSource.DataSource = this.document_circulation_pathDataSet;
+            // 
+            // usersTableAdapter
+            // 
+            this.usersTableAdapter.ClearBeforeFill = true;
+            // 
+            // documentsTableAdapter
+            // 
+            this.documentsTableAdapter.ClearBeforeFill = true;
+            // 
+            // document_circulation_pathDataSet1
+            // 
+            this.document_circulation_pathDataSet1.DataSetName = "document_circulation_pathDataSet1";
+            this.document_circulation_pathDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // usersBindingSource4
+            // 
+            this.usersBindingSource4.DataMember = "users";
+            this.usersBindingSource4.DataSource = this.document_circulation_pathDataSet1;
+            this.usersBindingSource4.CurrentChanged += new System.EventHandler(this.usersBindingSource4_CurrentChanged);
+            // 
+            // usersTableAdapter1
+            // 
+            this.usersTableAdapter1.ClearBeforeFill = true;
+            // 
+            // documentsBindingSource1
+            // 
+            this.documentsBindingSource1.DataMember = "documents";
+            this.documentsBindingSource1.DataSource = this.document_circulation_pathDataSet1;
+            // 
+            // documentsTableAdapter1
+            // 
+            this.documentsTableAdapter1.ClearBeforeFill = true;
+            // 
+            // documentsBindingSource2
+            // 
+            this.documentsBindingSource2.DataMember = "documents";
+            this.documentsBindingSource2.DataSource = this.document_circulation_pathDataSet1;
+            // 
             // AddDocument
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,6 +323,14 @@ namespace Document_circulation
             this.Controls.Add(this.checkBox1);
             this.Name = "AddDocument";
             this.Text = "AddDocument";
+            this.TopMost = true;
+            this.Load += new System.EventHandler(this.AddDocument_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -278,5 +356,15 @@ namespace Document_circulation
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
+        private document_circulation_pathDataSet document_circulation_pathDataSet;
+        private System.Windows.Forms.BindingSource usersBindingSource;
+        private document_circulation_pathDataSetTableAdapters.usersTableAdapter usersTableAdapter;
+        private document_circulation_pathDataSetTableAdapters.documentsTableAdapter documentsTableAdapter;
+        private document_circulation_pathDataSet1 document_circulation_pathDataSet1;
+        private System.Windows.Forms.BindingSource usersBindingSource4;
+        private document_circulation_pathDataSet1TableAdapters.usersTableAdapter usersTableAdapter1;
+        private System.Windows.Forms.BindingSource documentsBindingSource1;
+        private document_circulation_pathDataSet1TableAdapters.documentsTableAdapter documentsTableAdapter1;
+        private System.Windows.Forms.BindingSource documentsBindingSource2;
     }
 }

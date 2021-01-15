@@ -59,6 +59,22 @@ namespace Document_circulation
             this.documentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.documentsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.document_circulation_pathDataSet1 = new Document_circulation.document_circulation_pathDataSet1();
+            this.v1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v1TableAdapter = new Document_circulation.document_circulation_pathDataSet1TableAdapters.v1TableAdapter();
+            this.iddocumentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idsenderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.senderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idrecipientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lASTNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.outlineDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commentsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateaddedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.documenttypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -70,6 +86,9 @@ namespace Document_circulation
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.v1BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -256,7 +275,7 @@ namespace Document_circulation
             this.dataGridView1.Location = new System.Drawing.Point(111, 143);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(1328, 538);
+            this.dataGridView1.Size = new System.Drawing.Size(1326, 235);
             this.dataGridView1.TabIndex = 3;
             // 
             // panel3
@@ -323,11 +342,121 @@ namespace Document_circulation
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.iddocumentDataGridViewTextBoxColumn,
+            this.numberDataGridViewTextBoxColumn,
+            this.idsenderDataGridViewTextBoxColumn,
+            this.senderDataGridViewTextBoxColumn,
+            this.idrecipientDataGridViewTextBoxColumn,
+            this.lASTNAMEDataGridViewTextBoxColumn,
+            this.outlineDataGridViewTextBoxColumn,
+            this.commentsDataGridViewTextBoxColumn,
+            this.dateaddedDataGridViewTextBoxColumn,
+            this.dateDataGridViewTextBoxColumn,
+            this.statusDataGridViewTextBoxColumn,
+            this.documenttypeDataGridViewTextBoxColumn});
+            this.dataGridView2.DataSource = this.v1BindingSource;
+            this.dataGridView2.Location = new System.Drawing.Point(111, 384);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(1326, 296);
+            this.dataGridView2.TabIndex = 6;
+            // 
+            // document_circulation_pathDataSet1
+            // 
+            this.document_circulation_pathDataSet1.DataSetName = "document_circulation_pathDataSet1";
+            this.document_circulation_pathDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // v1BindingSource
+            // 
+            this.v1BindingSource.DataMember = "v1";
+            this.v1BindingSource.DataSource = this.document_circulation_pathDataSet1;
+            // 
+            // v1TableAdapter
+            // 
+            this.v1TableAdapter.ClearBeforeFill = true;
+            // 
+            // iddocumentDataGridViewTextBoxColumn
+            // 
+            this.iddocumentDataGridViewTextBoxColumn.DataPropertyName = "id_document";
+            this.iddocumentDataGridViewTextBoxColumn.HeaderText = "id_document";
+            this.iddocumentDataGridViewTextBoxColumn.Name = "iddocumentDataGridViewTextBoxColumn";
+            // 
+            // numberDataGridViewTextBoxColumn
+            // 
+            this.numberDataGridViewTextBoxColumn.DataPropertyName = "number";
+            this.numberDataGridViewTextBoxColumn.HeaderText = "number";
+            this.numberDataGridViewTextBoxColumn.Name = "numberDataGridViewTextBoxColumn";
+            // 
+            // idsenderDataGridViewTextBoxColumn
+            // 
+            this.idsenderDataGridViewTextBoxColumn.DataPropertyName = "id_sender";
+            this.idsenderDataGridViewTextBoxColumn.HeaderText = "id_sender";
+            this.idsenderDataGridViewTextBoxColumn.Name = "idsenderDataGridViewTextBoxColumn";
+            // 
+            // senderDataGridViewTextBoxColumn
+            // 
+            this.senderDataGridViewTextBoxColumn.DataPropertyName = "sender";
+            this.senderDataGridViewTextBoxColumn.HeaderText = "sender";
+            this.senderDataGridViewTextBoxColumn.Name = "senderDataGridViewTextBoxColumn";
+            // 
+            // idrecipientDataGridViewTextBoxColumn
+            // 
+            this.idrecipientDataGridViewTextBoxColumn.DataPropertyName = "id_recipient";
+            this.idrecipientDataGridViewTextBoxColumn.HeaderText = "id_recipient";
+            this.idrecipientDataGridViewTextBoxColumn.Name = "idrecipientDataGridViewTextBoxColumn";
+            // 
+            // lASTNAMEDataGridViewTextBoxColumn
+            // 
+            this.lASTNAMEDataGridViewTextBoxColumn.DataPropertyName = "LAST_NAME";
+            this.lASTNAMEDataGridViewTextBoxColumn.HeaderText = "LAST_NAME";
+            this.lASTNAMEDataGridViewTextBoxColumn.Name = "lASTNAMEDataGridViewTextBoxColumn";
+            // 
+            // outlineDataGridViewTextBoxColumn
+            // 
+            this.outlineDataGridViewTextBoxColumn.DataPropertyName = "outline";
+            this.outlineDataGridViewTextBoxColumn.HeaderText = "outline";
+            this.outlineDataGridViewTextBoxColumn.Name = "outlineDataGridViewTextBoxColumn";
+            // 
+            // commentsDataGridViewTextBoxColumn
+            // 
+            this.commentsDataGridViewTextBoxColumn.DataPropertyName = "comments";
+            this.commentsDataGridViewTextBoxColumn.HeaderText = "comments";
+            this.commentsDataGridViewTextBoxColumn.Name = "commentsDataGridViewTextBoxColumn";
+            // 
+            // dateaddedDataGridViewTextBoxColumn
+            // 
+            this.dateaddedDataGridViewTextBoxColumn.DataPropertyName = "date_added";
+            this.dateaddedDataGridViewTextBoxColumn.HeaderText = "date_added";
+            this.dateaddedDataGridViewTextBoxColumn.Name = "dateaddedDataGridViewTextBoxColumn";
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "date";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            // 
+            // documenttypeDataGridViewTextBoxColumn
+            // 
+            this.documenttypeDataGridViewTextBoxColumn.DataPropertyName = "document_type";
+            this.documenttypeDataGridViewTextBoxColumn.HeaderText = "document_type";
+            this.documenttypeDataGridViewTextBoxColumn.Name = "documenttypeDataGridViewTextBoxColumn";
+            // 
             // MenuController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1439, 680);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel2);
@@ -353,6 +482,9 @@ namespace Document_circulation
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.v1BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -389,5 +521,21 @@ namespace Document_circulation
         private System.Windows.Forms.BindingSource documentsBindingSource1;
         private System.Windows.Forms.BindingSource documentsBindingSource;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private document_circulation_pathDataSet1 document_circulation_pathDataSet1;
+        private System.Windows.Forms.BindingSource v1BindingSource;
+        private document_circulation_pathDataSet1TableAdapters.v1TableAdapter v1TableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iddocumentDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idsenderDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn senderDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idrecipientDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lASTNAMEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn outlineDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateaddedDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn documenttypeDataGridViewTextBoxColumn;
     }
 }

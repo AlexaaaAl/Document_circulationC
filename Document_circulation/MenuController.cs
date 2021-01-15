@@ -21,7 +21,7 @@ namespace Document_circulation
         public MenuController()
         {
             InitializeComponent();
-            timer1.Interval = 1000;
+            timer1.Interval = 5000;
             timer1.Tick += new EventHandler(timer1_Tick_1);
             timer1.Start();
         }
@@ -39,7 +39,9 @@ namespace Document_circulation
 
         private void MenuController_Load(object sender, EventArgs e)
         {
-            
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "document_circulation_pathDataSet1.v1". При необходимости она может быть перемещена или удалена.
+            this.v1TableAdapter.Fill(this.document_circulation_pathDataSet1.v1);
+
             var db = new DBUtils();
             query = "SELECT id_document,number,sender, LAST_NAME," +
             "outline,comments,date_added,date,status,document_type " +
