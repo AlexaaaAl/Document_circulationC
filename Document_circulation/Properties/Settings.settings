@@ -18,5 +18,13 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Driver={MySQL ODBC 8.0 ANSI Driver};server=192.168.50.10;database=document_circulation;uid=root</Value>
     </Setting>
+    <Setting Name="document_circulation_pathConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;server=192.168.50.10;user id=root;database=document_circulation_path;persistsecurityinfo=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">server=192.168.50.10;user id=root;database=document_circulation_path;persistsecurityinfo=True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

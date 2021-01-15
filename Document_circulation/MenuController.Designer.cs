@@ -51,16 +51,25 @@ namespace Document_circulation
             this.panel3 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet1 = new Document_circulation.DataSet1();
+            this.document_circulation_pathDataSet = new Document_circulation.document_circulation_pathDataSet();
             this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet1 = new Document_circulation.DataSet1();
+            this.usersTableAdapter = new Document_circulation.document_circulation_pathDataSetTableAdapters.usersTableAdapter();
+            this.documentsTableAdapter = new Document_circulation.document_circulation_pathDataSetTableAdapters.documentsTableAdapter();
+            this.documentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.documentsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -252,6 +261,8 @@ namespace Document_circulation
             // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.panel3.Controls.Add(this.button2);
             this.panel3.Location = new System.Drawing.Point(0, 143);
             this.panel3.Name = "panel3";
@@ -267,16 +278,50 @@ namespace Document_circulation
             this.button2.TabIndex = 0;
             this.button2.Text = "Открыть";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataMember = "documents";
+            this.bindingSource1.DataSource = this.document_circulation_pathDataSet;
+            this.bindingSource1.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
+            // 
+            // document_circulation_pathDataSet
+            // 
+            this.document_circulation_pathDataSet.DataSetName = "document_circulation_pathDataSet";
+            this.document_circulation_pathDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataSet1BindingSource
+            // 
+            this.dataSet1BindingSource.DataSource = this.dataSet1;
+            this.dataSet1BindingSource.Position = 0;
             // 
             // dataSet1
             // 
             this.dataSet1.DataSetName = "DataSet1";
             this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // dataSet1BindingSource
+            // usersTableAdapter
             // 
-            this.dataSet1BindingSource.DataSource = this.dataSet1;
-            this.dataSet1BindingSource.Position = 0;
+            this.usersTableAdapter.ClearBeforeFill = true;
+            // 
+            // documentsTableAdapter
+            // 
+            this.documentsTableAdapter.ClearBeforeFill = true;
+            // 
+            // documentsBindingSource
+            // 
+            this.documentsBindingSource.DataMember = "documents";
+            this.documentsBindingSource.DataSource = this.document_circulation_pathDataSet;
+            // 
+            // documentsBindingSource1
+            // 
+            this.documentsBindingSource1.DataMember = "documents";
+            this.documentsBindingSource1.DataSource = this.document_circulation_pathDataSet;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
             // MenuController
             // 
@@ -303,8 +348,11 @@ namespace Document_circulation
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,8 +380,14 @@ namespace Document_circulation
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.BindingSource bindingSource1;
         private DataSet1 dataSet1;
         private System.Windows.Forms.BindingSource dataSet1BindingSource;
+        private document_circulation_pathDataSet document_circulation_pathDataSet;
+        private document_circulation_pathDataSetTableAdapters.usersTableAdapter usersTableAdapter;
+        private document_circulation_pathDataSetTableAdapters.documentsTableAdapter documentsTableAdapter;
+        public System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.BindingSource documentsBindingSource1;
+        private System.Windows.Forms.BindingSource documentsBindingSource;
+        private System.Windows.Forms.Timer timer1;
     }
 }

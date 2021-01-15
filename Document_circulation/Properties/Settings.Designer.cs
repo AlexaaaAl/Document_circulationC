@@ -43,5 +43,16 @@ namespace Document_circulation.Properties {
                 return ((string)(this["document_circulationConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=192.168.50.10;user id=root;database=document_circulation_path;persistsecur" +
+            "ityinfo=True")]
+        public string document_circulation_pathConnectionString {
+            get {
+                return ((string)(this["document_circulation_pathConnectionString"]));
+            }
+        }
     }
 }

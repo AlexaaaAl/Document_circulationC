@@ -119,6 +119,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>document_circulationDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="document_circulation_pathDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>document_circulation_pathDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +178,17 @@
     </None>
     <None Include="document_circulationDataSet.xss">
       <DependentUpon>document_circulationDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="document_circulation_pathDataSet.xsc">
+      <DependentUpon>document_circulation_pathDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="document_circulation_pathDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>document_circulation_pathDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="document_circulation_pathDataSet.xss">
+      <DependentUpon>document_circulation_pathDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
