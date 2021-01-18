@@ -18,6 +18,7 @@ namespace Document_circulation
         public UserName tulf2 = new UserName();
         MySqlConnection conn = DBUtils.GetDBConnection();
         string query;
+        string type_doc="";
         public MenuController()
         {
             InitializeComponent();
@@ -39,16 +40,31 @@ namespace Document_circulation
 
         private void MenuController_Load(object sender, EventArgs e)
         {
+            if (internalDocuments.Checked)
+            {
+                type_doc = "Внутренний документ";
+            }else if (incomingMail.Checked)
+            {
+                type_doc = "Входящая корреспонденция";
+            }
+            else if (incomingMailMoscow.Checked)
+            {
+                type_doc = "Входящей корреспонденция г. Москва";
+            }
+            else if (orders.Checked)
+            {
+                type_doc = "Приказ";
+            }
             // TODO: данная строка кода позволяет загрузить данные в таблицу "document_circulation_pathDataSet1.v1". При необходимости она может быть перемещена или удалена.
             this.v1TableAdapter.Fill(this.document_circulation_pathDataSet1.v1);
 
             var db = new DBUtils();
             query = "SELECT id_document,number,sender, LAST_NAME," +
             "outline,comments,date_added,date,status,document_type " +
-            "from v1 WHERE id_sender= " +
+            "from v1 WHERE document_type='"+ type_doc + "' and (id_sender= " +
                 "(select id_user from log where login='" + tulf2.getName() +
                 "') or id_recipient=(select id_user from log where login='" +
-                tulf2.getName() + "');";
+                tulf2.getName() + "'));";
             if (db.OpenConnection() == true)
             {
                 //conn.Open();
@@ -88,6 +104,18 @@ namespace Document_circulation
         private void timer1_Tick_1(object sender, EventArgs e)
         {
             MenuController_Load(null, null);
+        }
+
+        private void закрытьПрограммуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void окноАвторизацииToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 f2 = new Form1();
+            f2.Show();
         }
     }
 }

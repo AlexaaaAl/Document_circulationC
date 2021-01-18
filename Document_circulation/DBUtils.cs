@@ -22,7 +22,7 @@ namespace Document_circulation
         {
             string host= "192.168.50.10";
             int port = 3306;
-            string database= "document_circulation_path";
+            string database= "doc_circul_path";
             string username = "root";
             string password = "password";
             return ConectionMySql.GetDBConnection(host, port, database, username, password);

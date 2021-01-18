@@ -31,10 +31,10 @@ namespace Document_circulation
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.orders = new System.Windows.Forms.RadioButton();
+            this.incomingMailMoscow = new System.Windows.Forms.RadioButton();
+            this.incomingMail = new System.Windows.Forms.RadioButton();
+            this.internalDocuments = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,7 +44,6 @@ namespace Document_circulation
             this.создатьНовыйДокументToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.действияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добавитьПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -59,22 +58,12 @@ namespace Document_circulation
             this.documentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.documentsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.document_circulation_pathDataSet1 = new Document_circulation.document_circulation_pathDataSet1();
             this.v1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.v1TableAdapter = new Document_circulation.document_circulation_pathDataSet1TableAdapters.v1TableAdapter();
-            this.iddocumentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idsenderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.senderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idrecipientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lASTNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.outlineDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.commentsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateaddedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.documenttypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.выходToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.окноАвторизацииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.закрытьПрограммуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -86,7 +75,6 @@ namespace Document_circulation
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.v1BindingSource)).BeginInit();
             this.SuspendLayout();
@@ -96,10 +84,10 @@ namespace Document_circulation
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.OliveDrab;
-            this.panel1.Controls.Add(this.radioButton4);
-            this.panel1.Controls.Add(this.radioButton3);
-            this.panel1.Controls.Add(this.radioButton2);
-            this.panel1.Controls.Add(this.radioButton1);
+            this.panel1.Controls.Add(this.orders);
+            this.panel1.Controls.Add(this.incomingMailMoscow);
+            this.panel1.Controls.Add(this.incomingMail);
+            this.panel1.Controls.Add(this.internalDocuments);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label1);
@@ -108,52 +96,52 @@ namespace Document_circulation
             this.panel1.Size = new System.Drawing.Size(1441, 113);
             this.panel1.TabIndex = 0;
             // 
-            // radioButton4
+            // orders
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton4.Location = new System.Drawing.Point(781, 82);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(99, 25);
-            this.radioButton4.TabIndex = 6;
-            this.radioButton4.Text = "Приказы";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.orders.AutoSize = true;
+            this.orders.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.orders.Location = new System.Drawing.Point(781, 82);
+            this.orders.Name = "orders";
+            this.orders.Size = new System.Drawing.Size(99, 25);
+            this.orders.TabIndex = 6;
+            this.orders.Text = "Приказы";
+            this.orders.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // incomingMailMoscow
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton3.Location = new System.Drawing.Point(781, 59);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(446, 25);
-            this.radioButton3.TabIndex = 5;
-            this.radioButton3.Text = "Регистрация входящей корреспонденции г. Москвы";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.incomingMailMoscow.AutoSize = true;
+            this.incomingMailMoscow.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.incomingMailMoscow.Location = new System.Drawing.Point(781, 59);
+            this.incomingMailMoscow.Name = "incomingMailMoscow";
+            this.incomingMailMoscow.Size = new System.Drawing.Size(446, 25);
+            this.incomingMailMoscow.TabIndex = 5;
+            this.incomingMailMoscow.Text = "Регистрация входящей корреспонденции г. Москвы";
+            this.incomingMailMoscow.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // incomingMail
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton2.Location = new System.Drawing.Point(781, 36);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(364, 25);
-            this.radioButton2.TabIndex = 4;
-            this.radioButton2.Text = "Регистрация входящей корреспонденции ";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.incomingMail.AutoSize = true;
+            this.incomingMail.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.incomingMail.Location = new System.Drawing.Point(781, 36);
+            this.incomingMail.Name = "incomingMail";
+            this.incomingMail.Size = new System.Drawing.Size(364, 25);
+            this.incomingMail.TabIndex = 4;
+            this.incomingMail.Text = "Регистрация входящей корреспонденции ";
+            this.incomingMail.UseVisualStyleBackColor = true;
+            this.incomingMail.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
-            // radioButton1
+            // internalDocuments
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton1.Location = new System.Drawing.Point(781, 13);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(327, 25);
-            this.radioButton1.TabIndex = 3;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Регистрация внутренних документов";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.internalDocuments.AutoSize = true;
+            this.internalDocuments.Checked = true;
+            this.internalDocuments.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.internalDocuments.Location = new System.Drawing.Point(781, 13);
+            this.internalDocuments.Name = "internalDocuments";
+            this.internalDocuments.Size = new System.Drawing.Size(327, 25);
+            this.internalDocuments.TabIndex = 3;
+            this.internalDocuments.TabStop = true;
+            this.internalDocuments.Text = "Регистрация внутренних документов";
+            this.internalDocuments.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -200,10 +188,11 @@ namespace Document_circulation
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.действияToolStripMenuItem,
-            this.помощьToolStripMenuItem});
+            this.помощьToolStripMenuItem,
+            this.выходToolStripMenuItem1});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1441, 33);
+            this.menuStrip2.Size = new System.Drawing.Size(1441, 29);
             this.menuStrip2.TabIndex = 0;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -211,9 +200,9 @@ namespace Document_circulation
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.создатьНовыйДокументToolStripMenuItem});
-            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripMenuItem1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(69, 29);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(63, 25);
             this.toolStripMenuItem1.Text = "Фаил";
             // 
             // создатьНовыйДокументToolStripMenuItem
@@ -225,11 +214,10 @@ namespace Document_circulation
             // действияToolStripMenuItem
             // 
             this.действияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.добавитьПользователяToolStripMenuItem,
-            this.выходToolStripMenuItem});
-            this.действияToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.добавитьПользователяToolStripMenuItem});
+            this.действияToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.действияToolStripMenuItem.Name = "действияToolStripMenuItem";
-            this.действияToolStripMenuItem.Size = new System.Drawing.Size(106, 29);
+            this.действияToolStripMenuItem.Size = new System.Drawing.Size(98, 25);
             this.действияToolStripMenuItem.Text = "Действия";
             // 
             // добавитьПользователяToolStripMenuItem
@@ -238,18 +226,11 @@ namespace Document_circulation
             this.добавитьПользователяToolStripMenuItem.Size = new System.Drawing.Size(292, 30);
             this.добавитьПользователяToolStripMenuItem.Text = "Добавить пользователя";
             // 
-            // выходToolStripMenuItem
-            // 
-            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(292, 30);
-            this.выходToolStripMenuItem.Text = "Выход";
-            this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
-            // 
             // помощьToolStripMenuItem
             // 
-            this.помощьToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.помощьToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.помощьToolStripMenuItem.Name = "помощьToolStripMenuItem";
-            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(99, 29);
+            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(90, 25);
             this.помощьToolStripMenuItem.Text = "Помощь";
             // 
             // menuStrip1
@@ -275,7 +256,7 @@ namespace Document_circulation
             this.dataGridView1.Location = new System.Drawing.Point(111, 143);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(1326, 235);
+            this.dataGridView1.Size = new System.Drawing.Size(1326, 537);
             this.dataGridView1.TabIndex = 3;
             // 
             // panel3
@@ -342,29 +323,6 @@ namespace Document_circulation
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AutoGenerateColumns = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iddocumentDataGridViewTextBoxColumn,
-            this.numberDataGridViewTextBoxColumn,
-            this.idsenderDataGridViewTextBoxColumn,
-            this.senderDataGridViewTextBoxColumn,
-            this.idrecipientDataGridViewTextBoxColumn,
-            this.lASTNAMEDataGridViewTextBoxColumn,
-            this.outlineDataGridViewTextBoxColumn,
-            this.commentsDataGridViewTextBoxColumn,
-            this.dateaddedDataGridViewTextBoxColumn,
-            this.dateDataGridViewTextBoxColumn,
-            this.statusDataGridViewTextBoxColumn,
-            this.documenttypeDataGridViewTextBoxColumn});
-            this.dataGridView2.DataSource = this.v1BindingSource;
-            this.dataGridView2.Location = new System.Drawing.Point(111, 384);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(1326, 296);
-            this.dataGridView2.TabIndex = 6;
-            // 
             // document_circulation_pathDataSet1
             // 
             this.document_circulation_pathDataSet1.DataSetName = "document_circulation_pathDataSet1";
@@ -379,86 +337,37 @@ namespace Document_circulation
             // 
             this.v1TableAdapter.ClearBeforeFill = true;
             // 
-            // iddocumentDataGridViewTextBoxColumn
+            // выходToolStripMenuItem1
             // 
-            this.iddocumentDataGridViewTextBoxColumn.DataPropertyName = "id_document";
-            this.iddocumentDataGridViewTextBoxColumn.HeaderText = "id_document";
-            this.iddocumentDataGridViewTextBoxColumn.Name = "iddocumentDataGridViewTextBoxColumn";
+            this.выходToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.окноАвторизацииToolStripMenuItem,
+            this.закрытьПрограммуToolStripMenuItem});
+            this.выходToolStripMenuItem1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.выходToolStripMenuItem1.Name = "выходToolStripMenuItem1";
+            this.выходToolStripMenuItem1.Size = new System.Drawing.Size(74, 25);
+            this.выходToolStripMenuItem1.Text = "Выход";
             // 
-            // numberDataGridViewTextBoxColumn
+            // окноАвторизацииToolStripMenuItem
             // 
-            this.numberDataGridViewTextBoxColumn.DataPropertyName = "number";
-            this.numberDataGridViewTextBoxColumn.HeaderText = "number";
-            this.numberDataGridViewTextBoxColumn.Name = "numberDataGridViewTextBoxColumn";
+            this.окноАвторизацииToolStripMenuItem.Name = "окноАвторизацииToolStripMenuItem";
+            this.окноАвторизацииToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
+            this.окноАвторизацииToolStripMenuItem.Text = "Окно авторизации";
+            this.окноАвторизацииToolStripMenuItem.Click += new System.EventHandler(this.окноАвторизацииToolStripMenuItem_Click);
             // 
-            // idsenderDataGridViewTextBoxColumn
+            // закрытьПрограммуToolStripMenuItem
             // 
-            this.idsenderDataGridViewTextBoxColumn.DataPropertyName = "id_sender";
-            this.idsenderDataGridViewTextBoxColumn.HeaderText = "id_sender";
-            this.idsenderDataGridViewTextBoxColumn.Name = "idsenderDataGridViewTextBoxColumn";
-            // 
-            // senderDataGridViewTextBoxColumn
-            // 
-            this.senderDataGridViewTextBoxColumn.DataPropertyName = "sender";
-            this.senderDataGridViewTextBoxColumn.HeaderText = "sender";
-            this.senderDataGridViewTextBoxColumn.Name = "senderDataGridViewTextBoxColumn";
-            // 
-            // idrecipientDataGridViewTextBoxColumn
-            // 
-            this.idrecipientDataGridViewTextBoxColumn.DataPropertyName = "id_recipient";
-            this.idrecipientDataGridViewTextBoxColumn.HeaderText = "id_recipient";
-            this.idrecipientDataGridViewTextBoxColumn.Name = "idrecipientDataGridViewTextBoxColumn";
-            // 
-            // lASTNAMEDataGridViewTextBoxColumn
-            // 
-            this.lASTNAMEDataGridViewTextBoxColumn.DataPropertyName = "LAST_NAME";
-            this.lASTNAMEDataGridViewTextBoxColumn.HeaderText = "LAST_NAME";
-            this.lASTNAMEDataGridViewTextBoxColumn.Name = "lASTNAMEDataGridViewTextBoxColumn";
-            // 
-            // outlineDataGridViewTextBoxColumn
-            // 
-            this.outlineDataGridViewTextBoxColumn.DataPropertyName = "outline";
-            this.outlineDataGridViewTextBoxColumn.HeaderText = "outline";
-            this.outlineDataGridViewTextBoxColumn.Name = "outlineDataGridViewTextBoxColumn";
-            // 
-            // commentsDataGridViewTextBoxColumn
-            // 
-            this.commentsDataGridViewTextBoxColumn.DataPropertyName = "comments";
-            this.commentsDataGridViewTextBoxColumn.HeaderText = "comments";
-            this.commentsDataGridViewTextBoxColumn.Name = "commentsDataGridViewTextBoxColumn";
-            // 
-            // dateaddedDataGridViewTextBoxColumn
-            // 
-            this.dateaddedDataGridViewTextBoxColumn.DataPropertyName = "date_added";
-            this.dateaddedDataGridViewTextBoxColumn.HeaderText = "date_added";
-            this.dateaddedDataGridViewTextBoxColumn.Name = "dateaddedDataGridViewTextBoxColumn";
-            // 
-            // dateDataGridViewTextBoxColumn
-            // 
-            this.dateDataGridViewTextBoxColumn.DataPropertyName = "date";
-            this.dateDataGridViewTextBoxColumn.HeaderText = "date";
-            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            // 
-            // documenttypeDataGridViewTextBoxColumn
-            // 
-            this.documenttypeDataGridViewTextBoxColumn.DataPropertyName = "document_type";
-            this.documenttypeDataGridViewTextBoxColumn.HeaderText = "document_type";
-            this.documenttypeDataGridViewTextBoxColumn.Name = "documenttypeDataGridViewTextBoxColumn";
+            this.закрытьПрограммуToolStripMenuItem.Name = "закрытьПрограммуToolStripMenuItem";
+            this.закрытьПрограммуToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
+            this.закрытьПрограммуToolStripMenuItem.Text = "Закрыть программу";
+            this.закрытьПрограммуToolStripMenuItem.Click += new System.EventHandler(this.закрытьПрограммуToolStripMenuItem_Click);
             // 
             // MenuController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1439, 680);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
@@ -482,7 +391,6 @@ namespace Document_circulation
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.v1BindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -495,10 +403,10 @@ namespace Document_circulation
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton orders;
+        private System.Windows.Forms.RadioButton incomingMailMoscow;
+        private System.Windows.Forms.RadioButton incomingMail;
+        private System.Windows.Forms.RadioButton internalDocuments;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -507,7 +415,6 @@ namespace Document_circulation
         private System.Windows.Forms.ToolStripMenuItem создатьНовыйДокументToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem действияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem добавитьПользователяToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel3;
@@ -521,21 +428,11 @@ namespace Document_circulation
         private System.Windows.Forms.BindingSource documentsBindingSource1;
         private System.Windows.Forms.BindingSource documentsBindingSource;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private document_circulation_pathDataSet1 document_circulation_pathDataSet1;
         private System.Windows.Forms.BindingSource v1BindingSource;
         private document_circulation_pathDataSet1TableAdapters.v1TableAdapter v1TableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iddocumentDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idsenderDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn senderDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idrecipientDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lASTNAMEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn outlineDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateaddedDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn documenttypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem окноАвторизацииToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem закрытьПрограммуToolStripMenuItem;
     }
 }
