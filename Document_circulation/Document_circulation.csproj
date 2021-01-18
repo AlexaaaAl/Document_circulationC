@@ -121,6 +121,12 @@
     <Compile Include="AddDocument.Designer.cs">
       <DependentUpon>AddDocument.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChangeDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeDocument.Designer.cs">
+      <DependentUpon>ChangeDocument.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConectionMySql.cs" />
     <Compile Include="DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -161,6 +167,9 @@
     <Compile Include="UserName.cs" />
     <EmbeddedResource Include="AddDocument.resx">
       <DependentUpon>AddDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeDocument.resx">
+      <DependentUpon>ChangeDocument.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
