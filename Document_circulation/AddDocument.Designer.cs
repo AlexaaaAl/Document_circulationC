@@ -33,13 +33,13 @@ namespace Document_circulation
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.typeComboBox1 = new System.Windows.Forms.ComboBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.userComboBox2 = new System.Windows.Forms.ComboBox();
             this.document_circulation_pathDataSet = new Document_circulation.document_circulation_pathDataSet();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -96,31 +96,32 @@ namespace Document_circulation
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 29);
             this.dateTimePicker1.TabIndex = 2;
             // 
-            // comboBox1
+            // typeComboBox1
             // 
-            this.comboBox1.DisplayMember = "status";
-            this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(157, 247);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(367, 29);
-            this.comboBox1.TabIndex = 3;
-            this.comboBox1.ValueMember = "status";
+            this.typeComboBox1.DisplayMember = "status";
+            this.typeComboBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.typeComboBox1.FormattingEnabled = true;
+            this.typeComboBox1.Location = new System.Drawing.Point(157, 247);
+            this.typeComboBox1.Name = "typeComboBox1";
+            this.typeComboBox1.Size = new System.Drawing.Size(367, 29);
+            this.typeComboBox1.TabIndex = 3;
+            this.typeComboBox1.ValueMember = "status";
             // 
             // listBox1
             // 
             this.listBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBox1.FormattingEnabled = true;
+            this.listBox1.HorizontalScrollbar = true;
             this.listBox1.ItemHeight = 21;
             this.listBox1.Location = new System.Drawing.Point(24, 360);
             this.listBox1.Name = "listBox1";
+            this.listBox1.ScrollAlwaysVisible = true;
             this.listBox1.Size = new System.Drawing.Size(245, 172);
             this.listBox1.TabIndex = 4;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // richTextBox1
             // 
-            this.richTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentsBindingSource2, "status", true));
             this.richTextBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.richTextBox1.Location = new System.Drawing.Point(115, 162);
             this.richTextBox1.Name = "richTextBox1";
@@ -132,9 +133,11 @@ namespace Document_circulation
             // 
             this.listBox2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBox2.FormattingEnabled = true;
+            this.listBox2.HorizontalScrollbar = true;
             this.listBox2.ItemHeight = 21;
             this.listBox2.Location = new System.Drawing.Point(275, 339);
             this.listBox2.Name = "listBox2";
+            this.listBox2.ScrollAlwaysVisible = true;
             this.listBox2.Size = new System.Drawing.Size(249, 193);
             this.listBox2.TabIndex = 6;
             // 
@@ -147,6 +150,7 @@ namespace Document_circulation
             this.button1.TabIndex = 7;
             this.button1.Text = "Выбрать фаил";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -159,17 +163,17 @@ namespace Document_circulation
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // comboBox2
+            // userComboBox2
             // 
-            this.comboBox2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.comboBox2.DisplayMember = "LAST_NAME";
-            this.comboBox2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(275, 296);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(249, 29);
-            this.comboBox2.TabIndex = 9;
-            this.comboBox2.ValueMember = "LAST_NAME";
+            this.userComboBox2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.userComboBox2.DisplayMember = "LAST_NAME";
+            this.userComboBox2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.userComboBox2.FormattingEnabled = true;
+            this.userComboBox2.Location = new System.Drawing.Point(275, 296);
+            this.userComboBox2.Name = "userComboBox2";
+            this.userComboBox2.Size = new System.Drawing.Size(249, 29);
+            this.userComboBox2.TabIndex = 9;
+            this.userComboBox2.ValueMember = "LAST_NAME";
             // 
             // document_circulation_pathDataSet
             // 
@@ -185,6 +189,7 @@ namespace Document_circulation
             this.button3.TabIndex = 10;
             this.button3.Text = "Добавить получателя";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -195,6 +200,7 @@ namespace Document_circulation
             this.button4.TabIndex = 11;
             this.button4.Text = "Удалить получателя";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -311,16 +317,18 @@ namespace Document_circulation
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.userComboBox2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.typeComboBox1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.checkBox1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AddDocument";
             this.Text = "AddDocument";
             this.TopMost = true;
@@ -341,13 +349,13 @@ namespace Document_circulation
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox typeComboBox1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox userComboBox2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
