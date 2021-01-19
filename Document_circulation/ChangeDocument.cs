@@ -49,6 +49,32 @@ namespace Document_circulation
                     }
                 }
             }
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog DirDialog = new FolderBrowserDialog();
+            DirDialog.Description = "Выбор директории";
+            DirDialog.SelectedPath = @"C:\";
+
+            if (DirDialog.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show(DirDialog.SelectedPath);
+                conn.Open();
+                string query = "SELECT path, file FROM document_files " +
+                    " WHERE number='" + number + "'";
+                using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        if (reader["id_sender"].ToString() == ID)
+                        {
+
+                        }
+                    }
+                }
+            }
         }
     }
 }
