@@ -73,25 +73,25 @@ namespace Document_circulation
             this.button3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.Location = new System.Drawing.Point(386, 152);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(129, 52);
+            this.button3.Size = new System.Drawing.Size(267, 31);
             this.button3.TabIndex = 2;
-            this.button3.Text = "Скачать документ";
+            this.button3.Text = "Скачать документы";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(521, 152);
+            this.button4.Location = new System.Drawing.Point(386, 232);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(132, 52);
+            this.button4.Size = new System.Drawing.Size(267, 62);
             this.button4.TabIndex = 3;
-            this.button4.Text = "Загрузить документ";
+            this.button4.Text = "Загрузить подтвержденный документ";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Location = new System.Drawing.Point(386, 210);
+            this.button5.Location = new System.Drawing.Point(386, 189);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(267, 37);
             this.button5.TabIndex = 4;
@@ -101,7 +101,7 @@ namespace Document_circulation
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(386, 253);
+            this.button6.Location = new System.Drawing.Point(386, 300);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(267, 52);
             this.button6.TabIndex = 5;
@@ -111,7 +111,7 @@ namespace Document_circulation
             // button7
             // 
             this.button7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button7.Location = new System.Drawing.Point(386, 311);
+            this.button7.Location = new System.Drawing.Point(386, 358);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(129, 36);
             this.button7.TabIndex = 6;
@@ -121,7 +121,7 @@ namespace Document_circulation
             // button8
             // 
             this.button8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button8.Location = new System.Drawing.Point(521, 311);
+            this.button8.Location = new System.Drawing.Point(521, 358);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(132, 36);
             this.button8.TabIndex = 7;
@@ -180,10 +180,13 @@ namespace Document_circulation
             // 
             // richTextBox1
             // 
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Enabled = false;
             this.richTextBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.richTextBox1.Location = new System.Drawing.Point(16, 103);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(364, 236);
+            this.richTextBox1.Size = new System.Drawing.Size(364, 291);
             this.richTextBox1.TabIndex = 14;
             this.richTextBox1.Text = "";
             // 
@@ -191,7 +194,7 @@ namespace Document_circulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(680, 351);
+            this.ClientSize = new System.Drawing.Size(677, 408);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label4);
@@ -207,6 +210,8 @@ namespace Document_circulation
             this.Controls.Add(this.button1);
             this.Name = "ChangeDocument";
             this.Text = "ChangeDocument";
+            this.TopMost = true;
+            this.Load += new System.EventHandler(this.ChangeDocument_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

@@ -16,15 +16,17 @@ namespace Document_circulation
     {
        
         public UserName tulf2 = new UserName();
+        public string ID;
         MySqlConnection conn = DBUtils.GetDBConnection();
         string query;
         string type_doc="";
         public MenuController()
         {
             InitializeComponent();
-            timer1.Interval = 5000;
+            //FormBorderStyle = FormBorderStyle.Fixed3D;
+            /*timer1.Interval = 5000;
             timer1.Tick += new EventHandler(timer1_Tick_1);
-            timer1.Start();
+            timer1.Start();*/
         }
 
        
@@ -72,7 +74,21 @@ namespace Document_circulation
                 DataSet DS = new DataSet();
                 h.Fill(DS);
                 dataGridView1.DataSource = DS.Tables[0];
+            } 
+            conn.Open();
+            query = "SELECT ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME FROM users WHERE ID= " +
+                "(select id_user from log where login='" + tulf2.getName() +
+                "');";
+            using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    ID=reader["ID"].ToString();
+                    label2.Text= reader["LAST_NAME"].ToString()+" "+ reader["FIRST_NAME"].ToString()+
+                        " "+reader["MIDDLE_NAME"].ToString();
+                }
             }
+            
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -120,7 +136,22 @@ namespace Document_circulation
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            MessageBox.Show(dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["number"].Value.ToString());
+            ChangeDocument f2 = new ChangeDocument();
+            f2.number = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["number"].Value.ToString();
+            f2.outline= dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["outline"].Value.ToString();
+            f2.comment = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["comments"].Value.ToString();
+            f2.name = tulf2.getName();
+            f2.ID = ID;
+            f2.Show();
         }
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show(dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["number"].Value.ToString());
+            ChangeDocument f2 = new ChangeDocument();
+            f2.number = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["number"].Value.ToString();
+            f2.Show();
+        }
+
     }
 }

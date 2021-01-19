@@ -127,6 +127,12 @@
     <Compile Include="ChangeDocument.Designer.cs">
       <DependentUpon>ChangeDocument.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChangeOutline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeOutline.Designer.cs">
+      <DependentUpon>ChangeOutline.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConectionMySql.cs" />
     <Compile Include="DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -176,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeDocument.resx">
       <DependentUpon>ChangeDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeOutline.resx">
+      <DependentUpon>ChangeOutline.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
