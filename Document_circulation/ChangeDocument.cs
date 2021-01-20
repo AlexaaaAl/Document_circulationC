@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,20 +61,32 @@ namespace Document_circulation
 
             if (DirDialog.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show(DirDialog.SelectedPath);
-                conn.Open();
-                string query = "SELECT path, file FROM document_files " +
-                    " WHERE number='" + number + "'";
-                using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+               
+                //conn.Open();
+            string query = "select path,file from document_file " +
+                    "inner join all_one on document_file.id = all_one.id_file " +
+                    "inner join documents on all_one.id_doc = documents.number " +
+                    "where documents.number ="+number+";";
+            using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+            {
+                if (reader.Read())
                 {
-                    if (reader.Read())
-                    {
-                        if (reader["id_sender"].ToString() == ID)
+                        try
                         {
 
+                            // Move the file.
+                            File.Copy( (reader["path"].ToString() + reader["file"].ToString()).Replace("/", "\\"), DirDialog.SelectedPath+"\\"+ reader["file"].ToString().Replace("/", "\\"),true);
+                            //MessageBox.Show("{0} was moved to {1}."+ DirDialog.SelectedPath+ reader["path"].ToString() + reader["file"].ToString());
+
                         }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show( ex.ToString(), "The process failed: {0}");
+                        }
+
+
                     }
-                }
+            }
             }
         }
     }
