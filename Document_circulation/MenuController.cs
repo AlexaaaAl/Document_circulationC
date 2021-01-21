@@ -17,6 +17,11 @@ namespace Document_circulation
        
         public UserName tulf2 = new UserName();
         public string ID;
+        public string FIRST_NAME;
+        public string LAST_NAME;
+        public string MIDDLE_NAME;
+        public string DEPARTMENT;
+        public string IP_SERVER;
         MySqlConnection conn = DBUtils.GetDBConnection();
         string query;
         string type_doc="";
@@ -76,14 +81,19 @@ namespace Document_circulation
                 dataGridView1.DataSource = DS.Tables[0];
             } 
             conn.Open();
-            query = "SELECT ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME FROM users WHERE ID= " +
+            query = "SELECT ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME,DEPARTMENT,ip_server FROM users WHERE ID= " +
                 "(select id_user from log where login='" + tulf2.getName() +
                 "');";
             using (var reader = new MySqlCommand(query, conn).ExecuteReader())
             {
                 if (reader.Read())
                 {
-                    ID=reader["ID"].ToString();
+                    LAST_NAME = reader["LAST_NAME"].ToString();
+                    FIRST_NAME = reader["FIRST_NAME"].ToString();
+                    MIDDLE_NAME = reader["MIDDLE_NAME"].ToString();
+                    DEPARTMENT = reader["DEPARTMENT"].ToString();
+                    IP_SERVER = reader["ip_server"].ToString();
+                    ID =reader["ID"].ToString();
                     label2.Text= reader["LAST_NAME"].ToString()+" "+ reader["FIRST_NAME"].ToString()+
                         " "+reader["MIDDLE_NAME"].ToString();
                 }
@@ -104,6 +114,11 @@ namespace Document_circulation
         private void button1_Click(object sender, EventArgs e)
         {
             AddDocument f2 = new AddDocument();
+            f2.FIRST_NAME = FIRST_NAME;
+            f2.LAST_NAME = LAST_NAME;
+            f2.MIDDLE_NAME = MIDDLE_NAME;
+            f2.DEPARTMENT = DEPARTMENT;
+            f2.IP_SERVER = IP_SERVER;
             f2.name = tulf2.getName();
             f2.ID = ID;
             f2.Show();

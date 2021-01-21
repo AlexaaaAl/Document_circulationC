@@ -16,10 +16,19 @@ namespace Document_circulation
     {
         string fileContent = string.Empty;
         string filePath = string.Empty;
-        string MaxNumber;
-        string MaxIdF;
+        int MaxNumber;
+        int MaxIdF;
+        int id_send;
+        int[] IdSender= new int[50];
         public string ID;
         public string name;
+        public string FIRST_NAME;
+        public string LAST_NAME;
+        public string MIDDLE_NAME;
+        public string DEPARTMENT;
+        public string IP_SERVER;
+        int[] IdF =new int[20];
+        int[] MaxN = new int[20];
         MySqlConnection conn = DBUtils.GetDBConnection();
         DataTable patientTable = new DataTable();
         int i = 0;
@@ -121,40 +130,99 @@ namespace Document_circulation
         private void button5_Click(object sender, EventArgs e)
         {
             conn.Open();
+            //выбираем последний номер сохраненной записи о пересылке из бд и сохраняем
             string query = "SELECT max(number) as MaxN " +
                     "from documents;";
             using (var reader = new MySqlCommand(query, conn).ExecuteReader())
             {
                 if (reader.Read())
                 {
-                    MaxNumber = reader["MaxN"].ToString() ;
+                    MaxNumber = int.Parse(reader["MaxN"].ToString())+1 ;
                 }
             }
+            //выбираем последний номер файла из бд и сохраняем
             query = "SELECT max(id) MaxD" +
                     " from document_file;";
             using (var reader = new MySqlCommand(query, conn).ExecuteReader())
             {
                 if (reader.Read())
                 {
-                    MaxIdF = reader["MaxD"].ToString();
+                    MaxIdF = int.Parse(reader["MaxD"].ToString())+1;
                 }
             }            
-            query = "SELECT LAST_NAME,FIRST_NAME,MIDDLE_NAME,DEPARTMENT,ip_server " +
-                    " from users WHERE E_MAIl='"+ name+"' ;";        
-            using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+         //загружаем файлы на сервер и в бд
+            for (int i = 0; i < listBox1.Items.Count ; i++)
             {
-                MessageBox.Show(reader["MIDDLE_NAME"].ToString());
-                for (int i = 0; i < listBox1.Items.Count - 1; i++)
+                try
                 {
-                    string s = listBox1.Items[i].ToString().Replace("\\", "\\\\");
-                    string f = "\\\\"+reader["ip_server"].ToString() + "\\Программа\\" +
-                        reader["DEPARTMENT"].ToString() + "\\" + reader["Last_name"].ToString() + " " +
-                        reader["First_name"].ToString() + " " + reader["Middle_name"].ToString() + "\\" +
-                        DateTime.Today.ToString("d");
-                    File.Copy(s, f.Replace("\\", "\\\\"), true);
-
+                    string s = listBox1.Items[i].ToString();
+                    string f = "\\\\" + IP_SERVER + "\\Программа\\" +
+                        DEPARTMENT + "\\" + LAST_NAME + " " +
+                        FIRST_NAME + " " + MIDDLE_NAME + "\\" +
+                        DateTime.Today.ToString("d") ;
+                    if (!Directory.Exists(f)) Directory.CreateDirectory(f);
+                    f = f + "\\" + Path.GetFileName(s);
+                    File.Copy(s, f, true);
+                    string q= "INSERT INTO `document_file`" +
+                            "    (`id` ,`path`, `file`)" + 
+                            "    VALUES (" + MaxIdF + ",'" + s + "','" + f + "');";
+                    MySqlCommand command = new MySqlCommand(q, conn);
+                    // выполняем запрос
+                    command.ExecuteNonQuery();
+                    IdF[i] = MaxIdF;//записываем все номера в массив (( номера файлов))
+                    MaxIdF += 1;
+                    MessageBox.Show( "ок");
                 }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message,"ошибка");
+                }
+
             }
+            //выбираем все id получателей
+            for (int i = 0; i < listBox2.Items.Count; i++)
+            {
+                query = "SELECT id From users where LAST_NAME = '" +
+                        listBox1.Items[i].ToString() + "';";
+                using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        id_send = int.Parse(reader["id"].ToString()) ;
+                    }
+                }
+                IdSender[i] = id_send;
+
+            }
+            //записываем все данные в бд
+
+            for (int j = 0; j < IdSender.Length - 1; j++)
+            {
+                if (checkBox1.Checked) //если стоит флажок на сроке подписания
+                {
+                    string q = "INSERT INTO `documents`" +
+                                "    ( `number`,`outline`, `id_sender`, `id_recipient`,`date`,`comments`,`document_type`)" +
+                                "    VALUES" +
+                                "           (" + MaxNumber + ",'" + textBox1.Text + "'," +
+                                ID + "," +
+                                IdSender[j] + ",'" +
+                                DateTime.Today.ToString("D") + "','" + richTextBox1.Text + "','" +
+                               typeComboBox1.Text + "');";
+                    try
+                    {
+                        MySqlCommand command = new MySqlCommand(q, conn);
+                        // выполняем запрос
+                        command.ExecuteNonQuery();
+                    }
+                    catch(Exception ex) 
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка");
+                    }
+                }
+                MaxN[j] = MaxNumber;//записываем все номера в массив (( номера записей))
+                MaxNumber += 1;
+            }
+
             conn.Close();
 
 
