@@ -242,7 +242,19 @@ namespace Document_circulation
             }
             for(int i=0;i< IdF.Length; i++)
             {
-
+                string q= "INSERT INTO `all_one`" +
+                        "    (`id_doc`, `id_file`)" + "    VALUES ("
+                        + MaxNumber + "," + IdF[i] + ");";
+                try
+                {
+                    MySqlCommand command = new MySqlCommand(q, conn);
+                    // выполняем запрос
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка");
+                }
             }
 
             conn.Close();
