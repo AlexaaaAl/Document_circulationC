@@ -75,12 +75,17 @@ namespace Document_circulation
                         {
 
                             // Move the file.
-                            File.Copy( (reader["path"].ToString() + reader["file"].ToString()).Replace("/", "\\"), DirDialog.SelectedPath+"\\"+ reader["file"].ToString().Replace("/", "\\"),true);
+                            string s = Path.Combine(reader["path"].ToString().Replace("/", "\\"), reader["file"].ToString().Replace("/", "\\")).Replace("\\", "\\\\");
+                                //reader["path"].ToString().Replace("/", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
+                            string f= Path.Combine(DirDialog.SelectedPath, reader["file"].ToString().Replace("/", "\\")).Replace("\\", "\\\\");
+                            // DirDialog.SelectedPath.Replace("\\", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
+                            File.Copy( s, f,true);
                             //MessageBox.Show("{0} was moved to {1}."+ DirDialog.SelectedPath+ reader["path"].ToString() + reader["file"].ToString());
 
                         }
                         catch (Exception ex)
                         {
+
                             MessageBox.Show( ex.ToString(), "The process failed: {0}");
                         }
 

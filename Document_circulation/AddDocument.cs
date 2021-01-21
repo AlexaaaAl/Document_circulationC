@@ -16,6 +16,11 @@ namespace Document_circulation
     {
         string fileContent = string.Empty;
         string filePath = string.Empty;
+        string MaxNumber;
+        string MaxIdF;
+        public string ID;
+        public string name;
+        MySqlConnection conn = DBUtils.GetDBConnection();
         DataTable patientTable = new DataTable();
         int i = 0;
         public AddDocument()
@@ -111,6 +116,53 @@ namespace Document_circulation
         private void button4_Click(object sender, EventArgs e)
         {
             listBox2.Items.RemoveAt(listBox2.SelectedIndex);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            conn.Open();
+            string query = "SELECT max(number) as MaxN " +
+                    "from documents;";
+            using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    MaxNumber = reader["MaxN"].ToString() ;
+                }
+            }
+            query = "SELECT max(id) MaxD" +
+                    " from document_file;";
+            using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    MaxIdF = reader["MaxD"].ToString();
+                }
+            }            
+            query = "SELECT Last_name, First_name, Middle_name,DEPARTMENT,ip_server " +
+                    " from users WHERE id=" + int.Parse(ID) + " ;";        
+            using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+            {
+                MessageBox.Show(reader["Middle_name"].ToString());
+                for (int i = 0; i < listBox1.Items.Count - 1; i++)
+                {
+                    string s = listBox1.Items[i].ToString().Replace("\\", "\\\\");
+                    string f = reader["ip_server"].ToString() + "\\\\Программа\\" +
+                        reader["DEPARTMENT"].ToString() + "\\\\" + reader["Last_name"].ToString() + " " +
+                        reader["First_name"].ToString() + " " + reader["Middle_name"].ToString() + "\\" +
+                        DateTime.Today.ToString("d");
+                    File.Copy(s, f.Replace("\\", "\\\\"), true);
+
+                }
+            }
+            conn.Close();
+
+
+        }
+
+        private void userComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

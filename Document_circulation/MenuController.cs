@@ -104,6 +104,8 @@ namespace Document_circulation
         private void button1_Click(object sender, EventArgs e)
         {
             AddDocument f2 = new AddDocument();
+            f2.name = tulf2.getName();
+            f2.ID = ID;
             f2.Show();
         }
 
