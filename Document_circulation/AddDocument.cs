@@ -139,16 +139,16 @@ namespace Document_circulation
                     MaxIdF = reader["MaxD"].ToString();
                 }
             }            
-            query = "SELECT Last_name, First_name, Middle_name,DEPARTMENT,ip_server " +
-                    " from users WHERE id=" + int.Parse(ID) + " ;";        
+            query = "SELECT LAST_NAME,FIRST_NAME,MIDDLE_NAME,DEPARTMENT,ip_server " +
+                    " from users WHERE E_MAIl='"+ name+"' ;";        
             using (var reader = new MySqlCommand(query, conn).ExecuteReader())
             {
-                MessageBox.Show(reader["Middle_name"].ToString());
+                MessageBox.Show(reader["MIDDLE_NAME"].ToString());
                 for (int i = 0; i < listBox1.Items.Count - 1; i++)
                 {
                     string s = listBox1.Items[i].ToString().Replace("\\", "\\\\");
-                    string f = reader["ip_server"].ToString() + "\\\\Программа\\" +
-                        reader["DEPARTMENT"].ToString() + "\\\\" + reader["Last_name"].ToString() + " " +
+                    string f = "\\\\"+reader["ip_server"].ToString() + "\\Программа\\" +
+                        reader["DEPARTMENT"].ToString() + "\\" + reader["Last_name"].ToString() + " " +
                         reader["First_name"].ToString() + " " + reader["Middle_name"].ToString() + "\\" +
                         DateTime.Today.ToString("d");
                     File.Copy(s, f.Replace("\\", "\\\\"), true);
