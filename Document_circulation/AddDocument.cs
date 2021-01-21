@@ -206,7 +206,7 @@ namespace Document_circulation
                                 "           (" + MaxNumber + ",'" + textBox1.Text + "'," +
                                 ID + "," +
                                 IdSender[j] + ",'" +
-                                DateTime.Today.ToString("D") + "','" + richTextBox1.Text + "','" +
+                                dateTimePicker1.Value + "','" + richTextBox1.Text + "','" +
                                typeComboBox1.Text + "');";
                     try
                     {
@@ -219,8 +219,30 @@ namespace Document_circulation
                         MessageBox.Show(ex.Message, "Ошибка");
                     }
                 }
-                MaxN[j] = MaxNumber;//записываем все номера в массив (( номера записей))
-                MaxNumber += 1;
+                else
+                {
+                    string q = "INSERT INTO `documents`" +
+                                   "    ( `number`,`outline`, `id_sender`, `id_recipient`,`comments`,`document_type`)" +
+                                   "    VALUES" +
+                                   "           (" + MaxNumber + ",'" + textBox1.Text + "'," +
+                                   ID + "," +
+                                   IdSender[j] + ",'" + richTextBox1.Text + "','" +
+                                  typeComboBox1.Text + "');";
+                    try
+                    {
+                        MySqlCommand command = new MySqlCommand(q, conn);
+                        // выполняем запрос
+                        command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка");
+                    }
+                }
+            }
+            for(int i=0;i< IdF.Length; i++)
+            {
+
             }
 
             conn.Close();
