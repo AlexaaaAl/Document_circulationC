@@ -16,10 +16,11 @@ namespace Document_circulation
     {
         string fileContent = string.Empty;
         string filePath = string.Empty;
+        string fileName = string.Empty;
         int MaxNumber;
         int MaxIdF;
         int id_send;
-        int[] IdSender= new int[50];
+        int[] IdRecipient = new int[50];
         public string ID;
         public string name;
         public string FIRST_NAME;
@@ -47,13 +48,17 @@ namespace Document_circulation
 
             try
             {
-                string CommandText = "SELECT LAST_NAME FROM users";
+                string CommandText = "SELECT id,LAST_NAME,FIRST_NAME,MIDDLE_NAME FROM users ORDER BY LAST_NAME";
                 MySqlCommand myCommand = new MySqlCommand(CommandText, conn);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(myCommand);
                 adapter.Fill(patientTable);
                 for (int i = 0; i < patientTable.Rows.Count; i++)
                 {
-                    userComboBox2.Items.Add(patientTable.Rows[i]["LAST_NAME"]);
+                    string s = patientTable.Rows[i]["id"].ToString() + " " +
+                        patientTable.Rows[i]["LAST_NAME"].ToString() + " " + 
+                        patientTable.Rows[i]["FIRST_NAME"].ToString().Substring(0, 1) + ". " + 
+                        patientTable.Rows[i]["MIDDLE_NAME"].ToString().Substring(0, 1) + ". ";
+                    userComboBox2.Items.Add(s);
                 }
             }
             catch (Exception ex)
@@ -67,8 +72,9 @@ namespace Document_circulation
 
         private void button2_Click(object sender, EventArgs e)
         {
-            listBox1.Items.RemoveAt(listBox1.SelectedIndex);
-            
+            int i = listBox1.SelectedIndex;
+            listBox1.Items.RemoveAt(i);
+            listBox3.Items.RemoveAt(i);
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -103,9 +109,10 @@ namespace Document_circulation
             {
                 MessageBox.Show(OPF.FileName);
                 filePath = OPF.FileName;
+                fileName = Path.GetFileName(OPF.FileName);
                 i = listBox1.Items.Count;
-                listBox1.Items.Insert(i, filePath);
-                
+                listBox1.Items.Insert(i, fileName);
+                listBox3.Items.Insert(i, filePath);
                 var fileStream = OPF.OpenFile();
 
                 using (StreamReader reader = new StreamReader(fileStream))
@@ -155,7 +162,7 @@ namespace Document_circulation
             {
                 try
                 {
-                    string s = listBox1.Items[i].ToString();
+                    string s = listBox3.Items[i].ToString();
                     string f = "\\\\" + IP_SERVER + "\\Программа\\" +
                         DEPARTMENT + "\\" + LAST_NAME + " " +
                         FIRST_NAME + " " + MIDDLE_NAME + "\\" +
@@ -182,8 +189,9 @@ namespace Document_circulation
             //выбираем все id получателей
             for (int i = 0; i < listBox2.Items.Count; i++)
             {
-                query = "SELECT id From users where LAST_NAME = '" +
-                        listBox1.Items[i].ToString() + "';";
+                string[] words = listBox2.Items[i].ToString().Split(new char[] { ' ' });
+                query = "SELECT id From users where id = " +
+                        words[0]+ ";";
                 using (var reader = new MySqlCommand(query, conn).ExecuteReader())
                 {
                     if (reader.Read())
@@ -191,21 +199,23 @@ namespace Document_circulation
                         id_send = int.Parse(reader["id"].ToString()) ;
                     }
                 }
-                IdSender[i] = id_send;
+                IdRecipient[i] = id_send;
+                //MessageBox.Show(id_send.ToString(), "id");
 
             }
             //записываем все данные в бд
 
-            for (int j = 0; j < IdSender.Length - 1; j++)
+            for (int j = 0; j < IdRecipient.Length - 1; j++)
             {
                 if (checkBox1.Checked) //если стоит флажок на сроке подписания
                 {
+                    MessageBox.Show(IdRecipient[j].ToString(), "id");
                     string q = "INSERT INTO `documents`" +
                                 "    ( `number`,`outline`, `id_sender`, `id_recipient`,`date`,`comments`,`document_type`)" +
                                 "    VALUES" +
                                 "           (" + MaxNumber + ",'" + textBox1.Text + "'," +
                                 ID + "," +
-                                IdSender[j] + ",'" +
+                                IdRecipient[j].ToString() + ",'" +
                                 dateTimePicker1.Value + "','" + richTextBox1.Text + "','" +
                                typeComboBox1.Text + "');";
                     try
@@ -216,17 +226,18 @@ namespace Document_circulation
                     }
                     catch(Exception ex) 
                     {
-                        MessageBox.Show(ex.Message, "Ошибка");
+                        MessageBox.Show(ex.Message, "Ошибка вставки c датой");
                     }
                 }
                 else
                 {
+                    MessageBox.Show(IdRecipient[j].ToString(), "id");
                     string q = "INSERT INTO `documents`" +
                                    "    ( `number`,`outline`, `id_sender`, `id_recipient`,`comments`,`document_type`)" +
                                    "    VALUES" +
                                    "           (" + MaxNumber + ",'" + textBox1.Text + "'," +
                                    ID + "," +
-                                   IdSender[j] + ",'" + richTextBox1.Text + "','" +
+                                   IdRecipient[j] + ",'" + richTextBox1.Text + "','" +
                                   typeComboBox1.Text + "');";
                     try
                     {
@@ -236,7 +247,7 @@ namespace Document_circulation
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Ошибка");
+                        MessageBox.Show(ex.Message, "Ошибка вставки без даты");
                     }
                 }
             }
@@ -253,7 +264,7 @@ namespace Document_circulation
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Ошибка");
+                    MessageBox.Show(ex.Message, "Ошибка ошибка вставки связи");
                 }
             }
 

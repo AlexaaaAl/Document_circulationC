@@ -58,6 +58,7 @@ namespace Document_circulation
             this.documentsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.documentsTableAdapter1 = new Document_circulation.document_circulation_pathDataSet1TableAdapters.documentsTableAdapter();
             this.documentsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.listBox3 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet1)).BeginInit();
@@ -112,7 +113,7 @@ namespace Document_circulation
             this.listBox1.FormattingEnabled = true;
             this.listBox1.HorizontalScrollbar = true;
             this.listBox1.ItemHeight = 21;
-            this.listBox1.Location = new System.Drawing.Point(16, 318);
+            this.listBox1.Location = new System.Drawing.Point(16, 319);
             this.listBox1.Name = "listBox1";
             this.listBox1.ScrollAlwaysVisible = true;
             this.listBox1.Size = new System.Drawing.Size(245, 172);
@@ -134,10 +135,10 @@ namespace Document_circulation
             this.listBox2.FormattingEnabled = true;
             this.listBox2.HorizontalScrollbar = true;
             this.listBox2.ItemHeight = 21;
-            this.listBox2.Location = new System.Drawing.Point(267, 297);
+            this.listBox2.Location = new System.Drawing.Point(267, 318);
             this.listBox2.Name = "listBox2";
             this.listBox2.ScrollAlwaysVisible = true;
-            this.listBox2.Size = new System.Drawing.Size(249, 193);
+            this.listBox2.Size = new System.Drawing.Size(249, 172);
             this.listBox2.TabIndex = 6;
             // 
             // button1
@@ -207,7 +208,7 @@ namespace Document_circulation
             this.button5.BackColor = System.Drawing.Color.OliveDrab;
             this.button5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button5.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button5.Location = new System.Drawing.Point(549, 438);
+            this.button5.Location = new System.Drawing.Point(549, 444);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(195, 39);
             this.button5.TabIndex = 12;
@@ -305,11 +306,21 @@ namespace Document_circulation
             this.documentsBindingSource2.DataMember = "documents";
             this.documentsBindingSource2.DataSource = this.document_circulation_pathDataSet1;
             // 
+            // listBox3
+            // 
+            this.listBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.ItemHeight = 20;
+            this.listBox3.Location = new System.Drawing.Point(16, 319);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(245, 164);
+            this.listBox3.TabIndex = 18;
+            // 
             // AddDocument
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 511);
+            this.ClientSize = new System.Drawing.Size(798, 507);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -328,6 +339,7 @@ namespace Document_circulation
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.listBox3);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddDocument";
@@ -375,5 +387,6 @@ namespace Document_circulation
         private System.Windows.Forms.BindingSource documentsBindingSource1;
         private document_circulation_pathDataSet1TableAdapters.documentsTableAdapter documentsTableAdapter1;
         private System.Windows.Forms.BindingSource documentsBindingSource2;
+        private System.Windows.Forms.ListBox listBox3;
     }
 }
