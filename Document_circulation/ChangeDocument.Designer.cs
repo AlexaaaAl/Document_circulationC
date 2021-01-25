@@ -55,6 +55,7 @@ namespace Document_circulation
             this.button1.TabIndex = 0;
             this.button1.Text = "Изменить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -98,6 +99,7 @@ namespace Document_circulation
             this.button5.TabIndex = 4;
             this.button5.Text = "Посмотреть документы";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 

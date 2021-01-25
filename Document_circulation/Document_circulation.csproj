@@ -204,6 +204,9 @@
     <EmbeddedResource Include="ViewDocument.resx">
       <DependentUpon>ViewDocument.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>

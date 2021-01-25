@@ -14,13 +14,11 @@ namespace Document_circulation
 {
     public partial class AddDocument : Form
     {
-        string fileContent = string.Empty;
         string filePath = string.Empty;
         string fileName = string.Empty;
-        int MaxNumber;
-        int MaxIdF;
+        int MaxNumber=1;
+        int MaxIdF=1;
         int id_send;
-        int[] IdRecipient = new int[50];
         public string ID;
         public string name;
         public string FIRST_NAME;
@@ -28,8 +26,7 @@ namespace Document_circulation
         public string MIDDLE_NAME;
         public string DEPARTMENT;
         public string IP_SERVER;
-        int[] IdF =new int[20];
-        int[] MaxN = new int[20];
+        List<int> IdFile = new List<int>();
         MySqlConnection conn = DBUtils.GetDBConnection();
         DataTable patientTable = new DataTable();
         int i = 0;
@@ -48,6 +45,7 @@ namespace Document_circulation
 
             try
             {
+                //выводим всех сотрудников для выбора получателя документа
                 string CommandText = "SELECT id,LAST_NAME,FIRST_NAME,MIDDLE_NAME FROM users ORDER BY LAST_NAME";
                 MySqlCommand myCommand = new MySqlCommand(CommandText, conn);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(myCommand);
@@ -114,11 +112,11 @@ namespace Document_circulation
                 listBox1.Items.Insert(i, fileName);
                 listBox3.Items.Insert(i, filePath);
                 var fileStream = OPF.OpenFile();
-
+                /*
                 using (StreamReader reader = new StreamReader(fileStream))
                 {
                     fileContent = reader.ReadToEnd();
-                }
+                }*/
             }
            
         }
@@ -144,7 +142,7 @@ namespace Document_circulation
             {
                 if (reader.Read())
                 {
-                    MaxNumber = int.Parse(reader["MaxN"].ToString())+1 ;
+                    if (reader["MaxN"].ToString() != null) MaxNumber = int.Parse(reader["MaxN"].ToString())+1 ;
                 }
             }
             //выбираем последний номер файла из бд и сохраняем
@@ -154,9 +152,9 @@ namespace Document_circulation
             {
                 if (reader.Read())
                 {
-                    MaxIdF = int.Parse(reader["MaxD"].ToString())+1;
+                    if (reader["MaxD"].ToString() != null) MaxIdF = int.Parse(reader["MaxD"].ToString())+1;
                 }
-            }            
+            }   
          //загружаем файлы на сервер и в бд
             for (int i = 0; i < listBox1.Items.Count ; i++)
             {
@@ -172,12 +170,12 @@ namespace Document_circulation
                     File.Copy(s, f, true);
                     string q= "INSERT INTO `document_file`" +
                             "    (`id` ,`path`, `file`)" + 
-                            "    VALUES (" + MaxIdF + ",'" + s + "','" + f + "');";
+                            "    VALUES (" + MaxIdF + ",'" + f.Replace("\\", "\\\\") + "','" +  Path.GetFileName(s) + "');";
                     MySqlCommand command = new MySqlCommand(q, conn);
                     // выполняем запрос
                     command.ExecuteNonQuery();
-                    IdF[i] = MaxIdF;//записываем все номера в массив (( номера файлов))
-                    MaxIdF += 1;
+                    IdFile.Add(MaxIdF);//записываем все номера в массив (( номера файлов))
+                    MaxIdF += 1; 
                     MessageBox.Show( "ок");
                 }
                 catch(Exception ex)
@@ -199,23 +197,17 @@ namespace Document_circulation
                         id_send = int.Parse(reader["id"].ToString()) ;
                     }
                 }
-                IdRecipient[i] = id_send;
-                //MessageBox.Show(id_send.ToString(), "id");
+                //IdRecipient[i] = id_send;
 
-            }
-            //записываем все данные в бд
-
-            for (int j = 0; j < IdRecipient.Length - 1; j++)
-            {
                 if (checkBox1.Checked) //если стоит флажок на сроке подписания
                 {
-                    MessageBox.Show(IdRecipient[j].ToString(), "id");
+
                     string q = "INSERT INTO `documents`" +
                                 "    ( `number`,`outline`, `id_sender`, `id_recipient`,`date`,`comments`,`document_type`)" +
                                 "    VALUES" +
                                 "           (" + MaxNumber + ",'" + textBox1.Text + "'," +
                                 ID + "," +
-                                IdRecipient[j].ToString() + ",'" +
+                                id_send + ",'" +
                                 dateTimePicker1.Value + "','" + richTextBox1.Text + "','" +
                                typeComboBox1.Text + "');";
                     try
@@ -223,21 +215,22 @@ namespace Document_circulation
                         MySqlCommand command = new MySqlCommand(q, conn);
                         // выполняем запрос
                         command.ExecuteNonQuery();
+                        MessageBox.Show(id_send.ToString(), "Dcnfdktyj");
                     }
-                    catch(Exception ex) 
+                    catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Ошибка вставки c датой");
                     }
                 }
                 else
                 {
-                    MessageBox.Show(IdRecipient[j].ToString(), "id");
+                    MessageBox.Show(id_send.ToString(), "id");
                     string q = "INSERT INTO `documents`" +
                                    "    ( `number`,`outline`, `id_sender`, `id_recipient`,`comments`,`document_type`)" +
                                    "    VALUES" +
                                    "           (" + MaxNumber + ",'" + textBox1.Text + "'," +
                                    ID + "," +
-                                   IdRecipient[j] + ",'" + richTextBox1.Text + "','" +
+                                   id_send + ",'" + richTextBox1.Text + "','" +
                                   typeComboBox1.Text + "');";
                     try
                     {
@@ -250,12 +243,16 @@ namespace Document_circulation
                         MessageBox.Show(ex.Message, "Ошибка вставки без даты");
                     }
                 }
+                MessageBox.Show(id_send.ToString(), "id_______hgkv");
+
             }
-            for(int i=0;i< IdF.Length; i++)
+           
+            foreach (int i in  IdFile)
             {
+             
                 string q= "INSERT INTO `all_one`" +
                         "    (`id_doc`, `id_file`)" + "    VALUES ("
-                        + MaxNumber + "," + IdF[i] + ");";
+                        + MaxNumber + "," + i + ");";
                 try
                 {
                     MySqlCommand command = new MySqlCommand(q, conn);
@@ -268,6 +265,7 @@ namespace Document_circulation
                 }
             }
 
+            
             conn.Close();
 
                 

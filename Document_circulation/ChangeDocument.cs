@@ -94,5 +94,19 @@ namespace Document_circulation
             }
             }
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ChangeOutline f2 = new ChangeOutline();
+            f2.number = number;
+            f2.outline = outline;
+            f2.comment = comment;
+            f2.Show();
+        }
     }
 }
