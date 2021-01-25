@@ -67,31 +67,31 @@ namespace Document_circulation
                     "inner join all_one on document_file.id = all_one.id_file " +
                     "inner join documents on all_one.id_doc = documents.number " +
                     "where documents.number ="+number+";";
-            using (var reader = new MySqlCommand(query, conn).ExecuteReader())
-            {
-                if (reader.Read())
+                using (var reader = new MySqlCommand(query, conn).ExecuteReader())
                 {
-                        try
-                        {
+                    if (reader.Read())
+                    {
+                            try
+                            {
 
-                            // Move the file.
-                            string s = Path.Combine(reader["path"].ToString().Replace("/", "\\"), reader["file"].ToString().Replace("/", "\\")).Replace("\\", "\\\\");
-                                //reader["path"].ToString().Replace("/", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
-                            string f= Path.Combine(DirDialog.SelectedPath, reader["file"].ToString().Replace("/", "\\")).Replace("\\", "\\\\");
-                            // DirDialog.SelectedPath.Replace("\\", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
-                            File.Copy( s, f,true);
-                            //MessageBox.Show("{0} was moved to {1}."+ DirDialog.SelectedPath+ reader["path"].ToString() + reader["file"].ToString());
+                                // Move the file.
+                                string s = Path.Combine(reader["path"].ToString().Replace("/", "\\"), reader["file"].ToString().Replace("/", "\\")).Replace("\\", "\\\\");
+                                    //reader["path"].ToString().Replace("/", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
+                                string f= Path.Combine(DirDialog.SelectedPath, reader["file"].ToString().Replace("/", "\\")).Replace("\\", "\\\\");
+                                // DirDialog.SelectedPath.Replace("\\", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
+                                File.Copy( s, f,true);
+                                //MessageBox.Show("{0} was moved to {1}."+ DirDialog.SelectedPath+ reader["path"].ToString() + reader["file"].ToString());
 
-                        }
-                        catch (Exception ex)
-                        {
+                            }
+                            catch (Exception ex)
+                            {
 
-                            MessageBox.Show( ex.ToString(), "The process failed: {0}");
-                        }
+                                MessageBox.Show( ex.ToString(), "The process failed: {0}");
+                            }
 
 
                     }
-            }
+                }
             }
         }
 
@@ -103,6 +103,7 @@ namespace Document_circulation
         private void button1_Click(object sender, EventArgs e)
         {
             ChangeOutline f2 = new ChangeOutline();
+            f2.ID = ID;
             f2.number = number;
             f2.outline = outline;
             f2.comment = comment;

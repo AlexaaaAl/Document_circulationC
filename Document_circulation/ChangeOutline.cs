@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Mail;
 
 namespace Document_circulation
 {
@@ -16,10 +17,11 @@ namespace Document_circulation
         public string number;
         public string comment;
         public string outline;
+        public string ID;
         MySqlConnection conn = DBUtils.GetDBConnection();
         public ChangeOutline()
         {
-            InitializeComponent();0
+            InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)

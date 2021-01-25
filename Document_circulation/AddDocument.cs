@@ -6,6 +6,8 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,6 +28,7 @@ namespace Document_circulation
         public string MIDDLE_NAME;
         public string DEPARTMENT;
         public string IP_SERVER;
+        List<string> e_mail= new List<string>();
         List<int> IdFile = new List<int>();
         MySqlConnection conn = DBUtils.GetDBConnection();
         DataTable patientTable = new DataTable();
@@ -188,13 +191,33 @@ namespace Document_circulation
             for (int i = 0; i < listBox2.Items.Count; i++)
             {
                 string[] words = listBox2.Items[i].ToString().Split(new char[] { ' ' });
-                query = "SELECT id From users where id = " +
+                query = "SELECT id,E_MAIL From users where id = " +
                         words[0]+ ";";
                 using (var reader = new MySqlCommand(query, conn).ExecuteReader())
                 {
                     if (reader.Read())
                     {
                         id_send = int.Parse(reader["id"].ToString()) ;
+                        // отправитель - устанавливаем адрес и отображаемое в письме имя
+                        
+                        MailAddress from = new MailAddress("adzulaj@gmail.com", "EAF");
+                        // кому отправляем
+                        MailAddress to = new MailAddress("somemail@yandex.ru");
+                        // создаем объект сообщения
+                        MailMessage m = new MailMessage(from, to);
+                        // тема письма
+                        m.Subject = "Тест";
+                        // текст письма
+                        m.Body = "<h2>Письмо-тест работы smtp-клиента</h2>";
+                        // письмо представляет код html
+                        m.IsBodyHtml = true;
+                        // адрес smtp-сервера и порт, с которого будем отправлять письмо
+                        SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                        // логин и пароль
+                        smtp.Credentials = new NetworkCredential("adzulaj@gmail.com", "Alex_j_s_4");
+                        smtp.EnableSsl = true;
+                        smtp.Send(m);
+                        e_mail.Add(reader["E_MAIL"].ToString());
                     }
                 }
                 //IdRecipient[i] = id_send;
@@ -215,7 +238,7 @@ namespace Document_circulation
                         MySqlCommand command = new MySqlCommand(q, conn);
                         // выполняем запрос
                         command.ExecuteNonQuery();
-                        MessageBox.Show(id_send.ToString(), "Dcnfdktyj");
+                        //MessageBox.Show(id_send.ToString(), "Dcnfdktyj");
                     }
                     catch (Exception ex)
                     {
@@ -224,7 +247,7 @@ namespace Document_circulation
                 }
                 else
                 {
-                    MessageBox.Show(id_send.ToString(), "id");
+                    //MessageBox.Show(id_send.ToString(), "id");
                     string q = "INSERT INTO `documents`" +
                                    "    ( `number`,`outline`, `id_sender`, `id_recipient`,`comments`,`document_type`)" +
                                    "    VALUES" +
