@@ -19,6 +19,7 @@ namespace Document_circulation
         public string outline;
         public string name;
         public string ID;
+        public string ID_Doc;
         MySqlConnection conn = DBUtils.GetDBConnection();
         public ChangeDocument()
         {
@@ -110,6 +111,34 @@ namespace Document_circulation
             f2.outline = outline;
             f2.comment = comment;
             f2.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("удалить?", "Подтвердите действие", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                conn.Open();
+               
+                string q = "DELETE From documents where id_document = " + ID_Doc+";";
+                MySqlCommand command = new MySqlCommand(q, conn);
+                // выполняем запрос
+                try
+                {
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Файл удален!", "TsManager"); // Выводим сообщение о звершении.
+                    this.Close();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "TsManager");
+                }
+            }
+            else if (result == DialogResult.No)
+            {
+                // какое-то действие при нажатии на НЕТ
+            }
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Document_circulation
     {
        
         public UserName tulf2 = new UserName();
-        public string ID;
+        public string ID;//id пользователя
         public string FIRST_NAME;
         public string LAST_NAME;
         public string MIDDLE_NAME;
@@ -184,6 +184,7 @@ namespace Document_circulation
             f2.number = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["number"].Value.ToString();
             f2.outline= dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["outline"].Value.ToString();
             f2.comment = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["comments"].Value.ToString();
+            f2.ID_Doc = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString();
             conn.Close();
             f2.name = tulf2.getName();
             f2.ID = ID;
