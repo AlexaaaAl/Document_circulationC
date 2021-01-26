@@ -50,6 +50,7 @@ namespace Document_circulation
                     }
                 }
             }
+            conn.Close();
             
         }
 
@@ -62,7 +63,7 @@ namespace Document_circulation
             if (DirDialog.ShowDialog() == DialogResult.OK)
             {
                
-                //conn.Open();
+                conn.Open();
             string query = "select path,file from document_file " +
                     "inner join all_one on document_file.id = all_one.id_file " +
                     "inner join documents on all_one.id_doc = documents.number " +
@@ -75,12 +76,12 @@ namespace Document_circulation
                             {
 
                                 // Move the file.
-                                string s = Path.Combine(reader["path"].ToString().Replace("/", "\\"), reader["file"].ToString().Replace("/", "\\")).Replace("\\", "\\\\");
+                                string s = Path.Combine(reader["path"].ToString());
                                     //reader["path"].ToString().Replace("/", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
-                                string f= Path.Combine(DirDialog.SelectedPath, reader["file"].ToString().Replace("/", "\\")).Replace("\\", "\\\\");
+                                string f= Path.Combine(DirDialog.SelectedPath, reader["file"].ToString());
                                 // DirDialog.SelectedPath.Replace("\\", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
                                 File.Copy( s, f,true);
-                                //MessageBox.Show("{0} was moved to {1}."+ DirDialog.SelectedPath+ reader["path"].ToString() + reader["file"].ToString());
+                                MessageBox.Show(" Фаил скачан в папку{0}."+f);
 
                             }
                             catch (Exception ex)
@@ -92,6 +93,7 @@ namespace Document_circulation
 
                     }
                 }
+                conn.Close();
             }
         }
 

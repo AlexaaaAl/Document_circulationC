@@ -29,15 +29,29 @@ namespace Document_circulation
         {
             InitializeComponent();
             //FormBorderStyle = FormBorderStyle.Fixed3D;
-            /*timer1.Interval = 5000;
+            timer1.Interval = 5000;
             timer1.Tick += new EventHandler(timer1_Tick_1);
-            timer1.Start();*/
+            timer1.Start();
         }
 
        
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            /*for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                dataGridView1.Rows[i].Visible = false;
+                for (int c = 0; c < dataGridView1.Columns.Count; c++)
+                {
+                    if (dataGridView1[c, i].Value.ToString() == textBox1.Text)
+                    {
+                        dataGridView1.CurrentCell = null;
+                        dataGridView1.Rows[i].Visible = true;
+                        break;
+                    }
+                }
+            }*/
+            (dataGridView1.DataSource as DataTable).DefaultView.RowFilter =
+                String.Format("outline like '{0}%'", textBox1.Text);
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -72,15 +86,16 @@ namespace Document_circulation
                 "(select id_user from log where login='" + tulf2.getName() +
                 "') or id_recipient=(select id_user from log where login='" +
                 tulf2.getName() + "'));";
-            if (db.OpenConnection() == true)
-            {
-                //conn.Open();
+            
+                conn.Open();
                 MySqlDataAdapter h= new MySqlDataAdapter(query, conn);
                 DataSet DS = new DataSet();
                 h.Fill(DS);
                 dataGridView1.DataSource = DS.Tables[0];
-            } 
-            conn.Open();
+
+            
+           
+            //conn.Open();
             query = "SELECT ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME,DEPARTMENT,ip_server FROM users WHERE ID= " +
                 "(select id_user from log where login='" + tulf2.getName() +
                 "');";
@@ -98,7 +113,9 @@ namespace Document_circulation
                         " "+reader["MIDDLE_NAME"].ToString();
                 }
             }
-            
+
+            conn.Close();
+
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -153,14 +170,25 @@ namespace Document_circulation
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            conn.Open();
+            string q = "UPDATE documents " +
+                        "set status='выполняется'" +
+                        "where id_document=" + dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString() +
+                        " AND id_recipient=" + tulf2.getIdUser() +
+                        " AND status <> 'подтверждено';";
+            MySqlCommand command = new MySqlCommand(q, conn);
+            // выполняем запрос
+            command.ExecuteNonQuery();
             MessageBox.Show(dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["number"].Value.ToString());
             ChangeDocument f2 = new ChangeDocument();
             f2.number = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["number"].Value.ToString();
             f2.outline= dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["outline"].Value.ToString();
             f2.comment = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["comments"].Value.ToString();
+            conn.Close();
             f2.name = tulf2.getName();
             f2.ID = ID;
             f2.Show();
+            
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {

@@ -38,11 +38,19 @@ namespace Document_circulation
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            int f=0;
             MySqlConnection conn = DBUtils.GetDBConnection();
+            conn.Open();
             string CommandText = "SELECT * FROM log WHERE login='" + textBox1.Text + "' AND password='" + textBox2.Text + "'";
             MySqlCommand myCommand = new MySqlCommand(CommandText, conn);
-            conn.Open();
+            using (var reader = new MySqlCommand(CommandText, conn).ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                   f=int.Parse(reader["id_user"].ToString());
+                }
+            }
+       
             myCommand.ExecuteNonQuery();
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter(myCommand);
             DataTable dt = new DataTable();
@@ -53,6 +61,7 @@ namespace Document_circulation
                 {
                     this.Hide();
                     MenuController f2 = new MenuController();
+                    f2.tulf2.setIdUser(f);
                     f2.tulf2.setName(textBox1.Text);
                     f2.Show();
                     
