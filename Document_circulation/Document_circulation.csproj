@@ -178,6 +178,12 @@
     <Compile Include="ViewDocument.Designer.cs">
       <DependentUpon>ViewDocument.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewDocuments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewDocuments.Designer.cs">
+      <DependentUpon>ViewDocuments.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddDocument.resx">
       <DependentUpon>AddDocument.cs</DependentUpon>
     </EmbeddedResource>
@@ -204,6 +210,9 @@
     </Compile>
     <EmbeddedResource Include="ViewDocument.resx">
       <DependentUpon>ViewDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewDocuments.resx">
+      <DependentUpon>ViewDocuments.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>

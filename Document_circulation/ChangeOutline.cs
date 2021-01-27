@@ -26,7 +26,52 @@ namespace Document_circulation
 
         private void button1_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("Изменить?", "Подтвердите действие", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+            if (result == DialogResult.Yes)
+            {
+                conn.Open();
+                if (checkBox1.Checked) //если стоит флажок на сроке подписания
+                {
+                    string q = "UPDATE documents " +
+                                "set outline='" + textBox1.Text + "'," +
+                                "date='" + dateTimePicker1.Value + "'," +
+                                "comments='" + richTextBox1.Text + "'" +
+                                "where number=" + number + ";";
+                    MySqlCommand command = new MySqlCommand(q, conn);
+                    // выполняем запрос
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Фаил изменён!", "Изменение"); // Выводим сообщение о звершении.
+                        this.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Изменение");
+                    }
+                }
+                else
+                {
+                    string q = "UPDATE documents " +
+                               "set outline='" + textBox1.Text + "'," +
+                               "comments='" + richTextBox1.Text + "'" +
+                               "where number=" + number + ";";
+                    MySqlCommand command = new MySqlCommand(q, conn);
+                    // выполняем запрос
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Фаил изменён!", "Изменение"); // Выводим сообщение о звершении.
+                        this.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Изменение");
+                    }
+
+                }
+            }
         }
 
         private void ChangeOutline_Load(object sender, EventArgs e)
@@ -47,6 +92,7 @@ namespace Document_circulation
             }
             textBox1.Text = outline;
             richTextBox1.Text = comment;
+            conn.Close();
         }
     }
 }

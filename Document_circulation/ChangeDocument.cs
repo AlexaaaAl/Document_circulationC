@@ -100,7 +100,9 @@ namespace Document_circulation
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            ViewDocuments f2 = new ViewDocuments();
+            f2.number = number;
+            f2.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)

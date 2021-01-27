@@ -105,6 +105,7 @@ namespace Document_circulation
             this.typeComboBox1.Size = new System.Drawing.Size(367, 29);
             this.typeComboBox1.TabIndex = 3;
             this.typeComboBox1.ValueMember = "status";
+            this.typeComboBox1.SelectedIndexChanged += new System.EventHandler(this.typeComboBox1_SelectedIndexChanged);
             // 
             // listBox1
             // 

@@ -296,5 +296,10 @@ namespace Document_circulation
             i = listBox2.Items.Count;
             listBox2.Items.Insert(i, userComboBox2.SelectedItem);
         }
+
+        private void typeComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
