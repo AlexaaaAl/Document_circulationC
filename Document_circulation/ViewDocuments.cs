@@ -15,6 +15,10 @@ namespace Document_circulation
     public partial class ViewDocuments : Form
     {
         public string number;
+        string filePath = string.Empty;
+        string fileName = string.Empty;
+        public string Id;
+        string pathtocopy;
         MySqlConnection conn = DBUtils.GetDBConnection();
         DataTable patientTable = new DataTable();
         public ViewDocuments()
@@ -38,25 +42,27 @@ namespace Document_circulation
                 //выводим всех сотрудников для выбора получателя документа
                 string CommandText = "SELECT id_file FROM all_one WHERE id_doc=" +
                     number+";";
-                int id_file=0;
+                List<int> id_file= new List<int>();
                 using (var reader = new MySqlCommand(CommandText, conn).ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        id_file = int.Parse(reader["id_file"].ToString());
+                        id_file.Add(int.Parse(reader["id_file"].ToString()));
                     }
                 }
-                string FIleName = "SELECT id,path,file " +
-                                   "FROM document_file " +
-                                   "WHERE id=" + id_file+";" ;
-                MySqlCommand myCommand = new MySqlCommand(FIleName, conn);
-                MySqlDataAdapter adapter = new MySqlDataAdapter(myCommand);
-                adapter.Fill(patientTable);
-                for (int i = 0; i < patientTable.Rows.Count; i++)
+                for (int i = 0; i < listBox2.Items.Count; i++)
                 {
-                    listBox1.Items.Add(patientTable.Rows[i]["file"].ToString());
-                    listBox2.Items.Add(patientTable.Rows[i]["path"].ToString());
-                    listBox3.Items.Add(patientTable.Rows[i]["id"].ToString());
+                    string FIleName = "SELECT id,path,file " +
+                                   "FROM document_file " +
+                                   "WHERE id=" + id_file[i]+ ";";
+                    MySqlCommand myCommand = new MySqlCommand(FIleName, conn);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(myCommand);
+                    adapter.Fill(patientTable);
+                    
+                        listBox1.Items.Add(patientTable.Rows[i]["file"].ToString());
+                        listBox2.Items.Add(patientTable.Rows[i]["path"].ToString());
+                        listBox3.Items.Add(patientTable.Rows[i]["id"].ToString());
+
                     
                 }
             }
@@ -69,6 +75,63 @@ namespace Document_circulation
         private void button1_Click(object sender, EventArgs e)
         {
             //кнопка добавить
+            try
+            {
+                int MaxIdF=0;
+                string query = "SELECT max(id) MaxD" +
+                      " from document_file;";
+                using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        if (!reader.IsDBNull(reader.GetOrdinal("MaxD")))
+                        {
+                            MaxIdF = int.Parse(reader["MaxD"].ToString()) + 1;
+                        }
+                    }
+                }
+                OpenFileDialog OPF = new OpenFileDialog();
+                if (OPF.ShowDialog() == DialogResult.OK)
+                {
+                    //MessageBox.Show(OPF.FileName);
+                    filePath = OPF.FileName;
+                    fileName = Path.GetFileName(OPF.FileName);
+                }
+                query = "SELECT ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME,DEPARTMENT,ip_server FROM users WHERE ID= " +
+                Id +";";
+                using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        pathtocopy = "\\\\" + reader["ip_server"].ToString() + "\\Программа\\" +
+                         reader["DEPARTMENT"].ToString() + "\\" + reader["LAST_NAME"].ToString() + " " +
+                        reader["FIRST_NAME"].ToString() + " " + reader["MIDDLE_NAME"].ToString() + "\\" +
+                        DateTime.Today.ToString("d");                     
+                    }
+                }
+                if (!Directory.Exists(pathtocopy)) Directory.CreateDirectory( pathtocopy);
+                pathtocopy += "\\"+ Path.GetFileName(filePath); ;
+                File.Copy(filePath, pathtocopy, true);
+                string q = "INSERT INTO `document_file`" +
+                            "    (`id` ,`path`, `file`)" +
+                            "    VALUES (" + MaxIdF + ",'" + pathtocopy.Replace("\\", "\\\\") + "','" + Path.GetFileName(pathtocopy) + "');";
+                MySqlCommand command = new MySqlCommand(q, conn);
+                // выполняем запрос
+                command.ExecuteNonQuery();
+                q = "INSERT INTO `all_one`" +
+                           "    (`id_doc`, `id_file`)" + "    VALUES ("
+                           + number + "," + MaxIdF + ");";
+                
+                command = new MySqlCommand(q, conn);
+                // выполняем запрос
+                command.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "g");
+            }
+
 
         }
 
@@ -115,7 +178,7 @@ namespace Document_circulation
                 try
                 {
                     command.ExecuteNonQuery();
-                    MessageBox.Show("Файл удален!", "TsManager"); // Выводим сообщение о звершении.
+                    MessageBox.Show("Файл удален!", "TsManager"); // Выводим сообщение о завершении.
                     FileInfo fileInf = new FileInfo(listBox1.SelectedItem.ToString());
                     if (fileInf.Exists)
                     {

@@ -37,19 +37,7 @@ namespace Document_circulation
        
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            /*for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-            {
-                dataGridView1.Rows[i].Visible = false;
-                for (int c = 0; c < dataGridView1.Columns.Count; c++)
-                {
-                    if (dataGridView1[c, i].Value.ToString() == textBox1.Text)
-                    {
-                        dataGridView1.CurrentCell = null;
-                        dataGridView1.Rows[i].Visible = true;
-                        break;
-                    }
-                }
-            }*/
+             //кнопка фильтрации
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter =
                 String.Format("outline like '{0}%'", textBox1.Text);
         }
@@ -59,7 +47,7 @@ namespace Document_circulation
 
         }
 
-        private void MenuController_Load(object sender, EventArgs e)
+        private void MenuController_Load(object sender, EventArgs e) //прогрузка формы и таблицы
         {
             if (internalDocuments.Checked)
             {
@@ -128,7 +116,7 @@ namespace Document_circulation
             Environment.Exit(0);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //кнопка добавления нового документа
         {
             AddDocument f2 = new AddDocument();
             f2.FIRST_NAME = FIRST_NAME;
@@ -168,7 +156,7 @@ namespace Document_circulation
             f2.Show();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) //выбор строки в таблице
         {
             conn.Open();
             string q = "UPDATE documents " +

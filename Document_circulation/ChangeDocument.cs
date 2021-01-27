@@ -102,6 +102,7 @@ namespace Document_circulation
         {
             ViewDocuments f2 = new ViewDocuments();
             f2.number = number;
+            f2.Id = ID;
             f2.Show();
         }
 
@@ -136,6 +137,7 @@ namespace Document_circulation
                 {
                     MessageBox.Show(ex.Message, "TsManager");
                 }
+                conn.Close();
             }
             else if (result == DialogResult.No)
             {
