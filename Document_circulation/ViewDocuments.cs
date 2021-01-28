@@ -39,29 +39,38 @@ namespace Document_circulation
 
             try
             {
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                listBox3.Items.Clear();
                 //выводим всех сотрудников для выбора получателя документа
                 string CommandText = "SELECT id_file FROM all_one WHERE id_doc=" +
                     number+";";
                 List<int> id_file= new List<int>();
                 using (var reader = new MySqlCommand(CommandText, conn).ExecuteReader())
                 {
-                    if (reader.Read())
+                    while (reader.Read())
                     {
                         id_file.Add(int.Parse(reader["id_file"].ToString()));
                     }
                 }
-                for (int i = 0; i < listBox2.Items.Count; i++)
+                for (int i = 0; i < id_file.Count; i++)
                 {
                     string FIleName = "SELECT id,path,file " +
                                    "FROM document_file " +
                                    "WHERE id=" + id_file[i]+ ";";
-                    MySqlCommand myCommand = new MySqlCommand(FIleName, conn);
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(myCommand);
-                    adapter.Fill(patientTable);
-                    
-                        listBox1.Items.Add(patientTable.Rows[i]["file"].ToString());
-                        listBox2.Items.Add(patientTable.Rows[i]["path"].ToString());
-                        listBox3.Items.Add(patientTable.Rows[i]["id"].ToString());
+                    /* MySqlCommand myCommand = new MySqlCommand(FIleName, conn);
+                     MySqlDataAdapter adapter = new MySqlDataAdapter(myCommand);
+                     adapter.Fill(patientTable);
+                     */
+                    using (var reader = new MySqlCommand(FIleName, conn).ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            listBox1.Items.Add(reader["file"].ToString());
+                            listBox2.Items.Add(reader["path"].ToString());
+                            listBox3.Items.Add(reader["id"].ToString());
+                        }
+                    }
 
                     
                 }
@@ -125,6 +134,7 @@ namespace Document_circulation
                 command = new MySqlCommand(q, conn);
                 // выполняем запрос
                 command.ExecuteNonQuery();
+                ViewDocuments_Load(null, null);
                 conn.Close();
             }
             catch(Exception ex)
