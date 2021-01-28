@@ -29,6 +29,7 @@ namespace Document_circulation
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewDocuments));
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -46,6 +47,7 @@ namespace Document_circulation
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(296, 172);
             this.listBox1.TabIndex = 0;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -109,8 +111,9 @@ namespace Document_circulation
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ViewDocuments";
-            this.Text = "ViewDocuments";
+            this.Text = "Просмотр документов";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.ViewDocuments_Load);
             this.ResumeLayout(false);

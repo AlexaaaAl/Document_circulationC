@@ -30,6 +30,7 @@ namespace Document_circulation
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddDocument));
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -307,8 +308,7 @@ namespace Document_circulation
             // 
             // AddDocument
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(567, 561);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label4);
@@ -328,10 +328,11 @@ namespace Document_circulation
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.listBox3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddDocument";
-            this.Text = "AddDocument";
+            this.Text = "Создание ";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.AddDocument_Load);
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet)).EndInit();

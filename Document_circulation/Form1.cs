@@ -22,7 +22,7 @@ namespace Document_circulation
             {
                 conn.Open(); ; // Открываем соединение
                                      // --- код запроса и т.п. --- //
-                MessageBox.Show("Подключение прошло успешно!");
+                //MessageBox.Show("Подключение прошло успешно!");
                 label1.ForeColor = Color.Green;
                 label1.Text = "Соединение установлено";
                 //conn.Close(); // Закрываем соединение
@@ -81,6 +81,16 @@ namespace Document_circulation
         private void button2_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -217,5 +217,10 @@ namespace Document_circulation
                 // какое-то действие при нажатии на НЕТ
             }
         }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

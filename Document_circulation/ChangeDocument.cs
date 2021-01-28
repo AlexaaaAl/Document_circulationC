@@ -24,8 +24,6 @@ namespace Document_circulation
         public ChangeDocument()
         {
             InitializeComponent();
-           
-
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -40,15 +38,19 @@ namespace Document_circulation
             richTextBox1.Text = this.comment;
             conn.Close();
             conn.Open();
-            string query = "SELECT id_sender,id_recipient FROM documents " +
+            string query = "SELECT id_sender,id_recipient,status FROM documents " +
                 " WHERE number='"+number+"'";
             using (var reader = new MySqlCommand(query, conn).ExecuteReader())
             {
                 if (reader.Read())
                 {
-                    if (reader["id_sender"].ToString()== ID)
+                    if (String.Equals(reader["status"].ToString(), "подписан"))
                     {
-
+                        uploadbutoncheck.Enabled = true;
+                    }
+                    else
+                    {
+                        uploadbutoncheck.Enabled = false;
                     }
                 }
             }
@@ -148,6 +150,14 @@ namespace Document_circulation
             {
                 // какое-то действие при нажатии на НЕТ
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Send f2 = new Send();
+            f2.ID = ID;
+            f2.ID_Doc = ID_Doc;
+            f2.Show();
         }
     }
 }

@@ -32,6 +32,7 @@ namespace Document_circulation
             timer1.Interval = 5000;
             timer1.Tick += new EventHandler(timer1_Tick_1);
             timer1.Start();
+            
         }
 
        
@@ -69,20 +70,19 @@ namespace Document_circulation
 
             var db = new DBUtils();
             query = "SELECT id_document,number,sender, LAST_NAME," +
-            "outline,comments,date_added,date,status,document_type " +
-            "from v1 WHERE document_type='"+ type_doc + "' and (id_sender= " +
+                "outline,comments,date_added,date,status,document_type " +
+                "from v1 WHERE document_type='"+ type_doc + "' and (id_sender= " +
                 "(select id_user from log where login='" + tulf2.getName() +
                 "') or id_recipient=(select id_user from log where login='" +
                 tulf2.getName() + "'));";
             conn.Close();
             conn.Open();
-                MySqlDataAdapter h= new MySqlDataAdapter(query, conn);
-                DataSet DS = new DataSet();
-                h.Fill(DS);
-                dataGridView1.DataSource = DS.Tables[0];
-
-            
-           
+            MySqlDataAdapter h= new MySqlDataAdapter(query, conn);
+            DataSet DS = new DataSet();
+            h.Fill(DS);
+            dataGridView1.DataSource = DS.Tables[0];
+            PaintRows();
+            dataGridView1.ClearSelection();
             //conn.Open();
             query = "SELECT ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME,DEPARTMENT,ip_server FROM users WHERE ID= " +
                 "(select id_user from log where login='" + tulf2.getName() +
@@ -105,7 +105,18 @@ namespace Document_circulation
             conn.Close();
 
         }
-
+        private void PaintRows()
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (String.Equals(row.Cells[8].Value.ToString(),"выполняется") )
+                    row.DefaultCellStyle.BackColor = Color.Khaki;
+                if (String.Equals(row.Cells[8].Value.ToString(), "подписан"))
+                    row.DefaultCellStyle.BackColor = Color.GreenYellow;
+                if (String.Equals(row.Cells[8].Value.ToString(), "в ожидании"))
+                    row.DefaultCellStyle.BackColor = Color.Chocolate;
+            }
+        }
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -164,11 +175,10 @@ namespace Document_circulation
                         "set status='выполняется'" +
                         "where id_document=" + dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString() +
                         " AND id_recipient=" + tulf2.getIdUser() +
-                        " AND status <> 'подтверждено';";
+                        " AND status <> 'подписан';";
             MySqlCommand command = new MySqlCommand(q, conn);
             // выполняем запрос
             command.ExecuteNonQuery();
-            MessageBox.Show(dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["number"].Value.ToString());
             ChangeDocument f2 = new ChangeDocument();
             f2.number = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["number"].Value.ToString();
             f2.outline= dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["outline"].Value.ToString();

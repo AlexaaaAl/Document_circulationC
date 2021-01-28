@@ -30,6 +30,7 @@ namespace Document_circulation
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuController));
             this.panel1 = new System.Windows.Forms.Panel();
             this.orders = new System.Windows.Forms.RadioButton();
             this.incomingMailMoscow = new System.Windows.Forms.RadioButton();
@@ -39,16 +40,18 @@ namespace Document_circulation
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.создатьНовыйДокументToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.действияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добавитьПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выходToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.окноАвторизацииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.закрытьПрограммуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.document_circulation_pathDataSet = new Document_circulation.document_circulation_pathDataSet();
             this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -61,15 +64,10 @@ namespace Document_circulation
             this.document_circulation_pathDataSet1 = new Document_circulation.document_circulation_pathDataSet1();
             this.v1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.v1TableAdapter = new Document_circulation.document_circulation_pathDataSet1TableAdapters.v1TableAdapter();
-            this.выходToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.окноАвторизацииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.закрытьПрограммуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).BeginInit();
@@ -200,6 +198,18 @@ namespace Document_circulation
             this.panel2.Size = new System.Drawing.Size(1441, 32);
             this.panel2.TabIndex = 1;
             // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(1096, 8);
+            this.label2.Name = "label2";
+            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label2.Size = new System.Drawing.Size(53, 21);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "label2";
+            // 
             // menuStrip2
             // 
             this.menuStrip2.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -226,7 +236,7 @@ namespace Document_circulation
             // создатьНовыйДокументToolStripMenuItem
             // 
             this.создатьНовыйДокументToolStripMenuItem.Name = "создатьНовыйДокументToolStripMenuItem";
-            this.создатьНовыйДокументToolStripMenuItem.Size = new System.Drawing.Size(300, 30);
+            this.создатьНовыйДокументToolStripMenuItem.Size = new System.Drawing.Size(284, 26);
             this.создатьНовыйДокументToolStripMenuItem.Text = "Создать новый документ";
             // 
             // действияToolStripMenuItem
@@ -241,7 +251,7 @@ namespace Document_circulation
             // добавитьПользователяToolStripMenuItem
             // 
             this.добавитьПользователяToolStripMenuItem.Name = "добавитьПользователяToolStripMenuItem";
-            this.добавитьПользователяToolStripMenuItem.Size = new System.Drawing.Size(292, 30);
+            this.добавитьПользователяToolStripMenuItem.Size = new System.Drawing.Size(269, 26);
             this.добавитьПользователяToolStripMenuItem.Text = "Добавить пользователя";
             // 
             // помощьToolStripMenuItem
@@ -250,6 +260,30 @@ namespace Document_circulation
             this.помощьToolStripMenuItem.Name = "помощьToolStripMenuItem";
             this.помощьToolStripMenuItem.Size = new System.Drawing.Size(90, 25);
             this.помощьToolStripMenuItem.Text = "Помощь";
+            // 
+            // выходToolStripMenuItem1
+            // 
+            this.выходToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.окноАвторизацииToolStripMenuItem,
+            this.закрытьПрограммуToolStripMenuItem});
+            this.выходToolStripMenuItem1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.выходToolStripMenuItem1.Name = "выходToolStripMenuItem1";
+            this.выходToolStripMenuItem1.Size = new System.Drawing.Size(74, 25);
+            this.выходToolStripMenuItem1.Text = "Выход";
+            // 
+            // окноАвторизацииToolStripMenuItem
+            // 
+            this.окноАвторизацииToolStripMenuItem.Name = "окноАвторизацииToolStripMenuItem";
+            this.окноАвторизацииToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
+            this.окноАвторизацииToolStripMenuItem.Text = "Окно авторизации";
+            this.окноАвторизацииToolStripMenuItem.Click += new System.EventHandler(this.окноАвторизацииToolStripMenuItem_Click);
+            // 
+            // закрытьПрограммуToolStripMenuItem
+            // 
+            this.закрытьПрограммуToolStripMenuItem.Name = "закрытьПрограммуToolStripMenuItem";
+            this.закрытьПрограммуToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
+            this.закрытьПрограммуToolStripMenuItem.Text = "Закрыть программу";
+            this.закрытьПрограммуToolStripMenuItem.Click += new System.EventHandler(this.закрытьПрограммуToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
@@ -272,35 +306,13 @@ namespace Document_circulation
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dataGridView1.Location = new System.Drawing.Point(111, 143);
+            this.dataGridView1.Location = new System.Drawing.Point(2, 143);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1329, 537);
+            this.dataGridView1.Size = new System.Drawing.Size(1438, 537);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel3.Controls.Add(this.button2);
-            this.panel3.Location = new System.Drawing.Point(0, 143);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(111, 537);
-            this.panel3.TabIndex = 4;
-            // 
-            // button2
-            // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(16, 16);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(79, 72);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Открыть";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // bindingSource1
             // 
@@ -359,56 +371,21 @@ namespace Document_circulation
             // 
             this.v1TableAdapter.ClearBeforeFill = true;
             // 
-            // выходToolStripMenuItem1
-            // 
-            this.выходToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.окноАвторизацииToolStripMenuItem,
-            this.закрытьПрограммуToolStripMenuItem});
-            this.выходToolStripMenuItem1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.выходToolStripMenuItem1.Name = "выходToolStripMenuItem1";
-            this.выходToolStripMenuItem1.Size = new System.Drawing.Size(74, 25);
-            this.выходToolStripMenuItem1.Text = "Выход";
-            // 
-            // окноАвторизацииToolStripMenuItem
-            // 
-            this.окноАвторизацииToolStripMenuItem.Name = "окноАвторизацииToolStripMenuItem";
-            this.окноАвторизацииToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
-            this.окноАвторизацииToolStripMenuItem.Text = "Окно авторизации";
-            this.окноАвторизацииToolStripMenuItem.Click += new System.EventHandler(this.окноАвторизацииToolStripMenuItem_Click);
-            // 
-            // закрытьПрограммуToolStripMenuItem
-            // 
-            this.закрытьПрограммуToolStripMenuItem.Name = "закрытьПрограммуToolStripMenuItem";
-            this.закрытьПрограммуToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
-            this.закрытьПрограммуToolStripMenuItem.Text = "Закрыть программу";
-            this.закрытьПрограммуToolStripMenuItem.Click += new System.EventHandler(this.закрытьПрограммуToolStripMenuItem_Click);
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(1096, 8);
-            this.label2.Name = "label2";
-            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label2.Size = new System.Drawing.Size(53, 21);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
-            // 
             // MenuController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1439, 680);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip2;
             this.Name = "MenuController";
             this.ShowInTaskbar = false;
+            this.Text = "АСУП \"Алиса\"";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.MenuController_Load);
             this.panel1.ResumeLayout(false);
@@ -418,7 +395,6 @@ namespace Document_circulation
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).EndInit();
@@ -451,8 +427,6 @@ namespace Document_circulation
         private System.Windows.Forms.ToolStripMenuItem добавитьПользователяToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button2;
         private DataSet1 dataSet1;
         private System.Windows.Forms.BindingSource dataSet1BindingSource;
         private document_circulation_pathDataSet document_circulation_pathDataSet;

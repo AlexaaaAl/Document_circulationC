@@ -133,7 +133,7 @@ namespace Document_circulation
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ChangeOutline";
-            this.Text = "ChangeOutline";
+            this.Text = "Изменение ";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.ChangeOutline_Load);
             this.ResumeLayout(false);
