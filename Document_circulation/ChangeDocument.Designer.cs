@@ -113,6 +113,7 @@ namespace Document_circulation
             this.uploadbutoncheck.TabIndex = 5;
             this.uploadbutoncheck.Text = "Скачать подписанный документ";
             this.uploadbutoncheck.UseVisualStyleBackColor = true;
+            this.uploadbutoncheck.Click += new System.EventHandler(this.uploadbutoncheck_Click);
             // 
             // button7
             // 

@@ -80,7 +80,7 @@ namespace Document_circulation
                     "where documents.number ="+number+";";
                 using (var reader = new MySqlCommand(query, conn).ExecuteReader())
                 {
-                    if (reader.Read())
+                    while (reader.Read())
                     {
                             try
                             {
@@ -227,6 +227,49 @@ namespace Document_circulation
 
             }
             ChangeDocument_Load(null, null);
+        }
+
+        private void uploadbutoncheck_Click(object sender, EventArgs e)
+        {
+            //кнопка скачать файл
+            FolderBrowserDialog DirDialog = new FolderBrowserDialog();
+            DirDialog.Description = "Выбор директории";
+            DirDialog.SelectedPath = @"C:\";
+
+            if (DirDialog.ShowDialog() == DialogResult.OK)
+            {
+
+                conn.Close();
+                conn.Open();
+                string query = "select path,document from answer_recirient " +
+                    "where id_doc =" + ID_Doc + ";";
+                using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        try
+                        {
+
+                            // Move the file.
+                            string s = Path.Combine(reader["path"].ToString());
+                            //reader["path"].ToString().Replace("/", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
+                            string f = Path.Combine(DirDialog.SelectedPath, reader["document"].ToString());
+                            // DirDialog.SelectedPath.Replace("\\", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
+                            File.Copy(s, f, true);
+                            MessageBox.Show(" Фаил скачан в папку{0}." + f);
+
+                        }
+                        catch (Exception ex)
+                        {
+
+                            MessageBox.Show(ex.ToString(), "The process failed: {0}");
+                        }
+
+
+                    }
+                }
+                conn.Close();
+            }
         }
     }
 }
