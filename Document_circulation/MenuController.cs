@@ -74,8 +74,8 @@ namespace Document_circulation
                 "(select id_user from log where login='" + tulf2.getName() +
                 "') or id_recipient=(select id_user from log where login='" +
                 tulf2.getName() + "'));";
-            
-                conn.Open();
+            conn.Close();
+            conn.Open();
                 MySqlDataAdapter h= new MySqlDataAdapter(query, conn);
                 DataSet DS = new DataSet();
                 h.Fill(DS);
@@ -158,6 +158,7 @@ namespace Document_circulation
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) //выбор строки в таблице
         {
+            conn.Close();
             conn.Open();
             string q = "UPDATE documents " +
                         "set status='выполняется'" +

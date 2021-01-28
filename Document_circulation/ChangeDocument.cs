@@ -38,6 +38,7 @@ namespace Document_circulation
             label3.Text = this.number+ID;
             label1.Text = this.outline;
             richTextBox1.Text = this.comment;
+            conn.Close();
             conn.Open();
             string query = "SELECT id_sender,id_recipient FROM documents " +
                 " WHERE number='"+number+"'";
@@ -63,9 +64,10 @@ namespace Document_circulation
 
             if (DirDialog.ShowDialog() == DialogResult.OK)
             {
-               
+
+                conn.Close();
                 conn.Open();
-            string query = "select path,file from document_file " +
+                string query = "select path,file from document_file " +
                     "inner join all_one on document_file.id = all_one.id_file " +
                     "inner join documents on all_one.id_doc = documents.number " +
                     "where documents.number ="+number+";";
@@ -122,14 +124,17 @@ namespace Document_circulation
 
             if (result == DialogResult.Yes)
             {
+                conn.Close();
                 conn.Open();
-               
                 string q = "DELETE From documents where id_document = " + ID_Doc+";";
+                string snull = "DELETE From all_one where isnull(id_doc); ";
                 MySqlCommand command = new MySqlCommand(q, conn);
+                MySqlCommand commandnull = new MySqlCommand(snull, conn);
                 // выполняем запрос
                 try
                 {
                     command.ExecuteNonQuery();
+                    commandnull.ExecuteNonQuery();
                     MessageBox.Show("Файл удален!", "TsManager"); // Выводим сообщение о звершении.
                     this.Close();
                 }

@@ -30,6 +30,7 @@ namespace Document_circulation
         {
             try
             {
+                conn.Close();
                 conn.Open(); // Открываем соединение
             }
             catch (Exception ex)
@@ -74,6 +75,7 @@ namespace Document_circulation
 
                     
                 }
+                conn.Close();
             }
             catch (Exception ex)
             {
@@ -84,6 +86,8 @@ namespace Document_circulation
         private void button1_Click(object sender, EventArgs e)
         {
             //кнопка добавить
+            conn.Close();
+            conn.Open();
             try
             {
                 int MaxIdF=0;
@@ -180,14 +184,18 @@ namespace Document_circulation
 
             if (result == DialogResult.Yes)
             {
+                conn.Close();
                 conn.Open();
                 string d = listBox3.Items[listBox1.SelectedIndex].ToString();
                 string q = "DELETE From document_file where id=" + d + ";";
+                string snull = "DELETE From all_one where isnull(id_file); ";
                 MySqlCommand command = new MySqlCommand(q, conn);
+                MySqlCommand commandnull = new MySqlCommand(snull, conn);
                 // выполняем запрос
                 try
                 {
                     command.ExecuteNonQuery();
+                    commandnull.ExecuteNonQuery();
                     MessageBox.Show("Файл удален!", "TsManager"); // Выводим сообщение о завершении.
                     FileInfo fileInf = new FileInfo(listBox1.SelectedItem.ToString());
                     if (fileInf.Exists)
@@ -196,9 +204,6 @@ namespace Document_circulation
                         // альтернатива с помощью класса File
                         // File.Delete(path);
                     }
-                    listBox1.Items.RemoveAt(listBox1.SelectedIndex);
-                    listBox2.Items.RemoveAt(listBox1.SelectedIndex);
-                    listBox3.Items.RemoveAt(listBox1.SelectedIndex);
                     ViewDocuments_Load(null, null);
                 }
                 catch (Exception ex)
