@@ -64,6 +64,9 @@ namespace Document_circulation
                         command.ExecuteNonQuery();
                         MessageBox.Show("Фаил изменён!", "Изменение"); // Выводим сообщение о звершении.
                         this.Close();
+                        ChangeDocument f2 = new ChangeDocument();
+                        f2.UpdateData();
+
                     }
                     catch (Exception ex)
                     {

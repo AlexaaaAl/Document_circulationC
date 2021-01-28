@@ -91,6 +91,7 @@ namespace Document_circulation
             this.button4.TabIndex = 3;
             this.button4.Text = "Загрузить подписанный документ";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -133,6 +134,7 @@ namespace Document_circulation
             this.button8.TabIndex = 7;
             this.button8.Text = "Подтвердить";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // label1
             // 

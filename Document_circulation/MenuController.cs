@@ -184,6 +184,11 @@ namespace Document_circulation
             f2.outline= dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["outline"].Value.ToString();
             f2.comment = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["comments"].Value.ToString();
             f2.ID_Doc = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString();
+            f2.MIDDLE_NAME = MIDDLE_NAME;
+            f2.FIRST_NAME = FIRST_NAME;
+            f2.LAST_NAME = LAST_NAME;
+            f2.DEPARTMENT = DEPARTMENT;
+            f2.IP_SERVER = IP_SERVER;
             conn.Close();
             f2.name = tulf2.getName();
             f2.ID = ID;

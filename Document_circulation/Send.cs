@@ -66,5 +66,11 @@ namespace Document_circulation
         {
             listBox1.Items.RemoveAt(listBox1.SelectedIndex);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ChangeDocument f2 = new ChangeDocument();
+            f2.UpdateData();
+        }
     }
 }

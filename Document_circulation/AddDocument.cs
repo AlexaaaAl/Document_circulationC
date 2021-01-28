@@ -108,7 +108,7 @@ namespace Document_circulation
             OpenFileDialog OPF = new OpenFileDialog();
             if (OPF.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show(OPF.FileName);
+                //MessageBox.Show(OPF.FileName);
                 filePath = OPF.FileName;
                 fileName = Path.GetFileName(OPF.FileName);
                 i = listBox1.Items.Count;

@@ -20,6 +20,11 @@ namespace Document_circulation
         public string name;
         public string ID;
         public string ID_Doc;
+        public string FIRST_NAME;
+        public string LAST_NAME;
+        public string MIDDLE_NAME;
+        public string DEPARTMENT;
+        public string IP_SERVER;
         MySqlConnection conn = DBUtils.GetDBConnection();
         public ChangeDocument()
         {
@@ -38,21 +43,20 @@ namespace Document_circulation
             richTextBox1.Text = this.comment;
             conn.Close();
             conn.Open();
-            string query = "SELECT id_sender,id_recipient,status FROM documents " +
-                " WHERE number='"+number+"'";
+            string query = "SELECT id FROM answer_recirient " +
+                " WHERE id_doc='"+ ID_Doc + "'";
             using (var reader = new MySqlCommand(query, conn).ExecuteReader())
             {
                 if (reader.Read())
                 {
-                    if (String.Equals(reader["status"].ToString(), "подписан"))
-                    {
-                        uploadbutoncheck.Enabled = true;
-                    }
-                    else
-                    {
-                        uploadbutoncheck.Enabled = false;
-                    }
+                   
+                    uploadbutoncheck.Enabled = true;
                 }
+                else
+                {
+                    uploadbutoncheck.Enabled = false;
+                }
+                
             }
             conn.Close();
             
@@ -60,6 +64,7 @@ namespace Document_circulation
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //кнопка скачать файл
             FolderBrowserDialog DirDialog = new FolderBrowserDialog();
             DirDialog.Description = "Выбор директории";
             DirDialog.SelectedPath = @"C:\";
@@ -158,6 +163,70 @@ namespace Document_circulation
             f2.ID = ID;
             f2.ID_Doc = ID_Doc;
             f2.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            conn.Close();
+            conn.Open();
+            string q = "UPDATE documents " +
+                        "set status='подписан'" +
+                        "where id_document=" + ID_Doc +";";
+            MySqlCommand command = new MySqlCommand(q, conn);
+            // выполняем запрос
+            command.ExecuteNonQuery();
+            conn.Close();
+            ChangeDocument_Load(null, null);
+        }
+        public void UpdateData()
+        {
+            // код обновления
+            ChangeDocument_Load(null, null);
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //загрузить подтвержденный документ
+            OpenFileDialog OPF = new OpenFileDialog();
+            if (OPF.ShowDialog() == DialogResult.OK)
+            {
+                //MessageBox.Show(OPF.FileName);                
+                string filePath = OPF.FileName; //папка откуда берем файл
+                string fileName = Path.GetFileName(OPF.FileName);
+                string f = "\\\\" + IP_SERVER + "\\Программа\\" + //папка куда записываем файл
+                       DEPARTMENT + "\\" + LAST_NAME + " " +
+                       FIRST_NAME + " " + MIDDLE_NAME + "\\" +
+                       DateTime.Today.ToString("d");
+                //string result = Microsoft.VisualBasic.Interaction.InputBox("Коментарий:");
+                Form2 testDialog = new Form2();
+                string result="";
+                // Show testDialog as a modal dialog and determine if DialogResult = OK.
+                if (testDialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    // Read the contents of testDialog's TextBox.
+                    result = testDialog.TextBox1.Text;
+                }
+                else
+                {
+                    //result = "Cancelled";
+                }
+                testDialog.Dispose();
+                if (!Directory.Exists(f)) Directory.CreateDirectory(f);
+                f = f + "\\" + Path.GetFileName(filePath);
+                File.Copy(filePath, f, true);
+                conn.Close();
+                conn.Open();
+                string insertAnswerRecip="INSERT INTO `answer_recirient`" +
+                    "    ( `id_doc`,`path`, `document`,`comments`)" +
+                    "    VALUES" +
+                    "           (" + ID_Doc + ",'" +
+                    f.Replace("\\","\\\\") + "','" + fileName + "','" + result + "');";
+                MySqlCommand command = new MySqlCommand(insertAnswerRecip, conn);
+                // выполняем запрос
+                command.ExecuteNonQuery();
+                conn.Close();
+
+            }
+            ChangeDocument_Load(null, null);
         }
     }
 }
