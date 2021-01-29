@@ -71,7 +71,7 @@ namespace Document_circulation
                 {
                     comments_doc = reader["comments_doc"].ToString();
                     richTextBoxComment.Text=comments_doc;
-                    E_Mail = reader["e_mail"].ToString();
+                   // E_Mail = reader["e_mail"].ToString();
                 }
             }
             conn.Close();
@@ -301,7 +301,7 @@ namespace Document_circulation
             int y=command.ExecuteNonQuery();
             if (y != 0)
             {
-                SendMail.SEND_MAIlTORECIP(E_Mail,"Добавлен коментарий " +outline);
+               // SendMail.SEND_MAIlTORECIP(E_Mail,"Добавлен коментарий " +outline);
             }
             conn.Close();
             ChangeDocument_Load(null, null);
