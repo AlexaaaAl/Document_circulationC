@@ -204,6 +204,7 @@ namespace Document_circulation
             // 
             // richTextBoxComment
             // 
+            this.richTextBoxComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.richTextBoxComment.Location = new System.Drawing.Point(16, 256);
             this.richTextBoxComment.Name = "richTextBoxComment";
             this.richTextBoxComment.Size = new System.Drawing.Size(364, 96);
@@ -224,6 +225,8 @@ namespace Document_circulation
             // 
             this.button6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button6.Location = new System.Drawing.Point(16, 358);
+            this.button6.MaximumSize = new System.Drawing.Size(207, 38);
+            this.button6.MinimumSize = new System.Drawing.Size(207, 38);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(207, 38);
             this.button6.TabIndex = 17;
@@ -253,6 +256,8 @@ namespace Document_circulation
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ChangeDocument";
             this.Text = "Просмотр";
             this.TopMost = true;

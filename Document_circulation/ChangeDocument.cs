@@ -26,10 +26,12 @@ namespace Document_circulation
         public string DEPARTMENT;
         public string IP_SERVER;
         public string E_Mail;
+        public string comments_doc;
         MySqlConnection conn = DBUtils.GetDBConnection();
         public ChangeDocument()
         {
             InitializeComponent();
+           
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -58,6 +60,19 @@ namespace Document_circulation
                     uploadbutoncheck.Enabled = false;
                 }
                 
+            }
+            
+    
+            string question = "select `e_mail`,`comments_doc` from `documents` " +
+                "inner join `users` on `id_recipient`=`id` where `id_document`=" + ID_Doc + ";";
+            using (var reader = new MySqlCommand(question, conn).ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    comments_doc = reader["comments_doc"].ToString();
+                    richTextBoxComment.Text=comments_doc;
+                    E_Mail = reader["e_mail"].ToString();
+                }
             }
             conn.Close();
             
@@ -278,10 +293,11 @@ namespace Document_circulation
             conn.Close();
             conn.Open();
             string q = "UPDATE documents " +
-                       "set comments_doc='"+ richTextBoxComment + " '"+
+                       "set comments_doc='"+ richTextBoxComment.Text + " '"+
                        "where id_document=" + ID_Doc + ";";
             MySqlCommand command = new MySqlCommand(q, conn);
             // выполняем запрос
+            command.ExecuteNonQuery();
             int y=command.ExecuteNonQuery();
             if (y != 0)
             {

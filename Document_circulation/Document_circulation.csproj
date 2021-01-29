@@ -303,6 +303,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="gerb.ico" />
+    <None Include="Resources\Новый проект %282%29.jpg" />
     <None Include="Resources\Новый проект %283%29.jpg" />
     <None Include="Resources\Новый проект %281%29.jpg" />
   </ItemGroup>

@@ -84,9 +84,9 @@ namespace Document_circulation
             h.Fill(DS);
             dataGridView1.DataSource = DS.Tables[0];
             PaintRows();
-            dataGridView1.Columns["id_document"].Visible = false;
+            /*dataGridView1.Columns["id_document"].Visible = false;
             dataGridView1.Columns["comments"].Visible = false;
-            dataGridView1.Columns["document_type"].Visible = false;
+            dataGridView1.Columns["document_type"].Visible = false;*/
             dataGridView1.ClearSelection();
             //conn.Open();
             query = "SELECT ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME,DEPARTMENT,ip_server,E_MAIL FROM users WHERE ID= " +
@@ -199,7 +199,6 @@ namespace Document_circulation
             f2.LAST_NAME = LAST_NAME;
             f2.DEPARTMENT = DEPARTMENT;
             f2.IP_SERVER = IP_SERVER;
-            f2.E_Mail = E_MAIL;
             conn.Close();
             f2.name = tulf2.getName();
             f2.ID = ID;

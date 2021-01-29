@@ -15,7 +15,7 @@ namespace Document_circulation
         {
             // отправитель - устанавливаем адрес и отображаемое в письме имя
 
-            MailAddress from = new MailAddress("adzulaj@gmail.com", "EAF");
+            MailAddress from = new MailAddress("adzulaj@gmail.com", "Документооборот");
             // кому отправляем
             MailAddress to = new MailAddress(to_recip);
             // создаем объект сообщения
