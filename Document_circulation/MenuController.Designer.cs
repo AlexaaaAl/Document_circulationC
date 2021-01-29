@@ -64,8 +64,6 @@ namespace Document_circulation
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -111,12 +109,10 @@ namespace Document_circulation
             this.toolStripMenuItem1,
             this.действияToolStripMenuItem,
             this.помощьToolStripMenuItem,
-            this.выходToolStripMenuItem1,
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3});
+            this.выходToolStripMenuItem1});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1441, 30);
+            this.menuStrip2.Size = new System.Drawing.Size(1441, 29);
             this.menuStrip2.TabIndex = 0;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -126,7 +122,7 @@ namespace Document_circulation
             this.создатьНовыйДокументToolStripMenuItem});
             this.toolStripMenuItem1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(63, 26);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(63, 25);
             this.toolStripMenuItem1.Text = "Фаил";
             // 
             // создатьНовыйДокументToolStripMenuItem
@@ -142,7 +138,7 @@ namespace Document_circulation
             this.добавитьПользователяToolStripMenuItem});
             this.действияToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.действияToolStripMenuItem.Name = "действияToolStripMenuItem";
-            this.действияToolStripMenuItem.Size = new System.Drawing.Size(98, 26);
+            this.действияToolStripMenuItem.Size = new System.Drawing.Size(98, 25);
             this.действияToolStripMenuItem.Text = "Действия";
             // 
             // добавитьПользователяToolStripMenuItem
@@ -155,7 +151,7 @@ namespace Document_circulation
             // 
             this.помощьToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.помощьToolStripMenuItem.Name = "помощьToolStripMenuItem";
-            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(90, 26);
+            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(90, 25);
             this.помощьToolStripMenuItem.Text = "Помощь";
             // 
             // выходToolStripMenuItem1
@@ -165,7 +161,7 @@ namespace Document_circulation
             this.закрытьПрограммуToolStripMenuItem});
             this.выходToolStripMenuItem1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.выходToolStripMenuItem1.Name = "выходToolStripMenuItem1";
-            this.выходToolStripMenuItem1.Size = new System.Drawing.Size(74, 26);
+            this.выходToolStripMenuItem1.Size = new System.Drawing.Size(74, 25);
             this.выходToolStripMenuItem1.Text = "Выход";
             // 
             // окноАвторизацииToolStripMenuItem
@@ -388,21 +384,6 @@ namespace Document_circulation
             this.label1.TabIndex = 0;
             this.label1.Text = "Поиск";
             // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(34, 26);
-            this.toolStripMenuItem2.Text = "[]";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(52, 26);
-            this.toolStripMenuItem3.Text = "___";
-            // 
             // MenuController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -476,7 +457,5 @@ namespace Document_circulation
         private System.Windows.Forms.ToolStripMenuItem окноАвторизацииToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem закрытьПрограммуToolStripMenuItem;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
     }
 }
