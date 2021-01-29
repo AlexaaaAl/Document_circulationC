@@ -220,6 +220,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Send.resx">
       <DependentUpon>Send.cs</DependentUpon>
@@ -302,6 +303,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="gerb.ico" />
+    <None Include="Resources\Новый проект %283%29.jpg" />
+    <None Include="Resources\Новый проект %281%29.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

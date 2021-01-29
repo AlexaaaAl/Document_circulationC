@@ -44,6 +44,9 @@ namespace Document_circulation
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxComment = new System.Windows.Forms.RichTextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -195,15 +198,47 @@ namespace Document_circulation
             this.richTextBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.richTextBox1.Location = new System.Drawing.Point(16, 103);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(364, 291);
+            this.richTextBox1.Size = new System.Drawing.Size(364, 123);
             this.richTextBox1.TabIndex = 14;
             this.richTextBox1.Text = "";
+            // 
+            // richTextBoxComment
+            // 
+            this.richTextBoxComment.Location = new System.Drawing.Point(16, 256);
+            this.richTextBoxComment.Name = "richTextBoxComment";
+            this.richTextBoxComment.Size = new System.Drawing.Size(364, 96);
+            this.richTextBoxComment.TabIndex = 15;
+            this.richTextBoxComment.Text = "";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(20, 232);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(203, 21);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Коментарий получателя";
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button6.Location = new System.Drawing.Point(16, 358);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(207, 38);
+            this.button6.TabIndex = 17;
+            this.button6.Text = "Сохранить коментарий";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // ChangeDocument
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 408);
+            this.ClientSize = new System.Drawing.Size(663, 408);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.richTextBoxComment);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label4);
@@ -245,5 +280,8 @@ namespace Document_circulation
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBoxComment;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button6;
     }
 }

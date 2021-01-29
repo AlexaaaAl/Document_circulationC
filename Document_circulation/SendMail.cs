@@ -23,7 +23,7 @@ namespace Document_circulation
             // тема письма
             m.Subject = "АСУП 'Алиса'";
             // текст письма
-            m.Body = "<h2>Добавлен новый документ <br> " + text_mail + "</h2>";
+            m.Body = "<h2>Документ: <br> " + text_mail + "</h2>";
             // письмо представляет код html
             m.IsBodyHtml = true;
             // адрес smtp-сервера и порт, с которого будем отправлять письмо

@@ -22,6 +22,7 @@ namespace Document_circulation
         public string MIDDLE_NAME;
         public string DEPARTMENT;
         public string IP_SERVER;
+        public string E_MAIL;
         MySqlConnection conn = DBUtils.GetDBConnection();
         string query;
         string type_doc="";
@@ -69,8 +70,9 @@ namespace Document_circulation
             this.v1TableAdapter.Fill(this.document_circulation_pathDataSet1.v1);
 
             var db = new DBUtils();
-            query = "SELECT id_document,number,sender, LAST_NAME," +
-                "outline,comments,date_added,date,status,document_type " +
+            query = "SELECT id_document,number as Номер,sender as Отправитель, LAST_NAME as Получатель," +
+                "outline as Наименование,comments,date_added as Дата_добавления," +
+                "date as Срок_подписания_до,status as Статус,document_type " +
                 "from v1 WHERE document_type='"+ type_doc + "' and (id_sender= " +
                 "(select id_user from log where login='" + tulf2.getName() +
                 "') or id_recipient=(select id_user from log where login='" +
@@ -82,9 +84,12 @@ namespace Document_circulation
             h.Fill(DS);
             dataGridView1.DataSource = DS.Tables[0];
             PaintRows();
+            dataGridView1.Columns["id_document"].Visible = false;
+            dataGridView1.Columns["comments"].Visible = false;
+            dataGridView1.Columns["document_type"].Visible = false;
             dataGridView1.ClearSelection();
             //conn.Open();
-            query = "SELECT ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME,DEPARTMENT,ip_server FROM users WHERE ID= " +
+            query = "SELECT ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME,DEPARTMENT,ip_server,E_MAIL FROM users WHERE ID= " +
                 "(select id_user from log where login='" + tulf2.getName() +
                 "');";
             using (var reader = new MySqlCommand(query, conn).ExecuteReader())
@@ -96,6 +101,7 @@ namespace Document_circulation
                     MIDDLE_NAME = reader["MIDDLE_NAME"].ToString();
                     DEPARTMENT = reader["DEPARTMENT"].ToString();
                     IP_SERVER = reader["ip_server"].ToString();
+                    E_MAIL= reader["E_MAIL"].ToString();
                     ID =reader["ID"].ToString();
                     label2.Text= reader["LAST_NAME"].ToString()+" "+ reader["FIRST_NAME"].ToString()+
                         " "+reader["MIDDLE_NAME"].ToString();
@@ -108,7 +114,7 @@ namespace Document_circulation
         private void PaintRows()
         {
             foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
+            { 
                 if (String.Equals(row.Cells[8].Value.ToString(),"выполняется") )
                     row.DefaultCellStyle.BackColor = Color.Khaki;
                 if (String.Equals(row.Cells[8].Value.ToString(), "подписан"))
@@ -178,10 +184,14 @@ namespace Document_circulation
                         " AND status <> 'подписан';";
             MySqlCommand command = new MySqlCommand(q, conn);
             // выполняем запрос
-            command.ExecuteNonQuery();
+            int UspeshnoeIzmenenie = command.ExecuteNonQuery();
+            if (UspeshnoeIzmenenie != 0)
+            {
+                SendMail.SEND_MAIlTORECIP(E_MAIL,"Документ просмотрен :"+ dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Наименование"].Value.ToString());
+            }
             ChangeDocument f2 = new ChangeDocument();
-            f2.number = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["number"].Value.ToString();
-            f2.outline= dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["outline"].Value.ToString();
+            f2.number = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Номер"].Value.ToString();
+            f2.outline= dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Наименование"].Value.ToString();
             f2.comment = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["comments"].Value.ToString();
             f2.ID_Doc = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString();
             f2.MIDDLE_NAME = MIDDLE_NAME;
@@ -189,6 +199,7 @@ namespace Document_circulation
             f2.LAST_NAME = LAST_NAME;
             f2.DEPARTMENT = DEPARTMENT;
             f2.IP_SERVER = IP_SERVER;
+            f2.E_Mail = E_MAIL;
             conn.Close();
             f2.name = tulf2.getName();
             f2.ID = ID;
@@ -203,5 +214,19 @@ namespace Document_circulation
             f2.Show();*/
         }
 
+        private void создатьНовыйДокументToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            button1_Click(null, null);
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            int x = this.Width;
+            if (x != Screen.PrimaryScreen.WorkingArea.Width) { 
+                x = Screen.PrimaryScreen.WorkingArea.Width;
+                int y = Screen.PrimaryScreen.WorkingArea.Height;
+                ClientSize = new System.Drawing.Size(x, y);
+            }
+        }
     }
 }

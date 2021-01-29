@@ -25,6 +25,7 @@ namespace Document_circulation
         public string MIDDLE_NAME;
         public string DEPARTMENT;
         public string IP_SERVER;
+        public string E_Mail;
         MySqlConnection conn = DBUtils.GetDBConnection();
         public ChangeDocument()
         {
@@ -48,8 +49,8 @@ namespace Document_circulation
             using (var reader = new MySqlCommand(query, conn).ExecuteReader())
             {
                 if (reader.Read())
+
                 {
-                   
                     uploadbutoncheck.Enabled = true;
                 }
                 else
@@ -270,6 +271,24 @@ namespace Document_circulation
                 }
                 conn.Close();
             }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            conn.Close();
+            conn.Open();
+            string q = "UPDATE documents " +
+                       "set comments_doc='"+ richTextBoxComment + " '"+
+                       "where id_document=" + ID_Doc + ";";
+            MySqlCommand command = new MySqlCommand(q, conn);
+            // выполняем запрос
+            int y=command.ExecuteNonQuery();
+            if (y != 0)
+            {
+                SendMail.SEND_MAIlTORECIP(E_Mail,"Добавлен коментарий " +outline);
+            }
+            conn.Close();
+            ChangeDocument_Load(null, null);
         }
     }
 }

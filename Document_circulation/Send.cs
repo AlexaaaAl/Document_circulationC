@@ -69,7 +69,58 @@ namespace Document_circulation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ChangeDocument f2 = new ChangeDocument();
+            conn.Open();
+            string later ="Select number,outline,comments, date_added,date,status,document_type " +
+                "from documents where id_document="+ID_Doc+";";
+            string outline = "";
+            string comments = "";
+            string date_added = "";
+            string date = "";
+            string status = "";
+            string document_type = "";
+            string number = "";
+            using (var reader = new MySqlCommand(later, conn).ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    outline = reader["outline"].ToString();
+                    comments = reader["comments"].ToString();
+                    date = reader["date"].ToString();
+                    date_added = reader["date_added"].ToString();
+                    status = reader["status"].ToString();
+                    document_type = reader["document_type"].ToString();
+                    number= reader["number"].ToString();
+                }
+            }
+            for (int i = 0; i < listBox1.Items.Count; i++)
+            {
+                string[] words = listBox1.Items[i].ToString().Split(new char[] { ' ' });
+                string query = "SELECT id,E_MAIL From users where id = " +
+                            words[0] + ";";
+                using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        int id_send = int.Parse(reader["id"].ToString());
+                        string e_mail=reader["E_MAIL"].ToString();
+                        string q = "INSERT INTO `documents`" +
+                                   " ( `number`,`outline`, `id_sender`, `id_recipient`,`date`,`comments`,`document_type`)" +
+                                   " VALUES" +
+                                   "(" + number + ",'" + outline + "'," +
+                                   ID + "," +id_send + ",'" +
+                                   date+ "','" + comments + "','" +
+                                  document_type + "');";
+                        // try
+                        //  {
+                        SendMail.SEND_MAIlTORECIP(e_mail[i], textBox1.Text);
+                        MySqlCommand command = new MySqlCommand(q, conn);
+                        // выполняем запрос
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+
+                ChangeDocument f2 = new ChangeDocument();
             f2.UpdateData();
         }
     }
