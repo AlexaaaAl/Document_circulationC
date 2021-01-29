@@ -227,5 +227,9 @@ namespace Document_circulation
                 ClientSize = new System.Drawing.Size(x, y);
             }
         }
+        protected void MenuController_Closed(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
