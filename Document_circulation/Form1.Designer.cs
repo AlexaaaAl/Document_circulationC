@@ -98,7 +98,7 @@ namespace Document_circulation
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.SystemColors.Control;
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImage = global::Document_circulation.Properties.Resources.Новый_проект__2_;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -157,7 +157,7 @@ namespace Document_circulation
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.Location = new System.Drawing.Point(-5, -9);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(468, 47);
+            this.panel1.Size = new System.Drawing.Size(468, 58);
             this.panel1.TabIndex = 8;
             // 
             // label2

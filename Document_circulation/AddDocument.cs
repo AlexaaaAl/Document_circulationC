@@ -55,10 +55,10 @@ namespace Document_circulation
                 adapter.Fill(patientTable);
                 for (int i = 0; i < patientTable.Rows.Count; i++)
                 {
-                    string s = patientTable.Rows[i]["id"].ToString() + " " +
-                        patientTable.Rows[i]["LAST_NAME"].ToString() + " " + 
+                    string s =patientTable.Rows[i]["LAST_NAME"].ToString() + " " + 
                         patientTable.Rows[i]["FIRST_NAME"].ToString().Substring(0, 1) + ". " + 
                         patientTable.Rows[i]["MIDDLE_NAME"].ToString().Substring(0, 1) + ". ";
+                    IdcomboBox.Items.Add(patientTable.Rows[i]["id"].ToString());
                     userComboBox2.Items.Add(s);
                 }
             }
@@ -132,6 +132,8 @@ namespace Document_circulation
 
         private void button4_Click(object sender, EventArgs e)
         {
+            
+            IdlistBox.Items.RemoveAt(listBox2.SelectedIndex);
             listBox2.Items.RemoveAt(listBox2.SelectedIndex);
         }
 
@@ -197,9 +199,9 @@ namespace Document_circulation
                 //выбираем все id получателей
                 for (int i = 0; i < listBox2.Items.Count; i++)
                 {
-                    string[] words = listBox2.Items[i].ToString().Split(new char[] { ' ' });
+                    string words = IdlistBox.Items[i].ToString();
                     query = "SELECT id,E_MAIL From users where id = " +
-                            words[0] + ";";
+                            words + ";";
                     using (var reader = new MySqlCommand(query, conn).ExecuteReader())
                     {
                         if (reader.Read())
@@ -290,11 +292,18 @@ namespace Document_circulation
 
                 
         }
+        private void userComboBox2_TextChanged_1(object sender, EventArgs e)
+        {
+            int index = userComboBox2.FindString(userComboBox2.Text);
+            userComboBox2.SelectedIndex = index;
+            
+        }
 
         private void userComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             i = listBox2.Items.Count;
             listBox2.Items.Insert(i, userComboBox2.SelectedItem);
+            IdlistBox.Items.Insert(i, IdcomboBox.Items[userComboBox2.SelectedIndex]);
         }
 
         private void typeComboBox1_SelectedIndexChanged(object sender, EventArgs e)

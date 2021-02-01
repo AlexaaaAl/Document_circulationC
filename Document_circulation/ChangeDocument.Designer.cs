@@ -188,8 +188,7 @@ namespace Document_circulation
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.OliveDrab;
-            this.panel1.BackgroundImage = global::Document_circulation.Properties.Resources.Новый_проект__3_;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(105)))), ((int)(((byte)(47)))));
             this.panel1.Controls.Add(this.label1);
             this.panel1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.panel1.Location = new System.Drawing.Point(0, -2);
@@ -211,7 +210,7 @@ namespace Document_circulation
             // 
             // richTextBoxComment
             // 
-            this.richTextBoxComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.richTextBoxComment.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.richTextBoxComment.Location = new System.Drawing.Point(16, 256);
             this.richTextBoxComment.Name = "richTextBoxComment";
             this.richTextBoxComment.Size = new System.Drawing.Size(364, 96);
@@ -266,7 +265,7 @@ namespace Document_circulation
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ChangeDocument";
-            this.Text = "Просмотр";
+            this.Text = "Просмотр письма";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.ChangeDocument_Load);
             this.panel1.ResumeLayout(false);

@@ -295,13 +295,21 @@ namespace Document_circulation
             string q = "UPDATE documents " +
                        "set comments_doc='"+ richTextBoxComment.Text + " '"+
                        "where id_document=" + ID_Doc + ";";
-            MySqlCommand command = new MySqlCommand(q, conn);
-            // выполняем запрос
-            command.ExecuteNonQuery();
-            int y=command.ExecuteNonQuery();
-            if (y != 0)
+            try
             {
-               // SendMail.SEND_MAIlTORECIP(E_Mail,"Добавлен коментарий " +outline);
+                MySqlCommand command = new MySqlCommand(q, conn);
+                // выполняем запрос
+                command.ExecuteNonQuery();
+                int y = command.ExecuteNonQuery();
+                if (y != 0)
+                {
+                    //SendMail.SEND_MAIlTORECIP(E_Mail, "Добавлен коментарий " + outline);
+                }
+                MessageBox.Show("Коментарий добавлен", "Выполнено");
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message, "Ошибка добавления коментария");
             }
             conn.Close();
             ChangeDocument_Load(null, null);

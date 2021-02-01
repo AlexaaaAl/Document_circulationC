@@ -71,8 +71,8 @@ namespace Document_circulation
 
             var db = new DBUtils();
             query = "SELECT id_document,number as Номер,sender as Отправитель, LAST_NAME as Получатель," +
-                "outline as Наименование,comments,date_added as Дата_добавления," +
-                "date as Срок_подписания_до,status as Статус,document_type " +
+                "outline as Наименование,comments,date_added as 'Дата добавления'," +
+                "date as 'Срок подписания до',status as Статус,document_type " +
                 "from v1 WHERE document_type='"+ type_doc + "' and (id_sender= " +
                 "(select id_user from log where login='" + tulf2.getName() +
                 "') or id_recipient=(select id_user from log where login='" +
@@ -84,9 +84,9 @@ namespace Document_circulation
             h.Fill(DS);
             dataGridView1.DataSource = DS.Tables[0];
             PaintRows();
-            /*dataGridView1.Columns["id_document"].Visible = false;
+            dataGridView1.Columns["id_document"].Visible = false;
             dataGridView1.Columns["comments"].Visible = false;
-            dataGridView1.Columns["document_type"].Visible = false;*/
+            dataGridView1.Columns["document_type"].Visible = false;
             dataGridView1.ClearSelection();
             //conn.Open();
             query = "SELECT ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME,DEPARTMENT,ip_server,E_MAIL FROM users WHERE ID= " +
