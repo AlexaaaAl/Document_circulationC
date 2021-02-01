@@ -61,6 +61,7 @@ namespace Document_circulation
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.IdlistBox = new System.Windows.Forms.ListBox();
             this.IdcomboBox = new System.Windows.Forms.ComboBox();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet1)).BeginInit();
@@ -138,7 +139,7 @@ namespace Document_circulation
             this.listBox2.FormattingEnabled = true;
             this.listBox2.HorizontalScrollbar = true;
             this.listBox2.ItemHeight = 21;
-            this.listBox2.Location = new System.Drawing.Point(267, 290);
+            this.listBox2.Location = new System.Drawing.Point(267, 325);
             this.listBox2.Name = "listBox2";
             this.listBox2.ScrollAlwaysVisible = true;
             this.listBox2.Size = new System.Drawing.Size(282, 193);
@@ -187,9 +188,9 @@ namespace Document_circulation
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(267, 488);
+            this.button4.Location = new System.Drawing.Point(267, 524);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(155, 56);
+            this.button4.Size = new System.Drawing.Size(282, 30);
             this.button4.TabIndex = 11;
             this.button4.Text = "Удалить получателя";
             this.button4.UseVisualStyleBackColor = true;
@@ -201,7 +202,7 @@ namespace Document_circulation
             this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
             this.button5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button5.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button5.Location = new System.Drawing.Point(428, 488);
+            this.button5.Location = new System.Drawing.Point(428, 564);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(121, 56);
             this.button5.TabIndex = 12;
@@ -313,7 +314,7 @@ namespace Document_circulation
             // IdlistBox
             // 
             this.IdlistBox.FormattingEnabled = true;
-            this.IdlistBox.Location = new System.Drawing.Point(267, 289);
+            this.IdlistBox.Location = new System.Drawing.Point(267, 332);
             this.IdlistBox.Name = "IdlistBox";
             this.IdlistBox.Size = new System.Drawing.Size(282, 186);
             this.IdlistBox.TabIndex = 19;
@@ -326,10 +327,22 @@ namespace Document_circulation
             this.IdcomboBox.Size = new System.Drawing.Size(282, 21);
             this.IdcomboBox.TabIndex = 20;
             // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.Location = new System.Drawing.Point(267, 289);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(282, 30);
+            this.button3.TabIndex = 21;
+            this.button3.Text = "Добавить получателя";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
             // AddDocument
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(566, 561);
+            this.ClientSize = new System.Drawing.Size(561, 632);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -400,5 +413,6 @@ namespace Document_circulation
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.ListBox IdlistBox;
         private System.Windows.Forms.ComboBox IdcomboBox;
+        private System.Windows.Forms.Button button3;
     }
 }

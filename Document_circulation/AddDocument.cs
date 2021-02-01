@@ -301,14 +301,19 @@ namespace Document_circulation
 
         private void userComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            i = listBox2.Items.Count;
-            listBox2.Items.Insert(i, userComboBox2.SelectedItem);
-            IdlistBox.Items.Insert(i, IdcomboBox.Items[userComboBox2.SelectedIndex]);
+           
         }
 
         private void typeComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            i = listBox2.Items.Count;
+            listBox2.Items.Insert(i, userComboBox2.SelectedItem);
+            IdlistBox.Items.Insert(i, IdcomboBox.Items[userComboBox2.SelectedIndex]);
         }
     }
 }
