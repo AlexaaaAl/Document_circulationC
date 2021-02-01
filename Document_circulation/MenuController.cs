@@ -109,6 +109,10 @@ namespace Document_circulation
                     if (g != 1)
                     {
                         добавитьПользователяToolStripMenuItem.Enabled = false;
+                        
+                    }
+                    if (g != 3)
+                    {
                         incomingMail.Visible = false;
                         incomingMailMoscow.Visible = false;
                     }
