@@ -242,7 +242,7 @@ namespace Document_circulation
                                     "           (" + MaxNumber + ",'" + textBox1.Text + "'," +
                                     ID + "," +
                                     id_send + ",'" +
-                                    dateTimePicker1.Value + "','" + richTextBox1.Text + "','" +
+                                    dateTimePicker1.Value.ToString("s") + "','" + richTextBox1.Text + "','" +
                                    typeComboBox1.Text + "');";
                         // try
                         //  {
