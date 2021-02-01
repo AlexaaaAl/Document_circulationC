@@ -72,7 +72,7 @@ namespace Document_circulation
             var db = new DBUtils();
             query = "SELECT id_document,number as Номер,sender as Отправитель, LAST_NAME as Получатель," +
                 "outline as Наименование,comments,date_added as 'Дата добавления'," +
-                "date as 'Срок подписания до',status as Статус,document_type " +
+                "date as 'Срок исполнения',status as Статус,document_type " +
                 "from v1 WHERE document_type='"+ type_doc + "' and (id_sender= " +
                 "(select id_user from log where login='" + tulf2.getName() +
                 "') or id_recipient=(select id_user from log where login='" +
