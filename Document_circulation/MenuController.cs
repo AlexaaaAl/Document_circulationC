@@ -89,7 +89,7 @@ namespace Document_circulation
             dataGridView1.Columns["document_type"].Visible = false;
             dataGridView1.ClearSelection();
             //conn.Open();
-            query = "SELECT ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME,DEPARTMENT,ip_server,E_MAIL FROM users WHERE ID= " +
+            query = "SELECT ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME,DEPARTMENT,ip_server,E_MAIL,ROLE_ID FROM users WHERE ID= " +
                 "(select id_user from log where login='" + tulf2.getName() +
                 "');";
             using (var reader = new MySqlCommand(query, conn).ExecuteReader())
@@ -105,6 +105,11 @@ namespace Document_circulation
                     ID =reader["ID"].ToString();
                     label2.Text= reader["LAST_NAME"].ToString()+" "+ reader["FIRST_NAME"].ToString()+
                         " "+reader["MIDDLE_NAME"].ToString();
+                    int g = int.Parse(reader["ROLE_ID"].ToString());
+                   /* if (g != 1)
+                    {
+                        добавитьПользователяToolStripMenuItem.Enabled = false;
+                    }*/
                 }
             }
 

@@ -30,15 +30,15 @@ namespace Document_circulation
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddUser));
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.nametext = new System.Windows.Forms.TextBox();
+            this.lasttext = new System.Windows.Forms.TextBox();
+            this.middletext = new System.Windows.Forms.TextBox();
+            this.otdeltext = new System.Windows.Forms.TextBox();
+            this.positiontext = new System.Windows.Forms.TextBox();
+            this.servertext = new System.Windows.Forms.TextBox();
+            this.mailtext = new System.Windows.Forms.TextBox();
+            this.logtext = new System.Windows.Forms.TextBox();
+            this.RoleComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,84 +48,84 @@ namespace Document_circulation
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.passtext = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // nametext
             // 
-            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(128, 84);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(363, 29);
-            this.textBox1.TabIndex = 0;
+            this.nametext.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nametext.Location = new System.Drawing.Point(128, 84);
+            this.nametext.Name = "nametext";
+            this.nametext.Size = new System.Drawing.Size(363, 29);
+            this.nametext.TabIndex = 0;
             // 
-            // textBox2
+            // lasttext
             // 
-            this.textBox2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(128, 123);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(363, 29);
-            this.textBox2.TabIndex = 1;
+            this.lasttext.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lasttext.Location = new System.Drawing.Point(128, 123);
+            this.lasttext.Name = "lasttext";
+            this.lasttext.Size = new System.Drawing.Size(363, 29);
+            this.lasttext.TabIndex = 1;
             // 
-            // textBox3
+            // middletext
             // 
-            this.textBox3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox3.Location = new System.Drawing.Point(128, 159);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(363, 29);
-            this.textBox3.TabIndex = 2;
+            this.middletext.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.middletext.Location = new System.Drawing.Point(128, 159);
+            this.middletext.Name = "middletext";
+            this.middletext.Size = new System.Drawing.Size(363, 29);
+            this.middletext.TabIndex = 2;
             // 
-            // textBox4
+            // otdeltext
             // 
-            this.textBox4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox4.Location = new System.Drawing.Point(128, 201);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(363, 29);
-            this.textBox4.TabIndex = 3;
+            this.otdeltext.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.otdeltext.Location = new System.Drawing.Point(128, 201);
+            this.otdeltext.Name = "otdeltext";
+            this.otdeltext.Size = new System.Drawing.Size(363, 29);
+            this.otdeltext.TabIndex = 3;
             // 
-            // textBox5
+            // positiontext
             // 
-            this.textBox5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox5.Location = new System.Drawing.Point(128, 243);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(363, 29);
-            this.textBox5.TabIndex = 4;
+            this.positiontext.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.positiontext.Location = new System.Drawing.Point(128, 243);
+            this.positiontext.Name = "positiontext";
+            this.positiontext.Size = new System.Drawing.Size(363, 29);
+            this.positiontext.TabIndex = 4;
             // 
-            // textBox6
+            // servertext
             // 
-            this.textBox6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox6.Location = new System.Drawing.Point(128, 282);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(363, 29);
-            this.textBox6.TabIndex = 5;
+            this.servertext.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.servertext.Location = new System.Drawing.Point(128, 282);
+            this.servertext.Name = "servertext";
+            this.servertext.Size = new System.Drawing.Size(363, 29);
+            this.servertext.TabIndex = 5;
             // 
-            // textBox7
+            // mailtext
             // 
-            this.textBox7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox7.Location = new System.Drawing.Point(128, 323);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(363, 29);
-            this.textBox7.TabIndex = 6;
+            this.mailtext.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mailtext.Location = new System.Drawing.Point(128, 323);
+            this.mailtext.Name = "mailtext";
+            this.mailtext.Size = new System.Drawing.Size(363, 29);
+            this.mailtext.TabIndex = 6;
             // 
-            // textBox8
+            // logtext
             // 
-            this.textBox8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox8.Location = new System.Drawing.Point(128, 363);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(363, 29);
-            this.textBox8.TabIndex = 7;
+            this.logtext.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.logtext.Location = new System.Drawing.Point(128, 363);
+            this.logtext.Name = "logtext";
+            this.logtext.Size = new System.Drawing.Size(363, 29);
+            this.logtext.TabIndex = 7;
             // 
-            // comboBox1
+            // RoleComboBox
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(128, 453);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(363, 29);
-            this.comboBox1.TabIndex = 8;
+            this.RoleComboBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RoleComboBox.FormattingEnabled = true;
+            this.RoleComboBox.Location = new System.Drawing.Point(128, 453);
+            this.RoleComboBox.Name = "RoleComboBox";
+            this.RoleComboBox.Size = new System.Drawing.Size(363, 29);
+            this.RoleComboBox.TabIndex = 8;
             // 
             // label1
             // 
@@ -218,13 +218,13 @@ namespace Document_circulation
             this.label9.TabIndex = 17;
             this.label9.Text = "Должность";
             // 
-            // textBox9
+            // passtext
             // 
-            this.textBox9.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox9.Location = new System.Drawing.Point(128, 408);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(363, 29);
-            this.textBox9.TabIndex = 18;
+            this.passtext.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passtext.Location = new System.Drawing.Point(128, 408);
+            this.passtext.Name = "passtext";
+            this.passtext.Size = new System.Drawing.Size(363, 29);
+            this.passtext.TabIndex = 18;
             // 
             // label10
             // 
@@ -255,6 +255,7 @@ namespace Document_circulation
             this.button1.TabIndex = 20;
             this.button1.Text = "Сохранить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // AddUser
             // 
@@ -264,7 +265,7 @@ namespace Document_circulation
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.passtext);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -274,15 +275,15 @@ namespace Document_circulation
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.RoleComboBox);
+            this.Controls.Add(this.logtext);
+            this.Controls.Add(this.mailtext);
+            this.Controls.Add(this.servertext);
+            this.Controls.Add(this.positiontext);
+            this.Controls.Add(this.otdeltext);
+            this.Controls.Add(this.middletext);
+            this.Controls.Add(this.lasttext);
+            this.Controls.Add(this.nametext);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -295,15 +296,15 @@ namespace Document_circulation
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox nametext;
+        private System.Windows.Forms.TextBox lasttext;
+        private System.Windows.Forms.TextBox middletext;
+        private System.Windows.Forms.TextBox otdeltext;
+        private System.Windows.Forms.TextBox positiontext;
+        private System.Windows.Forms.TextBox servertext;
+        private System.Windows.Forms.TextBox mailtext;
+        private System.Windows.Forms.TextBox logtext;
+        private System.Windows.Forms.ComboBox RoleComboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -313,7 +314,7 @@ namespace Document_circulation
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox passtext;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel1;

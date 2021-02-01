@@ -50,22 +50,20 @@ namespace Document_circulation
                    f=int.Parse(reader["id_user"].ToString());
                 }
             }
-       
             myCommand.ExecuteNonQuery();
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter(myCommand);
             DataTable dt = new DataTable();
             dataAdapter.Fill(dt);
             try
             {
-                if (dt.Rows[0][0].ToString() == "1")
-                {
+                
                     this.Hide();
                     MenuController f2 = new MenuController();
                     f2.tulf2.setIdUser(f);
                     f2.tulf2.setName(textBox1.Text);
                     f2.Show();
-                    
-                }
+              
+                
             }
             catch
             {
