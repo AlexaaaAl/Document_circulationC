@@ -106,10 +106,12 @@ namespace Document_circulation
                     label2.Text= reader["LAST_NAME"].ToString()+" "+ reader["FIRST_NAME"].ToString()+
                         " "+reader["MIDDLE_NAME"].ToString();
                     int g = int.Parse(reader["ROLE_ID"].ToString());
-                   /* if (g != 1)
+                    if (g != 1)
                     {
                         добавитьПользователяToolStripMenuItem.Enabled = false;
-                    }*/
+                        incomingMail.Visible = false;
+                        incomingMailMoscow.Visible = false;
+                    }
                 }
             }
 

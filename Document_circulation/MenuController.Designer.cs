@@ -317,10 +317,10 @@ namespace Document_circulation
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.orders.AutoSize = true;
-            this.orders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
+            this.orders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(109)))), ((int)(((byte)(48)))));
             this.orders.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.orders.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.orders.Location = new System.Drawing.Point(781, 82);
+            this.orders.Location = new System.Drawing.Point(781, 33);
             this.orders.Name = "orders";
             this.orders.Size = new System.Drawing.Size(99, 25);
             this.orders.TabIndex = 6;
@@ -336,7 +336,7 @@ namespace Document_circulation
             this.incomingMailMoscow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(114)))), ((int)(((byte)(52)))));
             this.incomingMailMoscow.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.incomingMailMoscow.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.incomingMailMoscow.Location = new System.Drawing.Point(781, 59);
+            this.incomingMailMoscow.Location = new System.Drawing.Point(781, 82);
             this.incomingMailMoscow.Name = "incomingMailMoscow";
             this.incomingMailMoscow.Size = new System.Drawing.Size(446, 25);
             this.incomingMailMoscow.TabIndex = 5;
@@ -352,7 +352,7 @@ namespace Document_circulation
             this.incomingMail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(109)))), ((int)(((byte)(48)))));
             this.incomingMail.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.incomingMail.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.incomingMail.Location = new System.Drawing.Point(781, 36);
+            this.incomingMail.Location = new System.Drawing.Point(781, 54);
             this.incomingMail.Name = "incomingMail";
             this.incomingMail.Size = new System.Drawing.Size(364, 25);
             this.incomingMail.TabIndex = 4;
