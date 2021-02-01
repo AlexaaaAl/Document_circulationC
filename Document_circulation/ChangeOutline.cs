@@ -35,7 +35,7 @@ namespace Document_circulation
                 {
                     string q = "UPDATE documents " +
                                 "set outline='" + textBox1.Text + "'," +
-                                "date='" + dateTimePicker1.Value + "'," +
+                                "date='" + dateTimePicker1.Value.ToString("s") + "'," +
                                 "comments='" + richTextBox1.Text + "'" +
                                 "where number=" + number + ";";
                     MySqlCommand command = new MySqlCommand(q, conn);
