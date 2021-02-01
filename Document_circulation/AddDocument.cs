@@ -28,6 +28,7 @@ namespace Document_circulation
         public string MIDDLE_NAME;
         public string DEPARTMENT;
         public string IP_SERVER;
+        int role = 0;
         List<string> e_mail= new List<string>();
         List<int> IdFile = new List<int>();
         MySqlConnection conn = DBUtils.GetDBConnection();
@@ -49,7 +50,7 @@ namespace Document_circulation
             try
             {
                 //выводим всех сотрудников для выбора получателя документа
-                string CommandText = "SELECT id,LAST_NAME,FIRST_NAME,MIDDLE_NAME FROM users ORDER BY LAST_NAME";
+                string CommandText = "SELECT id,LAST_NAME,FIRST_NAME,MIDDLE_NAME,ROLE_ID FROM users ORDER BY LAST_NAME";
                 MySqlCommand myCommand = new MySqlCommand(CommandText, conn);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(myCommand);
                 adapter.Fill(patientTable);
@@ -67,8 +68,7 @@ namespace Document_circulation
                 MessageBox.Show(ex.Message, "Ошибка");
             }
           
-            typeComboBox1.Items.AddRange(new string[] {"Внутренний документ", "Входящая корреспонденция", "Входящей корреспонденция г. Москва", "Приказ" });
-            typeComboBox1.SelectedItem = "Внутренний документ";
+           
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -90,12 +90,32 @@ namespace Document_circulation
 
         private void AddDocument_Load(object sender, EventArgs e)
         {
+            conn.Close();
+            conn.Open();
+            /*
             // TODO: данная строка кода позволяет загрузить данные в таблицу "document_circulation_pathDataSet1.documents". При необходимости она может быть перемещена или удалена.
             this.documentsTableAdapter1.Fill(this.document_circulation_pathDataSet1.documents);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "document_circulation_pathDataSet1.users". При необходимости она может быть перемещена или удалена.
-            this.usersTableAdapter1.Fill(this.document_circulation_pathDataSet1.users);
-
-
+            this.usersTableAdapter1.Fill(this.document_circulation_pathDataSet1.users);*/
+            string CommandText = "SELECT ROLE_ID FROM users where id="+ID+";";
+            using (var reader = new MySqlCommand(CommandText, conn).ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    role = int.Parse(reader["ROLE_ID"].ToString());
+                }
+            }
+            if (role == 3)
+            {
+                typeComboBox1.Items.AddRange(new string[] { "Внутренний документ", "Входящая корреспонденция", "Входящей корреспонденция г. Москва", "Приказ" });
+                typeComboBox1.SelectedItem = "Внутренний документ";
+            }
+            else
+            {
+                typeComboBox1.Items.AddRange(new string[] { "Внутренний документ",  "Приказ" });
+                typeComboBox1.SelectedItem = "Внутренний документ";
+            }
+            conn.Close();
         }
 
         private void usersBindingSource4_CurrentChanged(object sender, EventArgs e)

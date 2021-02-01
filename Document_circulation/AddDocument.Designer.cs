@@ -367,7 +367,7 @@ namespace Document_circulation
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddDocument";
-            this.Text = "Создание ";
+            this.Text = "Создание нового письма";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.AddDocument_Load);
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet)).EndInit();
