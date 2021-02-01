@@ -231,5 +231,10 @@ namespace Document_circulation
         {
             Application.Exit();
         }
+
+        private void добавитьПользователяToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

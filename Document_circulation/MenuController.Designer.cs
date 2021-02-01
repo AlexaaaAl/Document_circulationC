@@ -149,6 +149,7 @@ namespace Document_circulation
             this.добавитьПользователяToolStripMenuItem.Name = "добавитьПользователяToolStripMenuItem";
             this.добавитьПользователяToolStripMenuItem.Size = new System.Drawing.Size(269, 26);
             this.добавитьПользователяToolStripMenuItem.Text = "Добавить пользователя";
+            this.добавитьПользователяToolStripMenuItem.Click += new System.EventHandler(this.добавитьПользователяToolStripMenuItem_Click);
             // 
             // помощьToolStripMenuItem
             // 

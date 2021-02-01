@@ -89,5 +89,15 @@ namespace Document_circulation.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Новый_проект__3___1_ {
+            get {
+                object obj = ResourceManager.GetObject("Новый проект (3) (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
