@@ -266,7 +266,6 @@ namespace Document_circulation
             this.MinimizeBox = false;
             this.Name = "ChangeDocument";
             this.Text = "Просмотр письма";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.ChangeDocument_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

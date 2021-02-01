@@ -207,8 +207,6 @@ namespace Document_circulation
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(475, 351);
             this.Name = "Form1";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

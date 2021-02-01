@@ -427,9 +427,6 @@ namespace Document_circulation
             this.MainMenuStrip = this.menuStrip2;
             this.MinimumSize = new System.Drawing.Size(1455, 696);
             this.Name = "MenuController";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.MenuController_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

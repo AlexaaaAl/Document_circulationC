@@ -113,7 +113,6 @@ namespace Document_circulation
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(302, 275);
             this.Name = "Send";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.Send_Load);
             this.ResumeLayout(false);
 
