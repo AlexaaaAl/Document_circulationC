@@ -62,6 +62,9 @@ namespace Document_circulation
             this.IdlistBox = new System.Windows.Forms.ListBox();
             this.IdcomboBox = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.DepcomboBox = new System.Windows.Forms.ComboBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.IdDepcomboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet1)).BeginInit();
@@ -88,7 +91,7 @@ namespace Document_circulation
             this.textBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox1.Location = new System.Drawing.Point(115, 54);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(434, 29);
+            this.textBox1.Size = new System.Drawing.Size(532, 29);
             this.textBox1.TabIndex = 1;
             // 
             // dateTimePicker1
@@ -106,7 +109,7 @@ namespace Document_circulation
             this.typeComboBox1.FormattingEnabled = true;
             this.typeComboBox1.Location = new System.Drawing.Point(149, 218);
             this.typeComboBox1.Name = "typeComboBox1";
-            this.typeComboBox1.Size = new System.Drawing.Size(367, 29);
+            this.typeComboBox1.Size = new System.Drawing.Size(498, 29);
             this.typeComboBox1.TabIndex = 3;
             this.typeComboBox1.ValueMember = "status";
             this.typeComboBox1.SelectedIndexChanged += new System.EventHandler(this.typeComboBox1_SelectedIndexChanged);
@@ -120,7 +123,7 @@ namespace Document_circulation
             this.listBox1.Location = new System.Drawing.Point(16, 319);
             this.listBox1.Name = "listBox1";
             this.listBox1.ScrollAlwaysVisible = true;
-            this.listBox1.Size = new System.Drawing.Size(245, 214);
+            this.listBox1.Size = new System.Drawing.Size(288, 319);
             this.listBox1.TabIndex = 4;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -129,7 +132,7 @@ namespace Document_circulation
             this.richTextBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.richTextBox1.Location = new System.Drawing.Point(115, 131);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(434, 73);
+            this.richTextBox1.Size = new System.Drawing.Size(532, 73);
             this.richTextBox1.TabIndex = 5;
             this.richTextBox1.Text = "";
             // 
@@ -139,10 +142,10 @@ namespace Document_circulation
             this.listBox2.FormattingEnabled = true;
             this.listBox2.HorizontalScrollbar = true;
             this.listBox2.ItemHeight = 21;
-            this.listBox2.Location = new System.Drawing.Point(267, 325);
+            this.listBox2.Location = new System.Drawing.Point(310, 397);
             this.listBox2.Name = "listBox2";
             this.listBox2.ScrollAlwaysVisible = true;
-            this.listBox2.Size = new System.Drawing.Size(282, 193);
+            this.listBox2.Size = new System.Drawing.Size(337, 193);
             this.listBox2.TabIndex = 6;
             // 
             // button1
@@ -150,7 +153,7 @@ namespace Document_circulation
             this.button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.Location = new System.Drawing.Point(16, 254);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(123, 58);
+            this.button1.Size = new System.Drawing.Size(154, 58);
             this.button1.TabIndex = 7;
             this.button1.Text = "Выбрать фаил";
             this.button1.UseVisualStyleBackColor = true;
@@ -159,9 +162,9 @@ namespace Document_circulation
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(145, 254);
+            this.button2.Location = new System.Drawing.Point(167, 254);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 58);
+            this.button2.Size = new System.Drawing.Size(137, 58);
             this.button2.TabIndex = 8;
             this.button2.Text = "Удалить фаил";
             this.button2.UseVisualStyleBackColor = true;
@@ -173,9 +176,9 @@ namespace Document_circulation
             this.userComboBox2.DisplayMember = "LAST_NAME";
             this.userComboBox2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.userComboBox2.FormattingEnabled = true;
-            this.userComboBox2.Location = new System.Drawing.Point(267, 254);
+            this.userComboBox2.Location = new System.Drawing.Point(310, 326);
             this.userComboBox2.Name = "userComboBox2";
-            this.userComboBox2.Size = new System.Drawing.Size(282, 29);
+            this.userComboBox2.Size = new System.Drawing.Size(337, 29);
             this.userComboBox2.TabIndex = 9;
             this.userComboBox2.ValueMember = "LAST_NAME";
             this.userComboBox2.SelectedIndexChanged += new System.EventHandler(this.userComboBox2_SelectedIndexChanged);
@@ -188,9 +191,9 @@ namespace Document_circulation
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(267, 524);
+            this.button4.Location = new System.Drawing.Point(310, 596);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(282, 30);
+            this.button4.Size = new System.Drawing.Size(337, 37);
             this.button4.TabIndex = 11;
             this.button4.Text = "Удалить получателя";
             this.button4.UseVisualStyleBackColor = true;
@@ -202,9 +205,9 @@ namespace Document_circulation
             this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
             this.button5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button5.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button5.Location = new System.Drawing.Point(428, 564);
+            this.button5.Location = new System.Drawing.Point(471, 639);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(121, 56);
+            this.button5.Size = new System.Drawing.Size(176, 56);
             this.button5.TabIndex = 12;
             this.button5.Text = "Добавить";
             this.button5.UseVisualStyleBackColor = false;
@@ -256,7 +259,7 @@ namespace Document_circulation
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.Location = new System.Drawing.Point(1, -2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(566, 48);
+            this.panel1.Size = new System.Drawing.Size(665, 48);
             this.panel1.TabIndex = 17;
             // 
             // usersBindingSource
@@ -314,34 +317,64 @@ namespace Document_circulation
             // IdlistBox
             // 
             this.IdlistBox.FormattingEnabled = true;
-            this.IdlistBox.Location = new System.Drawing.Point(267, 332);
+            this.IdlistBox.Location = new System.Drawing.Point(310, 407);
             this.IdlistBox.Name = "IdlistBox";
-            this.IdlistBox.Size = new System.Drawing.Size(282, 186);
+            this.IdlistBox.Size = new System.Drawing.Size(337, 186);
             this.IdlistBox.TabIndex = 19;
             // 
             // IdcomboBox
             // 
             this.IdcomboBox.FormattingEnabled = true;
-            this.IdcomboBox.Location = new System.Drawing.Point(267, 259);
+            this.IdcomboBox.Location = new System.Drawing.Point(310, 334);
             this.IdcomboBox.Name = "IdcomboBox";
-            this.IdcomboBox.Size = new System.Drawing.Size(282, 21);
+            this.IdcomboBox.Size = new System.Drawing.Size(337, 21);
             this.IdcomboBox.TabIndex = 20;
             // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(267, 289);
+            this.button3.Location = new System.Drawing.Point(310, 361);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(282, 30);
+            this.button3.Size = new System.Drawing.Size(337, 30);
             this.button3.TabIndex = 21;
             this.button3.Text = "Добавить получателя";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
+            // DepcomboBox
+            // 
+            this.DepcomboBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DepcomboBox.FormattingEnabled = true;
+            this.DepcomboBox.Location = new System.Drawing.Point(310, 254);
+            this.DepcomboBox.Name = "DepcomboBox";
+            this.DepcomboBox.Size = new System.Drawing.Size(337, 29);
+            this.DepcomboBox.TabIndex = 22;
+            this.DepcomboBox.SelectedIndexChanged += new System.EventHandler(this.DepcomboBox_SelectedIndexChanged);
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button6.Location = new System.Drawing.Point(310, 289);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(337, 31);
+            this.button6.TabIndex = 23;
+            this.button6.Text = "Добавить отдел (для общей  рассылки)";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // IdDepcomboBox
+            // 
+            this.IdDepcomboBox.FormattingEnabled = true;
+            this.IdDepcomboBox.Location = new System.Drawing.Point(310, 259);
+            this.IdDepcomboBox.Name = "IdDepcomboBox";
+            this.IdDepcomboBox.Size = new System.Drawing.Size(337, 21);
+            this.IdDepcomboBox.TabIndex = 24;
+            // 
             // AddDocument
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(561, 632);
+            this.ClientSize = new System.Drawing.Size(659, 727);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.DepcomboBox);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label4);
@@ -363,6 +396,7 @@ namespace Document_circulation
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.IdlistBox);
             this.Controls.Add(this.IdcomboBox);
+            this.Controls.Add(this.IdDepcomboBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -413,5 +447,8 @@ namespace Document_circulation
         private System.Windows.Forms.ListBox IdlistBox;
         private System.Windows.Forms.ComboBox IdcomboBox;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox DepcomboBox;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.ComboBox IdDepcomboBox;
     }
 }

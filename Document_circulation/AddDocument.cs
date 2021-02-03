@@ -50,18 +50,17 @@ namespace Document_circulation
             try
             {
                 //выводим всех сотрудников для выбора получателя документа
-                string CommandText = "SELECT id,LAST_NAME,FIRST_NAME,MIDDLE_NAME,ROLE_ID FROM users ORDER BY LAST_NAME";
+                string CommandText = "SELECT idDep,Dep FROM departments ORDER BY Dep";
                 MySqlCommand myCommand = new MySqlCommand(CommandText, conn);
-                MySqlDataAdapter adapter = new MySqlDataAdapter(myCommand);
+                MySqlDataAdapter  adapter = new MySqlDataAdapter(myCommand);
                 adapter.Fill(patientTable);
                 for (int i = 0; i < patientTable.Rows.Count; i++)
                 {
-                    string s =patientTable.Rows[i]["LAST_NAME"].ToString() + " " + 
-                        patientTable.Rows[i]["FIRST_NAME"].ToString().Substring(0, 1) + ". " + 
-                        patientTable.Rows[i]["MIDDLE_NAME"].ToString().Substring(0, 1) + ". ";
-                    IdcomboBox.Items.Add(patientTable.Rows[i]["id"].ToString());
-                    userComboBox2.Items.Add(s);
+                    IdDepcomboBox.Items.Add(patientTable.Rows[i]["idDep"].ToString());
+                    DepcomboBox.Items.Add(patientTable.Rows[i]["Dep"].ToString());
                 }
+                
+               
             }
             catch (Exception ex)
             {
@@ -336,5 +335,34 @@ namespace Document_circulation
             listBox2.Items.Insert(i, userComboBox2.SelectedItem);
             IdlistBox.Items.Insert(i, IdcomboBox.Items[userComboBox2.SelectedIndex]);
         }
+
+        private void DepcomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                IdcomboBox.Items.Clear();
+                userComboBox2.Items.Clear();
+               patientTable.Clear();
+                string CommandText = "SELECT id,LAST_NAME,FIRST_NAME,MIDDLE_NAME,ROLE_ID FROM users WHERE Dep_id=" +
+                  IdDepcomboBox.Items[DepcomboBox.SelectedIndex] + " ORDER BY LAST_NAME";
+                MySqlCommand myCommand = new MySqlCommand(CommandText, conn);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(myCommand);
+                adapter.Fill(patientTable);
+                for (int i = 0; i < patientTable.Rows.Count; i++)
+                {
+                    string s = patientTable.Rows[i]["LAST_NAME"].ToString() + " " +
+                        patientTable.Rows[i]["FIRST_NAME"].ToString().Substring(0, 1) + ". " +
+                        patientTable.Rows[i]["MIDDLE_NAME"].ToString().Substring(0, 1) + ". ";
+                    IdcomboBox.Items.Add(patientTable.Rows[i]["id"].ToString());
+                    userComboBox2.Items.Add(s);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+        }
+        }
     }
-}
+
