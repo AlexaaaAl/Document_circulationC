@@ -48,27 +48,22 @@ namespace Document_circulation
                 if (reader.Read())
                 {
                    f=int.Parse(reader["id_user"].ToString());
+                   this.Hide();
+                   MenuController f2 = new MenuController();
+                   f2.tulf2.setIdUser(f);
+                   f2.tulf2.setName(textBox1.Text);
+                   f2.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Пожалуйста, проверьте правильность введенных данных!");
                 }
             }
             myCommand.ExecuteNonQuery();
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter(myCommand);
             DataTable dt = new DataTable();
             dataAdapter.Fill(dt);
-            try
-            {
-                
-                    this.Hide();
-                    MenuController f2 = new MenuController();
-                    f2.tulf2.setIdUser(f);
-                    f2.tulf2.setName(textBox1.Text);
-                    f2.Show();
-              
-                
-            }
-            catch
-            {
-                MessageBox.Show("Пожалуйста, проверьте правильность введенных данных!");
-            }
+           /**/
         }
 
         private void Form1_Load(object sender, EventArgs e)

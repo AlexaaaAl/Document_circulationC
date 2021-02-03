@@ -70,8 +70,9 @@ namespace Document_circulation
             this.v1TableAdapter.Fill(this.document_circulation_pathDataSet1.v1);
 
             var db = new DBUtils();
-            query = "SELECT id_document,number as Номер,sender as Отправитель, LAST_NAME as Получатель," +
-                "outline as Наименование,comments,date_added as 'Дата добавления'," +
+            query = "SELECT id_document,number as Номер,outline as Наименование," +
+                "sender as Отправитель, LAST_NAME as Получатель," +
+                "comments,date_added as 'Дата добавления'," +
                 "date as 'Срок исполнения',status as Статус,document_type " +
                 "from v1 WHERE document_type='"+ type_doc + "' and (id_sender= " +
                 "(select id_user from log where login='" + tulf2.getName() +

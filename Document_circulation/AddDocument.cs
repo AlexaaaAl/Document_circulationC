@@ -159,7 +159,8 @@ namespace Document_circulation
 
         private void button5_Click(object sender, EventArgs e)
         {
-            try { 
+            try {
+                conn.Close();
                 conn.Open();
                 //выбираем последний номер сохраненной записи о пересылке из бд и сохраняем
                 string query = "SELECT max(number) as MaxN " +
