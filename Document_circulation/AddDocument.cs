@@ -363,6 +363,11 @@ namespace Document_circulation
                 MessageBox.Show(ex.Message, "Ошибка");
             }
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
         }
+    }
     }
 
