@@ -220,7 +220,8 @@ namespace Document_circulation
                 try
                 {
                     //выбираем все id получателей
-                    for (int i = 0; i < listBox2.Items.Count; i++)
+                    if (IdlistBox.Items.Count!=0)
+                    for (int i = 0; i < IdlistBox.Items.Count; i++)
                     {
                         string words = IdlistBox.Items[i].ToString();
                         query = "SELECT id,E_MAIL From users where id = " +
@@ -242,8 +243,9 @@ namespace Document_circulation
                     MessageBox.Show(ex.Message, "Ошибка при пользователей, Документ не добавлен!");
                 }
                 try
-                {
-                    for (int i = 0; i < DepcomboBox.Items.Count; i++)
+                { 
+                    if (DepcomboBox.Items.Count != 0)
+                        for (int i = 0; i < DepcomboBox.Items.Count+1; i++)
                     {
                         string words = DepcomboBox.Items[i].ToString();
                         query = "select id,E_MAIL from users inner join departments " +
