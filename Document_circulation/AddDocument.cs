@@ -30,6 +30,7 @@ namespace Document_circulation
         public string IP_SERVER;
         int role = 0;
         List<string> e_mail= new List<string>();
+        List<string> Id_s = new List<string>();
         List<int> IdFile = new List<int>();
         MySqlConnection conn = DBUtils.GetDBConnection();
         DataTable patientTable = new DataTable();
@@ -216,23 +217,55 @@ namespace Document_circulation
                      }*/
 
                 }
-                //выбираем все id получателей
-                for (int i = 0; i < listBox2.Items.Count; i++)
+                try
                 {
-                    string words = IdlistBox.Items[i].ToString();
-                    query = "SELECT id,E_MAIL From users where id = " +
-                            words + ";";
-                    using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+                    //выбираем все id получателей
+                    for (int i = 0; i < listBox2.Items.Count; i++)
                     {
-                        if (reader.Read())
+                        string words = IdlistBox.Items[i].ToString();
+                        query = "SELECT id,E_MAIL From users where id = " +
+                                words + ";";
+                        using (var reader = new MySqlCommand(query, conn).ExecuteReader())
                         {
-                            id_send = int.Parse(reader["id"].ToString());
-                            e_mail.Add(reader["E_MAIL"].ToString());
+                            if (reader.Read())
+                            {
+                                Id_s.Add(reader["id"].ToString());
+                                e_mail.Add(reader["E_MAIL"].ToString());
 
+                            }
+                        }
+                        //IdRecipient[i] = id_send;                   
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка при пользователей, Документ не добавлен!");
+                }
+                try
+                {
+                    for (int i = 0; i < DepcomboBox.Items.Count; i++)
+                    {
+                        string words = DepcomboBox.Items[i].ToString();
+                        query = "select id,E_MAIL from users inner join departments " +
+                            "on users.Dep_id=departments.idDep where departments.Dep='" +
+                              words + "';";
+                        using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                Id_s.Add(reader["id"].ToString());
+                                e_mail.Add(reader["E_MAIL"].ToString());
+                            }
                         }
                     }
-                    //IdRecipient[i] = id_send;
-
+                }
+            
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка при добавлении департаментов, Документ не добавлен!");
+                }
+            try { 
+                for (int i = 0; i < Id_s.Count; i++) {
                     if (checkBox1.Checked) //если стоит флажок на сроке подписания
                     {
 
@@ -241,21 +274,15 @@ namespace Document_circulation
                                     "    VALUES" +
                                     "           (" + MaxNumber + ",'" + textBox1.Text + "'," +
                                     ID + "," +
-                                    id_send + ",'" +
+                                    Id_s[i] + ",'" +
                                     dateTimePicker1.Value.ToString("s") + "','" + richTextBox1.Text + "','" +
                                    typeComboBox1.Text + "');";
-                        // try
-                        //  {
-                        SendMail.SEND_MAIlTORECIP(e_mail[i], textBox1.Text);
+
                         MySqlCommand command = new MySqlCommand(q, conn);
                         // выполняем запрос
                         command.ExecuteNonQuery();
-                        //MessageBox.Show(id_send.ToString(), "Dcnfdktyj");
-                        /* }
-                         catch (Exception ex)
-                         {
-                             MessageBox.Show(ex.Message, "Ошибка вставки c датой");
-                         }*/
+                        SendMail.SEND_MAIlTORECIP(e_mail[i], textBox1.Text);
+
                     }
                     else
                     {
@@ -266,23 +293,24 @@ namespace Document_circulation
                                        "    VALUES" +
                                        "           (" + MaxNumber + ",'" + textBox1.Text + "'," +
                                        ID + "," +
-                                       id_send + ",'" + richTextBox1.Text + "','" +
+                                        Id_s[i] + ",'" + richTextBox1.Text + "','" +
                                       typeComboBox1.Text + "');";
-                        // try
-                        // {
-                        SendMail.SEND_MAIlTORECIP(e_mail[i], textBox1.Text);
                         MySqlCommand command = new MySqlCommand(q, conn);
                         // выполняем запрос
                         command.ExecuteNonQuery();
-                        /*  }
-                          catch (Exception ex)
-                          {
-                              MessageBox.Show(ex.Message, "Ошибка вставки без даты");
-                          }*/
-                    }
-                    // MessageBox.Show(id_send.ToString(), "id_______hgkv");
+                        //отправка сообщения
+                        SendMail.SEND_MAIlTORECIP(e_mail[i], textBox1.Text);
 
+                    }
+                   
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка при добавлении, Документ не добавлен!");
+             }
+                // MessageBox.Show(id_send.ToString(), "id_______hgkv");
+
 
                 foreach (int i in IdFile)
                 {
@@ -290,16 +318,9 @@ namespace Document_circulation
                     string q = "INSERT INTO `all_one`" +
                             "    (`id_doc`, `id_file`)" + "    VALUES ("
                             + MaxNumber + "," + i + ");";
-                    //try
-                    // {
                     MySqlCommand command = new MySqlCommand(q, conn);
                     // выполняем запрос
                     command.ExecuteNonQuery();
-                    /* }
-                     catch (Exception ex)
-                     {
-                         MessageBox.Show(ex.Message, "Ошибка : ошибка вставки связи");
-                     }*/
                 }
                 conn.Close();
                 this.Close();
@@ -307,16 +328,12 @@ namespace Document_circulation
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка, Документ не добавлен!");
-            }
-            
-
-                
+            }       
         }
         private void userComboBox2_TextChanged_1(object sender, EventArgs e)
         {
             int index = userComboBox2.FindString(userComboBox2.Text);
             userComboBox2.SelectedIndex = index;
-            
         }
 
         private void userComboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -340,9 +357,11 @@ namespace Document_circulation
         {
             try
             {
+                conn.Close();
+                conn.Open();
                 IdcomboBox.Items.Clear();
                 userComboBox2.Items.Clear();
-               patientTable.Clear();
+                patientTable.Clear();
                 string CommandText = "SELECT id,LAST_NAME,FIRST_NAME,MIDDLE_NAME,ROLE_ID FROM users WHERE Dep_id=" +
                   IdDepcomboBox.Items[DepcomboBox.SelectedIndex] + " ORDER BY LAST_NAME";
                 MySqlCommand myCommand = new MySqlCommand(CommandText, conn);
@@ -356,6 +375,7 @@ namespace Document_circulation
                     IdcomboBox.Items.Add(patientTable.Rows[i]["id"].ToString());
                     userComboBox2.Items.Add(s);
                 }
+                conn.Close();
 
             }
             catch (Exception ex)
@@ -366,8 +386,25 @@ namespace Document_circulation
 
         private void button6_Click(object sender, EventArgs e)
         {
+            i = listBox2.Items.Count;
+            NameDeplistBox.Items.Insert(i, DepcomboBox.SelectedItem);
+        }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            NameDeplistBox.Items.Clear();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            NameDeplistBox.Items.RemoveAt(NameDeplistBox.SelectedIndex);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            listBox2.Items.Clear();
+            IdlistBox.Items.Clear();
         }
     }
-    }
+}
 

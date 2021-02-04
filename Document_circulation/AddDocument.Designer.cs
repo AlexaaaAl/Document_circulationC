@@ -65,6 +65,12 @@ namespace Document_circulation
             this.DepcomboBox = new System.Windows.Forms.ComboBox();
             this.button6 = new System.Windows.Forms.Button();
             this.IdDepcomboBox = new System.Windows.Forms.ComboBox();
+            this.NameDeplistBox = new System.Windows.Forms.ListBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet1)).BeginInit();
@@ -91,7 +97,7 @@ namespace Document_circulation
             this.textBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox1.Location = new System.Drawing.Point(115, 54);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(532, 29);
+            this.textBox1.Size = new System.Drawing.Size(326, 29);
             this.textBox1.TabIndex = 1;
             // 
             // dateTimePicker1
@@ -107,9 +113,9 @@ namespace Document_circulation
             this.typeComboBox1.DisplayMember = "status";
             this.typeComboBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.typeComboBox1.FormattingEnabled = true;
-            this.typeComboBox1.Location = new System.Drawing.Point(149, 218);
+            this.typeComboBox1.Location = new System.Drawing.Point(149, 133);
             this.typeComboBox1.Name = "typeComboBox1";
-            this.typeComboBox1.Size = new System.Drawing.Size(498, 29);
+            this.typeComboBox1.Size = new System.Drawing.Size(416, 29);
             this.typeComboBox1.TabIndex = 3;
             this.typeComboBox1.ValueMember = "status";
             this.typeComboBox1.SelectedIndexChanged += new System.EventHandler(this.typeComboBox1_SelectedIndexChanged);
@@ -120,19 +126,19 @@ namespace Document_circulation
             this.listBox1.FormattingEnabled = true;
             this.listBox1.HorizontalScrollbar = true;
             this.listBox1.ItemHeight = 21;
-            this.listBox1.Location = new System.Drawing.Point(16, 319);
+            this.listBox1.Location = new System.Drawing.Point(16, 254);
             this.listBox1.Name = "listBox1";
             this.listBox1.ScrollAlwaysVisible = true;
-            this.listBox1.Size = new System.Drawing.Size(288, 319);
+            this.listBox1.Size = new System.Drawing.Size(288, 298);
             this.listBox1.TabIndex = 4;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // richTextBox1
             // 
             this.richTextBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBox1.Location = new System.Drawing.Point(115, 131);
+            this.richTextBox1.Location = new System.Drawing.Point(571, 54);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(532, 73);
+            this.richTextBox1.Size = new System.Drawing.Size(433, 148);
             this.richTextBox1.TabIndex = 5;
             this.richTextBox1.Text = "";
             // 
@@ -142,16 +148,16 @@ namespace Document_circulation
             this.listBox2.FormattingEnabled = true;
             this.listBox2.HorizontalScrollbar = true;
             this.listBox2.ItemHeight = 21;
-            this.listBox2.Location = new System.Drawing.Point(310, 397);
+            this.listBox2.Location = new System.Drawing.Point(880, 291);
             this.listBox2.Name = "listBox2";
             this.listBox2.ScrollAlwaysVisible = true;
-            this.listBox2.Size = new System.Drawing.Size(337, 193);
+            this.listBox2.Size = new System.Drawing.Size(337, 172);
             this.listBox2.TabIndex = 6;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(16, 254);
+            this.button1.Location = new System.Drawing.Point(16, 190);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(154, 58);
             this.button1.TabIndex = 7;
@@ -162,7 +168,7 @@ namespace Document_circulation
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(167, 254);
+            this.button2.Location = new System.Drawing.Point(167, 190);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(137, 58);
             this.button2.TabIndex = 8;
@@ -176,7 +182,7 @@ namespace Document_circulation
             this.userComboBox2.DisplayMember = "LAST_NAME";
             this.userComboBox2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.userComboBox2.FormattingEnabled = true;
-            this.userComboBox2.Location = new System.Drawing.Point(310, 326);
+            this.userComboBox2.Location = new System.Drawing.Point(667, 224);
             this.userComboBox2.Name = "userComboBox2";
             this.userComboBox2.Size = new System.Drawing.Size(337, 29);
             this.userComboBox2.TabIndex = 9;
@@ -191,7 +197,7 @@ namespace Document_circulation
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(310, 596);
+            this.button4.Location = new System.Drawing.Point(667, 474);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(337, 37);
             this.button4.TabIndex = 11;
@@ -205,9 +211,9 @@ namespace Document_circulation
             this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
             this.button5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button5.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.button5.Location = new System.Drawing.Point(471, 639);
+            this.button5.Location = new System.Drawing.Point(828, 559);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(176, 56);
+            this.button5.Size = new System.Drawing.Size(176, 43);
             this.button5.TabIndex = 12;
             this.button5.Text = "Добавить";
             this.button5.UseVisualStyleBackColor = false;
@@ -237,7 +243,7 @@ namespace Document_circulation
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(12, 131);
+            this.label3.Location = new System.Drawing.Point(476, 54);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 21);
             this.label3.TabIndex = 15;
@@ -247,7 +253,7 @@ namespace Document_circulation
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(12, 221);
+            this.label4.Location = new System.Drawing.Point(12, 136);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(131, 21);
             this.label4.TabIndex = 16;
@@ -259,7 +265,7 @@ namespace Document_circulation
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.Location = new System.Drawing.Point(1, -2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(665, 48);
+            this.panel1.Size = new System.Drawing.Size(1025, 48);
             this.panel1.TabIndex = 17;
             // 
             // usersBindingSource
@@ -317,15 +323,15 @@ namespace Document_circulation
             // IdlistBox
             // 
             this.IdlistBox.FormattingEnabled = true;
-            this.IdlistBox.Location = new System.Drawing.Point(310, 407);
+            this.IdlistBox.Location = new System.Drawing.Point(667, 303);
             this.IdlistBox.Name = "IdlistBox";
-            this.IdlistBox.Size = new System.Drawing.Size(337, 186);
+            this.IdlistBox.Size = new System.Drawing.Size(337, 160);
             this.IdlistBox.TabIndex = 19;
             // 
             // IdcomboBox
             // 
             this.IdcomboBox.FormattingEnabled = true;
-            this.IdcomboBox.Location = new System.Drawing.Point(310, 334);
+            this.IdcomboBox.Location = new System.Drawing.Point(667, 232);
             this.IdcomboBox.Name = "IdcomboBox";
             this.IdcomboBox.Size = new System.Drawing.Size(337, 21);
             this.IdcomboBox.TabIndex = 20;
@@ -333,7 +339,7 @@ namespace Document_circulation
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(310, 361);
+            this.button3.Location = new System.Drawing.Point(667, 260);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(337, 30);
             this.button3.TabIndex = 21;
@@ -345,7 +351,7 @@ namespace Document_circulation
             // 
             this.DepcomboBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DepcomboBox.FormattingEnabled = true;
-            this.DepcomboBox.Location = new System.Drawing.Point(310, 254);
+            this.DepcomboBox.Location = new System.Drawing.Point(310, 224);
             this.DepcomboBox.Name = "DepcomboBox";
             this.DepcomboBox.Size = new System.Drawing.Size(337, 29);
             this.DepcomboBox.TabIndex = 22;
@@ -354,7 +360,7 @@ namespace Document_circulation
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(310, 289);
+            this.button6.Location = new System.Drawing.Point(310, 259);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(337, 31);
             this.button6.TabIndex = 23;
@@ -365,15 +371,84 @@ namespace Document_circulation
             // IdDepcomboBox
             // 
             this.IdDepcomboBox.FormattingEnabled = true;
-            this.IdDepcomboBox.Location = new System.Drawing.Point(310, 259);
+            this.IdDepcomboBox.Location = new System.Drawing.Point(310, 229);
             this.IdDepcomboBox.Name = "IdDepcomboBox";
             this.IdDepcomboBox.Size = new System.Drawing.Size(337, 21);
             this.IdDepcomboBox.TabIndex = 24;
             // 
+            // NameDeplistBox
+            // 
+            this.NameDeplistBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NameDeplistBox.FormattingEnabled = true;
+            this.NameDeplistBox.ItemHeight = 21;
+            this.NameDeplistBox.Location = new System.Drawing.Point(310, 296);
+            this.NameDeplistBox.Name = "NameDeplistBox";
+            this.NameDeplistBox.Size = new System.Drawing.Size(337, 172);
+            this.NameDeplistBox.TabIndex = 25;
+            // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button7.Location = new System.Drawing.Point(310, 474);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(337, 37);
+            this.button7.TabIndex = 26;
+            this.button7.Text = "Удалить отдел";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button8.Location = new System.Drawing.Point(310, 517);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(337, 36);
+            this.button8.TabIndex = 27;
+            this.button8.Text = "Очистить поле (отдел)";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button9
+            // 
+            this.button9.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button9.Location = new System.Drawing.Point(667, 517);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(337, 36);
+            this.button9.TabIndex = 28;
+            this.button9.Text = "Очистить поле (получатели)";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(310, 201);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(123, 21);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "Выбор отдела";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(663, 201);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(160, 21);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "Выбор получателя";
+            // 
             // AddDocument
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(659, 727);
+            this.ClientSize = new System.Drawing.Size(1322, 622);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.button9);
+            this.Controls.Add(this.button8);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.NameDeplistBox);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.DepcomboBox);
             this.Controls.Add(this.button3);
@@ -451,5 +526,11 @@ namespace Document_circulation
         private System.Windows.Forms.ComboBox DepcomboBox;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ComboBox IdDepcomboBox;
+        private System.Windows.Forms.ListBox NameDeplistBox;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
