@@ -20,7 +20,7 @@ namespace Document_circulation
         string fileName = string.Empty;
         int MaxNumber=1;
         int MaxIdF=1;
-        int id_send;
+        //int id_send;
         public string ID;
         public string name;
         public string FIRST_NAME;
@@ -57,7 +57,6 @@ namespace Document_circulation
                 adapter.Fill(patientTable);
                 for (int i = 0; i < patientTable.Rows.Count; i++)
                 {
-                    IdDepcomboBox.Items.Add(patientTable.Rows[i]["idDep"].ToString());
                     DepcomboBox.Items.Add(patientTable.Rows[i]["Dep"].ToString());
                 }
                 
@@ -245,7 +244,7 @@ namespace Document_circulation
                 try
                 { 
                     if (DepcomboBox.Items.Count != 0)
-                        for (int i = 0; i < DepcomboBox.Items.Count+1; i++)
+                        for (int i = 0; i < DepcomboBox.Items.Count; i++)
                     {
                         string words = DepcomboBox.Items[i].ToString();
                         query = "select id,E_MAIL from users inner join departments " +
@@ -364,8 +363,8 @@ namespace Document_circulation
                 IdcomboBox.Items.Clear();
                 userComboBox2.Items.Clear();
                 patientTable.Clear();
-                string CommandText = "SELECT id,LAST_NAME,FIRST_NAME,MIDDLE_NAME,ROLE_ID FROM users WHERE Dep_id=" +
-                  IdDepcomboBox.Items[DepcomboBox.SelectedIndex] + " ORDER BY LAST_NAME";
+                string CommandText = "SELECT id,LAST_NAME,FIRST_NAME,MIDDLE_NAME,ROLE_ID FROM users WHERE Dep" +
+                  DepcomboBox.Items[DepcomboBox.SelectedIndex] + " ORDER BY LAST_NAME";
                 MySqlCommand myCommand = new MySqlCommand(CommandText, conn);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(myCommand);
                 adapter.Fill(patientTable);

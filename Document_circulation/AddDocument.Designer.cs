@@ -64,7 +64,6 @@ namespace Document_circulation
             this.button3 = new System.Windows.Forms.Button();
             this.DepcomboBox = new System.Windows.Forms.ComboBox();
             this.button6 = new System.Windows.Forms.Button();
-            this.IdDepcomboBox = new System.Windows.Forms.ComboBox();
             this.NameDeplistBox = new System.Windows.Forms.ListBox();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -351,7 +350,7 @@ namespace Document_circulation
             // 
             this.DepcomboBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DepcomboBox.FormattingEnabled = true;
-            this.DepcomboBox.Location = new System.Drawing.Point(310, 224);
+            this.DepcomboBox.Location = new System.Drawing.Point(310, 219);
             this.DepcomboBox.Name = "DepcomboBox";
             this.DepcomboBox.Size = new System.Drawing.Size(337, 29);
             this.DepcomboBox.TabIndex = 22;
@@ -367,14 +366,6 @@ namespace Document_circulation
             this.button6.Text = "Добавить отдел (для общей  рассылки)";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // IdDepcomboBox
-            // 
-            this.IdDepcomboBox.FormattingEnabled = true;
-            this.IdDepcomboBox.Location = new System.Drawing.Point(310, 229);
-            this.IdDepcomboBox.Name = "IdDepcomboBox";
-            this.IdDepcomboBox.Size = new System.Drawing.Size(337, 21);
-            this.IdDepcomboBox.TabIndex = 24;
             // 
             // NameDeplistBox
             // 
@@ -472,7 +463,6 @@ namespace Document_circulation
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.IdlistBox);
             this.Controls.Add(this.IdcomboBox);
-            this.Controls.Add(this.IdDepcomboBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -525,7 +515,6 @@ namespace Document_circulation
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox DepcomboBox;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.ComboBox IdDepcomboBox;
         private System.Windows.Forms.ListBox NameDeplistBox;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
