@@ -246,7 +246,6 @@ namespace Document_circulation
 
             if (DirDialog.ShowDialog() == DialogResult.OK)
             {
-
                 conn.Close();
                 conn.Open();
                 string query = "select path,document from answer_recirient " +
@@ -257,7 +256,6 @@ namespace Document_circulation
                     {
                         try
                         {
-
                             // Move the file.
                             string s = Path.Combine(reader["path"].ToString());
                             //reader["path"].ToString().Replace("/", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
@@ -265,15 +263,11 @@ namespace Document_circulation
                             // DirDialog.SelectedPath.Replace("\\", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
                             File.Copy(s, f, true);
                             MessageBox.Show(" Фаил скачан в папку{0}." + f);
-
                         }
                         catch (Exception ex)
                         {
-
                             MessageBox.Show(ex.ToString(), "The process failed: {0}");
                         }
-
-
                     }
                 }
                 conn.Close();
