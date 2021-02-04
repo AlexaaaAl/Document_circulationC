@@ -244,12 +244,12 @@ namespace Document_circulation
                 try
                 { 
                     if (DepcomboBox.Items.Count != 0)
-                        for (int i = 0; i < DepcomboBox.Items.Count; i++)
+                    for (int i = 0; i < DepcomboBox.Items.Count; i++)
                     {
                         string words = DepcomboBox.Items[i].ToString();
                         string query1 = "select id,E_MAIL from users inner join departments " +
-                            "on users.Dep_id=departments.idDep where departments.Dep='" +
-                              words + "';";
+                                "on users.Dep_id=departments.idDep where departments.Dep='" +
+                                words + "';";
                         using (var reader = new MySqlCommand(query1, conn).ExecuteReader())
                         {
                             if (reader.Read())
@@ -265,7 +265,7 @@ namespace Document_circulation
                 {
                     MessageBox.Show(ex.Message, "Ошибка при добавлении департаментов, Документ не добавлен!");
                 }
-            try { 
+                try { 
                 for (int i = 0; i < Id_s.Count; i++) {
                     if (checkBox1.Checked) //если стоит флажок на сроке подписания
                     {
