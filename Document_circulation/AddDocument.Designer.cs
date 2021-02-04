@@ -70,6 +70,7 @@ namespace Document_circulation
             this.button9 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.IdDepComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet1)).BeginInit();
@@ -414,7 +415,7 @@ namespace Document_circulation
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(310, 201);
+            this.label5.Location = new System.Drawing.Point(310, 195);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(123, 21);
             this.label5.TabIndex = 30;
@@ -429,6 +430,14 @@ namespace Document_circulation
             this.label6.Size = new System.Drawing.Size(160, 21);
             this.label6.TabIndex = 31;
             this.label6.Text = "Выбор получателя";
+            // 
+            // IdDepComboBox
+            // 
+            this.IdDepComboBox.FormattingEnabled = true;
+            this.IdDepComboBox.Location = new System.Drawing.Point(310, 219);
+            this.IdDepComboBox.Name = "IdDepComboBox";
+            this.IdDepComboBox.Size = new System.Drawing.Size(175, 21);
+            this.IdDepComboBox.TabIndex = 32;
             // 
             // AddDocument
             // 
@@ -463,6 +472,7 @@ namespace Document_circulation
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.IdlistBox);
             this.Controls.Add(this.IdcomboBox);
+            this.Controls.Add(this.IdDepComboBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -521,5 +531,6 @@ namespace Document_circulation
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox IdDepComboBox;
     }
 }

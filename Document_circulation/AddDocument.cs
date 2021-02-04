@@ -58,6 +58,7 @@ namespace Document_circulation
                 for (int i = 0; i < patientTable.Rows.Count; i++)
                 {
                     DepcomboBox.Items.Add(patientTable.Rows[i]["Dep"].ToString());
+                    IdDepComboBox.Items.Add(patientTable.Rows[i]["idDep"].ToString());
                 }
                 
                
@@ -218,7 +219,7 @@ namespace Document_circulation
                 }
                 try
                 {
-                    //выбираем все id получателей
+                    /*//выбираем все id получателей
                     if (IdlistBox.Items.Count!=0)
                     for (int i = 0; i < IdlistBox.Items.Count; i++)
                     {
@@ -235,25 +236,26 @@ namespace Document_circulation
                             }
                         }
                         //IdRecipient[i] = id_send;                   
-                    }
+                    }*/
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Ошибка при пользователей, Документ не добавлен!");
                 }
                 try
-                { 
+                {
+                    Id_s.Clear();
                     if (DepcomboBox.Items.Count != 0)
                     for (int i = 0; i < DepcomboBox.Items.Count; i++)
                     {
-                        string words = DepcomboBox.Items[i].ToString();
-                        string query1 = "select id,E_MAIL from users inner join departments " +
-                                "on users.Dep_id=departments.idDep where departments.Dep='" +
-                                words + "';";
+                        string words = IdDepComboBox.Items[i].ToString();
+                        string query1 = "select id,E_MAIL from users " +
+                                "where Dep_id=" +
+                                words + ";";
                         using (var reader = new MySqlCommand(query1, conn).ExecuteReader())
                         {
                             if (reader.Read())
-                            {
+                            { 
                                 Id_s.Add(reader["id"].ToString());
                                 e_mail.Add(reader["E_MAIL"].ToString());
                             }
