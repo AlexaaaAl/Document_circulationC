@@ -247,10 +247,10 @@ namespace Document_circulation
                         for (int i = 0; i < DepcomboBox.Items.Count; i++)
                     {
                         string words = DepcomboBox.Items[i].ToString();
-                        query = "select id,E_MAIL from users inner join departments " +
+                        string query1 = "select id,E_MAIL from users inner join departments " +
                             "on users.Dep_id=departments.idDep where departments.Dep='" +
                               words + "';";
-                        using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+                        using (var reader = new MySqlCommand(query1, conn).ExecuteReader())
                         {
                             if (reader.Read())
                             {
@@ -363,8 +363,9 @@ namespace Document_circulation
                 IdcomboBox.Items.Clear();
                 userComboBox2.Items.Clear();
                 patientTable.Clear();
-                string CommandText = "SELECT id,LAST_NAME,FIRST_NAME,MIDDLE_NAME,ROLE_ID FROM users WHERE Dep" +
-                  DepcomboBox.Items[DepcomboBox.SelectedIndex] + " ORDER BY LAST_NAME";
+                string CommandText = "SELECT id,LAST_NAME,FIRST_NAME,MIDDLE_NAME,ROLE_ID FROM users  " +
+                    "inner join departments on users.Dep_id=departments.idDep WHERE Dep='" +
+                    DepcomboBox.Items[DepcomboBox.SelectedIndex] + "' ORDER BY LAST_NAME";
                 MySqlCommand myCommand = new MySqlCommand(CommandText, conn);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(myCommand);
                 adapter.Fill(patientTable);

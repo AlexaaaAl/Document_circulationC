@@ -31,7 +31,6 @@ namespace Document_circulation
         public ChangeDocument()
         {
             InitializeComponent();
-           
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -58,13 +57,11 @@ namespace Document_circulation
                 else
                 {
                     uploadbutoncheck.Enabled = false;
-                }
-                
+                } 
             }
-            
-    
             string question = "select `e_mail`,`comments_doc` from `documents` " +
-                "inner join `users` on `id_recipient`=`id` where `id_document`=" + ID_Doc + ";";
+                "inner join `users` on `id_recipient`=`id` where `id_document`=" + 
+                ID_Doc + ";";
             using (var reader = new MySqlCommand(question, conn).ExecuteReader())
             {
                 if (reader.Read())
@@ -98,25 +95,20 @@ namespace Document_circulation
                 {
                     while (reader.Read())
                     {
-                            try
-                            {
-
-                                // Move the file.
-                                string s = Path.Combine(reader["path"].ToString());
-                                    //reader["path"].ToString().Replace("/", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
-                                string f= Path.Combine(DirDialog.SelectedPath, reader["file"].ToString());
-                                // DirDialog.SelectedPath.Replace("\\", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
-                                File.Copy( s, f,true);
-                                MessageBox.Show(" Фаил скачан в папку{0}."+f);
-
-                            }
-                            catch (Exception ex)
-                            {
-
-                                MessageBox.Show( ex.ToString(), "The process failed: {0}");
-                            }
-
-
+                        try
+                        {
+                              //Move the file.
+                              string s = Path.Combine(reader["path"].ToString());
+                              //reader["path"].ToString().Replace("/", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
+                              string f= Path.Combine(DirDialog.SelectedPath, reader["file"].ToString());
+                              //DirDialog.SelectedPath.Replace("\\", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
+                              File.Copy( s, f,true);
+                              MessageBox.Show(" Фаил скачан в папку{0}."+f);
+                        }
+                        catch (Exception ex)
+                        {
+                              MessageBox.Show( ex.ToString(), "The process failed: {0}");
+                        }
                     }
                 }
                 conn.Close();

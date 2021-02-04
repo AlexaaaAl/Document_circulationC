@@ -197,10 +197,10 @@ namespace Document_circulation
             MySqlCommand command = new MySqlCommand(q, conn);
             // выполняем запрос
             int UspeshnoeIzmenenie = command.ExecuteNonQuery();
-            if (UspeshnoeIzmenenie != 0)
+            /*if (UspeshnoeIzmenenie != 0)
             {
                 SendMail.SEND_MAIlTORECIP(E_MAIL,"Документ просмотрен :"+ dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Наименование"].Value.ToString());
-            }
+            }*/
             ChangeDocument f2 = new ChangeDocument();
             f2.number = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Номер"].Value.ToString();
             f2.outline= dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Наименование"].Value.ToString();
