@@ -100,16 +100,16 @@ namespace Document_circulation
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.CancelButton = this.button3;
-            this.ClientSize = new System.Drawing.Size(302, 275);
+            this.ClientSize = new System.Drawing.Size(306, 294);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.comboBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(302, 275);
+            this.MaximumSize = new System.Drawing.Size(402, 375);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(302, 275);
             this.Name = "Send";
