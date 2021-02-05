@@ -36,7 +36,7 @@ namespace Document_circulation
                     string q = "UPDATE documents " +
                                 "set outline='" + textBox1.Text + "'," +
                                 "date='" + dateTimePicker1.Value.ToString("s") + "'," +
-                                "comments='" + richTextBox1.Text + "'" +
+                                "comments='" + richTextBox1.Text + "' " +
                                 "where number=" + number + ";";
                     MySqlCommand command = new MySqlCommand(q, conn);
                     // выполняем запрос
@@ -45,6 +45,8 @@ namespace Document_circulation
                         command.ExecuteNonQuery();
                         MessageBox.Show("Фаил изменён!", "Изменение"); // Выводим сообщение о звершении.
                         this.Close();
+                        ChangeDocument f2 = new ChangeDocument();
+                        f2.UpdateData();
                     }
                     catch (Exception ex)
                     {
@@ -55,7 +57,7 @@ namespace Document_circulation
                 {
                     string q = "UPDATE documents " +
                                "set outline='" + textBox1.Text + "'," +
-                               "comments='" + richTextBox1.Text + "'" +
+                               "comments='" + richTextBox1.Text + "' " +
                                "where number=" + number + ";";
                     MySqlCommand command = new MySqlCommand(q, conn);
                     // выполняем запрос
@@ -81,7 +83,7 @@ namespace Document_circulation
         {
             conn.Open();
             string query = "SELECT date FROM documents " +
-                " WHERE number='" + number + "'";
+                " WHERE number='" + number + "' ;";
             using (var reader = new MySqlCommand(query, conn).ExecuteReader())
             {
                 if (reader.Read())
@@ -90,11 +92,13 @@ namespace Document_circulation
                         
                     {
                         dateTimePicker1.Value = (DateTime)reader["date"];
+                        checkBox1.Checked = true;
                     }
                 }
             }
             textBox1.Text = outline;
             richTextBox1.Text = comment;
+            label4.Text = number;
             conn.Close();
         }
     }

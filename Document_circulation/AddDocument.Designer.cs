@@ -71,6 +71,7 @@ namespace Document_circulation
             this.documentsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.documentsTableAdapter1 = new Document_circulation.document_circulation_pathDataSet1TableAdapters.documentsTableAdapter();
             this.documentsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.listBox4 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet1)).BeginInit();
@@ -468,6 +469,14 @@ namespace Document_circulation
             this.documentsBindingSource2.DataMember = "documents";
             this.documentsBindingSource2.DataSource = this.document_circulation_pathDataSet1;
             // 
+            // listBox4
+            // 
+            this.listBox4.FormattingEnabled = true;
+            this.listBox4.Location = new System.Drawing.Point(314, 296);
+            this.listBox4.Name = "listBox4";
+            this.listBox4.Size = new System.Drawing.Size(120, 95);
+            this.listBox4.TabIndex = 33;
+            // 
             // AddDocument
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -502,6 +511,7 @@ namespace Document_circulation
             this.Controls.Add(this.IdlistBox);
             this.Controls.Add(this.IdcomboBox);
             this.Controls.Add(this.IdDepComboBox);
+            this.Controls.Add(this.listBox4);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -562,5 +572,6 @@ namespace Document_circulation
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox IdDepComboBox;
+        private System.Windows.Forms.ListBox listBox4;
     }
 }

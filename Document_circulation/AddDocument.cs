@@ -249,9 +249,9 @@ namespace Document_circulation
                     {
 
                         if (DepcomboBox.Items.Count != 0)
-                            for (int i = 0; i < DepcomboBox.Items.Count - 1; i++)
+                            for (int i = 0; i < NameDeplistBox.Items.Count; i++)
                             {
-                                string words = IdDepComboBox.Items[i].ToString();
+                                string words = listBox4.Items[i].ToString();
                                 string query1 = "select id,E_MAIL from users " +
                                         "where Dep_id=" +
                                         words + ";";
@@ -261,7 +261,7 @@ namespace Document_circulation
                                     {
                                         Id_s.Add(reader["id"].ToString());
                                         e_mail.Add(reader["E_MAIL"].ToString());
-                                        MessageBox.Show(reader["E_Mail"].ToString(), "мыло");
+                                        //MessageBox.Show(reader["E_Mail"].ToString(), "мыло");
                                     }
                                 }
                             }
@@ -403,6 +403,7 @@ namespace Document_circulation
         {
             i = listBox2.Items.Count;
             NameDeplistBox.Items.Insert(i, DepcomboBox.SelectedItem);
+            listBox4.Items.Insert(i, IdDepComboBox.Items[DepcomboBox.SelectedIndex]);
         }
 
         private void button8_Click(object sender, EventArgs e)
