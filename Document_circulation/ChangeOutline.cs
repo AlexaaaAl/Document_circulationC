@@ -31,7 +31,7 @@ namespace Document_circulation
             if (result == DialogResult.Yes)
             {
                 conn.Open();
-                if (checkBox1.Checked) //если стоит флажок на сроке подписания
+                if (checkBox1.Checked==true) //если стоит флажок на сроке подписания
                 {
                     string q = "UPDATE documents " +
                                 "set outline='" + textBox1.Text + "'," +
