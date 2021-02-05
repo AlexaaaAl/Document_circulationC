@@ -33,7 +33,10 @@ namespace Document_circulation
             timer1.Interval = 5000;
             timer1.Tick += new EventHandler(timer1_Tick_1);
             timer1.Start();
-            
+            this.dataGridView1.CellClick -= dataGridView1_CellClick;
+            //this.onSearch();
+            dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
+            FormClosing += new FormClosingEventHandler(MenuController_FormClosing);
         }
 
        
@@ -51,6 +54,8 @@ namespace Document_circulation
 
         private void MenuController_Load(object sender, EventArgs e) //прогрузка формы и таблицы
         {
+           
+            
             if (internalDocuments.Checked)
             {
                 type_doc = "Внутренний документ";
@@ -187,6 +192,9 @@ namespace Document_circulation
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) //выбор строки в таблице
         {
+        }
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
             conn.Close();
             conn.Open();
             string q = "UPDATE documents " +
@@ -203,7 +211,7 @@ namespace Document_circulation
             }*/
             ChangeDocument f2 = new ChangeDocument();
             f2.number = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Номер"].Value.ToString();
-            f2.outline= dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Наименование"].Value.ToString();
+            f2.outline = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Наименование"].Value.ToString();
             f2.comment = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["comments"].Value.ToString();
             f2.ID_Doc = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString();
             f2.MIDDLE_NAME = MIDDLE_NAME;
@@ -215,14 +223,6 @@ namespace Document_circulation
             f2.name = tulf2.getName();
             f2.ID = ID;
             f2.Show();
-            
-        }
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            /*MessageBox.Show(dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["number"].Value.ToString());
-            ChangeDocument f2 = new ChangeDocument();
-            f2.number = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["number"].Value.ToString();
-            f2.Show();*/
         }
 
         private void создатьНовыйДокументToolStripMenuItem_Click(object sender, EventArgs e)
@@ -247,6 +247,10 @@ namespace Document_circulation
         private void добавитьПользователяToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+        private void MenuController_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

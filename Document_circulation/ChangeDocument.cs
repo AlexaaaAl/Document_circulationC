@@ -40,7 +40,7 @@ namespace Document_circulation
 
         private void ChangeDocument_Load(object sender, EventArgs e)
         {
-            label3.Text = this.number+ID;
+            label3.Text = this.number/*+ID*/;
             label1.Text = this.outline;
             richTextBox1.Text = this.comment;
             conn.Close();

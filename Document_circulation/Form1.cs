@@ -48,13 +48,13 @@ namespace Document_circulation
                 if (reader.Read())
                 {
                    f=int.Parse(reader["id_user"].ToString());
-                    // this.Hide();
-                    this.Close();
+                   this.Hide();
+                   //this.Close();
                    MenuController f2 = new MenuController();
                    f2.tulf2.setIdUser(f);
                    f2.tulf2.setName(textBox1.Text);
-                    Application.Run(f2);
-                    //f2.Show();
+                   //Application.Run(f2);
+                   f2.Show();
                 }
                 else
                 {
