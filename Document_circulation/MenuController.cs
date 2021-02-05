@@ -75,11 +75,20 @@ namespace Document_circulation
             this.v1TableAdapter.Fill(this.document_circulation_pathDataSet1.v1);
 
             var db = new DBUtils();
+            /* query = "SELECT id_document,number as Номер,outline as Наименование," +
+                 "sender as Отправитель, LAST_NAME as Получатель," +
+                 "comments,date_added as 'Дата добавления'," +
+                 "date as 'Срок исполнения',status as Статус,document_type " +
+                 "from v1 WHERE document_type='"+ type_doc + "' and (id_sender= " +
+                 "(select id_user from log where login='" + tulf2.getName() +
+                 "') or id_recipient=(select id_user from log where login='" +
+                 tulf2.getName() + "'));";*/
             query = "SELECT id_document,number as Номер,outline as Наименование," +
-                "sender as Отправитель, LAST_NAME as Получатель," +
+                "concat(`SENDERLast`,' ',left(`SENDERfirst`,1),'. ',left(`SENDERMIDDLE`,1),'.')  as Отправитель," +
+                "concat(`RECIPLast`,' ',left(`RECIPFirst`,1),'. ',left(`RECIPMIDDLE`,1),'.')  as Получатель," +
                 "comments,date_added as 'Дата добавления'," +
                 "date as 'Срок исполнения',status as Статус,document_type " +
-                "from v1 WHERE document_type='"+ type_doc + "' and (id_sender= " +
+                "from viewdoc WHERE document_type='" + type_doc + "' and (id_sender= " +
                 "(select id_user from log where login='" + tulf2.getName() +
                 "') or id_recipient=(select id_user from log where login='" +
                 tulf2.getName() + "'));";

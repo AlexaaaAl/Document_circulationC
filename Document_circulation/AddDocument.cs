@@ -159,180 +159,190 @@ namespace Document_circulation
 
         private void button5_Click(object sender, EventArgs e)
         {
-            try {
-                conn.Close();
-                conn.Open();
-                //выбираем последний номер сохраненной записи о пересылке из бд и сохраняем
-                string query = "SELECT max(number) as MaxN " +
-                        "from documents;";
-                using (var reader = new MySqlCommand(query, conn).ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        if (!reader.IsDBNull(reader.GetOrdinal("MaxN")))
-                        {
-                            MaxNumber = int.Parse(reader["MaxN"].ToString()) + 1;
-                        }
-                    }
-                }
-                //выбираем последний номер файла из бд и сохраняем
-                query = "SELECT max(id) MaxD" +
-                        " from document_file;";
-                using (var reader = new MySqlCommand(query, conn).ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        if (!reader.IsDBNull(reader.GetOrdinal("MaxD")))
-                        {
-                            MaxIdF = int.Parse(reader["MaxD"].ToString()) + 1;
-                        }
-                    }
-                }
-                //загружаем файлы на сервер и в бд
-                for (int i = 0; i < listBox1.Items.Count; i++)
-                {
-                    //try
-                    // {
-                    string s = listBox3.Items[i].ToString();
-                    string f = "\\\\" + IP_SERVER + "\\Программа\\" +
-                        DEPARTMENT + "\\" + LAST_NAME + " " +
-                        FIRST_NAME + " " + MIDDLE_NAME + "\\" +
-                        DateTime.Today.ToString("d");
-                    if (!Directory.Exists(f)) Directory.CreateDirectory(f);
-                    f = f + "\\" + Path.GetFileName(s);
-                    File.Copy(s, f, true);
-                    string q = "INSERT INTO `document_file`" +
-                            "    (`id` ,`path`, `file`)" +
-                            "    VALUES (" + MaxIdF + ",'" + f.Replace("\\", "\\\\") + "','" + Path.GetFileName(s) + "');";
-                    MySqlCommand command = new MySqlCommand(q, conn);
-                    // выполняем запрос
-                    command.ExecuteNonQuery();
-                    IdFile.Add(MaxIdF);//записываем все номера в массив (( номера файлов))
-                    MaxIdF += 1;
-                    //MessageBox.Show( "ок");
-                    /* }
-                     catch(Exception ex)
-                     {
-                         MessageBox.Show(ex.Message,"ошибка");
-                     }*/
-
-                }
+            if (textBox1.Text != String.Empty)
+            {
                 try
                 {
-                    //выбираем все id получателей
-                    if (IdlistBox.Items.Count!=0)
-                    for (int i = 0; i < IdlistBox.Items.Count; i++)
+                    conn.Close();
+                    conn.Open();
+                    //выбираем последний номер сохраненной записи о пересылке из бд и сохраняем
+                    string query = "SELECT max(number) as MaxN " +
+                            "from documents;";
+                    using (var reader = new MySqlCommand(query, conn).ExecuteReader())
                     {
-                        string words = IdlistBox.Items[i].ToString();
-                        query = "SELECT id,E_MAIL From users where id = " +
-                                words + ";";
-                        using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+                        if (reader.Read())
                         {
-                            if (reader.Read())
+                            if (!reader.IsDBNull(reader.GetOrdinal("MaxN")))
                             {
-                                Id_s.Add(reader["id"].ToString());
-                                e_mail.Add(reader["E_MAIL"].ToString());
-
+                                MaxNumber = int.Parse(reader["MaxN"].ToString()) + 1;
                             }
                         }
-                        //IdRecipient[i] = id_send;                   
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка при пользователей, Документ не добавлен!");
-                }
-                try
-                {
-                    
-                    if (DepcomboBox.Items.Count != 0)
-                    for (int i = 0; i < DepcomboBox.Items.Count-1; i++)
+                    //выбираем последний номер файла из бд и сохраняем
+                    query = "SELECT max(id) MaxD" +
+                            " from document_file;";
+                    using (var reader = new MySqlCommand(query, conn).ExecuteReader())
                     {
-                        string words = IdDepComboBox.Items[i].ToString();
-                        string query1 = "select id,E_MAIL from users " +
-                                "where Dep_id=" +
-                                words + ";";
-                        using (var reader = new MySqlCommand(query1, conn).ExecuteReader())
+                        if (reader.Read())
                         {
-                            while (reader.Read())
-                            { 
-                                Id_s.Add(reader["id"].ToString());
-                                e_mail.Add(reader["E_MAIL"].ToString());
-                                    MessageBox.Show(reader["E_Mail"].ToString(), "мыло");
+                            if (!reader.IsDBNull(reader.GetOrdinal("MaxD")))
+                            {
+                                MaxIdF = int.Parse(reader["MaxD"].ToString()) + 1;
                             }
                         }
                     }
+                    //загружаем файлы на сервер и в бд
+                    for (int i = 0; i < listBox1.Items.Count; i++)
+                    {
+                        //try
+                        // {
+                        string s = listBox3.Items[i].ToString();
+                        string f = "\\\\" + IP_SERVER + "\\Программа\\" +
+                            DEPARTMENT + "\\" + LAST_NAME + " " +
+                            FIRST_NAME + " " + MIDDLE_NAME + "\\" +
+                            DateTime.Today.ToString("d");
+                        if (!Directory.Exists(f)) Directory.CreateDirectory(f);
+                        f = f + "\\" + Path.GetFileName(s);
+                        File.Copy(s, f, true);
+                        string q = "INSERT INTO `document_file`" +
+                                "    (`id` ,`path`, `file`)" +
+                                "    VALUES (" + MaxIdF + ",'" + f.Replace("\\", "\\\\") + "','" + Path.GetFileName(s) + "');";
+                        MySqlCommand command = new MySqlCommand(q, conn);
+                        // выполняем запрос
+                        command.ExecuteNonQuery();
+                        IdFile.Add(MaxIdF);//записываем все номера в массив (( номера файлов))
+                        MaxIdF += 1;
+                        //MessageBox.Show( "ок");
+                        /* }
+                         catch(Exception ex)
+                         {
+                             MessageBox.Show(ex.Message,"ошибка");
+                         }*/
+
+                    }
+                    try
+                    {
+                        //выбираем все id получателей
+                        if (IdlistBox.Items.Count != 0)
+                            for (int i = 0; i < IdlistBox.Items.Count; i++)
+                            {
+                                string words = IdlistBox.Items[i].ToString();
+                                query = "SELECT id,E_MAIL From users where id = " +
+                                        words + ";";
+                                using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+                                {
+                                    if (reader.Read())
+                                    {
+                                        Id_s.Add(reader["id"].ToString());
+                                        e_mail.Add(reader["E_MAIL"].ToString());
+
+                                    }
+                                }
+                                //IdRecipient[i] = id_send;                   
+                            }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка при пользователей, Документ не добавлен!");
+                    }
+                    try
+                    {
+
+                        if (DepcomboBox.Items.Count != 0)
+                            for (int i = 0; i < DepcomboBox.Items.Count - 1; i++)
+                            {
+                                string words = IdDepComboBox.Items[i].ToString();
+                                string query1 = "select id,E_MAIL from users " +
+                                        "where Dep_id=" +
+                                        words + ";";
+                                using (var reader = new MySqlCommand(query1, conn).ExecuteReader())
+                                {
+                                    while (reader.Read())
+                                    {
+                                        Id_s.Add(reader["id"].ToString());
+                                        e_mail.Add(reader["E_MAIL"].ToString());
+                                        MessageBox.Show(reader["E_Mail"].ToString(), "мыло");
+                                    }
+                                }
+                            }
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка при добавлении департаментов, Документ не добавлен!");
+                    }
+                    try
+                    {
+                        for (int i = 0; i < Id_s.Count; i++)
+                        {
+                            if (checkBox1.Checked) //если стоит флажок на сроке подписания
+                            {
+
+                                string q = "INSERT INTO `documents`" +
+                                            "    ( `number`,`outline`, `id_sender`, `id_recipient`,`date`,`comments`,`document_type`)" +
+                                            "    VALUES" +
+                                            "           (" + MaxNumber + ",'" + textBox1.Text + "'," +
+                                            ID + "," +
+                                            Id_s[i] + ",'" +
+                                            dateTimePicker1.Value.ToString("s") + "','" + richTextBox1.Text + "','" +
+                                           typeComboBox1.Text + "');";
+
+                                MySqlCommand command = new MySqlCommand(q, conn);
+                                // выполняем запрос
+                                command.ExecuteNonQuery();
+                                SendMail.SEND_MAIlTORECIP(e_mail[i], textBox1.Text);
+
+                            }
+                            else
+                            {
+
+                                //MessageBox.Show(id_send.ToString(), "id");
+                                string q = "INSERT INTO `documents`" +
+                                               "    ( `number`,`outline`, `id_sender`, `id_recipient`,`comments`,`document_type`)" +
+                                               "    VALUES" +
+                                               "           (" + MaxNumber + ",'" + textBox1.Text + "'," +
+                                               ID + "," +
+                                                Id_s[i] + ",'" + richTextBox1.Text + "','" +
+                                              typeComboBox1.Text + "');";
+                                MySqlCommand command = new MySqlCommand(q, conn);
+                                // выполняем запрос
+                                command.ExecuteNonQuery();
+                                //отправка сообщения
+                                SendMail.SEND_MAIlTORECIP(e_mail[i], textBox1.Text);
+
+                            }
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка при добавлении, Документ не добавлен!");
+                    }
+                    // MessageBox.Show(id_send.ToString(), "id_______hgkv");
+
+
+                    foreach (int i in IdFile)
+                    {
+
+                        string q = "INSERT INTO `all_one`" +
+                                "    (`id_doc`, `id_file`)" + "    VALUES ("
+                                + MaxNumber + "," + i + ");";
+                        MySqlCommand command = new MySqlCommand(q, conn);
+                        // выполняем запрос
+                        command.ExecuteNonQuery();
+                    }
+                    conn.Close();
+                    this.Close();
                 }
-            
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Ошибка при добавлении департаментов, Документ не добавлен!");
-                }
-                try { 
-                for (int i = 0; i < Id_s.Count; i++) {
-                    if (checkBox1.Checked) //если стоит флажок на сроке подписания
-                    {
-
-                        string q = "INSERT INTO `documents`" +
-                                    "    ( `number`,`outline`, `id_sender`, `id_recipient`,`date`,`comments`,`document_type`)" +
-                                    "    VALUES" +
-                                    "           (" + MaxNumber + ",'" + textBox1.Text + "'," +
-                                    ID + "," +
-                                    Id_s[i] + ",'" +
-                                    dateTimePicker1.Value.ToString("s") + "','" + richTextBox1.Text + "','" +
-                                   typeComboBox1.Text + "');";
-
-                        MySqlCommand command = new MySqlCommand(q, conn);
-                        // выполняем запрос
-                        command.ExecuteNonQuery();
-                        SendMail.SEND_MAIlTORECIP(e_mail[i], textBox1.Text);
-
-                    }
-                    else
-                    {
-
-                        //MessageBox.Show(id_send.ToString(), "id");
-                        string q = "INSERT INTO `documents`" +
-                                       "    ( `number`,`outline`, `id_sender`, `id_recipient`,`comments`,`document_type`)" +
-                                       "    VALUES" +
-                                       "           (" + MaxNumber + ",'" + textBox1.Text + "'," +
-                                       ID + "," +
-                                        Id_s[i] + ",'" + richTextBox1.Text + "','" +
-                                      typeComboBox1.Text + "');";
-                        MySqlCommand command = new MySqlCommand(q, conn);
-                        // выполняем запрос
-                        command.ExecuteNonQuery();
-                        //отправка сообщения
-                        SendMail.SEND_MAIlTORECIP(e_mail[i], textBox1.Text);
-
-                    }
-                   
+                    MessageBox.Show(ex.Message, "Ошибка, Документ не добавлен!");
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Ошибка при добавлении, Документ не добавлен!");
-             }
-                // MessageBox.Show(id_send.ToString(), "id_______hgkv");
-
-
-                foreach (int i in IdFile)
-                {
-
-                    string q = "INSERT INTO `all_one`" +
-                            "    (`id_doc`, `id_file`)" + "    VALUES ("
-                            + MaxNumber + "," + i + ");";
-                    MySqlCommand command = new MySqlCommand(q, conn);
-                    // выполняем запрос
-                    command.ExecuteNonQuery();
-                }
-                conn.Close();
-                this.Close();
+                MessageBox.Show("Заполните наименование", "");
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Ошибка, Документ не добавлен!");
-            }       
         }
         private void userComboBox2_TextChanged_1(object sender, EventArgs e)
         {
