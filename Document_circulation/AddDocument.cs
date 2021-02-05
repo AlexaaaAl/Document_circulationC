@@ -219,7 +219,7 @@ namespace Document_circulation
                 }
                 try
                 {
-                    /*//выбираем все id получателей
+                    //выбираем все id получателей
                     if (IdlistBox.Items.Count!=0)
                     for (int i = 0; i < IdlistBox.Items.Count; i++)
                     {
@@ -236,7 +236,7 @@ namespace Document_circulation
                             }
                         }
                         //IdRecipient[i] = id_send;                   
-                    }*/
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -244,9 +244,9 @@ namespace Document_circulation
                 }
                 try
                 {
-                    Id_s.Clear();
+                    
                     if (DepcomboBox.Items.Count != 0)
-                    for (int i = 0; i < DepcomboBox.Items.Count; i++)
+                    for (int i = 0; i < DepcomboBox.Items.Count-1; i++)
                     {
                         string words = IdDepComboBox.Items[i].ToString();
                         string query1 = "select id,E_MAIL from users " +
@@ -254,10 +254,11 @@ namespace Document_circulation
                                 words + ";";
                         using (var reader = new MySqlCommand(query1, conn).ExecuteReader())
                         {
-                            if (reader.Read())
+                            while (reader.Read())
                             { 
                                 Id_s.Add(reader["id"].ToString());
                                 e_mail.Add(reader["E_MAIL"].ToString());
+                                    MessageBox.Show(reader["E_Mail"].ToString(), "мыло");
                             }
                         }
                     }

@@ -129,7 +129,7 @@ namespace Document_circulation
             { 
                 if (String.Equals(row.Cells[8].Value.ToString(),"выполняется") )
                     row.DefaultCellStyle.BackColor = Color.Khaki;
-                if (String.Equals(row.Cells[8].Value.ToString(), "подписан"))
+                if (String.Equals(row.Cells[8].Value.ToString(), "подтверждён"))
                     row.DefaultCellStyle.BackColor = Color.GreenYellow;
                 if (String.Equals(row.Cells[8].Value.ToString(), "в ожидании"))
                     row.DefaultCellStyle.BackColor = Color.Chocolate;

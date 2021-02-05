@@ -178,7 +178,7 @@ namespace Document_circulation
             conn.Close();
             conn.Open();
             string q = "UPDATE documents " +
-                        "set status='подписан'" +
+                        "set status='подтверждён'" +
                         "where id_document=" + ID_Doc +";";
             MySqlCommand command = new MySqlCommand(q, conn);
             // выполняем запрос
