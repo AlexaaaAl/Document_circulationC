@@ -33,7 +33,6 @@ namespace Document_circulation
             this.nametext = new System.Windows.Forms.TextBox();
             this.lasttext = new System.Windows.Forms.TextBox();
             this.middletext = new System.Windows.Forms.TextBox();
-            this.otdeltext = new System.Windows.Forms.TextBox();
             this.positiontext = new System.Windows.Forms.TextBox();
             this.servertext = new System.Windows.Forms.TextBox();
             this.mailtext = new System.Windows.Forms.TextBox();
@@ -52,6 +51,9 @@ namespace Document_circulation
             this.label10 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.IdcomboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // nametext
@@ -78,18 +80,10 @@ namespace Document_circulation
             this.middletext.Size = new System.Drawing.Size(363, 29);
             this.middletext.TabIndex = 2;
             // 
-            // otdeltext
-            // 
-            this.otdeltext.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.otdeltext.Location = new System.Drawing.Point(128, 201);
-            this.otdeltext.Name = "otdeltext";
-            this.otdeltext.Size = new System.Drawing.Size(363, 29);
-            this.otdeltext.TabIndex = 3;
-            // 
             // positiontext
             // 
             this.positiontext.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.positiontext.Location = new System.Drawing.Point(128, 243);
+            this.positiontext.Location = new System.Drawing.Point(128, 281);
             this.positiontext.Name = "positiontext";
             this.positiontext.Size = new System.Drawing.Size(363, 29);
             this.positiontext.TabIndex = 4;
@@ -97,7 +91,7 @@ namespace Document_circulation
             // servertext
             // 
             this.servertext.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.servertext.Location = new System.Drawing.Point(128, 282);
+            this.servertext.Location = new System.Drawing.Point(128, 320);
             this.servertext.Name = "servertext";
             this.servertext.Size = new System.Drawing.Size(363, 29);
             this.servertext.TabIndex = 5;
@@ -105,7 +99,7 @@ namespace Document_circulation
             // mailtext
             // 
             this.mailtext.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mailtext.Location = new System.Drawing.Point(128, 323);
+            this.mailtext.Location = new System.Drawing.Point(128, 361);
             this.mailtext.Name = "mailtext";
             this.mailtext.Size = new System.Drawing.Size(363, 29);
             this.mailtext.TabIndex = 6;
@@ -113,7 +107,7 @@ namespace Document_circulation
             // logtext
             // 
             this.logtext.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.logtext.Location = new System.Drawing.Point(128, 363);
+            this.logtext.Location = new System.Drawing.Point(128, 401);
             this.logtext.Name = "logtext";
             this.logtext.Size = new System.Drawing.Size(363, 29);
             this.logtext.TabIndex = 7;
@@ -122,7 +116,7 @@ namespace Document_circulation
             // 
             this.RoleComboBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.RoleComboBox.FormattingEnabled = true;
-            this.RoleComboBox.Location = new System.Drawing.Point(128, 453);
+            this.RoleComboBox.Location = new System.Drawing.Point(128, 491);
             this.RoleComboBox.Name = "RoleComboBox";
             this.RoleComboBox.Size = new System.Drawing.Size(363, 29);
             this.RoleComboBox.TabIndex = 8;
@@ -172,7 +166,7 @@ namespace Document_circulation
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(12, 285);
+            this.label5.Location = new System.Drawing.Point(12, 320);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 21);
             this.label5.TabIndex = 13;
@@ -182,7 +176,7 @@ namespace Document_circulation
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(12, 326);
+            this.label6.Location = new System.Drawing.Point(12, 361);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(67, 21);
             this.label6.TabIndex = 14;
@@ -192,7 +186,7 @@ namespace Document_circulation
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(12, 366);
+            this.label7.Location = new System.Drawing.Point(12, 401);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(70, 21);
             this.label7.TabIndex = 15;
@@ -202,7 +196,7 @@ namespace Document_circulation
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(12, 406);
+            this.label8.Location = new System.Drawing.Point(12, 441);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 21);
             this.label8.TabIndex = 16;
@@ -212,7 +206,7 @@ namespace Document_circulation
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(12, 246);
+            this.label9.Location = new System.Drawing.Point(12, 281);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(101, 21);
             this.label9.TabIndex = 17;
@@ -221,7 +215,7 @@ namespace Document_circulation
             // passtext
             // 
             this.passtext.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passtext.Location = new System.Drawing.Point(128, 408);
+            this.passtext.Location = new System.Drawing.Point(128, 446);
             this.passtext.Name = "passtext";
             this.passtext.Size = new System.Drawing.Size(363, 29);
             this.passtext.TabIndex = 18;
@@ -230,7 +224,7 @@ namespace Document_circulation
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(15, 453);
+            this.label10.Location = new System.Drawing.Point(15, 488);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(58, 21);
             this.label10.TabIndex = 19;
@@ -241,7 +235,7 @@ namespace Document_circulation
             this.panel1.BackgroundImage = global::Document_circulation.Properties.Resources.Новый_проект__3___1_;
             this.panel1.Location = new System.Drawing.Point(-2, -2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(520, 68);
+            this.panel1.Size = new System.Drawing.Size(656, 68);
             this.panel1.TabIndex = 21;
             // 
             // button1
@@ -249,7 +243,7 @@ namespace Document_circulation
             this.button1.BackgroundImage = global::Document_circulation.Properties.Resources.Новый_проект__3___1_;
             this.button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(373, 519);
+            this.button1.Location = new System.Drawing.Point(373, 557);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 35);
             this.button1.TabIndex = 20;
@@ -257,11 +251,40 @@ namespace Document_circulation
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(326, 229);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(165, 43);
+            this.button2.TabIndex = 22;
+            this.button2.Text = "Добавить отделы";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(128, 194);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(363, 29);
+            this.comboBox1.TabIndex = 23;
+            // 
+            // IdcomboBox
+            // 
+            this.IdcomboBox.FormattingEnabled = true;
+            this.IdcomboBox.Location = new System.Drawing.Point(129, 199);
+            this.IdcomboBox.Name = "IdcomboBox";
+            this.IdcomboBox.Size = new System.Drawing.Size(362, 21);
+            this.IdcomboBox.TabIndex = 24;
+            // 
             // AddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(508, 570);
+            this.ClientSize = new System.Drawing.Size(502, 599);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label10);
@@ -280,15 +303,17 @@ namespace Document_circulation
             this.Controls.Add(this.mailtext);
             this.Controls.Add(this.servertext);
             this.Controls.Add(this.positiontext);
-            this.Controls.Add(this.otdeltext);
             this.Controls.Add(this.middletext);
             this.Controls.Add(this.lasttext);
             this.Controls.Add(this.nametext);
+            this.Controls.Add(this.IdcomboBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(518, 638);
             this.Name = "AddUser";
-            this.Text = "Добавление нового пользователя";
+            this.Text = "ы";
+            this.Load += new System.EventHandler(this.AddUser_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -299,7 +324,6 @@ namespace Document_circulation
         private System.Windows.Forms.TextBox nametext;
         private System.Windows.Forms.TextBox lasttext;
         private System.Windows.Forms.TextBox middletext;
-        private System.Windows.Forms.TextBox otdeltext;
         private System.Windows.Forms.TextBox positiontext;
         private System.Windows.Forms.TextBox servertext;
         private System.Windows.Forms.TextBox mailtext;
@@ -318,5 +342,8 @@ namespace Document_circulation
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox IdcomboBox;
     }
 }

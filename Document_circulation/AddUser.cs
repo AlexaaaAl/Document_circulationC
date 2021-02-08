@@ -14,6 +14,7 @@ namespace Document_circulation
     public partial class AddUser : Form
     {
         MySqlConnection conn = DBUtils.GetDBConnection();
+        DataTable patientTable = new DataTable();
         public AddUser()
         {
             InitializeComponent();
@@ -42,6 +43,34 @@ namespace Document_circulation
                     "    VALUES" +
                     "           (" + id_user + ",'" + logtext.Text + "','" + passtext.Text + "')";
             infoBox("Пользователь добавлен! ", null, "Success");*/
+        }
+
+        private void AddUser_Load(object sender, EventArgs e)
+        {
+            conn.Close();
+            conn.Open();
+            try 
+            {
+                //выводим всех сотрудников для выбора получателя документа
+                string CommandText = "SELECT idDep,Dep FROM departments ORDER BY Dep";
+                MySqlCommand myCommand = new MySqlCommand(CommandText, conn);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(myCommand);
+                adapter.Fill(patientTable);
+                for (int i = 0; i < patientTable.Rows.Count; i++)
+                {
+                    comboBox1.Items.Add(patientTable.Rows[i]["Dep"].ToString());
+                    IdcomboBox.Items.Add(patientTable.Rows[i]["idDep"].ToString());
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+            conn.Close();
+        }
+        public void Update_Load()
+        {
+            AddUser_Load(null, null);
         }
     }
 }
