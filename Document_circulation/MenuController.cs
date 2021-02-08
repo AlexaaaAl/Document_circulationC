@@ -255,7 +255,8 @@ namespace Document_circulation
 
         private void добавитьПользователяToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            AddUser f2 = new AddUser();
+            f2.Show();
         }
         private void MenuController_FormClosing(object sender, FormClosingEventArgs e)
         {

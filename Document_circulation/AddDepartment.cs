@@ -14,6 +14,7 @@ namespace Document_circulation
     public partial class AddDepartment : Form
     {
         MySqlConnection conn = DBUtils.GetDBConnection();
+        public event EventHandler SettingsApplied;
         public AddDepartment()
         {
             InitializeComponent();
@@ -28,15 +29,23 @@ namespace Document_circulation
             {
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.ExecuteNonQuery();
-                MessageBox.Show("Фаил изменён!", "Изменение"); // Выводим сообщение о звершении.
                 this.Close();
-                AddUser f2 = new AddUser();
-                f2.Update_Load();
+                NotifySettingsApplied(e);
+
+                //AddUser.DepartmentUse();
+                /*AddUser f2 = new AddUser();
+                f2.DepartmentUse();*/
+              
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка");
             }
+        }
+        public void NotifySettingsApplied(EventArgs e)
+        {
+            if (SettingsApplied != null)
+                SettingsApplied(this, e);
         }
     }
 }
