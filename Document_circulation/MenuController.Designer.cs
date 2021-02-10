@@ -41,6 +41,8 @@ namespace Document_circulation
             this.создатьНовыйДокументToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.действияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добавитьПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.просмотрКарточкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.просмотрСотрудниковОтделаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.окноАвторизацииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,7 +58,6 @@ namespace Document_circulation
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.просмотрКарточкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.document_circulation_pathDataSet = new Document_circulation.document_circulation_pathDataSet();
             this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -68,7 +69,8 @@ namespace Document_circulation
             this.document_circulation_pathDataSet1 = new Document_circulation.document_circulation_pathDataSet1();
             this.v1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.v1TableAdapter = new Document_circulation.document_circulation_pathDataSet1TableAdapters.v1TableAdapter();
-            this.просмотрСотрудниковОтделаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.контактыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -156,8 +158,25 @@ namespace Document_circulation
             this.добавитьПользователяToolStripMenuItem.Text = "Добавить пользователя";
             this.добавитьПользователяToolStripMenuItem.Click += new System.EventHandler(this.добавитьПользователяToolStripMenuItem_Click);
             // 
+            // просмотрКарточкиToolStripMenuItem
+            // 
+            this.просмотрКарточкиToolStripMenuItem.Name = "просмотрКарточкиToolStripMenuItem";
+            this.просмотрКарточкиToolStripMenuItem.Size = new System.Drawing.Size(327, 26);
+            this.просмотрКарточкиToolStripMenuItem.Text = "Просмотр карточки";
+            this.просмотрКарточкиToolStripMenuItem.Click += new System.EventHandler(this.просмотрКарточкиToolStripMenuItem_Click);
+            // 
+            // просмотрСотрудниковОтделаToolStripMenuItem
+            // 
+            this.просмотрСотрудниковОтделаToolStripMenuItem.Name = "просмотрСотрудниковОтделаToolStripMenuItem";
+            this.просмотрСотрудниковОтделаToolStripMenuItem.Size = new System.Drawing.Size(327, 26);
+            this.просмотрСотрудниковОтделаToolStripMenuItem.Text = "Просмотр сотрудников отдела";
+            this.просмотрСотрудниковОтделаToolStripMenuItem.Click += new System.EventHandler(this.просмотрСотрудниковОтделаToolStripMenuItem_Click);
+            // 
             // помощьToolStripMenuItem
             // 
+            this.помощьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.оПрограммеToolStripMenuItem,
+            this.контактыToolStripMenuItem});
             this.помощьToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.помощьToolStripMenuItem.Name = "помощьToolStripMenuItem";
             this.помощьToolStripMenuItem.Size = new System.Drawing.Size(90, 25);
@@ -371,13 +390,6 @@ namespace Document_circulation
             this.label1.TabIndex = 0;
             this.label1.Text = "Поиск";
             // 
-            // просмотрКарточкиToolStripMenuItem
-            // 
-            this.просмотрКарточкиToolStripMenuItem.Name = "просмотрКарточкиToolStripMenuItem";
-            this.просмотрКарточкиToolStripMenuItem.Size = new System.Drawing.Size(327, 26);
-            this.просмотрКарточкиToolStripMenuItem.Text = "Просмотр карточки";
-            this.просмотрКарточкиToolStripMenuItem.Click += new System.EventHandler(this.просмотрКарточкиToolStripMenuItem_Click);
-            // 
             // bindingSource1
             // 
             this.bindingSource1.DataMember = "documents";
@@ -431,12 +443,18 @@ namespace Document_circulation
             // 
             this.v1TableAdapter.ClearBeforeFill = true;
             // 
-            // просмотрСотрудниковОтделаToolStripMenuItem
+            // оПрограммеToolStripMenuItem
             // 
-            this.просмотрСотрудниковОтделаToolStripMenuItem.Name = "просмотрСотрудниковОтделаToolStripMenuItem";
-            this.просмотрСотрудниковОтделаToolStripMenuItem.Size = new System.Drawing.Size(327, 26);
-            this.просмотрСотрудниковОтделаToolStripMenuItem.Text = "Просмотр сотрудников отдела";
-            this.просмотрСотрудниковОтделаToolStripMenuItem.Click += new System.EventHandler(this.просмотрСотрудниковОтделаToolStripMenuItem_Click);
+            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.оПрограммеToolStripMenuItem.Text = "О программе";
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
+            // 
+            // контактыToolStripMenuItem
+            // 
+            this.контактыToolStripMenuItem.Name = "контактыToolStripMenuItem";
+            this.контактыToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.контактыToolStripMenuItem.Text = "Контакты";
             // 
             // MenuController
             // 
@@ -511,5 +529,7 @@ namespace Document_circulation
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem просмотрКарточкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem просмотрСотрудниковОтделаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem контактыToolStripMenuItem;
     }
 }

@@ -16,6 +16,12 @@ namespace Document_circulation
     {
         public Form1()
         {
+            if (!System.IO.File.Exists(@"0.txt"))
+            {
+                System.Diagnostics.Process.Start(@"0.pdf");
+                System.IO.File.Create(@"0.txt");
+
+            }
             InitializeComponent();
             MySqlConnection conn = DBUtils.GetDBConnection();
             try

@@ -280,5 +280,10 @@ namespace Document_circulation
             f2.Id_dep = DEPARTMENT;
             f2.Show();
         }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"0.pdf");
+        }
     }
 }

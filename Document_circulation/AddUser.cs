@@ -63,7 +63,7 @@ namespace Document_circulation
             }
             catch(Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Ошибка");
             }
         }
 
