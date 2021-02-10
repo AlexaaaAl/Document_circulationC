@@ -37,7 +37,7 @@ namespace Document_circulation
 
         private void Form2_Load(object sender, EventArgs e)
         {
-
+            //l
         }
 
         private void ok_Click(object sender, EventArgs e)
