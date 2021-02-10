@@ -48,6 +48,15 @@ namespace Document_circulation
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.orders = new System.Windows.Forms.RadioButton();
+            this.incomingMailMoscow = new System.Windows.Forms.RadioButton();
+            this.incomingMail = new System.Windows.Forms.RadioButton();
+            this.internalDocuments = new System.Windows.Forms.RadioButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.просмотрКарточкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.document_circulation_pathDataSet = new Document_circulation.document_circulation_pathDataSet();
             this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -59,18 +68,11 @@ namespace Document_circulation
             this.document_circulation_pathDataSet1 = new Document_circulation.document_circulation_pathDataSet1();
             this.v1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.v1TableAdapter = new Document_circulation.document_circulation_pathDataSet1TableAdapters.v1TableAdapter();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.orders = new System.Windows.Forms.RadioButton();
-            this.incomingMailMoscow = new System.Windows.Forms.RadioButton();
-            this.incomingMail = new System.Windows.Forms.RadioButton();
-            this.internalDocuments = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.просмотрКарточкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.просмотрСотрудниковОтделаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).BeginInit();
@@ -79,7 +81,6 @@ namespace Document_circulation
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.v1BindingSource)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -141,7 +142,8 @@ namespace Document_circulation
             // 
             this.действияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.добавитьПользователяToolStripMenuItem,
-            this.просмотрКарточкиToolStripMenuItem});
+            this.просмотрКарточкиToolStripMenuItem,
+            this.просмотрСотрудниковОтделаToolStripMenuItem});
             this.действияToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.действияToolStripMenuItem.Name = "действияToolStripMenuItem";
             this.действияToolStripMenuItem.Size = new System.Drawing.Size(98, 25);
@@ -150,7 +152,7 @@ namespace Document_circulation
             // добавитьПользователяToolStripMenuItem
             // 
             this.добавитьПользователяToolStripMenuItem.Name = "добавитьПользователяToolStripMenuItem";
-            this.добавитьПользователяToolStripMenuItem.Size = new System.Drawing.Size(269, 26);
+            this.добавитьПользователяToolStripMenuItem.Size = new System.Drawing.Size(327, 26);
             this.добавитьПользователяToolStripMenuItem.Text = "Добавить пользователя";
             this.добавитьПользователяToolStripMenuItem.Click += new System.EventHandler(this.добавитьПользователяToolStripMenuItem_Click);
             // 
@@ -245,59 +247,6 @@ namespace Document_circulation
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
-            // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataMember = "documents";
-            this.bindingSource1.DataSource = this.document_circulation_pathDataSet;
-            this.bindingSource1.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
-            // 
-            // document_circulation_pathDataSet
-            // 
-            this.document_circulation_pathDataSet.DataSetName = "document_circulation_pathDataSet";
-            this.document_circulation_pathDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dataSet1BindingSource
-            // 
-            this.dataSet1BindingSource.DataSource = this.dataSet1;
-            this.dataSet1BindingSource.Position = 0;
-            // 
-            // dataSet1
-            // 
-            this.dataSet1.DataSetName = "DataSet1";
-            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // usersTableAdapter
-            // 
-            this.usersTableAdapter.ClearBeforeFill = true;
-            // 
-            // documentsTableAdapter
-            // 
-            this.documentsTableAdapter.ClearBeforeFill = true;
-            // 
-            // documentsBindingSource
-            // 
-            this.documentsBindingSource.DataMember = "documents";
-            this.documentsBindingSource.DataSource = this.document_circulation_pathDataSet;
-            // 
-            // documentsBindingSource1
-            // 
-            this.documentsBindingSource1.DataMember = "documents";
-            this.documentsBindingSource1.DataSource = this.document_circulation_pathDataSet;
-            // 
-            // document_circulation_pathDataSet1
-            // 
-            this.document_circulation_pathDataSet1.DataSetName = "document_circulation_pathDataSet1";
-            this.document_circulation_pathDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // v1BindingSource
-            // 
-            this.v1BindingSource.DataMember = "v1";
-            this.v1BindingSource.DataSource = this.document_circulation_pathDataSet1;
-            // 
-            // v1TableAdapter
-            // 
-            this.v1TableAdapter.ClearBeforeFill = true;
             // 
             // panel1
             // 
@@ -425,9 +374,69 @@ namespace Document_circulation
             // просмотрКарточкиToolStripMenuItem
             // 
             this.просмотрКарточкиToolStripMenuItem.Name = "просмотрКарточкиToolStripMenuItem";
-            this.просмотрКарточкиToolStripMenuItem.Size = new System.Drawing.Size(269, 26);
+            this.просмотрКарточкиToolStripMenuItem.Size = new System.Drawing.Size(327, 26);
             this.просмотрКарточкиToolStripMenuItem.Text = "Просмотр карточки";
             this.просмотрКарточкиToolStripMenuItem.Click += new System.EventHandler(this.просмотрКарточкиToolStripMenuItem_Click);
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataMember = "documents";
+            this.bindingSource1.DataSource = this.document_circulation_pathDataSet;
+            this.bindingSource1.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
+            // 
+            // document_circulation_pathDataSet
+            // 
+            this.document_circulation_pathDataSet.DataSetName = "document_circulation_pathDataSet";
+            this.document_circulation_pathDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataSet1BindingSource
+            // 
+            this.dataSet1BindingSource.DataSource = this.dataSet1;
+            this.dataSet1BindingSource.Position = 0;
+            // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "DataSet1";
+            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // usersTableAdapter
+            // 
+            this.usersTableAdapter.ClearBeforeFill = true;
+            // 
+            // documentsTableAdapter
+            // 
+            this.documentsTableAdapter.ClearBeforeFill = true;
+            // 
+            // documentsBindingSource
+            // 
+            this.documentsBindingSource.DataMember = "documents";
+            this.documentsBindingSource.DataSource = this.document_circulation_pathDataSet;
+            // 
+            // documentsBindingSource1
+            // 
+            this.documentsBindingSource1.DataMember = "documents";
+            this.documentsBindingSource1.DataSource = this.document_circulation_pathDataSet;
+            // 
+            // document_circulation_pathDataSet1
+            // 
+            this.document_circulation_pathDataSet1.DataSetName = "document_circulation_pathDataSet1";
+            this.document_circulation_pathDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // v1BindingSource
+            // 
+            this.v1BindingSource.DataMember = "v1";
+            this.v1BindingSource.DataSource = this.document_circulation_pathDataSet1;
+            // 
+            // v1TableAdapter
+            // 
+            this.v1TableAdapter.ClearBeforeFill = true;
+            // 
+            // просмотрСотрудниковОтделаToolStripMenuItem
+            // 
+            this.просмотрСотрудниковОтделаToolStripMenuItem.Name = "просмотрСотрудниковОтделаToolStripMenuItem";
+            this.просмотрСотрудниковОтделаToolStripMenuItem.Size = new System.Drawing.Size(327, 26);
+            this.просмотрСотрудниковОтделаToolStripMenuItem.Text = "Просмотр сотрудников отдела";
+            this.просмотрСотрудниковОтделаToolStripMenuItem.Click += new System.EventHandler(this.просмотрСотрудниковОтделаToolStripMenuItem_Click);
             // 
             // MenuController
             // 
@@ -450,6 +459,8 @@ namespace Document_circulation
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).EndInit();
@@ -458,8 +469,6 @@ namespace Document_circulation
             ((System.ComponentModel.ISupportInitialize)(this.documentsBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.document_circulation_pathDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.v1BindingSource)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -501,5 +510,6 @@ namespace Document_circulation
         private System.Windows.Forms.ToolStripMenuItem закрытьПрограммуToolStripMenuItem;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem просмотрКарточкиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem просмотрСотрудниковОтделаToolStripMenuItem;
     }
 }

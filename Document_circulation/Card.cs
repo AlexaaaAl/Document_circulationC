@@ -45,13 +45,7 @@ namespace Document_circulation
                     label8.Text= reader["E_MAIL"].ToString();
                 }
             }
-            using (var reader1 = new MySqlCommand(query1, conn).ExecuteReader())
-            {
-                if (reader1.Read())
-                {
-                    label7.Text = reader1["Dep"].ToString();
-                }
-            }
+          
             conn.Close();
         }
     }

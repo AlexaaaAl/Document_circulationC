@@ -44,7 +44,7 @@ namespace Document_circulation
         {
              //кнопка фильтрации
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter =
-                String.Format("outline like '{0}%'", textBox1.Text);
+                String.Format("Наименование like '{0}%'", textBox1.Text);
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -114,7 +114,7 @@ namespace Document_circulation
                     LAST_NAME = reader["LAST_NAME"].ToString();
                     FIRST_NAME = reader["FIRST_NAME"].ToString();
                     MIDDLE_NAME = reader["MIDDLE_NAME"].ToString();
-                    //DEPARTMENT = reader["DEPARTMENT"].ToString();
+                    DEPARTMENT = reader["Dep_id"].ToString();
                     IP_SERVER = reader["ip_server"].ToString();
                     E_MAIL= reader["E_MAIL"].ToString();
                     ID =reader["ID"].ToString();
@@ -126,10 +126,14 @@ namespace Document_circulation
                         добавитьПользователяToolStripMenuItem.Enabled = false;
                         
                     }
-                    if (g != 3)
+                    if (g != 4)
                     {
                         incomingMail.Visible = false;
                         incomingMailMoscow.Visible = false;
+                    }
+                    if (g != 3)
+                    {
+                        просмотрСотрудниковОтделаToolStripMenuItem.Enabled = false;
                     }
                 }
             }
@@ -267,6 +271,13 @@ namespace Document_circulation
         {
             Card f2 = new Card();
             f2.id = ID;
+            f2.Show();
+        }
+
+        private void просмотрСотрудниковОтделаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cards f2 = new Cards();
+            f2.Id_dep = DEPARTMENT;
             f2.Show();
         }
     }
