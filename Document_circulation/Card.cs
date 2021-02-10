@@ -42,25 +42,7 @@ namespace Document_circulation
                     label5.Text += reader["MIDDLE_NAME"].ToString();
                     label6.Text= reader["position"].ToString();
                     query1 = "SELECT Dep from departments where idDEP="+ reader["Dep_id"].ToString() + ";";
-                   
                     label8.Text= reader["E_MAIL"].ToString();
-                    //DEPARTMENT = reader["DEPARTMENT"].ToString();
-                    /*IP_SERVER = reader["ip_server"].ToString();
-                    E_MAIL = reader["E_MAIL"].ToString();
-                    ID = reader["ID"].ToString();
-                    label2.Text = reader["LAST_NAME"].ToString() + " " + reader["FIRST_NAME"].ToString() +
-                        " " + reader["MIDDLE_NAME"].ToString();
-                    int g = int.Parse(reader["ROLE_ID"].ToString());
-                    if (g != 1)
-                    {
-                        добавитьПользователяToolStripMenuItem.Enabled = false;
-
-                    }
-                    if (g != 3)
-                    {
-                        incomingMail.Visible = false;
-                        incomingMailMoscow.Visible = false;
-                    }*/
                 }
             }
             using (var reader1 = new MySqlCommand(query1, conn).ExecuteReader())
