@@ -104,7 +104,7 @@ namespace Document_circulation
             dataGridView1.Columns["document_type"].Visible = false;
             dataGridView1.ClearSelection();
             //conn.Open();
-            query = "SELECT ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME,DEPARTMENT,ip_server,E_MAIL,ROLE_ID FROM users WHERE ID= " +
+            query = "SELECT ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME,Dep_id,ip_server,E_MAIL,ROLE_ID FROM users WHERE ID= " +
                 "(select id_user from log where login='" + tulf2.getName() +
                 "');";
             using (var reader = new MySqlCommand(query, conn).ExecuteReader())
@@ -114,7 +114,7 @@ namespace Document_circulation
                     LAST_NAME = reader["LAST_NAME"].ToString();
                     FIRST_NAME = reader["FIRST_NAME"].ToString();
                     MIDDLE_NAME = reader["MIDDLE_NAME"].ToString();
-                    DEPARTMENT = reader["DEPARTMENT"].ToString();
+                    //DEPARTMENT = reader["DEPARTMENT"].ToString();
                     IP_SERVER = reader["ip_server"].ToString();
                     E_MAIL= reader["E_MAIL"].ToString();
                     ID =reader["ID"].ToString();
@@ -261,6 +261,13 @@ namespace Document_circulation
         private void MenuController_FormClosing(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void просмотрКарточкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Card f2 = new Card();
+            f2.id = ID;
+            f2.Show();
         }
     }
 }
