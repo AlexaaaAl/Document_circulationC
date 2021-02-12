@@ -112,13 +112,14 @@ namespace Document_circulation
 
                         }
                     }
-                    if (!String.IsNullOrEmpty(date)) { 
-                    q = "INSERT INTO `documents`" +
+                    if (!String.IsNullOrEmpty(date)) {
+                        DateTime enteredDate = DateTime.Parse(date);
+                        q = "INSERT INTO `documents`" +
                                        " ( `number`,`outline`, `id_sender`, `id_recipient`,`date`,`comments`,`document_type`)" +
                                        " VALUES" +
                                        "(" + number + ",'" + outline + "'," +
                                        ID + "," + id_send + ",'" +
-                                       date + "','" + comments + "','" +
+                                       enteredDate + "','" + comments + "','" +
                                       document_type + "');"; 
                     }
                     else
