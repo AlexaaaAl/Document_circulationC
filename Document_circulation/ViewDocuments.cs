@@ -110,14 +110,14 @@ namespace Document_circulation
                     filePath = OPF.FileName;
                     fileName = Path.GetFileName(OPF.FileName);
                 }
-                query = "SELECT ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME,DEPARTMENT,ip_server FROM users WHERE ID= " +
+                query = "SELECT select ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME,Dep,ip_server from users inner join departments on departments.idDep=users.Dep_id WHERE users.ID= " +
                 Id +";";
                 using (var reader = new MySqlCommand(query, conn).ExecuteReader())
                 {
                     if (reader.Read())
                     {
                         pathtocopy = "\\\\" + reader["ip_server"].ToString() + "\\Программа\\" +
-                         reader["DEPARTMENT"].ToString() + "\\" + reader["LAST_NAME"].ToString() + " " +
+                         reader["Dep"].ToString() + "\\" + reader["LAST_NAME"].ToString() + " " +
                         reader["FIRST_NAME"].ToString() + " " + reader["MIDDLE_NAME"].ToString() + "\\" +
                         DateTime.Today.ToString("d");                     
                     }
