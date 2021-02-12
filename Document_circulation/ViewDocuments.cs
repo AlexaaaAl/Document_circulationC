@@ -110,8 +110,10 @@ namespace Document_circulation
                     filePath = OPF.FileName;
                     fileName = Path.GetFileName(OPF.FileName);
                 }
-                query = "SELECT select ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME,Dep,ip_server from users inner join departments on departments.idDep=users.Dep_id WHERE users.ID= " +
-                Id +";";
+                query = "select `ID`,`LAST_NAME`,`FIRST_NAME`,`MIDDLE_NAME`,`Dep`," +
+                    "`ip_server` from `users` inner join `departments` on " +
+                    "`departments`.`idDep`=`users`.`Dep_id` where id=" +
+                    Id +";";
                 using (var reader = new MySqlCommand(query, conn).ExecuteReader())
                 {
                     if (reader.Read())
@@ -127,7 +129,9 @@ namespace Document_circulation
                 File.Copy(filePath, pathtocopy, true);
                 string q = "INSERT INTO `document_file`" +
                             "    (`id` ,`path`, `file`)" +
-                            "    VALUES (" + MaxIdF + ",'" + pathtocopy.Replace("\\", "\\\\") + "','" + Path.GetFileName(pathtocopy) + "');";
+                            "    VALUES (" + MaxIdF + ",'" + 
+                            pathtocopy.Replace("\\", "\\\\") + "','" + 
+                            Path.GetFileName(pathtocopy) + "');";
                 MySqlCommand command = new MySqlCommand(q, conn);
                 // выполняем запрос
                 command.ExecuteNonQuery();

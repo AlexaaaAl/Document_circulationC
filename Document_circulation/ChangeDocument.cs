@@ -204,20 +204,21 @@ namespace Document_circulation
                        DEPARTMENT + "\\" + LAST_NAME + " " +
                        FIRST_NAME + " " + MIDDLE_NAME + "\\" +
                        DateTime.Today.ToString("d");
+                string result = "";
                 //string result = Microsoft.VisualBasic.Interaction.InputBox("Коментарий:");
-                Form2 testDialog = new Form2();
-                string result="";
-                // Show testDialog as a modal dialog and determine if DialogResult = OK.
-                if (testDialog.ShowDialog(this) == DialogResult.OK)
-                {
-                    // Read the contents of testDialog's TextBox.
-                    result = testDialog.TextBox1.Text;
-                }
-                else
-                {
-                    //result = "Cancelled";
-                }
-                testDialog.Dispose();
+                /* Form2 testDialog = new Form2();
+
+                 // Show testDialog as a modal dialog and determine if DialogResult = OK.
+                 if (testDialog.ShowDialog(this) == DialogResult.OK)
+                 {
+                     // Read the contents of testDialog's TextBox.
+                     //result = testDialog.TextBox1.Text;
+                 }
+                 else
+                 {
+                     //result = "Cancelled";
+                 }
+                 testDialog.Dispose();*/
                 if (!Directory.Exists(f)) Directory.CreateDirectory(f);
                 f = f + "\\" + Path.GetFileName(filePath);
                 File.Copy(filePath, f, true);
@@ -228,9 +229,18 @@ namespace Document_circulation
                     "    VALUES" +
                     "           (" + ID_Doc + ",'" +
                     f.Replace("\\","\\\\") + "','" + fileName + "','" + result + "');";
-                MySqlCommand command = new MySqlCommand(insertAnswerRecip, conn);
+                try
+                {
+                    MySqlCommand command = new MySqlCommand(insertAnswerRecip, conn);
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Документ загружен", "Correct");
+                }
+                catch
+                {
+
+                }
                 // выполняем запрос
-                command.ExecuteNonQuery();
+                
                 conn.Close();
 
             }
@@ -252,7 +262,7 @@ namespace Document_circulation
                     "where id_doc =" + ID_Doc + ";";
                 using (var reader = new MySqlCommand(query, conn).ExecuteReader())
                 {
-                    if (reader.Read())
+                    while (reader.Read())
                     {
                         try
                         {
