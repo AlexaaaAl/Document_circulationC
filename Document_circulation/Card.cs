@@ -41,11 +41,36 @@ namespace Document_circulation
                     label5.Text += reader["FIRST_NAME"].ToString()+" ";
                     label5.Text += reader["MIDDLE_NAME"].ToString();
                     label6.Text= reader["position"].ToString();
-                    query1 = "SELECT Dep from departments where idDEP="+ reader["Dep_id"].ToString() + ";";
-                    label8.Text= reader["E_MAIL"].ToString();
+                    query1 = "SELECT Dep from departments where idDEP="+ reader["Dep_id"].ToString() + ";";                    
+                    textBox1.Text= reader["E_MAIL"].ToString();
                 }
+            }          
+            conn.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            conn.Close();
+            conn.Open();
+            string query = "UPDATE users  " +
+                       "set E_MAIL='" + textBox1.Text + " '" +
+                       "where id=" + id  + ";";
+            try
+            {
+                MySqlCommand command = new MySqlCommand(query, conn);
+                // выполняем запрос
+                command.ExecuteNonQuery();
+                int y = command.ExecuteNonQuery();
+                if (y != 0)
+                {
+                    //SendMail.SEND_MAIlTORECIP(E_Mail, "Добавлен коментарий " + outline);
+                }
+                MessageBox.Show("E_MAIL сохранен", "Выполнено");
             }
-          
+            catch (Exception ec)
+            {
+                MessageBox.Show(ec.Message, "E_MAIL не сохранен");
+            }
             conn.Close();
         }
     }

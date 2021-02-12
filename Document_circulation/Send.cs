@@ -90,6 +90,7 @@ namespace Document_circulation
                         outline = reader["outline"].ToString();
                         comments = reader["comments"].ToString();
                         date = reader["date"].ToString();
+                        //MessageBox.Show(date, "ДАТАЭ");
                         date_added = reader["date_added"].ToString();
                         status = reader["status"].ToString();
                         document_type = reader["document_type"].ToString();
@@ -119,7 +120,7 @@ namespace Document_circulation
                                        " VALUES" +
                                        "(" + number + ",'" + outline + "'," +
                                        ID + "," + id_send + ",'" +
-                                       enteredDate + "','" + comments + "','" +
+                                       enteredDate.ToString("s") + "','" + comments + "','" +
                                       document_type + "');"; 
                     }
                     else
