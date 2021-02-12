@@ -42,6 +42,8 @@ namespace Document_circulation
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.ids = new System.Windows.Forms.ListBox();
+            this.ido = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -59,7 +61,7 @@ namespace Document_circulation
             this.listBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 21;
-            this.listBox1.Location = new System.Drawing.Point(319, 87);
+            this.listBox1.Location = new System.Drawing.Point(319, 92);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(278, 172);
             this.listBox1.TabIndex = 1;
@@ -152,6 +154,7 @@ namespace Document_circulation
             this.button4.TabIndex = 9;
             this.button4.Text = "Удалить отдел";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -162,6 +165,7 @@ namespace Document_circulation
             this.button5.TabIndex = 10;
             this.button5.Text = "Добавить получателя ";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -172,12 +176,30 @@ namespace Document_circulation
             this.button6.TabIndex = 11;
             this.button6.Text = "Добавить отдел";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // ids
+            // 
+            this.ids.FormattingEnabled = true;
+            this.ids.Location = new System.Drawing.Point(319, 142);
+            this.ids.Name = "ids";
+            this.ids.Size = new System.Drawing.Size(120, 95);
+            this.ids.TabIndex = 12;
+            // 
+            // ido
+            // 
+            this.ido.FormattingEnabled = true;
+            this.ido.Location = new System.Drawing.Point(15, 142);
+            this.ido.Name = "ido";
+            this.ido.Size = new System.Drawing.Size(120, 95);
+            this.ido.TabIndex = 13;
             // 
             // Send
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.CancelButton = this.button3;
             this.ClientSize = new System.Drawing.Size(623, 373);
+            this.Controls.Add(this.ids);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -190,6 +212,7 @@ namespace Document_circulation
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.IdCombo);
             this.Controls.Add(this.IdPcomboBox);
+            this.Controls.Add(this.ido);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -215,5 +238,7 @@ namespace Document_circulation
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.ListBox ids;
+        private System.Windows.Forms.ListBox ido;
     }
 }
