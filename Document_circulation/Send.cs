@@ -35,18 +35,15 @@ namespace Document_circulation
 
             try
             {
-                //выводим всех сотрудников для выбора получателя документа
-                string CommandText = "SELECT id,LAST_NAME,FIRST_NAME,MIDDLE_NAME FROM users ORDER BY LAST_NAME";
+                //выводим все отделы
+                string CommandText = "SELECT idDep,Dep FROM departments ORDER BY Dep";
                 MySqlCommand myCommand = new MySqlCommand(CommandText, conn);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(myCommand);
                 adapter.Fill(patientTable);
                 for (int i = 0; i < patientTable.Rows.Count; i++)
                 {
-                    string s = patientTable.Rows[i]["id"].ToString() + " " +
-                        patientTable.Rows[i]["LAST_NAME"].ToString() + " " +
-                        patientTable.Rows[i]["FIRST_NAME"].ToString().Substring(0, 1) + ". " +
-                        patientTable.Rows[i]["MIDDLE_NAME"].ToString().Substring(0, 1) + ". ";
-                    comboBox1.Items.Add(s);
+                    comboBox2.Items.Add(patientTable.Rows[i]["Dep"].ToString());
+                    IdCombo.Items.Add(patientTable.Rows[i]["idDep"].ToString());
                 }
             }
             catch (Exception ex)
@@ -153,6 +150,40 @@ namespace Document_circulation
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int i = listBox2.Items.Count;
+            listBox2.Items.Insert(i, comboBox2.SelectedItem);
+            try
+            {
+                conn.Close();
+                conn.Open();
+                IdPcomboBox.Items.Clear();
+                comboBox1.Items.Clear();
+                patientTable.Clear();
+                string CommandText = "SELECT id,LAST_NAME,FIRST_NAME,MIDDLE_NAME,ROLE_ID FROM users  " +
+                    "inner join departments on users.Dep_id=departments.idDep WHERE Dep='" +
+                    comboBox2.Items[comboBox2.SelectedIndex] + "' ORDER BY LAST_NAME";
+                MySqlCommand myCommand = new MySqlCommand(CommandText, conn);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(myCommand);
+                adapter.Fill(patientTable);
+                for (int j = 0; j < patientTable.Rows.Count; j++)
+                {
+                    string s = patientTable.Rows[j]["LAST_NAME"].ToString() + " " +
+                        patientTable.Rows[j]["FIRST_NAME"].ToString().Substring(0, 1) + ". " +
+                        patientTable.Rows[j]["MIDDLE_NAME"].ToString().Substring(0, 1) + ". ";
+                    IdCombo.Items.Add(patientTable.Rows[j]["id"].ToString());
+                    comboBox1.Items.Add(s);
+                }
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
         }
     }
 }

@@ -50,7 +50,7 @@ namespace Document_circulation
 
             try
             {
-                //выводим всех сотрудников для выбора получателя документа
+                //выводим все отделы
                 string CommandText = "SELECT idDep,Dep FROM departments ORDER BY Dep";
                 MySqlCommand myCommand = new MySqlCommand(CommandText, conn);
                 MySqlDataAdapter  adapter = new MySqlDataAdapter(myCommand);
