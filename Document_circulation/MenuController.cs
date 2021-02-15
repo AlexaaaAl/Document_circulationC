@@ -285,5 +285,10 @@ namespace Document_circulation
         {
             System.Diagnostics.Process.Start(@"0.pdf");
         }
+
+        private void контактыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"1.pdf");
+        }
     }
 }

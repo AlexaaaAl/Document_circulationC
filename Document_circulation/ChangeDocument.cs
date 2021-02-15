@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace Document_circulation
 {
@@ -27,10 +28,12 @@ namespace Document_circulation
         public string IP_SERVER;
         public string E_Mail;
         public string comments_doc;
+        string userName;
         MySqlConnection conn = DBUtils.GetDBConnection();
         public ChangeDocument()
         {
             InitializeComponent();
+            userName = Environment.UserName;
         }
        
         private void label2_Click(object sender, EventArgs e)
@@ -89,42 +92,41 @@ namespace Document_circulation
             FolderBrowserDialog DirDialog = new FolderBrowserDialog();
             DirDialog.Description = "Выбор директории";
             //DirDialog.SelectedPath = @"C:\"+DEPARTMENT;
+            string SelectedPath = "C:\\Users\\" + userName + "\\Documents\\" + DEPARTMENT;
+            if (!Directory.Exists(SelectedPath)) 
+                Directory.CreateDirectory(SelectedPath);
 
-            if (!Directory.Exists(@"C:\" + DEPARTMENT)) 
-                Directory.CreateDirectory(@"C:\" + DEPARTMENT);
-
-            string SelectedPath = @"C:\" + DEPARTMENT;
+           
            /* if (DirDialog.ShowDialog() == DialogResult.OK)
             {*/
-
-                conn.Close();
-                conn.Open();
-                string query = "select path,file from document_file " +
+            conn.Close();
+            conn.Open();
+            string query = "select path,file from document_file " +
                     "inner join all_one on document_file.id = all_one.id_file " +
                     "inner join documents on all_one.id_doc = documents.number " +
                     "where documents.number ="+number+";";
-                using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+            using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+            {
+                while (reader.Read())
                 {
-                    while (reader.Read())
+                    try
                     {
-                        try
-                        {
-                              //Move the file.
-                              string s = Path.Combine(reader["path"].ToString());
-                              //reader["path"].ToString().Replace("/", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
-                              string f= Path.Combine(SelectedPath, reader["file"].ToString());
-                              //DirDialog.SelectedPath.Replace("\\", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
-                              File.Copy( s, f,true);
-                              MessageBox.Show(" Фаил скачан в папку{0}."+f);
-                        }
-                        catch (Exception ex)
-                        {
-                              MessageBox.Show( ex.ToString(), "The process failed: {0}");
-                        }
+                        //Move the file.
+                        string s = Path.Combine(reader["path"].ToString());
+                        //reader["path"].ToString().Replace("/", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
+                        string t=Interaction.InputBox("Название файла", "", reader["file"].ToString());
+                        string f = Path.Combine(SelectedPath, t);
+                        //DirDialog.SelectedPath.Replace("\\", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
+                        File.Copy( s, f,true);
+                        MessageBox.Show(" Фаил "+ t+" скачан в папку Документы ->" + DEPARTMENT );
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show( ex.ToString(), "The process failed: {0}");
                     }
                 }
-                conn.Close();
-            //}
+            }
+            conn.Close();
         }
 
         private void button5_Click(object sender, EventArgs e)

@@ -96,9 +96,9 @@ namespace Document_circulation
                 }
                 for (int i = 0; i < listBox1.Items.Count; i++)
                 {
-                    string[] words = listBox1.Items[i].ToString().Split(new char[] { ' ' });
+                    string words = ids.Items[i].ToString();
                     string query = "SELECT id,E_MAIL From users where id = " +
-                                words[0] + ";";
+                                words + ";";
                     int id_send = 0;
                     string e_mail = "";
                     using (var reader = new MySqlCommand(query, conn).ExecuteReader())
@@ -135,134 +135,55 @@ namespace Document_circulation
                     // выполняем запрос
                     command.ExecuteNonQuery();
                 }
+                for (int i = 0; i < listBox2.Items.Count; i++)
+                {
+                    string words = ido.Items[i].ToString();
+                    string query = "SELECT id,E_MAIL From users where dep_id = " +
+                                words + ";";
+                    List<int> id_send = new List<int>();
+                    List<string>  e_mail = new List<string>();
+                    using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            id_send.Add(int.Parse(reader["id"].ToString()));
+                            e_mail.Add(reader["E_MAIL"].ToString());
+                        }
+                    }
+                    for (int j = 0; j < id_send.Count(); j++)
+                    {
+                        if (!String.IsNullOrEmpty(date))
+                        {
+                            DateTime enteredDate = DateTime.Parse(date);
+                            q = "INSERT INTO `documents`" +
+                                           " ( `number`,`outline`, `id_sender`, `id_recipient`,`date`,`comments`,`document_type`)" +
+                                           " VALUES" +
+                                           "(" + number + ",'" + outline + "'," +
+                                           ID + "," + id_send[j] + ",'" +
+                                           enteredDate.ToString("s") + "','" + comments + "','" +
+                                          document_type + "');";
+                        }
+                        else
+                        {
+                            q = "INSERT INTO `documents`" +
+                                             " ( `number`,`outline`, `id_sender`, `id_recipient`,`comments`,`document_type`)" +
+                                             " VALUES" +
+                                             "(" + number + ",'" + outline + "'," +
+                                             ID + "," + id_send[j] + ",'" + comments + "','" +
+                                            document_type + "');";
+
+                        }
+                        SendMail.SEND_MAIlTORECIP(e_mail[j], outline);
+                        MySqlCommand command = new MySqlCommand(q, conn);
+                        command.ExecuteNonQuery();
+                    }                                     
+                }
                 conn.Close();
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка отправки");
             }
-            /*try
-            {
-                conn.Close();
-                conn.Open();
-
-                 //выбираем все id получателей
-                  if (IdlistBox.Items.Count != 0)
-                      for (int i = 0; i < IdlistBox.Items.Count; i++)
-                      {
-                          string words = IdlistBox.Items[i].ToString();
-                          query = "SELECT id,E_MAIL From users where id = " +
-                                  words + ";";
-                          using (var reader = new MySqlCommand(query, conn).ExecuteReader())
-                          {
-                              if (reader.Read())
-                              {
-                                  Id_s.Add(reader["id"].ToString());
-                                  e_mail.Add(reader["E_MAIL"].ToString());
-
-                              }
-                          }
-                          //IdRecipient[i] = id_send;                   
-                      }
-              }
-
-              try
-              {
-
-                  if (DepcomboBox.Items.Count != 0)
-                      for (int i = 0; i < NameDeplistBox.Items.Count; i++)
-                      {
-                          string words = listBox4.Items[i].ToString();
-                          string query1 = "select id,E_MAIL from users " +
-                                  "where Dep_id=" +
-                                  words + ";";
-                          using (var reader = new MySqlCommand(query1, conn).ExecuteReader())
-                          {
-                              while (reader.Read())
-                              {
-                                  Id_s.Add(reader["id"].ToString());
-                                  e_mail.Add(reader["E_MAIL"].ToString());
-                                  //MessageBox.Show(reader["E_Mail"].ToString(), "мыло");
-                              }
-                          }
-                      }
-              }
-
-              catch (Exception ex)
-              {
-                  MessageBox.Show(ex.Message, "Ошибка при добавлении департаментов, Документ не добавлен!");
-              }
-              try
-              {
-                  for (int i = 0; i < Id_s.Count; i++)
-                  {
-                      if (checkBox1.Checked) //если стоит флажок на сроке подписания
-                      {
-
-                          string q = "INSERT INTO `documents`" +
-                                      "    ( `number`,`outline`, `id_sender`, `id_recipient`,`date`,`comments`,`document_type`)" +
-                                      "    VALUES" +
-                                      "           (" + MaxNumber + ",'" + textBox1.Text + "'," +
-                                      ID + "," +
-                                      Id_s[i] + ",'" +
-                                      dateTimePicker1.Value.ToString("s") + "','" + richTextBox1.Text + "','" +
-                                     typeComboBox1.Text + "');";
-
-                          MySqlCommand command = new MySqlCommand(q, conn);
-                          // выполняем запрос
-                          command.ExecuteNonQuery();
-                          SendMail.SEND_MAIlTORECIP(e_mail[i], textBox1.Text);
-
-                      }
-                      else
-                      {
-
-                          //MessageBox.Show(id_send.ToString(), "id");
-                          string q = "INSERT INTO `documents`" +
-                                         "    ( `number`,`outline`, `id_sender`, `id_recipient`,`comments`,`document_type`)" +
-                                         "    VALUES" +
-                                         "           (" + MaxNumber + ",'" + textBox1.Text + "'," +
-                                         ID + "," +
-                                          Id_s[i] + ",'" + richTextBox1.Text + "','" +
-                                        typeComboBox1.Text + "');";
-                          MySqlCommand command = new MySqlCommand(q, conn);
-                          // выполняем запрос
-                          command.ExecuteNonQuery();
-                          //отправка сообщения
-                          SendMail.SEND_MAIlTORECIP(e_mail[i], textBox1.Text);
-
-                      }
-
-                  }
-              }
-              catch (Exception ex)
-              {
-                  MessageBox.Show(ex.Message, "Ошибка при добавлении, Документ не добавлен!");
-              }
-              // MessageBox.Show(id_send.ToString(), "id_______hgkv");
-
-
-              foreach (int i in IdFile)
-              {
-
-                  string q = "INSERT INTO `all_one`" +
-                          "    (`id_doc`, `id_file`)" + "    VALUES ("
-                          + MaxNumber + "," + i + ");";
-                  MySqlCommand command = new MySqlCommand(q, conn);
-                  // выполняем запрос
-                  command.ExecuteNonQuery();
-              }
-              conn.Close();
-              this.Close();
-          }
-          catch (Exception ex)
-          {
-              MessageBox.Show(ex.Message, "Ошибка, Документ не добавлен!");
-          }*/
-            
-
-            ChangeDocument f2 = new ChangeDocument();
-            f2.UpdateData();
             this.Close();
         }
 
@@ -292,7 +213,7 @@ namespace Document_circulation
                     string s = patientTable.Rows[j]["LAST_NAME"].ToString() + " " +
                         patientTable.Rows[j]["FIRST_NAME"].ToString().Substring(0, 1) + ". " +
                         patientTable.Rows[j]["MIDDLE_NAME"].ToString().Substring(0, 1) + ". ";
-                    IdCombo.Items.Add(patientTable.Rows[j]["id"].ToString());
+                    IdPcomboBox.Items.Add(patientTable.Rows[j]["id"].ToString());
                     comboBox1.Items.Add(s);
                 }
                 conn.Close();
@@ -320,9 +241,11 @@ namespace Document_circulation
 
         private void button5_Click(object sender, EventArgs e)
         {
-            int i = listBox1.Items.Count;
-            listBox1.Items.Insert(i, comboBox1.SelectedItem);
-            ids.Items.Insert(i, IdPcomboBox.Items[comboBox1.SelectedIndex]);
+            int j = listBox1.Items.Count;
+           
+            listBox1.Items.Insert(j, comboBox1.SelectedItem);
+            ids.Items.Insert(j, IdPcomboBox.Items[comboBox1.SelectedIndex]);
+
         }
     }
 }

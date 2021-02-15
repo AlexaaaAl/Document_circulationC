@@ -199,7 +199,6 @@ namespace Document_circulation
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.CancelButton = this.button3;
             this.ClientSize = new System.Drawing.Size(623, 373);
-            this.Controls.Add(this.ids);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -213,6 +212,7 @@ namespace Document_circulation
             this.Controls.Add(this.IdCombo);
             this.Controls.Add(this.IdPcomboBox);
             this.Controls.Add(this.ido);
+            this.Controls.Add(this.ids);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
