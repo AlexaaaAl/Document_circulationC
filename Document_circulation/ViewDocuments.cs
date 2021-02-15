@@ -19,6 +19,7 @@ namespace Document_circulation
         string fileName = string.Empty;
         public string Id;
         string pathtocopy;
+        string Depar = "";
         MySqlConnection conn = DBUtils.GetDBConnection();
         DataTable patientTable = new DataTable();
         public ViewDocuments()
@@ -118,7 +119,8 @@ namespace Document_circulation
                 {
                     if (reader.Read())
                     {
-                        pathtocopy = "\\\\" + reader["ip_server"].ToString() + "\\Программа\\" +
+                        Depar = reader["Dep"].ToString();
+                       pathtocopy = "\\\\" + reader["ip_server"].ToString() + "\\Программа\\" +
                          reader["Dep"].ToString() + "\\" + reader["LAST_NAME"].ToString() + " " +
                         reader["FIRST_NAME"].ToString() + " " + reader["MIDDLE_NAME"].ToString() + "\\" +
                         DateTime.Today.ToString("d");                     
@@ -158,16 +160,20 @@ namespace Document_circulation
             //скачать файл
             FolderBrowserDialog DirDialog = new FolderBrowserDialog();
             DirDialog.Description = "Выбор директории";
-            DirDialog.SelectedPath = @"C:\";
+            string SelectPath= @"C:\" + Depar;
+
+            if (!Directory.Exists(@"C:\" + SelectPath))
+                Directory.CreateDirectory(@"C:\" + SelectPath);
+            /*DirDialog.SelectedPath = @"C:\";
 
             if (DirDialog.ShowDialog() == DialogResult.OK)
-            {
+            {*/
                 try
                 {
                      // Move the file.
                      string s = Path.Combine(listBox2.Items[listBox1.SelectedIndex].ToString());
                      //reader["path"].ToString().Replace("/", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
-                     string f = Path.Combine(DirDialog.SelectedPath, listBox1.Items[listBox1.SelectedIndex].ToString());
+                     string f = Path.Combine(SelectPath, listBox1.Items[listBox1.SelectedIndex].ToString());
                      // DirDialog.SelectedPath.Replace("\\", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
                      File.Copy(s, f, true);
                      MessageBox.Show(" Фаил скачан в папку{0}." + f);
@@ -178,7 +184,7 @@ namespace Document_circulation
                     MessageBox.Show(ex.ToString(), "The process failed: {0}");
                 }  
                 conn.Close();
-            }
+            //}
         }
 
         private void button3_Click(object sender, EventArgs e)

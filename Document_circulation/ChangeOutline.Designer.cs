@@ -49,6 +49,7 @@ namespace Document_circulation
             this.richTextBox1.Size = new System.Drawing.Size(350, 94);
             this.richTextBox1.TabIndex = 6;
             this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // textBox1
             // 
@@ -57,6 +58,7 @@ namespace Document_circulation
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(350, 29);
             this.textBox1.TabIndex = 7;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // dateTimePicker1
             // 
@@ -65,6 +67,7 @@ namespace Document_circulation
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 29);
             this.dateTimePicker1.TabIndex = 8;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // checkBox1
             // 
@@ -109,7 +112,7 @@ namespace Document_circulation
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(338, 215);
+            this.button1.Location = new System.Drawing.Point(338, 218);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 30);
             this.button1.TabIndex = 13;
@@ -120,6 +123,7 @@ namespace Document_circulation
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label4.Location = new System.Drawing.Point(332, 60);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
@@ -130,7 +134,7 @@ namespace Document_circulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(463, 246);
+            this.ClientSize = new System.Drawing.Size(463, 260);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
@@ -144,7 +148,7 @@ namespace Document_circulation
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ChangeOutline";
-            this.Text = "Изменение ";
+            this.Text = "Изменение описания";
             this.Load += new System.EventHandler(this.ChangeOutline_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

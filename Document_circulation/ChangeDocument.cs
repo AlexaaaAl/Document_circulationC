@@ -32,7 +32,7 @@ namespace Document_circulation
         {
             InitializeComponent();
         }
-
+       
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -71,6 +71,14 @@ namespace Document_circulation
                    // E_Mail = reader["e_mail"].ToString();
                 }
             }
+            question = "SELECT Dep FROM departments where idDep=" + DEPARTMENT + ";";
+            using (var reader = new MySqlCommand(question, conn).ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    DEPARTMENT = reader["Dep"].ToString();
+                }
+            }
             conn.Close();
             
         }
@@ -80,10 +88,14 @@ namespace Document_circulation
             //кнопка скачать файл
             FolderBrowserDialog DirDialog = new FolderBrowserDialog();
             DirDialog.Description = "Выбор директории";
-            DirDialog.SelectedPath = @"C:\";
+            //DirDialog.SelectedPath = @"C:\"+DEPARTMENT;
 
-            if (DirDialog.ShowDialog() == DialogResult.OK)
-            {
+            if (!Directory.Exists(@"C:\" + DEPARTMENT)) 
+                Directory.CreateDirectory(@"C:\" + DEPARTMENT);
+
+            string SelectedPath = @"C:\" + DEPARTMENT;
+           /* if (DirDialog.ShowDialog() == DialogResult.OK)
+            {*/
 
                 conn.Close();
                 conn.Open();
@@ -100,7 +112,7 @@ namespace Document_circulation
                               //Move the file.
                               string s = Path.Combine(reader["path"].ToString());
                               //reader["path"].ToString().Replace("/", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
-                              string f= Path.Combine(DirDialog.SelectedPath, reader["file"].ToString());
+                              string f= Path.Combine(SelectedPath, reader["file"].ToString());
                               //DirDialog.SelectedPath.Replace("\\", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
                               File.Copy( s, f,true);
                               MessageBox.Show(" Фаил скачан в папку{0}."+f);
@@ -112,7 +124,7 @@ namespace Document_circulation
                     }
                 }
                 conn.Close();
-            }
+            //}
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -125,7 +137,7 @@ namespace Document_circulation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ChangeOutline f2 = new ChangeOutline();
+            ChangeOutline f2 = new ChangeOutline(this.label1,this.richTextBox1);
             f2.ID = ID;
             f2.number = number;
             f2.outline = outline;
