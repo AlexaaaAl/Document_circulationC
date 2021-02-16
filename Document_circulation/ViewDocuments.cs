@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.VisualBasic;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,9 @@ namespace Document_circulation
         string fileName = string.Empty;
         public string Id;
         string pathtocopy;
+        string dep_id;
+        string Depar = "";
+        string userName;
         MySqlConnection conn = DBUtils.GetDBConnection();
         DataTable patientTable = new DataTable();
         public ViewDocuments()
@@ -28,6 +32,8 @@ namespace Document_circulation
 
         private void ViewDocuments_Load(object sender, EventArgs e)
         {
+            userName = Environment.UserName;
+           
             try
             {
                 conn.Close();
@@ -75,6 +81,25 @@ namespace Document_circulation
 
                     
                 }
+                string query = "select Dep_id from  users " +
+                   "where id=" + Id + ";";
+                using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        dep_id = reader["Dep_id"].ToString();
+                    }
+                }
+                query = "select Dep from departments " +
+                   " where idDep=" + dep_id + ";";
+                using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        Depar = reader["Dep"].ToString();
+                    }
+                }
+               
                 conn.Close();
             }
             catch (Exception ex)
@@ -110,14 +135,17 @@ namespace Document_circulation
                     filePath = OPF.FileName;
                     fileName = Path.GetFileName(OPF.FileName);
                 }
-                query = "SELECT ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME,DEPARTMENT,ip_server FROM users WHERE ID= " +
-                Id +";";
+                query = "select `ID`,`LAST_NAME`,`FIRST_NAME`,`MIDDLE_NAME`,`Dep`," +
+                    "`ip_server` from `users` inner join `departments` on " +
+                    "`departments`.`idDep`=`users`.`Dep_id` where id=" +
+                    Id +";";
                 using (var reader = new MySqlCommand(query, conn).ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        pathtocopy = "\\\\" + reader["ip_server"].ToString() + "\\Программа\\" +
-                         reader["DEPARTMENT"].ToString() + "\\" + reader["LAST_NAME"].ToString() + " " +
+                        Depar = reader["Dep"].ToString();
+                       pathtocopy = "\\\\" + reader["ip_server"].ToString() + "\\Программа\\" +
+                         reader["Dep"].ToString() + "\\" + reader["LAST_NAME"].ToString() + " " +
                         reader["FIRST_NAME"].ToString() + " " + reader["MIDDLE_NAME"].ToString() + "\\" +
                         DateTime.Today.ToString("d");                     
                     }
@@ -127,7 +155,9 @@ namespace Document_circulation
                 File.Copy(filePath, pathtocopy, true);
                 string q = "INSERT INTO `document_file`" +
                             "    (`id` ,`path`, `file`)" +
-                            "    VALUES (" + MaxIdF + ",'" + pathtocopy.Replace("\\", "\\\\") + "','" + Path.GetFileName(pathtocopy) + "');";
+                            "    VALUES (" + MaxIdF + ",'" + 
+                            pathtocopy.Replace("\\", "\\\\") + "','" + 
+                            Path.GetFileName(pathtocopy) + "');";
                 MySqlCommand command = new MySqlCommand(q, conn);
                 // выполняем запрос
                 command.ExecuteNonQuery();
@@ -154,27 +184,30 @@ namespace Document_circulation
             //скачать файл
             FolderBrowserDialog DirDialog = new FolderBrowserDialog();
             DirDialog.Description = "Выбор директории";
-            DirDialog.SelectedPath = @"C:\";
+           
+            string SelectedPath = "C:\\Users\\"+userName + "\\Documents\\" + Depar;
+            if (!Directory.Exists(SelectedPath))
+                Directory.CreateDirectory(SelectedPath);
+            /*DirDialog.SelectedPath = @"C:\";
 
             if (DirDialog.ShowDialog() == DialogResult.OK)
+            {*/
+            try
             {
-                try
-                {
                      // Move the file.
-                     string s = Path.Combine(listBox2.Items[listBox1.SelectedIndex].ToString());
-                     //reader["path"].ToString().Replace("/", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
-                     string f = Path.Combine(DirDialog.SelectedPath, listBox1.Items[listBox1.SelectedIndex].ToString());
-                     // DirDialog.SelectedPath.Replace("\\", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
-                     File.Copy(s, f, true);
-                     MessageBox.Show(" Фаил скачан в папку{0}." + f);
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString(), "The process failed: {0}");
-                }  
-                conn.Close();
+                string s = Path.Combine(listBox2.Items[listBox1.SelectedIndex].ToString());
+                //reader["path"].ToString().Replace("/", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
+                string t = Interaction.InputBox("Название файла", "", listBox1.Items[listBox1.SelectedIndex].ToString());
+                string f = Path.Combine(SelectedPath, t);
+                //DirDialog.SelectedPath.Replace("\\", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
+                File.Copy(s, f, true);
+                MessageBox.Show(" Фаил " + t + " скачан в папку Документы ->" + Depar);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Фаил не скачан");
+            }  
+            conn.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)

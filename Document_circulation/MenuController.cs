@@ -204,7 +204,7 @@ namespace Document_circulation
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) //выбор строки в таблице
-        {
+        {                                                                    
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -284,6 +284,11 @@ namespace Document_circulation
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(@"0.pdf");
+        }
+
+        private void контактыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"1.pdf");
         }
     }
 }

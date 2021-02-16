@@ -18,65 +18,83 @@ namespace Document_circulation
         public string comment;
         public string outline;
         public string ID;
+        public string date;
+        int outl = 0;
+        int com = 0;
+        int dateP = 0;
+        private Label lab1;
+        private RichTextBox richt1;
         MySqlConnection conn = DBUtils.GetDBConnection();
-        public ChangeOutline()
+        public ChangeOutline(Label lab,RichTextBox richt)
         {
+            lab1 = lab;
+            richt1 = richt;
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Изменить?", "Подтвердите действие", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            conn.Open();
+            if (dateP == 0 && com == 0 && outl == 0)
             {
-                conn.Open();
-                if (checkBox1.Checked==true) //если стоит флажок на сроке подписания
+                MessageBox.Show("Изменения не были внесены", "Ошибка");
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Изменить?", "Подтвердите действие", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
                 {
-                    string q = "UPDATE documents " +
-                                "set outline='" + textBox1.Text + "'," +
-                                "date='" + dateTimePicker1.Value.ToString("s") + "'," +
-                                "comments='" + richTextBox1.Text + "' " +
-                                "where number=" + number + ";";
-                    MySqlCommand command = new MySqlCommand(q, conn);
-                    // выполняем запрос
-                    try
+                   
+                    if (checkBox1.Checked == true) //если стоит флажок на сроке подписания
                     {
-                        command.ExecuteNonQuery();
-                        MessageBox.Show("Фаил изменён!", "Изменение"); // Выводим сообщение о звершении.
-                        this.Close();
-                        ChangeDocument f2 = new ChangeDocument();
-                        f2.UpdateData();
+                        string q = "UPDATE documents " +
+                                    "set outline='" + textBox1.Text + "'," +
+                                    "date='" + dateTimePicker1.Value.ToString("s") + "'," +
+                                    "comments='" + richTextBox1.Text + "' " +
+                                    "where number=" + number + ";";
+                        MySqlCommand command = new MySqlCommand(q, conn);
+                        // выполняем запрос
+                        try
+                        {
+                            command.ExecuteNonQuery();
+                            MessageBox.Show("Фаил изменён!", "Изменение"); // Выводим сообщение о звершении.
+                            lab1.Text = textBox1.Text;
+                            richt1.Text = richTextBox1.Text;
+                            this.Close();
+                            
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Изменение");
+                        }
                     }
-                    catch (Exception ex)
+                    else
+
                     {
-                        MessageBox.Show(ex.Message, "Изменение");
-                    }
-                }
-                else
-                {
-                    string q = "UPDATE documents " +
-                               "set outline='" + textBox1.Text + "'," +
-                               "comments='" + richTextBox1.Text + "' " +
-                               "where number=" + number + ";";
-                    MySqlCommand command = new MySqlCommand(q, conn);
-                    // выполняем запрос
-                    try
-                    {
-                        command.ExecuteNonQuery();
-                        MessageBox.Show("Фаил изменён!", "Изменение"); // Выводим сообщение о звершении.
-                        this.Close();
-                        ChangeDocument f2 = new ChangeDocument();
-                        f2.UpdateData();
+                        string q = "UPDATE documents " +
+                                   "set outline='" + textBox1.Text + "'," +
+                                   "comments='" + richTextBox1.Text + "' " +
+                                   "where number=" + number + ";";
+                        MySqlCommand command = new MySqlCommand(q, conn);
+                        // выполняем запрос
+                        try
+                        {
+                            command.ExecuteNonQuery();
+                            MessageBox.Show("Фаил изменён!", "Изменение"); // Выводим сообщение о звершении.
+                            this.Close();
+                            lab1.Text = textBox1.Text;
+                            richt1.Text = richTextBox1.Text;
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Изменение");
+                        }
 
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Изменение");
-                    }
-
                 }
             }
+            conn.Close();
         }
 
         private void ChangeOutline_Load(object sender, EventArgs e)
@@ -92,14 +110,33 @@ namespace Document_circulation
                         
                     {
                         dateTimePicker1.Value = (DateTime)reader["date"];
+                        dateP = 0;
+                        date = ((DateTime)reader["date"]).ToString();
                         checkBox1.Checked = true;
                     }
                 }
             }
             textBox1.Text = outline;
+            outl = 0;
             richTextBox1.Text = comment;
+            com = 0;
             label4.Text = number;
             conn.Close();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            outl += 1; 
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            dateP += 1;
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            com += 1;
         }
     }
 }
