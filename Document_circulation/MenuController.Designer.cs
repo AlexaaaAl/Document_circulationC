@@ -94,7 +94,7 @@ namespace Document_circulation
             this.panel2.Controls.Add(this.menuStrip2);
             this.panel2.Location = new System.Drawing.Point(-1, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1441, 32);
+            this.panel2.Size = new System.Drawing.Size(1286, 32);
             this.panel2.TabIndex = 1;
             // 
             // label2
@@ -103,7 +103,7 @@ namespace Document_circulation
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(1069, 8);
+            this.label2.Location = new System.Drawing.Point(914, 8);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label2.Size = new System.Drawing.Size(53, 21);
@@ -120,7 +120,7 @@ namespace Document_circulation
             this.выходToolStripMenuItem1});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1441, 29);
+            this.menuStrip2.Size = new System.Drawing.Size(1286, 29);
             this.menuStrip2.TabIndex = 0;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -227,7 +227,7 @@ namespace Document_circulation
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(202, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(47, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -273,7 +273,7 @@ namespace Document_circulation
             this.dataGridView1.RowTemplate.DividerHeight = 1;
             this.dataGridView1.RowTemplate.Height = 40;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1441, 537);
+            this.dataGridView1.Size = new System.Drawing.Size(1286, 537);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -461,7 +461,7 @@ namespace Document_circulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1439, 680);
+            this.ClientSize = new System.Drawing.Size(1284, 680);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -469,7 +469,7 @@ namespace Document_circulation
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip2;
-            this.MinimumSize = new System.Drawing.Size(1455, 696);
+            this.MinimumSize = new System.Drawing.Size(1278, 696);
             this.Name = "MenuController";
             this.Text = "АСУП \"Алиса\"";
             this.Load += new System.EventHandler(this.MenuController_Load);

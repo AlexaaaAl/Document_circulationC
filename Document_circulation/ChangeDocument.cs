@@ -25,6 +25,7 @@ namespace Document_circulation
         public string LAST_NAME;
         public string MIDDLE_NAME;
         public string DEPARTMENT;
+        public string DEP;
         public string IP_SERVER;
         public string E_Mail;
         public string comments_doc;
@@ -79,7 +80,7 @@ namespace Document_circulation
             {
                 if (reader.Read())
                 {
-                    DEPARTMENT = reader["Dep"].ToString();
+                    DEP= reader["Dep"].ToString();
                 }
             }
             conn.Close();
@@ -92,7 +93,7 @@ namespace Document_circulation
             FolderBrowserDialog DirDialog = new FolderBrowserDialog();
             DirDialog.Description = "Выбор директории";
             //DirDialog.SelectedPath = @"C:\"+DEPARTMENT;
-            string SelectedPath = "C:\\Users\\" + userName + "\\Documents\\" + DEPARTMENT;
+            string SelectedPath = "C:\\Users\\" + userName + "\\Documents\\" + DEP;
             if (!Directory.Exists(SelectedPath)) 
                 Directory.CreateDirectory(SelectedPath);
 
@@ -118,7 +119,7 @@ namespace Document_circulation
                         string f = Path.Combine(SelectedPath, t);
                         //DirDialog.SelectedPath.Replace("\\", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
                         File.Copy( s, f,true);
-                        MessageBox.Show(" Фаил "+ t+" скачан в папку Документы ->" + DEPARTMENT );
+                        MessageBox.Show(" Фаил "+ t+" скачан в папку Документы ->" + DEP );
                     }
                     catch (Exception ex)
                     {
@@ -215,7 +216,7 @@ namespace Document_circulation
                 string filePath = OPF.FileName; //папка откуда берем файл
                 string fileName = Path.GetFileName(OPF.FileName);
                 string f = "\\\\" + IP_SERVER + "\\Программа\\" + //папка куда записываем файл
-                       DEPARTMENT + "\\" + LAST_NAME + " " +
+                       DEP + "\\" + LAST_NAME + " " +
                        FIRST_NAME + " " + MIDDLE_NAME + "\\" +
                        DateTime.Today.ToString("d");
                 string result = "";
