@@ -57,20 +57,20 @@ namespace Document_circulation
                    f=int.Parse(reader["id_user"].ToString());
                     if (checkBox1.Checked)
                     {
-                        string login = reader[" login"].ToString();
-                        string password = reader[" password"].ToString();
+                        string login = reader["login"].ToString();
+                        string password = reader["password"].ToString();
 
-                        if (!File.Exists("accounts/logpass.txt"))
+                        if (!File.Exists("logpass.txt"))
                         {
                             // Create a file to write to.
-                            using (StreamWriter sw = File.CreateText("accounts/logpass.txt"))
+                            using (StreamWriter sw = File.CreateText("logpass.txt"))
                             {
                                 sw.WriteLine(login);
                                 sw.WriteLine(password);
                             }
                         }
                         // Open the file to read from.
-                        /*using (StreamReader sr = File.OpenText("accounts/logpass.txt"))
+                        /*using (StreamReader sr = File.OpenText("logpass.txt"))
                         {
                             string s;
                             while ((s = sr.ReadLine()) != null)
@@ -101,15 +101,15 @@ namespace Document_circulation
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (File.Exists("accounts/logpass.txt"))
+            if (File.Exists("logpass.txt"))
             {
-                using (StreamReader sr = File.OpenText("accounts/logpass.txt"))
+                using (StreamReader sr = File.OpenText("logpass.txt"))
                 {
                     string s;
+                    textBox1.Text= File.ReadAllLines("logpass.txt").Skip(0).First();
+                    textBox2.Text = File.ReadAllLines("logpass.txt").Skip(1).First();
                     while ((s = sr.ReadLine()) != null)
-                    {
-                        Console.WriteLine(s);
-                    }
+                   
                 }
             }
         }
@@ -130,6 +130,11 @@ namespace Document_circulation
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
