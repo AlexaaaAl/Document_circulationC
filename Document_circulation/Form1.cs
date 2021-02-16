@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,7 +55,31 @@ namespace Document_circulation
                 if (reader.Read())
                 {
                    f=int.Parse(reader["id_user"].ToString());
-                   this.Hide();
+                    if (checkBox1.Checked)
+                    {
+                        string login = reader[" login"].ToString();
+                        string password = reader[" password"].ToString();
+
+                        if (!File.Exists("accounts/logpass.txt"))
+                        {
+                            // Create a file to write to.
+                            using (StreamWriter sw = File.CreateText("accounts/logpass.txt"))
+                            {
+                                sw.WriteLine(login);
+                                sw.WriteLine(password);
+                            }
+                        }
+                        // Open the file to read from.
+                        /*using (StreamReader sr = File.OpenText("accounts/logpass.txt"))
+                        {
+                            string s;
+                            while ((s = sr.ReadLine()) != null)
+                            {
+                                Console.WriteLine(s);
+                            }
+                        }*/
+                    }
+                    this.Hide();
                    //this.Close();
                    MenuController f2 = new MenuController();
                    f2.tulf2.setIdUser(f);
@@ -76,7 +101,17 @@ namespace Document_circulation
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            if (File.Exists("accounts/logpass.txt"))
+            {
+                using (StreamReader sr = File.OpenText("accounts/logpass.txt"))
+                {
+                    string s;
+                    while ((s = sr.ReadLine()) != null)
+                    {
+                        Console.WriteLine(s);
+                    }
+                }
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
