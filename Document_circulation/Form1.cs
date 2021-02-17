@@ -126,8 +126,20 @@ namespace Document_circulation
             VersionChecker verChecker = new VersionChecker();
             Console.WriteLine("Текущая версия {0}\tВерсия на сервере: {1}", s, v);
             Console.Write("Результат проверки: ");
-            if (verChecker.NewVersionExists(s, v))
-                MessageBox.Show("Доступна новая версия");
+            if (verChecker.NewVersionExists(s, v)) { 
+                DialogResult dialogResult = MessageBox.Show("Доступна новая версия", "Обновление", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Process p = new Process();
+                    p.StartInfo.FileName = @"..\AutoUpdate\WindowsFormsApp1.exe";
+                    p.Start();
+                    Environment.Exit(0);
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //do something else
+                }
+            }
             if (File.Exists("logpass.txt"))
             {
                 using (StreamReader sr = File.OpenText("logpass.txt"))
