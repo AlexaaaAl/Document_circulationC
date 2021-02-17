@@ -21,10 +21,10 @@ namespace Document_circulation
         string v;
         public Form1()
         {
-            if (!System.IO.File.Exists(@"0.txt"))
+            if (!File.Exists(@"0.txt"))
             {
-                System.Diagnostics.Process.Start(@"0.pdf");
-                System.IO.File.Create(@"0.txt");
+                Process.Start(@"0.pdf");
+                File.Create(@"0.txt");
 
             }
             InitializeComponent();
@@ -116,11 +116,11 @@ namespace Document_circulation
 
                 }
             }
-            if (File.Exists("\\\\192.168.50.10\\программа\\Release\\1.txt"))
+            if (File.Exists("\\\\192.168.50.10\\программа\\АЛИСА\\Release\\1.txt"))
             {
-                using (StreamReader sr = File.OpenText("\\\\192.168.50.10\\программа\\Release\\1.txt"))
+                using (StreamReader sr = File.OpenText("\\\\192.168.50.10\\программа\\АЛИСА\\Release\\1.txt"))
                 {
-                    v = File.ReadAllLines("\\\\192.168.50.10\\программа\\Release\\1.txt").Skip(0).First();
+                    v = File.ReadAllLines("\\\\192.168.50.10\\программа\\АЛИСА\\Release\\1.txt").Skip(0).First();
                 }
             }
             VersionChecker verChecker = new VersionChecker();

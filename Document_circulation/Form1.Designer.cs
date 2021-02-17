@@ -156,7 +156,7 @@ namespace Document_circulation
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.BackgroundImage = global::Document_circulation.Properties.Resources.Новый_проект__3___1_;
             this.panel1.Location = new System.Drawing.Point(-5, -9);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(468, 58);
