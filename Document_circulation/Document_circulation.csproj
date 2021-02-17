@@ -280,6 +280,7 @@
     </Compile>
     <Compile Include="SendMail.cs" />
     <Compile Include="UserName.cs" />
+    <Compile Include="VersionChecker.cs" />
     <Compile Include="ViewDocuments.cs">
       <SubType>Form</SubType>
     </Compile>

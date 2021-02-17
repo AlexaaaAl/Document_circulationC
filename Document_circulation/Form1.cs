@@ -9,12 +9,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
+
 
 namespace Document_circulation
 {
 
     public partial class Form1 : Form
     {
+        string s;
+        string v;
         public Form1()
         {
             if (!System.IO.File.Exists(@"0.txt"))
@@ -101,6 +105,29 @@ namespace Document_circulation
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (File.Exists("1.txt"))
+            {
+                using (StreamReader sr = File.OpenText("1.txt"))
+                {
+
+                    s = File.ReadAllLines("1.txt").Skip(0).First();
+
+
+
+                }
+            }
+            if (File.Exists("\\\\192.168.50.10\\программа\\Release\\1.txt"))
+            {
+                using (StreamReader sr = File.OpenText("\\\\192.168.50.10\\программа\\Release\\1.txt"))
+                {
+                    v = File.ReadAllLines("\\\\192.168.50.10\\программа\\Release\\1.txt").Skip(0).First();
+                }
+            }
+            VersionChecker verChecker = new VersionChecker();
+            Console.WriteLine("Текущая версия {0}\tВерсия на сервере: {1}", s, v);
+            Console.Write("Результат проверки: ");
+            if (verChecker.NewVersionExists(s, v))
+                MessageBox.Show("Доступна новая версия");
             if (File.Exists("logpass.txt"))
             {
                 using (StreamReader sr = File.OpenText("logpass.txt"))
