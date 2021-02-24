@@ -49,6 +49,7 @@ namespace Document_circulation
                     {
                         string q = "UPDATE documents " +
                                     "set outline='" + textBox1.Text + "'," +
+                                    " number_id = '" + textBox2.Text + "'," +
                                     "date='" + dateTimePicker1.Value.ToString("s") + "'," +
                                     "comments='" + richTextBox1.Text + "' " +
                                     "where number=" + number + ";";
@@ -100,16 +101,18 @@ namespace Document_circulation
         private void ChangeOutline_Load(object sender, EventArgs e)
         {
             conn.Open();
-            string query = "SELECT date FROM documents " +
+            string query = "SELECT date,number_id FROM documents " +
                 " WHERE number='" + number + "' ;";
             using (var reader = new MySqlCommand(query, conn).ExecuteReader())
             {
                 if (reader.Read())
                 {
+                    textBox2.Text = reader["number_id"].ToString();
                     if (!reader.IsDBNull(reader.GetOrdinal("date")))
                         
                     {
                         dateTimePicker1.Value = (DateTime)reader["date"];
+                        
                         dateP = 0;
                         date = ((DateTime)reader["date"]).ToString();
                         checkBox1.Checked = true;
