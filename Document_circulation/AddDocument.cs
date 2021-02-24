@@ -314,9 +314,9 @@ namespace Document_circulation
                             {
 
                                 string q = "INSERT INTO `documents`" +
-                                            "    ( `number`,`outline`, `id_sender`, `id_recipient`,`date`,`comments`,`document_type`)" +
+                                            "    ( `number`,`number_id`,`outline`, `id_sender`, `id_recipient`,`date`,`comments`,`document_type`)" +
                                             "    VALUES" +
-                                            "           (" + MaxNumber + ",'" + textBox1.Text + "'," +
+                                            "           (" + MaxNumber + ",'" + textBox2.Text + "','"  + textBox1.Text + "'," +
                                             ID + "," +
                                             Id_s[i] + ",'" +
                                             dateTimePicker1.Value.ToString("s") + "','" + richTextBox1.Text + "','" +
@@ -333,9 +333,9 @@ namespace Document_circulation
 
                                 //MessageBox.Show(id_send.ToString(), "id");
                                 string q = "INSERT INTO `documents`" +
-                                               "    ( `number`,`outline`, `id_sender`, `id_recipient`,`comments`,`document_type`)" +
+                                               "    ( `number`,`number_id`,`outline`, `id_sender`, `id_recipient`,`comments`,`document_type`)" +
                                                "    VALUES" +
-                                               "           (" + MaxNumber + ",'" + textBox1.Text + "'," +
+                                               "           (" + MaxNumber + ",'" + textBox2.Text + "','" + textBox1.Text + "'," +
                                                ID + "," +
                                                 Id_s[i] + ",'" + richTextBox1.Text + "','" +
                                               typeComboBox1.Text + "');";
@@ -360,8 +360,8 @@ namespace Document_circulation
                     {
 
                         string q = "INSERT INTO `all_one`" +
-                                "    (`id_doc`, `id_file`)" + "    VALUES ("
-                                + MaxNumber + "," + i + ");";
+                                "    (`id_doc`, `id_file`,`id_docum`)" + "    VALUES ("
+                                + MaxNumber + "," + i + ",'" + textBox2.Text + "');";
                         MySqlCommand command = new MySqlCommand(q, conn);
                         // выполняем запрос
                         command.ExecuteNonQuery();

@@ -83,7 +83,7 @@ namespace Document_circulation
                  "(select id_user from log where login='" + tulf2.getName() +
                  "') or id_recipient=(select id_user from log where login='" +
                  tulf2.getName() + "'));";*/
-            query = "SELECT id_document,number as Номер,outline as Наименование," +
+            query = "SELECT id_document,number as Номер,number_id as `Номер документа`,outline as Наименование," +
                 "concat(`SENDERLast`,' ',left(`SENDERfirst`,1),'. ',left(`SENDERMIDDLE`,1),'.')  as Отправитель," +
                 "concat(`RECIPLast`,' ',left(`RECIPFirst`,1),'. ',left(`RECIPMIDDLE`,1),'.')  as Получатель," +
                 "comments,date_added as 'Дата добавления'," +
@@ -99,6 +99,7 @@ namespace Document_circulation
             h.Fill(DS);
             dataGridView1.DataSource = DS.Tables[0];
             PaintRows();
+            dataGridView1.Columns["Номер"].Visible = false;
             dataGridView1.Columns["id_document"].Visible = false;
             dataGridView1.Columns["comments"].Visible = false;
             dataGridView1.Columns["document_type"].Visible = false;
@@ -145,11 +146,11 @@ namespace Document_circulation
         {
             foreach (DataGridViewRow row in dataGridView1.Rows)
             { 
-                if (String.Equals(row.Cells[8].Value.ToString(),"выполняется") )
+                if (String.Equals(row.Cells[9].Value.ToString(),"выполняется") )
                     row.DefaultCellStyle.BackColor = Color.Khaki;
-                if (String.Equals(row.Cells[8].Value.ToString(), "подтверждён"))
+                if (String.Equals(row.Cells[9].Value.ToString(), "подтверждён"))
                     row.DefaultCellStyle.BackColor = Color.GreenYellow;
-                if (String.Equals(row.Cells[8].Value.ToString(), "в ожидании"))
+                if (String.Equals(row.Cells[9].Value.ToString(), "в ожидании"))
                     row.DefaultCellStyle.BackColor = Color.Chocolate;
             }
         }

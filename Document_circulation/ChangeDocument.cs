@@ -44,7 +44,7 @@ namespace Document_circulation
 
         private void ChangeDocument_Load(object sender, EventArgs e)
         {
-            label3.Text = this.number/*+ID*/;
+            //label3.Text = this.number/*+ID*/;
             label1.Text = this.outline;
             richTextBox1.Text = this.comment;
             conn.Close();
@@ -63,13 +63,14 @@ namespace Document_circulation
                     uploadbutoncheck.Enabled = false;
                 } 
             }
-            string question = "select `e_mail`,`comments_doc` from `documents` " +
+            string question = "select `e_mail`,`number_id`,`comments_doc` from `documents` " +
                 "inner join `users` on `id_recipient`=`id` where `id_document`=" + 
                 ID_Doc + ";";
             using (var reader = new MySqlCommand(question, conn).ExecuteReader())
             {
                 if (reader.Read())
                 {
+                    label3.Text= reader["number_id"].ToString();
                     comments_doc = reader["comments_doc"].ToString();
                     richTextBoxComment.Text=comments_doc;
                    // E_Mail = reader["e_mail"].ToString();
