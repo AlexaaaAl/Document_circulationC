@@ -204,7 +204,7 @@ namespace Document_circulation
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) //выбор строки в таблице
-        {                                                                    
+        {                                                                     
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
