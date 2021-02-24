@@ -214,7 +214,7 @@ namespace Document_circulation
                         "set status='выполняется'" +
                         "where id_document=" + dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString() +
                         " AND id_recipient=" + tulf2.getIdUser() +
-                        " AND status <> 'подписан';";
+                        " AND status <> 'подтверждён';";
             MySqlCommand command = new MySqlCommand(q, conn);
             // выполняем запрос
             int UspeshnoeIzmenenie = command.ExecuteNonQuery();
