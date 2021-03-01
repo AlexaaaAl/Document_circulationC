@@ -74,6 +74,7 @@ namespace Document_circulation
                     {
                         string q = "UPDATE documents " +
                                    "set outline='" + textBox1.Text + "'," +
+                                    " number_id = '" + textBox2.Text + "'," +
                                    "comments='" + richTextBox1.Text + "' " +
                                    "where number=" + number + ";";
                         MySqlCommand command = new MySqlCommand(q, conn);
