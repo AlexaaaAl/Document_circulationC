@@ -177,5 +177,15 @@ namespace Document_circulation
         {
 
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"0.pdf");
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"1.pdf");
+        }
     }
 }

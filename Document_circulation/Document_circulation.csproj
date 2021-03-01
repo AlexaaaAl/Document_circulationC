@@ -405,6 +405,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="gerb.ico" />
+    <None Include="Resources\pdf5.jpg" />
+    <None Include="Resources\pdff.jpg" />
+    <None Include="Resources\419-4192081_pdf-icon-png-pdf-file-icon-png.png" />
     <None Include="Resources\Новый проект %283%29 %281%29.jpg" />
     <None Include="Resources\Новый проект %282%29.jpg" />
     <None Include="Resources\Новый проект %283%29.jpg" />

@@ -63,6 +63,36 @@ namespace Document_circulation.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _419_4192081_pdf_icon_png_pdf_file_icon_png {
+            get {
+                object obj = ResourceManager.GetObject("419-4192081_pdf-icon-png-pdf-file-icon-png", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pdf5 {
+            get {
+                object obj = ResourceManager.GetObject("pdf5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pdff {
+            get {
+                object obj = ResourceManager.GetObject("pdff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Новый_проект__1_ {
             get {
                 object obj = ResourceManager.GetObject("Новый проект (1)", resourceCulture);
