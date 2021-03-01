@@ -151,7 +151,7 @@ namespace Document_circulation
             this.label5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label5.Location = new System.Drawing.Point(228, 226);
+            this.label5.Location = new System.Drawing.Point(178, 226);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 19);
             this.label5.TabIndex = 13;
@@ -164,7 +164,7 @@ namespace Document_circulation
             this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label4.Location = new System.Drawing.Point(228, 203);
+            this.label4.Location = new System.Drawing.Point(178, 203);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(209, 19);
             this.label4.TabIndex = 12;

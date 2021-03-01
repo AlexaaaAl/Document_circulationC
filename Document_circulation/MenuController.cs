@@ -17,6 +17,7 @@ namespace Document_circulation
        
         public UserName tulf2 = new UserName();
         public string ID;//id пользователя
+        public string ID_DIR;//id директор
         public string FIRST_NAME;
         public string LAST_NAME;
         public string MIDDLE_NAME;
@@ -132,13 +133,37 @@ namespace Document_circulation
                         incomingMail.Visible = false;
                         incomingMailMoscow.Visible = false;
                     }
+                    if (g == 4)
+                    {
+                        ID_DIR = "24";
+                    }
                     if (g != 3)
                     {
                         просмотрСотрудниковОтделаToolStripMenuItem.Enabled = false;
                     }
                 }
             }
-
+            if (ID_DIR == "24")
+            {
+                query = "SELECT id_document,number as Номер,number_id as `Номер документа`,outline as Наименование," +
+               "concat(`SENDERLast`,' ',left(`SENDERfirst`,1),'. ',left(`SENDERMIDDLE`,1),'.')  as Отправитель," +
+               "concat(`RECIPLast`,' ',left(`RECIPFirst`,1),'. ',left(`RECIPMIDDLE`,1),'.')  as Получатель," +
+               "comments,date_added as 'Дата добавления'," +
+               "date as 'Срок исполнения',status as Статус,document_type " +
+               "from viewdoc WHERE document_type='" + type_doc + "' and (id_sender= " +
+                ID_DIR + ");";
+                conn.Close();
+                conn.Open();
+                h = new MySqlDataAdapter(query, conn);
+                h.Fill(DS);
+                dataGridView1.DataSource = DS.Tables[0];
+                PaintRows();
+                dataGridView1.Columns["Номер"].Visible = false;
+                dataGridView1.Columns["id_document"].Visible = false;
+                dataGridView1.Columns["comments"].Visible = false;
+                dataGridView1.Columns["document_type"].Visible = false;
+                dataGridView1.ClearSelection();
+            }
             conn.Close();
 
         }
