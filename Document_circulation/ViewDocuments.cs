@@ -192,6 +192,7 @@ namespace Document_circulation
 
             if (DirDialog.ShowDialog() == DialogResult.OK)
             {*/
+
             try
             {
                      // Move the file.
@@ -200,8 +201,15 @@ namespace Document_circulation
                 string t = Interaction.InputBox("Название файла", "", listBox1.Items[listBox1.SelectedIndex].ToString());
                 string f = Path.Combine(SelectedPath, t);
                 //DirDialog.SelectedPath.Replace("\\", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
-                File.Copy(s, f, true);
-                MessageBox.Show(" Фаил " + t + " скачан в папку Документы ->" + Depar);
+                if (t.Length > 0)
+                {
+                    File.Copy(s, f, true);
+                    MessageBox.Show(" Фаил " + t + " скачан в папку Документы ->" + Depar);
+                }
+                else
+                {
+
+                }
             }
             catch (Exception ex)
             {
