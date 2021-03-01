@@ -79,7 +79,7 @@ namespace Document_circulation
             
             conn.Close();
             conn.Open();
-            string later ="Select number,outline,comments, date_added,date,status,document_type " +
+            string later ="Select number,number_id,outline,comments, date_added,date,status,document_type " +
                 "from documents where id_document="+ID_Doc+";";
             string outline = "";
             string comments = "";
@@ -88,6 +88,7 @@ namespace Document_circulation
             string status = "";
             string document_type = "";
             string number = "";
+            string number_id = "";
             string q = "";
             try
             {
@@ -103,6 +104,7 @@ namespace Document_circulation
                         status = reader["status"].ToString();
                         document_type = reader["document_type"].ToString();
                         number = reader["number"].ToString();
+                        number_id= reader["number_id"].ToString();
                     }
                 }
                 for (int i = 0; i < listBox1.Items.Count; i++)
@@ -124,9 +126,9 @@ namespace Document_circulation
                     if (!String.IsNullOrEmpty(date)) {
                         DateTime enteredDate = DateTime.Parse(date);
                         q = "INSERT INTO `documents`" +
-                                       " ( `number`,`outline`, `id_sender`, `id_recipient`,`date`,`comments`,`document_type`)" +
+                                       " ( `number`,`number_id`,`outline`, `id_sender`, `id_recipient`,`date`,`comments`,`document_type`)" +
                                        " VALUES" +
-                                       "(" + number + ",'" + outline + "'," +
+                                       "(" + number + ",'" + number_id+"','"+outline + "'," +
                                        ID + "," + id_send + ",'" +
                                        enteredDate.ToString("s") + "','" + comments + "','" +
                                       document_type + "');"; 
@@ -134,9 +136,9 @@ namespace Document_circulation
                     else
                     {
                         q = "INSERT INTO `documents`" +
-                                         " ( `number`,`outline`, `id_sender`, `id_recipient`,`comments`,`document_type`)" +
+                                         " ( `number`,`number_id`,`outline`, `id_sender`, `id_recipient`,`comments`,`document_type`)" +
                                          " VALUES" +
-                                         "(" + number + ",'" + outline + "'," +
+                                         "(" + number + ",'" + number_id + "','" + outline + "'," +
                                          ID + "," + id_send + ",'" + comments + "','" +
                                         document_type + "');";
 
