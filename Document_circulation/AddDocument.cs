@@ -105,7 +105,7 @@ namespace Document_circulation
                     role = int.Parse(reader["ROLE_ID"].ToString());
                 }
             }
-            if (role == 3)
+            if (role == 4)
             {
                 typeComboBox1.Items.AddRange(new string[] { "Внутренний документ", "Входящая корреспонденция", "Входящей корреспонденция г. Москва", "Приказ" });
                 typeComboBox1.SelectedItem = "Внутренний документ";
@@ -114,6 +114,7 @@ namespace Document_circulation
             {
                 typeComboBox1.Items.AddRange(new string[] { "Внутренний документ",  "Приказ" });
                 typeComboBox1.SelectedItem = "Внутренний документ";
+                checkBox2.Visible = false;
             }
             CommandText = "SELECT Dep FROM departments where idDep=" + DEPARTMENT + ";";
             using (var reader = new MySqlCommand(CommandText, conn).ExecuteReader())
@@ -194,6 +195,7 @@ namespace Document_circulation
 
         private void button5_Click(object sender, EventArgs e)
         {
+            
             if (textBox1.Text != String.Empty)
             {
                 try
@@ -455,6 +457,18 @@ namespace Document_circulation
         {
             listBox2.Items.Clear();
             IdlistBox.Items.Clear();
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+                ID = "24";
+            }
+            else
+            {
+                ID = "18";
+            }
         }
     }
 }
