@@ -44,6 +44,7 @@ namespace Document_circulation
             this.button6 = new System.Windows.Forms.Button();
             this.ids = new System.Windows.Forms.ListBox();
             this.ido = new System.Windows.Forms.ListBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -194,11 +195,26 @@ namespace Document_circulation
             this.ido.Size = new System.Drawing.Size(120, 95);
             this.ido.TabIndex = 13;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox1.Location = new System.Drawing.Point(265, 324);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(151, 21);
+            this.checkBox1.TabIndex = 14;
+            this.checkBox1.Text = "от имени директора";
+            this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // Send
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.CancelButton = this.button3;
             this.ClientSize = new System.Drawing.Size(623, 373);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -221,6 +237,7 @@ namespace Document_circulation
             this.Name = "Send";
             this.Load += new System.EventHandler(this.Send_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -240,5 +257,6 @@ namespace Document_circulation
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ListBox ids;
         private System.Windows.Forms.ListBox ido;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

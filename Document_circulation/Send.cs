@@ -24,6 +24,12 @@ namespace Document_circulation
 
         private void Send_Load(object sender, EventArgs e)
         {
+            if (ID == "18")
+            {
+                checkBox1.Visible = true;
+            }
+            else
+                checkBox1.Visible = false;
             try
             {
                 conn.Open(); ; // Открываем соединение
@@ -66,6 +72,11 @@ namespace Document_circulation
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (checkBox1.Checked)
+            {
+                ID = "24";
+            }
+            
             conn.Close();
             conn.Open();
             string later ="Select number,outline,comments, date_added,date,status,document_type " +
@@ -245,6 +256,11 @@ namespace Document_circulation
            
             listBox1.Items.Insert(j, comboBox1.SelectedItem);
             ids.Items.Insert(j, IdPcomboBox.Items[comboBox1.SelectedIndex]);
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
 
         }
     }
