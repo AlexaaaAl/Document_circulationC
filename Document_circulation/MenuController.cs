@@ -137,7 +137,7 @@ namespace Document_circulation
                     {
                         ID_DIR = "24";
                     }
-                    if (g != 3)
+                    if (g != 3 && g != 1)
                     {
                         просмотрСотрудниковОтделаToolStripMenuItem.Enabled = false;
                     }
