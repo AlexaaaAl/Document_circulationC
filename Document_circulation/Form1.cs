@@ -153,10 +153,7 @@ namespace Document_circulation
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Environment.Exit(0);
-        }
+       
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
@@ -186,6 +183,12 @@ namespace Document_circulation
         private void label5_Click(object sender, EventArgs e)
         {
             Process.Start(@"1.pdf");
+        }
+
+        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
