@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
-
+using System.Runtime.InteropServices;
 
 namespace Document_circulation
 {
@@ -19,8 +19,13 @@ namespace Document_circulation
     {
         string s;
         string v;
+        //private System.Windows.Forms.Panel panel;
+
         public Form1()
         {
+            //panel = panel1;
+            this.MouseDown += new MouseEventHandler(Form_MouseDown);
+            
             if (!File.Exists(@"0.txt"))
             {
                 Process.Start(@"0.pdf");
@@ -45,6 +50,30 @@ namespace Document_circulation
                 MessageBox.Show(ex.Message, "Ошибка");
             }
             //Console.Read();
+        }
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+        public const int HTCAPTION = 0x2;
+
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+        void Form_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -105,6 +134,7 @@ namespace Document_circulation
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            panel1.MouseDown += new MouseEventHandler(panel1_MouseDown);
             if (File.Exists("1.txt"))
             {
                 using (StreamReader sr = File.OpenText("1.txt"))
@@ -126,19 +156,20 @@ namespace Document_circulation
             VersionChecker verChecker = new VersionChecker();
             Console.WriteLine("Текущая версия {0}\tВерсия на сервере: {1}", s, v);
             Console.Write("Результат проверки: ");
-            if (verChecker.NewVersionExists(s, v)) { 
-                DialogResult dialogResult = MessageBox.Show("Доступна новая версия", "Обновление", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    Process p = new Process();
-                    p.StartInfo.FileName = @"..\AutoUpdate\WindowsFormsApp1.exe";
-                    p.Start();
-                    Environment.Exit(0);
-                }
+            if (verChecker.NewVersionExists(s, v)) {
+                /* DialogResult dialogResult = MessageBox.Show("Доступна новая версия", "Обновление", MessageBoxButtons.YesNo);
+                 if (dialogResult == DialogResult.Yes)
+                 {*/
+                UpdateAuto();
+                Process p = new Process();
+                p.StartInfo.FileName = @"..\AutoUpdate\WindowsFormsApp1.exe";
+                p.Start();
+                Environment.Exit(0);
+                /*}
                 else if (dialogResult == DialogResult.No)
                 {
                     //do something else
-                }
+                }*/
             }
             if (File.Exists("logpass.txt"))
             {
@@ -189,6 +220,41 @@ namespace Document_circulation
         private void button2_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void UpdateAuto()
+        {
+            string sourceFile = @"\\192.168.50.10\программа\АЛИСА\AutoUpdate\";
+            // To move a file or folder to a new location:
+            string[] allfiles = Directory.GetFiles(sourceFile);
+            var max = 0;
+            foreach (string filename in allfiles)
+            {
+                max = +1;
+            }
+            var maxp = 100 / max;
+            try
+            {
+                foreach (string filename in allfiles)
+                {
+                    Console.WriteLine(filename);
+                    File.Delete(@"..\AutoUpdate\" + Path.GetFileName(filename));
+                    File.Copy(filename, @"..\AutoUpdate\" + Path.GetFileName(filename));
+                }
+                /*Process p = new System.Diagnostics.Process();
+                p.StartInfo.FileName = @"..\AutoUpdate\АСУП Алиса.exe";
+                p.Start();
+                Environment.Exit(0);*/
+
+            }
+            catch
+            {
+                MessageBox.Show("Невозможно загрузить программу", "Ошибка");
+            }
         }
     }
 }

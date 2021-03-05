@@ -316,5 +316,10 @@ namespace Document_circulation
         {
             System.Diagnostics.Process.Start(@"1.pdf");
         }
+
+        private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

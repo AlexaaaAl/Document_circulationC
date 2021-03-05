@@ -44,8 +44,15 @@ namespace Document_circulation
                     query1 = "SELECT Dep from departments where idDEP="+ reader["Dep_id"].ToString() + ";";                    
                     textBox1.Text= reader["E_MAIL"].ToString();
                 }
-            }          
-            conn.Close();
+            }
+            using (var reader = new MySqlCommand(query1, conn).ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    label7.Text = reader["Dep"].ToString();
+                }
+            }
+                    conn.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
