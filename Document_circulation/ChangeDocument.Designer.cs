@@ -48,6 +48,7 @@ namespace Document_circulation
             this.label5 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,7 +79,7 @@ namespace Document_circulation
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(386, 152);
+            this.button3.Location = new System.Drawing.Point(386, 159);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(267, 31);
             this.button3.TabIndex = 2;
@@ -89,7 +90,7 @@ namespace Document_circulation
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(386, 269);
+            this.button4.Location = new System.Drawing.Point(386, 281);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(267, 62);
             this.button4.TabIndex = 3;
@@ -100,7 +101,7 @@ namespace Document_circulation
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Location = new System.Drawing.Point(386, 226);
+            this.button5.Location = new System.Drawing.Point(386, 233);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(267, 37);
             this.button5.TabIndex = 4;
@@ -111,7 +112,7 @@ namespace Document_circulation
             // uploadbutoncheck
             // 
             this.uploadbutoncheck.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.uploadbutoncheck.Location = new System.Drawing.Point(386, 337);
+            this.uploadbutoncheck.Location = new System.Drawing.Point(386, 349);
             this.uploadbutoncheck.Name = "uploadbutoncheck";
             this.uploadbutoncheck.Size = new System.Drawing.Size(267, 52);
             this.uploadbutoncheck.TabIndex = 5;
@@ -122,20 +123,20 @@ namespace Document_circulation
             // button7
             // 
             this.button7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button7.Location = new System.Drawing.Point(386, 395);
+            this.button7.Location = new System.Drawing.Point(386, 407);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(129, 36);
+            this.button7.Size = new System.Drawing.Size(129, 50);
             this.button7.TabIndex = 6;
-            this.button7.Text = "переслать";
+            this.button7.Text = "Переслать";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
             this.button8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button8.Location = new System.Drawing.Point(521, 395);
+            this.button8.Location = new System.Drawing.Point(521, 407);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(132, 36);
+            this.button8.Size = new System.Drawing.Size(132, 50);
             this.button8.TabIndex = 7;
             this.button8.Text = "Подтвердить";
             this.button8.UseVisualStyleBackColor = true;
@@ -205,14 +206,14 @@ namespace Document_circulation
             this.richTextBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.richTextBox1.Location = new System.Drawing.Point(16, 103);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(364, 160);
+            this.richTextBox1.Size = new System.Drawing.Size(364, 133);
             this.richTextBox1.TabIndex = 14;
             this.richTextBox1.Text = "";
             // 
             // richTextBoxComment
             // 
             this.richTextBoxComment.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBoxComment.Location = new System.Drawing.Point(16, 293);
+            this.richTextBoxComment.Location = new System.Drawing.Point(16, 273);
             this.richTextBoxComment.Name = "richTextBoxComment";
             this.richTextBoxComment.Size = new System.Drawing.Size(364, 96);
             this.richTextBoxComment.TabIndex = 15;
@@ -222,7 +223,7 @@ namespace Document_circulation
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(12, 269);
+            this.label5.Location = new System.Drawing.Point(12, 249);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(203, 21);
             this.label5.TabIndex = 16;
@@ -231,11 +232,11 @@ namespace Document_circulation
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(16, 393);
-            this.button6.MaximumSize = new System.Drawing.Size(207, 38);
+            this.button6.Location = new System.Drawing.Point(16, 372);
+            this.button6.MaximumSize = new System.Drawing.Size(240, 38);
             this.button6.MinimumSize = new System.Drawing.Size(207, 38);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(207, 38);
+            this.button6.Size = new System.Drawing.Size(233, 38);
             this.button6.TabIndex = 17;
             this.button6.Text = "Сохранить коментарий";
             this.button6.UseVisualStyleBackColor = true;
@@ -244,7 +245,7 @@ namespace Document_circulation
             // button9
             // 
             this.button9.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button9.Location = new System.Drawing.Point(386, 189);
+            this.button9.Location = new System.Drawing.Point(386, 196);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(267, 31);
             this.button9.TabIndex = 18;
@@ -252,11 +253,22 @@ namespace Document_circulation
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
+            // button10
+            // 
+            this.button10.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button10.Location = new System.Drawing.Point(16, 416);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(233, 41);
+            this.button10.TabIndex = 19;
+            this.button10.Text = "Посмотреть коментарии";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
             // ChangeDocument
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(660, 446);
+            this.ClientSize = new System.Drawing.Size(660, 468);
+            this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.label5);
@@ -307,5 +319,6 @@ namespace Document_circulation
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
     }
 }
