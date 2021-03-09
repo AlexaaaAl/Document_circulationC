@@ -209,6 +209,14 @@ namespace Document_circulation
             MySqlCommand command = new MySqlCommand(q, conn);
             // выполняем запрос
             command.ExecuteNonQuery();
+            string query = "INSERT INTO `coments`" +
+                                "    (`Id_doc` ,`Statuscol`, `usercol`)" +
+                                "    VALUES (" + number
+                                + ",'подтверждён'," + ID + ");";
+           
+            MySqlCommand command1 = new MySqlCommand(query, conn);
+           // выполняем запрос
+            int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();
             conn.Close();
             ChangeDocument_Load(null, null);
         }
@@ -387,6 +395,13 @@ namespace Document_circulation
                 }
             }
             conn.Close();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Coments f2 = new Coments();
+            f2.number = number;
+            f2.Show();
         }
     }
 }

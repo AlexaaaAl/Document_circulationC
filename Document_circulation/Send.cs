@@ -131,7 +131,15 @@ namespace Document_circulation
                                        "(" + number + ",'" + number_id+"','"+outline + "'," +
                                        ID + "," + id_send + ",'" +
                                        enteredDate.ToString("s") + "','" + comments + "','" +
-                                      document_type + "');"; 
+                                      document_type + "');";
+                        string query1 = "INSERT INTO `coments`" +
+                               "    (`Id_doc` ,`forward`, `usercol`,`recipcol`)" +
+                               "    VALUES (" + number
+                               + ",'пересылка'," + ID + ","+ id_send +"); ";
+
+                        MySqlCommand command1 = new MySqlCommand(query1, conn);
+                        // выполняем запрос
+                        int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();
                     }
                     else
                     {
@@ -141,7 +149,14 @@ namespace Document_circulation
                                          "(" + number + ",'" + number_id + "','" + outline + "'," +
                                          ID + "," + id_send + ",'" + comments + "','" +
                                         document_type + "');";
+                        string query1 = "INSERT INTO `coments`" +
+                              "    (`Id_doc` ,`forward`, `usercol`,`recipcol`)" +
+                              "    VALUES (" + number
+                              + ",'пересылка'," + ID + "," + id_send + "); ";
 
+                        MySqlCommand command1 = new MySqlCommand(query1, conn);
+                        // выполняем запрос
+                        int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();
                     }
                     SendMail.SEND_MAIlTORECIP(e_mail, outline);
                     MySqlCommand command = new MySqlCommand(q, conn);

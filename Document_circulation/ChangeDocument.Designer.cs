@@ -260,8 +260,9 @@ namespace Document_circulation
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(233, 41);
             this.button10.TabIndex = 19;
-            this.button10.Text = "Посмотреть коментарии";
+            this.button10.Text = "Посмотреть изменения";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // ChangeDocument
             // 

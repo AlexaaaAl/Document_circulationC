@@ -327,6 +327,12 @@ namespace Document_circulation
                                 MySqlCommand command = new MySqlCommand(q, conn);
                                 // выполняем запрос
                                 command.ExecuteNonQuery();
+                                string query1 = "INSERT INTO `coments`" +
+                               "    (`Id_doc` ,`Statuscol`, `usercol`)" +
+                               "    VALUES (" + MaxNumber
+                               + ",'документ добавлен'," + ID + ");";
+                                MySqlCommand command1 = new MySqlCommand(query1, conn);
+                                int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();
                                 SendMail.SEND_MAIlTORECIP(e_mail[i], textBox1.Text);
 
                             }
@@ -344,7 +350,12 @@ namespace Document_circulation
                                 MySqlCommand command = new MySqlCommand(q, conn);
                                 // выполняем запрос
                                 command.ExecuteNonQuery();
-                                //отправка сообщения
+                                string query1 = "INSERT INTO `coments`" +
+                                "    (`Id_doc` ,`Statuscol`, `usercol`)" +
+                                "    VALUES (" + MaxNumber
+                                + ",'документ добавлен'," + ID + ");";
+                                MySqlCommand command1 = new MySqlCommand(query1, conn);
+                                int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();
                                 SendMail.SEND_MAIlTORECIP(e_mail[i], textBox1.Text);
 
                             }
