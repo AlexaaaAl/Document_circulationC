@@ -195,7 +195,8 @@ namespace Document_circulation
 
         private void button5_Click(object sender, EventArgs e)
         {
-            
+            string query_id = "";
+            int max_id = 0;
             if (textBox1.Text != String.Empty)
             {
                 try
@@ -216,7 +217,7 @@ namespace Document_circulation
                         }
                     }
                     //выбираем последний номер файла из бд и сохраняем
-                    query = "SELECT max(id) MaxD" +
+                    query = "SELECT max(id) as MaxD" +
                             " from document_file;";
                     using (var reader = new MySqlCommand(query, conn).ExecuteReader())
                     {
@@ -327,9 +328,21 @@ namespace Document_circulation
                                 MySqlCommand command = new MySqlCommand(q, conn);
                                 // выполняем запрос
                                 command.ExecuteNonQuery();
+                                query_id = "SELECT max(id_document) as MaxIID" +
+                                    " from documents;";
+                                using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+                                {
+                                    if (reader.Read())
+                                    {
+                                        if (!reader.IsDBNull(reader.GetOrdinal("MaxIID")))
+                                        {
+                                            max_id = int.Parse(reader["MaxIID"].ToString()) + 1;
+                                        }
+                                    }
+                                }
                                 string query1 = "INSERT INTO `coments`" +
-                               "    (`Id_doc` ,`Statuscol`, `usercol`)" +
-                               "    VALUES (" + MaxNumber
+                               "    (`Id_doc` ,`number`,`Statuscol`, `usercol`)" +
+                               "    VALUES ("+ max_id +","+ MaxNumber
                                + ",'документ добавлен'," + ID + ");";
                                 MySqlCommand command1 = new MySqlCommand(query1, conn);
                                 int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();
@@ -350,10 +363,22 @@ namespace Document_circulation
                                 MySqlCommand command = new MySqlCommand(q, conn);
                                 // выполняем запрос
                                 command.ExecuteNonQuery();
+                                query_id = "SELECT max(id_document) as MaxIID" +
+                                   " from documents;";
+                                using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+                                {
+                                    if (reader.Read())
+                                    {
+                                        if (!reader.IsDBNull(reader.GetOrdinal("MaxIID")))
+                                        {
+                                            max_id = int.Parse(reader["MaxIID"].ToString()) + 1;
+                                        }
+                                    }
+                                }
                                 string query1 = "INSERT INTO `coments`" +
-                                "    (`Id_doc` ,`Statuscol`, `usercol`)" +
-                                "    VALUES (" + MaxNumber
-                                + ",'документ добавлен'," + ID + ");";
+                               "    (`Id_doc` ,`number`,`Statuscol`, `usercol`)" +
+                               "    VALUES (" + max_id + "," + MaxNumber
+                               + ",'документ добавлен'," + ID + ");";
                                 MySqlCommand command1 = new MySqlCommand(query1, conn);
                                 int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();
                                 SendMail.SEND_MAIlTORECIP(e_mail[i], textBox1.Text);

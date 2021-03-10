@@ -245,8 +245,9 @@ namespace Document_circulation
             // выполняем запрос
             int UspeshnoeIzmenenie = command.ExecuteNonQuery();
             string query = "INSERT INTO `coments`" +
-                                "    (`Id_doc` ,`Statuscol`, `usercol`)" +
-                                "    VALUES (" + dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString()
+                                "    (`Id_doc` ,`number`,`Statuscol`, `usercol`)" +
+                                "    VALUES (" + dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString()+
+                                 ","+dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Номер"].Value.ToString()
                                 + ",'выполняется'," + ID + ");";
             if (dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Статус"].Value.ToString() != "выполняется")
             {
