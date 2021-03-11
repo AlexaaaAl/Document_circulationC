@@ -313,6 +313,7 @@ namespace Document_circulation
                     {
                         for (int i = 0; i < Id_s.Count; i++)
                         {
+                           
                             if (checkBox1.Checked) //если стоит флажок на сроке подписания
                             {
 
@@ -329,14 +330,14 @@ namespace Document_circulation
                                 // выполняем запрос
                                 command.ExecuteNonQuery();
                                 query_id = "SELECT max(id_document) as MaxIID" +
-                                    " from documents;";
-                                using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+                                  " from documents;";
+                                using (var reader = new MySqlCommand(query_id, conn).ExecuteReader())
                                 {
                                     if (reader.Read())
                                     {
                                         if (!reader.IsDBNull(reader.GetOrdinal("MaxIID")))
                                         {
-                                            max_id = int.Parse(reader["MaxIID"].ToString()) + 1;
+                                            max_id = int.Parse(reader["MaxIID"].ToString()) ;
                                         }
                                     }
                                 }
@@ -364,14 +365,14 @@ namespace Document_circulation
                                 // выполняем запрос
                                 command.ExecuteNonQuery();
                                 query_id = "SELECT max(id_document) as MaxIID" +
-                                   " from documents;";
-                                using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+                                  " from documents;";
+                                using (var reader = new MySqlCommand(query_id, conn).ExecuteReader())
                                 {
                                     if (reader.Read())
                                     {
                                         if (!reader.IsDBNull(reader.GetOrdinal("MaxIID")))
                                         {
-                                            max_id = int.Parse(reader["MaxIID"].ToString()) + 1;
+                                            max_id = int.Parse(reader["MaxIID"].ToString()) ;
                                         }
                                     }
                                 }

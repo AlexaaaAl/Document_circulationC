@@ -71,7 +71,7 @@ namespace Document_circulation
                 if (reader.Read())
                 {
                     label3.Text= reader["number_id"].ToString();
-                    comments_doc = reader["comments_doc"].ToString();
+                    //comments_doc = reader["comments_doc"].ToString();
                     richTextBoxComment.Text=comments_doc;
                    // E_Mail = reader["e_mail"].ToString();
                 }
@@ -210,9 +210,9 @@ namespace Document_circulation
             // выполняем запрос
             command.ExecuteNonQuery();
             string query = "INSERT INTO `coments`" +
-                                "    (`Id_doc` ,`Statuscol`, `usercol`)" +
-                                "    VALUES (" + number
-                                + ",'подтверждён'," + ID + ");";
+                                "    (`Id_doc` ,`number`,`Statuscol`, `usercol`)" +
+                                "    VALUES (" + ID_Doc+","+number+
+                                 ",'подтверждён'," + ID + ");";
            
             MySqlCommand command1 = new MySqlCommand(query, conn);
            // выполняем запрос
@@ -325,12 +325,19 @@ namespace Document_circulation
             string q = "UPDATE documents " +
                        "set comments_doc='"+ richTextBoxComment.Text + " '"+
                        "where id_document=" + ID_Doc + ";";
+            string query = "INSERT INTO `coments`" +
+                               "    (`Id_doc` ,`number`,`ComentsCol`, `usercol`)" +
+                               "    VALUES (" + ID_Doc + "," + number +
+                                ",'" + richTextBoxComment.Text + "'," + ID + ");";
             try
             {
                 MySqlCommand command = new MySqlCommand(q, conn);
                 // выполняем запрос
                 command.ExecuteNonQuery();
                 int y = command.ExecuteNonQuery();
+                MySqlCommand command1 = new MySqlCommand(query, conn);
+                // выполняем запрос
+                int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();
                 if (y != 0)
                 {
                     //SendMail.SEND_MAIlTORECIP(E_Mail, "Добавлен коментарий " + outline);
@@ -342,7 +349,7 @@ namespace Document_circulation
                 MessageBox.Show(ec.Message, "Ошибка добавления коментария");
             }
             conn.Close();
-            ChangeDocument_Load(null, null);
+            //ChangeDocument_Load(null, null);
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -400,7 +407,7 @@ namespace Document_circulation
         private void button10_Click(object sender, EventArgs e)
         {
             Coments f2 = new Coments();
-            f2.number = number;
+            f2.number = ID_Doc;
             f2.Show();
         }
     }

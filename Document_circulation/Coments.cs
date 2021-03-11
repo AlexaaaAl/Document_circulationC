@@ -23,13 +23,18 @@ namespace Document_circulation
 
         private void Coments_Load(object sender, EventArgs e)
         {
-            query = "Select COALESCE(Statuscol, forward) AS Status, Отправитель, Получатель from viewstatus where Id_doc=" + number + ";";
+            query = "Select COALESCE(Statuscol, forward,ComentsCol) AS `Статус/коментарий`, Отправитель, Получатель,DATE_COL AS `Время добавления/изменения` from viewstatus where Id_doc=" + number + ";";
             conn.Close();
             conn.Open();
             MySqlDataAdapter h = new MySqlDataAdapter(query, conn);
             DataSet DS = new DataSet();
             h.Fill(DS);
             dataGridView1.DataSource = DS.Tables[0];
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
