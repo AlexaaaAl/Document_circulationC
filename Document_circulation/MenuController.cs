@@ -249,7 +249,7 @@ namespace Document_circulation
                                 "    VALUES (" + dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString()+
                                  ","+dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Номер"].Value.ToString()
                                 + ",'выполняется'," + ID + ");";
-            if (dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Статус"].Value.ToString() != "выполняется")
+            if ((dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Статус"].Value.ToString()).CompareTo("выполняется")==0)
             {
                 MySqlCommand command1 = new MySqlCommand(query, conn);
                 // выполняем запрос

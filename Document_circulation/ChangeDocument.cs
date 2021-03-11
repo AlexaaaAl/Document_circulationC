@@ -349,7 +349,7 @@ namespace Document_circulation
                 MessageBox.Show(ec.Message, "Ошибка добавления коментария");
             }
             conn.Close();
-            //ChangeDocument_Load(null, null);
+            ChangeDocument_Load(null, null);
         }
 
         private void button9_Click(object sender, EventArgs e)
