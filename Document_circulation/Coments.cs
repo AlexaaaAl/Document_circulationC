@@ -23,7 +23,7 @@ namespace Document_circulation
 
         private void Coments_Load(object sender, EventArgs e)
         {
-            query = "Select COALESCE(Statuscol, forward,ComentsCol) AS `Статус/коментарий`, Отправитель, Получатель,DATE_COL AS `Время добавления/изменения` from viewstatus where Id_doc=" + id_doc + ";";
+            query = "Select COALESCE(Statuscol, forward,ComentsCol) AS `Статус/коментарий`, Отправитель, Получатель,DATE_COL AS `Дата` from viewstatus where Id_doc=" + id_doc + ";";
             conn.Close();
             conn.Open();
             MySqlDataAdapter h = new MySqlDataAdapter(query, conn);
