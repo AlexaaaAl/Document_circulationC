@@ -249,21 +249,12 @@ namespace Document_circulation
                                 "    VALUES (" + dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString()+
                                  ","+dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Номер"].Value.ToString()
                                 + ",'выполняется'," + ID + ");";
-            if ((dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Статус"].Value.ToString()).CompareTo("выполняется")==0)
+            if ((dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Статус"].Value.ToString()).CompareTo("выполняется")!=0)
             {
                 MySqlCommand command1 = new MySqlCommand(query, conn);
                 // выполняем запрос
-                int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();
-               /* if (UspeshnoeIzmenenie1 != 0)
-                {
-                    MessageBox.Show("1", "");
-                }
-                else
-                {
-                    MessageBox.Show("0", "");
-                }*/
+                int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();              
             }
-           
             ChangeDocument f2 = new ChangeDocument();
             f2.number = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Номер"].Value.ToString();
             f2.outline = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Наименование"].Value.ToString();

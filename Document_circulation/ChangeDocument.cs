@@ -407,7 +407,7 @@ namespace Document_circulation
         private void button10_Click(object sender, EventArgs e)
         {
             Coments f2 = new Coments();
-            f2.number = ID_Doc;
+            f2.id_doc = ID_Doc;
             f2.Show();
         }
     }
