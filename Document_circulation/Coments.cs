@@ -30,6 +30,9 @@ namespace Document_circulation
             DataSet DS = new DataSet();
             h.Fill(DS);
             dataGridView1.DataSource = DS.Tables[0];
+            dataGridView1.Columns["Статус/коментарий"].Width = 420 ;
+
+            //dataGridView1.Columns["Статус/коментарий"].Width = 400;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
