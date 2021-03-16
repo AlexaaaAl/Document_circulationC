@@ -240,17 +240,18 @@ namespace Document_circulation
                         "set status='выполняется'" +
                         "where id_document=" + dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString() +
                         " AND id_recipient=" + tulf2.getIdUser() +
-                        " AND status <> 'подтверждён';";
+                        " AND status <> 'подтверждён'" +
+                        " AND status <> 'выполняется';";
             MySqlCommand command = new MySqlCommand(q, conn);
             // выполняем запрос
             int UspeshnoeIzmenenie = command.ExecuteNonQuery();
-            string query = "INSERT INTO `coments`" +
-                                "    (`Id_doc` ,`number`,`Statuscol`, `usercol`)" +
-                                "    VALUES (" + dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString()+
-                                 ","+dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Номер"].Value.ToString()
-                                + ",'выполняется'," + ID + ");";
-            if ((dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Статус"].Value.ToString()).CompareTo("выполняется")!=0 && (dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Статус"].Value.ToString()).CompareTo("подтверждён") != 0)
-            {
+            MessageBox.Show(UspeshnoeIzmenenie.ToString(),"-");
+            if (UspeshnoeIzmenenie != 0) { 
+                string query = "INSERT INTO `coments`" +
+                               "    (`Id_doc` ,`number`,`Statuscol`, `usercol`)" +
+                               "    VALUES (" + dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString()+
+                               ","+dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Номер"].Value.ToString()
+                               + ",'выполняется'," + ID + ");";
                 MySqlCommand command1 = new MySqlCommand(query, conn);
                 // выполняем запрос
                 int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();              
