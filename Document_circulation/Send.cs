@@ -150,26 +150,14 @@ namespace Document_circulation
                     MySqlCommand command = new MySqlCommand(q, conn);
                     // выполняем запрос
                     command.ExecuteNonQuery();
-                    /*int max_id = 0;
-                        string query_id = "SELECT max(id_document) as MaxIID" +
-                               " from documents;";
-                        using (var reader = new MySqlCommand(query_id, conn).ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                if (!reader.IsDBNull(reader.GetOrdinal("MaxIID")))
-                                {
-                                    max_id = int.Parse(reader["MaxIID"].ToString());
-                                }
-                            }
-                        }*/
-                        string query1 = "INSERT INTO `coments`" +
+                   
+                    string query1 = "INSERT INTO `coments`" +
                                "    (`Id_doc`,`number`,`forward`, `usercol`,`recipcol`)" +
                                "    VALUES (" +ID_Doc+ "," + number
                                + ",'пересылка'," + ID + "," + id_send + "); ";
-                        MySqlCommand command1 = new MySqlCommand(query1, conn);
+                    MySqlCommand command1 = new MySqlCommand(query1, conn);
                         // выполняем запрос
-                        int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();
+                    int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();
                 }
                 for (int i = 0; i < listBox2.Items.Count; i++)
                 {
