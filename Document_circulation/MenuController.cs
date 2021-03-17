@@ -55,8 +55,12 @@ namespace Document_circulation
 
         private void MenuController_Load(object sender, EventArgs e) //прогрузка формы и таблицы
         {
-           
-            
+            checkBox1.BackColor = Color.Transparent;
+            checkBox2.BackColor = Color.Transparent;
+            incomingMail.BackColor = Color.Transparent;
+            incomingMailMoscow.BackColor = Color.Transparent;
+            orders.BackColor = Color.Transparent;
+            internalDocuments.BackColor = Color.Transparent;
             if (internalDocuments.Checked)
             {
                 type_doc = "Внутренний документ";
