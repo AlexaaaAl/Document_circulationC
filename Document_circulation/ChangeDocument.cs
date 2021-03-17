@@ -63,17 +63,18 @@ namespace Document_circulation
                     uploadbutoncheck.Enabled = false;
                 } 
             }
-            string question = "select `e_mail`,`number_id`,`comments_doc` from `documents` " +
+            string question = "select `e_mail`,`number_id`,`comments_doc`,`origin` from `documents` " +
                 "inner join `users` on `id_recipient`=`id` where `id_document`=" + 
                 ID_Doc + ";";
             using (var reader = new MySqlCommand(question, conn).ExecuteReader())
             {
                 if (reader.Read())
                 {
-                    label3.Text= reader["number_id"].ToString();
+                    label3.Text= reader["number_id"].ToString()+ " " + reader["origin"].ToString();
                     //comments_doc = reader["comments_doc"].ToString();
                     richTextBoxComment.Text=comments_doc;
                    // E_Mail = reader["e_mail"].ToString();
+                   //label1.Text+= " "+reader["origin"].ToString();
                 }
             }
             question = "SELECT Dep FROM departments where idDep=" + DEPARTMENT + ";";

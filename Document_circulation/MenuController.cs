@@ -27,6 +27,8 @@ namespace Document_circulation
         MySqlConnection conn = DBUtils.GetDBConnection();
         string query;
         string type_doc="";
+        private object Nothing;
+
         public MenuController()
         {
             InitializeComponent();
@@ -78,37 +80,61 @@ namespace Document_circulation
             }
             // TODO: данная строка кода позволяет загрузить данные в таблицу "document_circulation_pathDataSet1.v1". При необходимости она может быть перемещена или удалена.
             this.v1TableAdapter.Fill(this.document_circulation_pathDataSet1.v1);
-
+            dataGridView1.DataSource = Nothing;
             var db = new DBUtils();
-            /* query = "SELECT id_document,number as Номер,outline as Наименование," +
-                 "sender as Отправитель, LAST_NAME as Получатель," +
-                 "comments,date_added as 'Дата добавления'," +
-                 "date as 'Срок исполнения',status as Статус,document_type " +
-                 "from v1 WHERE document_type='"+ type_doc + "' and (id_sender= " +
-                 "(select id_user from log where login='" + tulf2.getName() +
-                 "') or id_recipient=(select id_user from log where login='" +
-                 tulf2.getName() + "'));";*/
-            query = "SELECT id_document,number as Номер,number_id as `Номер документа`,outline as Наименование," +
-                "concat(`SENDERLast`,' ',left(`SENDERfirst`,1),'. ',left(`SENDERMIDDLE`,1),'.')  as Отправитель," +
-                "concat(`RECIPLast`,' ',left(`RECIPFirst`,1),'. ',left(`RECIPMIDDLE`,1),'.')  as Получатель," +
-                "comments,date_added as 'Дата добавления'," +
-                "date as 'Срок исполнения',status as Статус,document_type " +
-                "from viewdoc WHERE document_type='" + type_doc + "' and (id_sender= " +
-                "(select id_user from log where login='" + tulf2.getName() +
-                "') or id_recipient=(select id_user from log where login='" +
-                tulf2.getName() + "'));";
+
+            if (checkBox1.Checked && checkBox2.Checked)
+            {
+                query = "SELECT id_document,number as Номер,number_id as `Номер документа`,outline as Наименование," +
+                    "concat(`SENDERLast`,' ',left(`SENDERfirst`,1),'. ',left(`SENDERMIDDLE`,1),'.')  as Отправитель," +
+                    "concat(`RECIPLast`,' ',left(`RECIPFirst`,1),'. ',left(`RECIPMIDDLE`,1),'.')  as Получатель," +
+                    "comments,date_added as 'Дата добавления'," +
+                    "date as 'Срок исполнения',status as Статус,document_type " +
+                    "from viewdoc WHERE document_type='" + type_doc + "' and (id_sender= " +
+                    "(select id_user from log where login='" + tulf2.getName() +
+                    "') or id_recipient=(select id_user from log where login='" +
+                    tulf2.getName() + "'));";
+            }else 
+                if(checkBox2.Checked && checkBox1.Checked != true)
+            {
+                query = "SELECT id_document,number as Номер,number_id as `Номер документа`,outline as Наименование," +
+                   "concat(`SENDERLast`,' ',left(`SENDERfirst`,1),'. ',left(`SENDERMIDDLE`,1),'.')  as Отправитель," +
+                   "concat(`RECIPLast`,' ',left(`RECIPFirst`,1),'. ',left(`RECIPMIDDLE`,1),'.')  as Получатель," +
+                   "comments,date_added as 'Дата добавления'," +
+                   "date as 'Срок исполнения',status as Статус,document_type " +
+                   "from viewdoc WHERE document_type='" + type_doc + "' and (id_sender= " +
+                   "(select id_user from log where login='" + tulf2.getName() +
+                   "') and id_recipient<>(select id_user from log where login='" +
+                   tulf2.getName() + "'));";
+            }
+            else
+                if (checkBox1.Checked && checkBox2.Checked != true)
+            {
+                query = "SELECT id_document,number as Номер,number_id as `Номер документа`,outline as Наименование," +
+                   "concat(`SENDERLast`,' ',left(`SENDERfirst`,1),'. ',left(`SENDERMIDDLE`,1),'.')  as Отправитель," +
+                   "concat(`RECIPLast`,' ',left(`RECIPFirst`,1),'. ',left(`RECIPMIDDLE`,1),'.')  as Получатель," +
+                   "comments,date_added as 'Дата добавления'," +
+                   "date as 'Срок исполнения',status as Статус,document_type " +
+                   "from viewdoc WHERE document_type='" + type_doc + "' and (id_sender= " +
+                   "(select id_user from log where login<>'" + tulf2.getName() +
+                   "') and id_recipient=(select id_user from log where login='" +
+                   tulf2.getName() + "'));";
+            }
             conn.Close();
             conn.Open();
-            MySqlDataAdapter h= new MySqlDataAdapter(query, conn);
-            DataSet DS = new DataSet();
-            h.Fill(DS);
-            dataGridView1.DataSource = DS.Tables[0];
-            PaintRows();
-            dataGridView1.Columns["Номер"].Visible = false;
-            dataGridView1.Columns["id_document"].Visible = false;
-            dataGridView1.Columns["comments"].Visible = false;
-            dataGridView1.Columns["document_type"].Visible = false;
-            dataGridView1.ClearSelection();
+            try
+            {
+                MySqlDataAdapter h = new MySqlDataAdapter(query, conn);
+                DataSet DS = new DataSet();
+                h.Fill(DS);
+                dataGridView1.DataSource = DS.Tables[0];
+                PaintRows();
+                dataGridView1.Columns["Номер"].Visible = false;
+                dataGridView1.Columns["id_document"].Visible = false;
+                dataGridView1.Columns["comments"].Visible = false;
+                dataGridView1.Columns["document_type"].Visible = false;
+                dataGridView1.ClearSelection();
+            
             //conn.Open();
             query = "SELECT ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME,Dep_id,ip_server,E_MAIL,ROLE_ID FROM users WHERE ID= " +
                 "(select id_user from log where login='" + tulf2.getName() +
@@ -168,6 +194,8 @@ namespace Document_circulation
                 dataGridView1.Columns["document_type"].Visible = false;
                 dataGridView1.ClearSelection();
             }
+            }
+            catch { }
             conn.Close();
 
         }
@@ -249,7 +277,7 @@ namespace Document_circulation
             MySqlCommand command = new MySqlCommand(q, conn);
             // выполняем запрос
             int UspeshnoeIzmenenie = command.ExecuteNonQuery();
-            MessageBox.Show(UspeshnoeIzmenenie.ToString(),"-");
+            //MessageBox.Show(UspeshnoeIzmenenie.ToString(),"-");
             if (UspeshnoeIzmenenie != 0) { 
                 string query = "INSERT INTO `coments`" +
                                "    (`Id_doc` ,`number`,`Statuscol`, `usercol`)" +
