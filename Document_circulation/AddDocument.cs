@@ -318,13 +318,15 @@ namespace Document_circulation
                             {
 
                                 string q = "INSERT INTO `documents`" +
-                                            "    ( `number`,`number_id`,`outline`, `id_sender`, `id_recipient`,`date`,`comments`,`document_type`)" +
+                                            "    ( `number`,`number_id`,`outline`, " +
+                                            "`id_sender`, `id_recipient`,`date`,`comments`," +
+                                            "`document_type`,`origin`)" +
                                             "    VALUES" +
                                             "           (" + MaxNumber + ",'" + textBox2.Text + "','"  + textBox1.Text + "'," +
                                             ID + "," +
                                             Id_s[i] + ",'" +
                                             dateTimePicker1.Value.ToString("s") + "','" + richTextBox1.Text + "','" +
-                                           typeComboBox1.Text + "');";
+                                           typeComboBox1.Text + "','Оригинал');";
 
                                 MySqlCommand command = new MySqlCommand(q, conn);
                                 // выполняем запрос
@@ -345,7 +347,7 @@ namespace Document_circulation
                                "    (`Id_doc` ,`number`,`Statuscol`, `usercol`)" +
                                "    VALUES ("+ max_id +","+ MaxNumber
                                + ",'документ добавлен'," + ID + ");";
-                                MySqlCommand command1 = new MySqlCommand(query1, conn);
+                                MySqlCommand command1 = new MySqlCommand(query1, conn); 
                                 int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();
                                 SendMail.SEND_MAIlTORECIP(e_mail[i], textBox1.Text);
 
@@ -355,12 +357,14 @@ namespace Document_circulation
 
                                 //MessageBox.Show(id_send.ToString(), "id");
                                 string q = "INSERT INTO `documents`" +
-                                               "    ( `number`,`number_id`,`outline`, `id_sender`, `id_recipient`,`comments`,`document_type`)" +
+                                               "    ( `number`,`number_id`,`outline`, " +
+                                               "`id_sender`, `id_recipient`,`comments`," +
+                                               "`document_type`,`origin`)" +
                                                "    VALUES" +
                                                "           (" + MaxNumber + ",'" + textBox2.Text + "','" + textBox1.Text + "'," +
                                                ID + "," +
                                                 Id_s[i] + ",'" + richTextBox1.Text + "','" +
-                                              typeComboBox1.Text + "');";
+                                              typeComboBox1.Text + "','Оригинал');";
                                 MySqlCommand command = new MySqlCommand(q, conn);
                                 // выполняем запрос
                                 command.ExecuteNonQuery();

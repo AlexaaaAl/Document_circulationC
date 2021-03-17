@@ -126,23 +126,23 @@ namespace Document_circulation
                     if (!String.IsNullOrEmpty(date)) {
                         DateTime enteredDate = DateTime.Parse(date);
                         q = "INSERT INTO `documents`" +
-                                       " ( `number`,`number_id`,`outline`, `id_sender`, `id_recipient`,`date`,`comments`,`document_type`)" +
+                                       " ( `number`,`number_id`,`outline`, `id_sender`, `id_recipient`,`date`,`comments`,`document_type`,`origin`)" +
                                        " VALUES" +
                                        "(" + number + ",'" + number_id+"','"+outline + "'," +
                                        ID + "," + id_send + ",'" +
                                        enteredDate.ToString("s") + "','" + comments + "','" +
-                                      document_type + "');";
+                                      document_type + "','Пересланный');";
                        
                      
                     }
                     else
                     {
                         q = "INSERT INTO `documents`" +
-                                         " ( `number`,`number_id`,`outline`, `id_sender`, `id_recipient`,`comments`,`document_type`)" +
+                                         " ( `number`,`number_id`,`outline`, `id_sender`, `id_recipient`,`comments`,`document_type`,`origin`)" +
                                          " VALUES" +
                                          "(" + number + ",'" + number_id + "','" + outline + "'," +
                                          ID + "," + id_send + ",'" + comments + "','" +
-                                        document_type + "');";
+                                        document_type + "','Пересланный');";
                        
                         
                     }

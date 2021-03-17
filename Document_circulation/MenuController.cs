@@ -249,7 +249,8 @@ namespace Document_circulation
             if (UspeshnoeIzmenenie != 0) { 
                 string query = "INSERT INTO `coments`" +
                                "    (`Id_doc` ,`number`,`Statuscol`, `usercol`)" +
-                               "    VALUES (" + dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString()+
+                               "    VALUES (" + 
+                               dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString()+
                                ","+dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Номер"].Value.ToString()
                                + ",'выполняется'," + ID + ");";
                 MySqlCommand command1 = new MySqlCommand(query, conn);
