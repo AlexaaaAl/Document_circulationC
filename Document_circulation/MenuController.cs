@@ -104,8 +104,7 @@ namespace Document_circulation
                    "date as 'Срок исполнения',status as Статус,document_type " +
                    "from viewdoc WHERE document_type='" + type_doc + "' and (id_sender= " +
                    "(select id_user from log where login='" + tulf2.getName() +
-                   "') and id_recipient<>(select id_user from log where login='" +
-                   tulf2.getName() + "'));";
+                   "'));";
             }
             else
                 if (checkBox1.Checked && checkBox2.Checked != true)
@@ -115,9 +114,8 @@ namespace Document_circulation
                    "concat(`RECIPLast`,' ',left(`RECIPFirst`,1),'. ',left(`RECIPMIDDLE`,1),'.')  as Получатель," +
                    "comments,date_added as 'Дата добавления'," +
                    "date as 'Срок исполнения',status as Статус,document_type " +
-                   "from viewdoc WHERE document_type='" + type_doc + "' and (id_sender= " +
-                   "(select id_user from log where login<>'" + tulf2.getName() +
-                   "') and id_recipient=(select id_user from log where login='" +
+                   "from viewdoc WHERE document_type='" + type_doc + "' and " +
+                   " id_recipient=(select id_user from log where login='" +
                    tulf2.getName() + "'));";
             }
             conn.Close();
