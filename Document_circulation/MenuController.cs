@@ -94,29 +94,27 @@ namespace Document_circulation
                     "(select id_user from log where login='" + tulf2.getName() +
                     "') or id_recipient=(select id_user from log where login='" +
                     tulf2.getName() + "'));";
-            }else 
-                if(checkBox2.Checked && checkBox1.Checked != true)
+            }
+            if(checkBox2.Checked && checkBox1.Checked != true)
             {
                 query = "SELECT id_document,number as Номер,number_id as `Номер документа`,outline as Наименование," +
                    "concat(`SENDERLast`,' ',left(`SENDERfirst`,1),'. ',left(`SENDERMIDDLE`,1),'.')  as Отправитель," +
-                   "concat(`RECIPLast`,' ',left(`RECIPFirst`,1),'. ',left(`RECIPMIDDLE`,1),'.')  as Получатель," +
-                   "comments,date_added as 'Дата добавления'," +
-                   "date as 'Срок исполнения',status as Статус,document_type " +
-                   "from viewdoc WHERE document_type='" + type_doc + "' and (id_sender= " +
+                   " concat(`RECIPLast`,' ',left(`RECIPFirst`,1),'. ',left(`RECIPMIDDLE`,1),'.')  as Получатель," +
+                   " comments,date_added as 'Дата добавления'," +
+                   " date as 'Срок исполнения',status as Статус,document_type " +
+                   " from viewdoc WHERE document_type='" + type_doc + "' and (id_sender= " +
                    "(select id_user from log where login='" + tulf2.getName() +
                    "'));";
             }
-            else
-                if (checkBox1.Checked && checkBox2.Checked != true)
+            if (checkBox1.Checked && checkBox2.Checked != true)
             {
                 query = "SELECT id_document,number as Номер,number_id as `Номер документа`,outline as Наименование," +
-                   "concat(`SENDERLast`,' ',left(`SENDERfirst`,1),'. ',left(`SENDERMIDDLE`,1),'.')  as Отправитель," +
-                   "concat(`RECIPLast`,' ',left(`RECIPFirst`,1),'. ',left(`RECIPMIDDLE`,1),'.')  as Получатель," +
-                   "comments,date_added as 'Дата добавления'," +
-                   "date as 'Срок исполнения',status as Статус,document_type " +
-                   "from viewdoc WHERE document_type='" + type_doc + "' and " +
-                   " id_recipient=(select id_user from log where login='" +
-                   tulf2.getName() + "'));";
+                    " concat(`SENDERLast`, ' ', left(`SENDERfirst`, 1), '. ', left(`SENDERMIDDLE`, 1), '.') as Отправитель," +
+                    " concat(`RECIPLast`, ' ', left(`RECIPFirst`, 1), '. ', left(`RECIPMIDDLE`, 1), '.') as Получатель," +
+                    " comments,date_added as 'Дата добавления'," +
+                    " date as 'Срок исполнения',status as Статус,document_type" +
+                    " from viewdoc WHERE document_type ='"+ type_doc + "' and (id_recipient =" +
+                    "(select id_user from log where login = '"+ tulf2.getName() + "')); ";
             }
             conn.Close();
             conn.Open();

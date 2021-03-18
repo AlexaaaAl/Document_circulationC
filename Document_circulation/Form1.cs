@@ -175,7 +175,7 @@ namespace Document_circulation
             {
                 using (StreamReader sr = File.OpenText("logpass.txt"))
                 {
-                    string s;
+                    //string s;
                     textBox1.Text= File.ReadAllLines("logpass.txt").Skip(0).First();
                     textBox2.Text = File.ReadAllLines("logpass.txt").Skip(1).First();
                     
