@@ -122,10 +122,19 @@ namespace Document_circulation
             conn.Open();
             try
             {
-                
-            
-            //conn.Open();
-            query = "SELECT ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME,Dep_id,ip_server,E_MAIL,ROLE_ID FROM users WHERE ID= " +
+                MySqlDataAdapter h = new MySqlDataAdapter(query, conn);
+                DataSet DS = new DataSet();
+                h.Fill(DS);
+                dataGridView1.DataSource = DS.Tables[0];
+                PaintRows();
+                dataGridView1.Columns["Номер"].Visible = false;
+                dataGridView1.Columns["id_document"].Visible = false;
+                dataGridView1.Columns["comments"].Visible = false;
+                dataGridView1.Columns["document_type"].Visible = false;
+                dataGridView1.ClearSelection();
+
+                //conn.Open();
+                query = "SELECT ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME,Dep_id,ip_server,E_MAIL,ROLE_ID FROM users WHERE ID= " +
                 "(select id_user from log where login='" + tulf2.getName() +
                 "');";
             using (var reader = new MySqlCommand(query, conn).ExecuteReader())
@@ -162,16 +171,7 @@ namespace Document_circulation
                     }
                 }
             }
-                MySqlDataAdapter h = new MySqlDataAdapter(query, conn);
-                DataSet DS = new DataSet();
-                h.Fill(DS);
-                dataGridView1.DataSource = DS.Tables[0];
-                PaintRows();
-                dataGridView1.Columns["Номер"].Visible = false;
-                dataGridView1.Columns["id_document"].Visible = false;
-                dataGridView1.Columns["comments"].Visible = false;
-                dataGridView1.Columns["document_type"].Visible = false;
-                dataGridView1.ClearSelection();
+               
                 if (ID_DIR == "24")
             {
                 query = "SELECT id_document,number as Номер,number_id as `Номер документа`,outline as Наименование," +
