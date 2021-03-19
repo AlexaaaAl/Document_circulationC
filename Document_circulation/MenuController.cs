@@ -94,6 +94,7 @@ namespace Document_circulation
                     "(select id_user from log where login='" + tulf2.getName() +
                     "') or id_recipient=(select id_user from log where login='" +
                     tulf2.getName() + "'));";
+
             }
             if(checkBox2.Checked && checkBox1.Checked != true)
             {

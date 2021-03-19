@@ -163,7 +163,7 @@ namespace Document_circulation
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(156, 21);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Номер документа:";
+            this.label2.Text = "Входящий номер :";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
@@ -225,9 +225,9 @@ namespace Document_circulation
             this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.Location = new System.Drawing.Point(12, 249);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(203, 21);
+            this.label5.Size = new System.Drawing.Size(186, 21);
             this.label5.TabIndex = 16;
-            this.label5.Text = "Коментарий получателя";
+            this.label5.Text = "Добавить коментарий";
             // 
             // button6
             // 
@@ -236,7 +236,7 @@ namespace Document_circulation
             this.button6.MaximumSize = new System.Drawing.Size(240, 38);
             this.button6.MinimumSize = new System.Drawing.Size(207, 38);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(233, 38);
+            this.button6.Size = new System.Drawing.Size(240, 38);
             this.button6.TabIndex = 17;
             this.button6.Text = "Сохранить коментарий";
             this.button6.UseVisualStyleBackColor = true;
@@ -258,9 +258,9 @@ namespace Document_circulation
             this.button10.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button10.Location = new System.Drawing.Point(16, 416);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(233, 41);
+            this.button10.Size = new System.Drawing.Size(330, 41);
             this.button10.TabIndex = 19;
-            this.button10.Text = "Посмотреть изменения";
+            this.button10.Text = "Посмотреть изменения/коментарии\r\n";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 

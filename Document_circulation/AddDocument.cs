@@ -321,13 +321,16 @@ namespace Document_circulation
 
                                     string q = "INSERT INTO `documents`" +
                                                 "    ( `number`,`number_id`,`outline`, " +
-                                                "`id_sender`, `id_recipient`,`date`,`comments`," +
+                                                "`id_sender`, `id_recipient`,`date`,`from_date`,`comments`," +
                                                 "`document_type`,`origin`)" +
                                                 "    VALUES" +
-                                                "           (" + MaxNumber + ",'" + textBox2.Text + "','" + textBox1.Text + "'," +
+                                                "           (" + MaxNumber + ",'" + textBox2.Text + "','" + 
+                                                textBox1.Text + "'," +
                                                 ID + "," +
                                                 Id_s[i] + ",'" +
-                                                dateTimePicker1.Value.ToString("s") + "','" + richTextBox1.Text + "','" +
+                                                dateTimePicker1.Value.ToString("s") + ",'" +
+                                                dateTimePicker2.Value.ToString("s") + "','" + 
+                                                richTextBox1.Text + "','" +
                                                typeComboBox1.Text + "','Оригинал');";
 
                                     MySqlCommand command = new MySqlCommand(q, conn);
@@ -360,12 +363,13 @@ namespace Document_circulation
                                     //MessageBox.Show(id_send.ToString(), "id");
                                     string q = "INSERT INTO `documents`" +
                                                    "    ( `number`,`number_id`,`outline`, " +
-                                                   "`id_sender`, `id_recipient`,`comments`," +
+                                                   "`id_sender`, `id_recipient`,`comments`,`from_date`," +
                                                    "`document_type`,`origin`)" +
                                                    "    VALUES" +
                                                    "           (" + MaxNumber + ",'" + textBox2.Text + "','" + textBox1.Text + "'," +
                                                    ID + "," +
                                                     Id_s[i] + ",'" + richTextBox1.Text + "','" +
+                                                  dateTimePicker2.Value.ToString("s") + "','" +
                                                   typeComboBox1.Text + "','Оригинал');";
                                     MySqlCommand command = new MySqlCommand(q, conn);
                                     // выполняем запрос
@@ -517,6 +521,16 @@ namespace Document_circulation
             {
                 ID = "18";
             }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

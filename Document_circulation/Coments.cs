@@ -31,7 +31,8 @@ namespace Document_circulation
             h.Fill(DS);
             dataGridView1.DataSource = DS.Tables[0];
             dataGridView1.Columns["Статус/коментарий"].Width = 420 ;
-
+            dataGridView1.DefaultCellStyle.WrapMode =
+                DataGridViewTriState.True;
             //dataGridView1.Columns["Статус/коментарий"].Width = 400;
         }
 
