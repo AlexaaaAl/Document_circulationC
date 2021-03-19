@@ -283,7 +283,7 @@ namespace Document_circulation
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(ex.Message, "Ошибка при пользователей, Документ не добавлен!");
+                            MessageBox.Show(ex.Message, "Ошибка пользователя, Документ не добавлен!");
                         }
                         try
                         {
@@ -354,7 +354,11 @@ namespace Document_circulation
                                    + ",'документ добавлен'," + ID + ");";
                                     MySqlCommand command1 = new MySqlCommand(query1, conn);
                                     int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();
-                                    SendMail.SEND_MAIlTORECIP(e_mail[i], textBox1.Text);
+                                    try
+                                    {
+                                        SendMail.SEND_MAIlTORECIP(e_mail[i], textBox1.Text);
+                                    }
+                                    catch { }
 
                                 }
                                 else
@@ -392,8 +396,10 @@ namespace Document_circulation
                                    + ",'документ добавлен'," + ID + ");";
                                     MySqlCommand command1 = new MySqlCommand(query1, conn);
                                     int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();
+                                    try { 
                                     SendMail.SEND_MAIlTORECIP(e_mail[i], textBox1.Text);
-
+                                    }
+                                    catch { }
                                 }
 
                             }

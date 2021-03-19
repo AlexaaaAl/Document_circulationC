@@ -63,6 +63,7 @@ namespace Document_circulation
             incomingMailMoscow.BackColor = Color.Transparent;
             orders.BackColor = Color.Transparent;
             internalDocuments.BackColor = Color.Transparent;
+            //выбор типа для фильтра в зависимости от радиобатона
             if (internalDocuments.Checked)
             {
                 type_doc = "Внутренний документ";
@@ -82,7 +83,7 @@ namespace Document_circulation
             this.v1TableAdapter.Fill(this.document_circulation_pathDataSet1.v1);
             dataGridView1.DataSource = Nothing;
             var db = new DBUtils();
-
+            //вывод по фильтру исходящих/входящих
             if (checkBox1.Checked && checkBox2.Checked)
             {
                 query = "SELECT id_document,number as Номер,number_id as `Номер документа`,outline as Наименование," +
@@ -121,16 +122,7 @@ namespace Document_circulation
             conn.Open();
             try
             {
-                MySqlDataAdapter h = new MySqlDataAdapter(query, conn);
-                DataSet DS = new DataSet();
-                h.Fill(DS);
-                dataGridView1.DataSource = DS.Tables[0];
-                PaintRows();
-                dataGridView1.Columns["Номер"].Visible = false;
-                dataGridView1.Columns["id_document"].Visible = false;
-                dataGridView1.Columns["comments"].Visible = false;
-                dataGridView1.Columns["document_type"].Visible = false;
-                dataGridView1.ClearSelection();
+                
             
             //conn.Open();
             query = "SELECT ID,LAST_NAME,FIRST_NAME,MIDDLE_NAME,Dep_id,ip_server,E_MAIL,ROLE_ID FROM users WHERE ID= " +
@@ -170,7 +162,17 @@ namespace Document_circulation
                     }
                 }
             }
-            if (ID_DIR == "24")
+                MySqlDataAdapter h = new MySqlDataAdapter(query, conn);
+                DataSet DS = new DataSet();
+                h.Fill(DS);
+                dataGridView1.DataSource = DS.Tables[0];
+                PaintRows();
+                dataGridView1.Columns["Номер"].Visible = false;
+                dataGridView1.Columns["id_document"].Visible = false;
+                dataGridView1.Columns["comments"].Visible = false;
+                dataGridView1.Columns["document_type"].Visible = false;
+                dataGridView1.ClearSelection();
+                if (ID_DIR == "24")
             {
                 query = "SELECT id_document,number as Номер,number_id as `Номер документа`,outline as Наименование," +
                "concat(`SENDERLast`,' ',left(`SENDERfirst`,1),'. ',left(`SENDERMIDDLE`,1),'.')  as Отправитель," +
@@ -178,7 +180,8 @@ namespace Document_circulation
                "comments,date_added as 'Дата добавления'," +
                "date as 'Срок исполнения',status as Статус,document_type " +
                "from viewdoc WHERE document_type='" + type_doc + "' and (id_sender= " +
-                ID_DIR + ");";
+                ID_DIR + ") or (id_recipient= " +
+                ID_DIR + ") ;";
                 conn.Close();
                 conn.Open();
                 h = new MySqlDataAdapter(query, conn);
