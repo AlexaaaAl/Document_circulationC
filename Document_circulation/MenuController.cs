@@ -63,6 +63,7 @@ namespace Document_circulation
             incomingMailMoscow.BackColor = Color.Transparent;
             orders.BackColor = Color.Transparent;
             internalDocuments.BackColor = Color.Transparent;
+            radioButton1.BackColor = Color.Transparent;
             //выбор типа для фильтра в зависимости от радиобатона
             if (internalDocuments.Checked)
             {
@@ -84,14 +85,15 @@ namespace Document_circulation
             dataGridView1.DataSource = Nothing;
             var db = new DBUtils();
             //вывод по фильтру исходящих/входящих
+            string Q = "";
+            string radiobuttons = "";
+            if (internalDocuments.Checked || orders.Checked || incomingMail.Checked || incomingMailMoscow.Checked)
+            {
+                radiobuttons = "document_type ='" + type_doc + "' and";
+            }
             if (checkBox1.Checked && checkBox2.Checked)
             {
-                query = "SELECT id_document,number as Номер,number_id as `Номер документа`,outline as Наименование," +
-                    "concat(`SENDERLast`,' ',left(`SENDERfirst`,1),'. ',left(`SENDERMIDDLE`,1),'.')  as Отправитель," +
-                    "concat(`RECIPLast`,' ',left(`RECIPFirst`,1),'. ',left(`RECIPMIDDLE`,1),'.')  as Получатель," +
-                    "comments,date_added as 'Дата добавления'," +
-                    "date as 'Срок исполнения',status as Статус,document_type " +
-                    "from viewdoc WHERE document_type='" + type_doc + "' and (id_sender= " +
+                Q = " (id_sender= " +
                     "(select id_user from log where login='" + tulf2.getName() +
                     "') or id_recipient=(select id_user from log where login='" +
                     tulf2.getName() + "'));";
@@ -99,25 +101,21 @@ namespace Document_circulation
             }
             if(checkBox2.Checked && checkBox1.Checked != true)
             {
-                query = "SELECT id_document,number as Номер,number_id as `Номер документа`,outline as Наименование," +
-                   "concat(`SENDERLast`,' ',left(`SENDERfirst`,1),'. ',left(`SENDERMIDDLE`,1),'.')  as Отправитель," +
-                   " concat(`RECIPLast`,' ',left(`RECIPFirst`,1),'. ',left(`RECIPMIDDLE`,1),'.')  as Получатель," +
-                   " comments,date_added as 'Дата добавления'," +
-                   " date as 'Срок исполнения',status as Статус,document_type " +
-                   " from viewdoc WHERE document_type='" + type_doc + "' and (id_sender= " +
+                Q = " (id_sender= " +
                    "(select id_user from log where login='" + tulf2.getName() +
                    "'));";
             }
             if (checkBox1.Checked && checkBox2.Checked != true)
             {
-                query = "SELECT id_document,number as Номер,number_id as `Номер документа`,outline as Наименование," +
-                    " concat(`SENDERLast`, ' ', left(`SENDERfirst`, 1), '. ', left(`SENDERMIDDLE`, 1), '.') as Отправитель," +
-                    " concat(`RECIPLast`, ' ', left(`RECIPFirst`, 1), '. ', left(`RECIPMIDDLE`, 1), '.') as Получатель," +
-                    " comments,date_added as 'Дата добавления'," +
-                    " date as 'Срок исполнения',status as Статус,document_type" +
-                    " from viewdoc WHERE document_type ='"+ type_doc + "' and (id_recipient =" +
+               Q= " (id_recipient =" +
                     "(select id_user from log where login = '"+ tulf2.getName() + "')); ";
             }
+            query = "SELECT id_document,number as Номер,number_id as `Номер документа`,outline as Наименование," +
+                   " concat(`SENDERLast`, ' ', left(`SENDERfirst`, 1), '. ', left(`SENDERMIDDLE`, 1), '.') as Отправитель," +
+                   " concat(`RECIPLast`, ' ', left(`RECIPFirst`, 1), '. ', left(`RECIPMIDDLE`, 1), '.') as Получатель," +
+                   " comments,date_added as 'Дата добавления'," +
+                   " date as 'Срок исполнения',status as Статус,document_type" +
+                   " from viewdoc WHERE "+ radiobuttons+ Q;
             conn.Close();
             conn.Open();
             try
@@ -156,11 +154,11 @@ namespace Document_circulation
                         добавитьПользователяToolStripMenuItem.Enabled = false;
                         
                     }
-                    if (g != 4)
+                    /*if (g != 4)
                     {
                         incomingMail.Visible = false;
                         incomingMailMoscow.Visible = false;
-                    }
+                    }*/
                     if (g == 4)
                     {
                         ID_DIR = "24";

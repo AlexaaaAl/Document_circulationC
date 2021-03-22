@@ -53,6 +53,7 @@ namespace Document_circulation
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.orders = new System.Windows.Forms.RadioButton();
@@ -64,10 +65,6 @@ namespace Document_circulation
             this.label1 = new System.Windows.Forms.Label();
             this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet1 = new Document_circulation.DataSet1();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.document_circulation_pathDataSet = new Document_circulation.document_circulation_pathDataSet();
             this.usersTableAdapter = new Document_circulation.document_circulation_pathDataSetTableAdapters.usersTableAdapter();
@@ -292,12 +289,9 @@ namespace Document_circulation
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.OliveDrab;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(87)))), ((int)(((byte)(57)))), ((int)(((byte)(0)))));
             this.panel1.BackgroundImage = global::Document_circulation.Properties.Resources.Новый_проект__3_;
-            this.panel1.Controls.Add(this.checkBox6);
-            this.panel1.Controls.Add(this.checkBox5);
-            this.panel1.Controls.Add(this.checkBox4);
-            this.panel1.Controls.Add(this.checkBox3);
+            this.panel1.Controls.Add(this.radioButton1);
             this.panel1.Controls.Add(this.checkBox2);
             this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.orders);
@@ -312,6 +306,21 @@ namespace Document_circulation
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1441, 116);
             this.panel1.TabIndex = 0;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(120)))), ((int)(((byte)(60)))));
+            this.radioButton1.Checked = true;
+            this.radioButton1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButton1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.radioButton1.Location = new System.Drawing.Point(771, 11);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(191, 25);
+            this.radioButton1.TabIndex = 13;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Убрать все фильтры";
+            this.radioButton1.UseVisualStyleBackColor = false;
             // 
             // checkBox2
             // 
@@ -351,7 +360,7 @@ namespace Document_circulation
             this.orders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(109)))), ((int)(((byte)(48)))));
             this.orders.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.orders.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.orders.Location = new System.Drawing.Point(781, 33);
+            this.orders.Location = new System.Drawing.Point(771, 53);
             this.orders.Name = "orders";
             this.orders.Size = new System.Drawing.Size(99, 25);
             this.orders.TabIndex = 6;
@@ -367,7 +376,7 @@ namespace Document_circulation
             this.incomingMailMoscow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(114)))), ((int)(((byte)(52)))));
             this.incomingMailMoscow.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.incomingMailMoscow.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.incomingMailMoscow.Location = new System.Drawing.Point(781, 75);
+            this.incomingMailMoscow.Location = new System.Drawing.Point(771, 95);
             this.incomingMailMoscow.Name = "incomingMailMoscow";
             this.incomingMailMoscow.Size = new System.Drawing.Size(446, 25);
             this.incomingMailMoscow.TabIndex = 5;
@@ -383,7 +392,7 @@ namespace Document_circulation
             this.incomingMail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(109)))), ((int)(((byte)(48)))));
             this.incomingMail.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.incomingMail.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.incomingMail.Location = new System.Drawing.Point(781, 54);
+            this.incomingMail.Location = new System.Drawing.Point(771, 74);
             this.incomingMail.Name = "incomingMail";
             this.incomingMail.Size = new System.Drawing.Size(364, 25);
             this.incomingMail.TabIndex = 4;
@@ -399,14 +408,12 @@ namespace Document_circulation
             this.internalDocuments.AutoSize = true;
             this.internalDocuments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(129)))), ((int)(((byte)(62)))));
             this.internalDocuments.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("internalDocuments.BackgroundImage")));
-            this.internalDocuments.Checked = true;
             this.internalDocuments.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.internalDocuments.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.internalDocuments.Location = new System.Drawing.Point(781, 13);
+            this.internalDocuments.Location = new System.Drawing.Point(771, 33);
             this.internalDocuments.Name = "internalDocuments";
             this.internalDocuments.Size = new System.Drawing.Size(327, 25);
             this.internalDocuments.TabIndex = 3;
-            this.internalDocuments.TabStop = true;
             this.internalDocuments.Text = "Регистрация внутренних документов";
             this.internalDocuments.UseVisualStyleBackColor = false;
             // 
@@ -455,50 +462,6 @@ namespace Document_circulation
             // 
             this.dataSet1.DataSetName = "DataSet1";
             this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(330, 43);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(214, 17);
-            this.checkBox3.TabIndex = 9;
-            this.checkBox3.Text = "Регистрация внутренних документов";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.Visible = false;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(330, 58);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(72, 17);
-            this.checkBox4.TabIndex = 10;
-            this.checkBox4.Text = "Приказы";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.Visible = false;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(330, 70);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(237, 17);
-            this.checkBox5.TabIndex = 11;
-            this.checkBox5.Text = "Регистрация входящей корреспонденции";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            this.checkBox5.Visible = false;
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(330, 83);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(292, 17);
-            this.checkBox6.TabIndex = 12;
-            this.checkBox6.Text = "Регистрация входящей корреспонденции г. Москвы";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            this.checkBox6.Visible = false;
             // 
             // bindingSource1
             // 
@@ -620,9 +583,6 @@ namespace Document_circulation
         private System.Windows.Forms.ToolStripMenuItem контактыToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }
