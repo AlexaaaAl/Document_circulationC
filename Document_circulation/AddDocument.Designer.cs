@@ -186,6 +186,7 @@ namespace Document_circulation
             // 
             this.userComboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.userComboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.userComboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.userComboBox2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.userComboBox2.DisplayMember = "LAST_NAME";
             this.userComboBox2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -193,6 +194,7 @@ namespace Document_circulation
             this.userComboBox2.Location = new System.Drawing.Point(696, 257);
             this.userComboBox2.Name = "userComboBox2";
             this.userComboBox2.Size = new System.Drawing.Size(337, 29);
+            this.userComboBox2.Sorted = true;
             this.userComboBox2.TabIndex = 9;
             this.userComboBox2.ValueMember = "LAST_NAME";
             this.userComboBox2.SelectedIndexChanged += new System.EventHandler(this.userComboBox2_SelectedIndexChanged);
@@ -322,12 +324,12 @@ namespace Document_circulation
             // 
             this.DepcomboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DepcomboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.DepcomboBox.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DepcomboBox.FormattingEnabled = true;
             this.DepcomboBox.Location = new System.Drawing.Point(310, 257);
             this.DepcomboBox.Name = "DepcomboBox";
             this.DepcomboBox.Size = new System.Drawing.Size(358, 29);
+            this.DepcomboBox.Sorted = true;
             this.DepcomboBox.TabIndex = 22;
             this.DepcomboBox.SelectedIndexChanged += new System.EventHandler(this.DepcomboBox_SelectedIndexChanged);
             // 

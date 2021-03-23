@@ -173,7 +173,11 @@ namespace Document_circulation
                             ID + "," + id_send + ",'" + comments + "','" +
                             document_type + "','Пересланный');";
                     }
-                    SendMail.SEND_MAIlTORECIP(e_mail, outline);
+                    try
+                    {
+                        SendMail.SEND_MAIlTORECIP(e_mail, outline);
+                    }
+                    catch { }
                     MySqlCommand command = new MySqlCommand(q, conn);
                     // выполняем запрос
                     command.ExecuteNonQuery();
