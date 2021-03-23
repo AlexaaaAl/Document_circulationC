@@ -144,7 +144,9 @@ namespace Document_circulation
                         patientTable.Rows[i]["MIDDLE_NAME"].ToString().Substring(0, 1) + ". ";
                     IdcomboBox.Items.Add(patientTable.Rows[i]["id"].ToString());
                     userComboBox2.Items.Add(s);
+                    comboBox1.Items.Add(s);
                 }
+
 
             }
             catch (Exception ex)
@@ -322,7 +324,7 @@ namespace Document_circulation
                                     string q = "INSERT INTO `documents`" +
                                                 "    ( `number`,`number_id`,`outline`, " +
                                                 "`id_sender`, `id_recipient`,`date`,`from_date`,`comments`," +
-                                                "`document_type`,`origin`)" +
+                                                "`document_type`,`origin`,`sign`)" +
                                                 "    VALUES" +
                                                 "           (" + MaxNumber + ",'" + textBox2.Text + "','" + 
                                                 textBox1.Text + "'," +
@@ -331,7 +333,7 @@ namespace Document_circulation
                                                 dateTimePicker1.Value.ToString("s") + ",'" +
                                                 dateTimePicker2.Value.ToString("s") + "','" + 
                                                 richTextBox1.Text + "','" +
-                                               typeComboBox1.Text + "','Оригинал');";
+                                               typeComboBox1.Text + "','Оригинал','"+comboBox1.Text+"');";
 
                                     MySqlCommand command = new MySqlCommand(q, conn);
                                     // выполняем запрос
@@ -368,13 +370,13 @@ namespace Document_circulation
                                     string q = "INSERT INTO `documents`" +
                                                    "    ( `number`,`number_id`,`outline`, " +
                                                    "`id_sender`, `id_recipient`,`comments`,`from_date`," +
-                                                   "`document_type`,`origin`)" +
+                                                   "`document_type`,`origin`,`sign`)" +
                                                    "    VALUES" +
                                                    "           (" + MaxNumber + ",'" + textBox2.Text + "','" + textBox1.Text + "'," +
                                                    ID + "," +
                                                     Id_s[i] + ",'" + richTextBox1.Text + "','" +
                                                   dateTimePicker2.Value.ToString("s") + "','" +
-                                                  typeComboBox1.Text + "','Оригинал');";
+                                                  typeComboBox1.Text + "','Оригинал','" + comboBox1.Text + "');";
                                     MySqlCommand command = new MySqlCommand(q, conn);
                                     // выполняем запрос
                                     command.ExecuteNonQuery();
@@ -535,6 +537,11 @@ namespace Document_circulation
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
         {
 
         }

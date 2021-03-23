@@ -175,7 +175,7 @@ namespace Document_circulation
                
                 if (ID_DIR == "24")
             {
-                query = "SELECT id_document,number as Номер,number_id as `Номер документа`,outline as Наименование," +
+                query = "SELECT id_document,number as Номер,number_id as `Номер документа`,outline as `Исходящий номер`," +
                "concat(`SENDERLast`,' ',left(`SENDERfirst`,1),'. ',left(`SENDERMIDDLE`,1),'.')  as Отправитель," +
                "concat(`RECIPLast`,' ',left(`RECIPFirst`,1),'. ',left(`RECIPMIDDLE`,1),'.')  as Получатель," +
                "comments,date_added as 'Дата добавления'," +
@@ -292,7 +292,7 @@ namespace Document_circulation
             }
             ChangeDocument f2 = new ChangeDocument();
             f2.number = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Номер"].Value.ToString();
-            f2.outline = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Наименование"].Value.ToString();
+            f2.outline = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Исходящий номер"].Value.ToString();
             f2.comment = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["comments"].Value.ToString();
             f2.ID_Doc = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString();
             f2.MIDDLE_NAME = MIDDLE_NAME;

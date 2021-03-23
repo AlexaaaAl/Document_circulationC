@@ -56,6 +56,35 @@ namespace Document_circulation
             {
                 MessageBox.Show(ex.Message, "Ошибка");
             }
+            try
+            {
+                conn.Close();
+                conn.Open();
+                IdPcomboBox.Items.Clear();
+                comboBox1.Items.Clear();
+                patientTable.Clear();
+                string CommandText = "SELECT id,LAST_NAME,FIRST_NAME," +
+                    "MIDDLE_NAME,ROLE_ID FROM users  " +
+                    "inner join departments on users.Dep_id=departments.idDep " +
+                    " ORDER BY LAST_NAME";
+                MySqlCommand myCommand = new MySqlCommand(CommandText, conn);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(myCommand);
+                adapter.Fill(patientTable);
+                for (int j = 0; j < patientTable.Rows.Count; j++)
+                {
+                    string s = patientTable.Rows[j]["LAST_NAME"].ToString() + " " +
+                        patientTable.Rows[j]["FIRST_NAME"].ToString().Substring(0, 1) + ". " +
+                        patientTable.Rows[j]["MIDDLE_NAME"].ToString().Substring(0, 1) + ". ";
+                    IdPcomboBox.Items.Add(patientTable.Rows[j]["id"].ToString());
+                    comboBox1.Items.Add(s);
+                }
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
 
         }
 
