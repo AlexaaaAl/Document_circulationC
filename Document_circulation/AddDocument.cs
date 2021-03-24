@@ -494,6 +494,7 @@ namespace Document_circulation
             {
                 MessageBox.Show(ex.Message, "Ошибка");
             }*/
+           // DepcomboBox.DataSource = DataSet.Where(d => d.Contains(seachString)).ToList();
         }
 
         private void button6_Click(object sender, EventArgs e)
