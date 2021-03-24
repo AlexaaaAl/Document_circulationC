@@ -57,7 +57,7 @@ namespace Document_circulation
 
         private void MenuController_Load(object sender, EventArgs e) //прогрузка формы и таблицы
         {
-      
+            dataGridView1.AutoSize = true;
 
             dataGridView1.DefaultCellStyle.WrapMode =
                 DataGridViewTriState.True;
