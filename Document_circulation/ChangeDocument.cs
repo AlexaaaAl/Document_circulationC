@@ -63,7 +63,7 @@ namespace Document_circulation
                     uploadbutoncheck.Enabled = false;
                 } 
             }
-            string question = "select `e_mail`,`number_id`,`comments_doc`,`origin` from `documents` " +
+            string question = "select `e_mail`,`number_id`,`comments_doc`,`origin`,`sign` from `documents` " +
                 "inner join `users` on `id_recipient`=`id` where `id_document`=" + 
                 ID_Doc + ";";
             using (var reader = new MySqlCommand(question, conn).ExecuteReader())
@@ -71,6 +71,7 @@ namespace Document_circulation
                 if (reader.Read())
                 {
                     label3.Text= reader["number_id"].ToString()+ " " + reader["origin"].ToString();
+                    label7.Text = reader["sign"].ToString();
                     //comments_doc = reader["comments_doc"].ToString();
                     richTextBoxComment.Text=comments_doc;
                    // E_Mail = reader["e_mail"].ToString();

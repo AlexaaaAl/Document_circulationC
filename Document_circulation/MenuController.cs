@@ -57,6 +57,10 @@ namespace Document_circulation
 
         private void MenuController_Load(object sender, EventArgs e) //прогрузка формы и таблицы
         {
+      
+
+            dataGridView1.DefaultCellStyle.WrapMode =
+                DataGridViewTriState.True;
             checkBox1.BackColor = Color.Transparent;
             checkBox2.BackColor = Color.Transparent;
             incomingMail.BackColor = Color.Transparent;

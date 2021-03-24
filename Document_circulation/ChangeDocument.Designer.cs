@@ -49,6 +49,8 @@ namespace Document_circulation
             this.button6 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -182,7 +184,7 @@ namespace Document_circulation
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(12, 79);
+            this.label4.Location = new System.Drawing.Point(12, 98);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 21);
             this.label4.TabIndex = 11;
@@ -204,9 +206,9 @@ namespace Document_circulation
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Enabled = false;
             this.richTextBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBox1.Location = new System.Drawing.Point(16, 103);
+            this.richTextBox1.Location = new System.Drawing.Point(16, 122);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(364, 133);
+            this.richTextBox1.Size = new System.Drawing.Size(364, 124);
             this.richTextBox1.TabIndex = 14;
             this.richTextBox1.Text = "";
             // 
@@ -264,11 +266,35 @@ namespace Document_circulation
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label6.Location = new System.Drawing.Point(12, 79);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(141, 21);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "За подписью от:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label7.Location = new System.Drawing.Point(170, 79);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 21);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "label7";
+            // 
             // ChangeDocument
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(660, 468);
+            this.ClientSize = new System.Drawing.Size(660, 480);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button6);
@@ -321,5 +347,7 @@ namespace Document_circulation
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
