@@ -324,7 +324,7 @@ namespace Document_circulation
                                     string q = "INSERT INTO `documents`" +
                                                 "    ( `number`,`number_id`,`outline`, " +
                                                 "`id_sender`, `id_recipient`,`date`,`from_date`,`comments`," +
-                                                "`document_type`,`origin`,`sign`)" +
+                                                "`document_type`,`origin`,`sign`,`to_date`)" +
                                                 "    VALUES" +
                                                 "           (" + MaxNumber + ",'" + textBox2.Text + "','" + 
                                                 textBox1.Text + "'," +
@@ -333,7 +333,8 @@ namespace Document_circulation
                                                 dateTimePicker1.Value.ToString("s") + ",'" +
                                                 dateTimePicker2.Value.ToString("s") + "','" + 
                                                 richTextBox1.Text + "','" +
-                                               typeComboBox1.Text + "','Оригинал','"+comboBox1.Text+"');";
+                                               typeComboBox1.Text + "','Оригинал','"+comboBox1.Text+
+                                               "','"+ dateTimePicker3.Value.ToString("s") + "');";
 
                                     MySqlCommand command = new MySqlCommand(q, conn);
                                     // выполняем запрос
@@ -370,13 +371,14 @@ namespace Document_circulation
                                     string q = "INSERT INTO `documents`" +
                                                    "    ( `number`,`number_id`,`outline`, " +
                                                    "`id_sender`, `id_recipient`,`comments`,`from_date`," +
-                                                   "`document_type`,`origin`,`sign`)" +
+                                                   "`document_type`,`origin`,`sign`,`to_date`)" +
                                                    "    VALUES" +
                                                    "           (" + MaxNumber + ",'" + textBox2.Text + "','" + textBox1.Text + "'," +
                                                    ID + "," +
                                                     Id_s[i] + ",'" + richTextBox1.Text + "','" +
                                                   dateTimePicker2.Value.ToString("s") + "','" +
-                                                  typeComboBox1.Text + "','Оригинал','" + comboBox1.Text + "');";
+                                                  typeComboBox1.Text + "','Оригинал','" + comboBox1.Text +
+                                                   "','" + dateTimePicker3.Value.ToString("s") + "');";
                                     MySqlCommand command = new MySqlCommand(q, conn);
                                     // выполняем запрос
                                     command.ExecuteNonQuery();

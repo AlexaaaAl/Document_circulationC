@@ -63,7 +63,8 @@ namespace Document_circulation
                     uploadbutoncheck.Enabled = false;
                 } 
             }
-            string question = "select `e_mail`,`number_id`,`comments_doc`,`origin`,`sign` from `documents` " +
+            string question = "select `e_mail`,`number_id`,`comments_doc`," +
+                "`from_date`,`to_date`,`origin`,`sign` from `documents` " +
                 "inner join `users` on `id_recipient`=`id` where `id_document`=" + 
                 ID_Doc + ";";
             using (var reader = new MySqlCommand(question, conn).ExecuteReader())
@@ -74,8 +75,10 @@ namespace Document_circulation
                     label7.Text = reader["sign"].ToString();
                     //comments_doc = reader["comments_doc"].ToString();
                     richTextBoxComment.Text=comments_doc;
-                   // E_Mail = reader["e_mail"].ToString();
-                   //label1.Text+= " "+reader["origin"].ToString();
+                    label9.Text= reader["to_date"].ToString();
+                    label11.Text = reader["from_date"].ToString();
+                    // E_Mail = reader["e_mail"].ToString();
+                    //label1.Text+= " "+reader["origin"].ToString();
                 }
             }
             question = "SELECT Dep FROM departments where idDep=" + DEPARTMENT + ";";
