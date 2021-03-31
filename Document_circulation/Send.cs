@@ -108,7 +108,8 @@ namespace Document_circulation
             
             conn.Close();
             conn.Open();
-            string later ="Select number,number_id,outline,comments, date_added,date,status,document_type " +
+            string later ="Select number,number_id,outline,comments, date_added,date," +
+                "to_date,from_date,status,document_type " +
                 "from documents where id_document="+ID_Doc+";";
             string outline = "";
             string comments = "";
@@ -119,6 +120,8 @@ namespace Document_circulation
             string number = "";
             string number_id = "";
             string q = "";
+            string to_date= "";
+            string from_date = "";
             try
             {
                 using (var reader = new MySqlCommand(later, conn).ExecuteReader())
@@ -134,6 +137,8 @@ namespace Document_circulation
                         document_type = reader["document_type"].ToString();
                         number = reader["number"].ToString();
                         number_id= reader["number_id"].ToString();
+                        to_date = reader["to_date"].ToString();
+                        from_date = reader["from_date"].ToString();
                     }
                 }
                 for (int i = 0; i < listBox1.Items.Count; i++)
@@ -152,26 +157,34 @@ namespace Document_circulation
 
                         }
                     }
+                    DateTime from_dateDate = DateTime.Parse(from_date);
+                    DateTime to_dateDate = DateTime.Parse(to_date);
                     if (!String.IsNullOrEmpty(date)) {
                         DateTime enteredDate = DateTime.Parse(date);
+                       
                         q = "INSERT INTO `documents`" +
                             " ( `number`,`number_id`,`outline`, `id_sender`, " +
-                            "`id_recipient`,`date`,`comments`,`document_type`,`origin`)" +
+                            "`id_recipient`,`date`,`comments`,`document_type`," +
+                            "`from_date`,`to_date`,`origin`)" +
                             " VALUES" +
                             "(" + number + ",'" + number_id+"','"+outline + "'," +
                             ID + "," + id_send + ",'" +
                             enteredDate.ToString("s") + "','" + comments + "','" +
-                            document_type + "','Пересланный');";
+                            document_type +
+                            "','" + from_dateDate.ToString("s") + "','" +
+                            to_dateDate.ToString("s") + "','Пересланный');";
                     }
                     else
                     {
                         q = "INSERT INTO `documents`" +
                             " ( `number`,`number_id`,`outline`, `id_sender`, " +
-                            "`id_recipient`,`comments`,`document_type`,`origin`)" +
+                            "`id_recipient`,`comments`,`document_type`," +
+                            "`from_date`,`to_date`,`origin`)" +
                             " VALUES" +
                             "(" + number + ",'" + number_id + "','" + outline + "'," +
                             ID + "," + id_send + ",'" + comments + "','" +
-                            document_type + "','Пересланный');";
+                            document_type + "','" + from_dateDate.ToString("s") + "','" +
+                            to_dateDate.ToString("s") + "','Пересланный');";
                     }
                     try
                     {

@@ -57,8 +57,7 @@ namespace Document_circulation
 
         private void MenuController_Load(object sender, EventArgs e) //прогрузка формы и таблицы
         {
-            dataGridView1.AutoSize = true;
-
+            dataGridView1.ColumnHeadersHeight = 70;
             dataGridView1.DefaultCellStyle.WrapMode =
                 DataGridViewTriState.True;
             checkBox1.BackColor = Color.Transparent;
@@ -114,13 +113,13 @@ namespace Document_circulation
                Q= " (id_recipient =" +
                     "(select id_user from log where login = '"+ tulf2.getName() + "')); ";
             }
-            query = "SELECT id_document,number as Номер,number_id as `Номер документа`," +
-                "from_date as 'Дата регистрации', outline as `Исходящий номер`," +
+            query = "SELECT id_document,number as Номер,number_id as `Входящий номер`," +
+                "to_date as 'От', outline as `Исходящий номер`,from_date as 'От:'," +
                    " concat(`SENDERLast`, ' ', left(`SENDERfirst`, 1), '. ', " +
                    "left(`SENDERMIDDLE`, 1), '.') as Отправитель," +
                    " concat(`RECIPLast`, ' ', left(`RECIPFirst`, 1), '. ', " +
                    "left(`RECIPMIDDLE`, 1), '.') as Получатель," +
-                   " comments,date_added as 'Дата добавления'," +
+                   " comments," +
                    " date as 'Срок исполнения',status as Статус,document_type" +
                    " from viewdoc WHERE "+ radiobuttons+ Q;
             conn.Close();
@@ -179,10 +178,11 @@ namespace Document_circulation
                
                 if (ID_DIR == "24")
             {
-                query = "SELECT id_document,number as Номер,number_id as `Номер документа`,outline as `Исходящий номер`," +
+                query = "SELECT id_document,number as Номер,number_id as `Входящий номер`,to_date as 'От'," +
+                        "outline as `Исходящий номер`, from_date as 'От:'," +
                "concat(`SENDERLast`,' ',left(`SENDERfirst`,1),'. ',left(`SENDERMIDDLE`,1),'.')  as Отправитель," +
                "concat(`RECIPLast`,' ',left(`RECIPFirst`,1),'. ',left(`RECIPMIDDLE`,1),'.')  as Получатель," +
-               "comments,date_added as 'Дата добавления'," +
+               "comments," +
                "date as 'Срок исполнения',status as Статус,document_type " +
                "from viewdoc WHERE document_type='" + type_doc + "' and (id_sender= " +
                 ID_DIR + ") or (id_recipient= " +
@@ -208,11 +208,11 @@ namespace Document_circulation
         {
             foreach (DataGridViewRow row in dataGridView1.Rows)
             { 
-                if (String.Equals(row.Cells[10].Value.ToString(),"выполняется") )
+                if (String.Equals(row.Cells["Статус"].Value.ToString(),"выполняется") )
                     row.DefaultCellStyle.BackColor = Color.Khaki;
-                if (String.Equals(row.Cells[10].Value.ToString(), "подтверждён"))
+                if (String.Equals(row.Cells["Статус"].Value.ToString(), "подтверждён"))
                     row.DefaultCellStyle.BackColor = Color.GreenYellow;
-                if (String.Equals(row.Cells[10].Value.ToString(), "в ожидании"))
+                if (String.Equals(row.Cells["Статус"].Value.ToString(), "в ожидании"))
                     row.DefaultCellStyle.BackColor = Color.Chocolate;
             }
         }
