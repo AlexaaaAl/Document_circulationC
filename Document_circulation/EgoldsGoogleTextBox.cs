@@ -9,11 +9,9 @@ using EgoldsUI;
 
 namespace Document_circulation.Controlles
 {
-    
-
-        [Designer(typeof(ControlDesignerEx))] // ControlDesignerEx Добавляем для ограничения изменения размеров
-        [DefaultProperty("TextPreview")]
-        public class EgoldsGoogleTextBox : Control
+    [Designer(typeof(ControlDesignerEx))] // ControlDesignerEx Добавляем для ограничения изменения размеров
+    [DefaultProperty("TextPreview")]
+    public class EgoldsGoogleTextBox : Control
         {
             #region -- Свойства --
 
@@ -274,6 +272,6 @@ namespace Document_circulation.Controlles
                     }
                 }
             }
-        }
+    }
     
 }
