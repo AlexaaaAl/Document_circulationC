@@ -263,6 +263,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>document_circulation_pathDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Drawer.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -292,6 +293,9 @@
     </Compile>
     <Compile Include="ViewDocuments.Designer.cs">
       <DependentUpon>ViewDocuments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="yt_Button.cs">
+      <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="AddDepartment.resx">
       <DependentUpon>AddDepartment.cs</DependentUpon>

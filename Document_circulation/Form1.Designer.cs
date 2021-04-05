@@ -48,6 +48,7 @@ namespace Document_circulation
             this.button2 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.yt_Button1 = new Document_circulation.yt_Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -79,7 +80,7 @@ namespace Document_circulation
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(227, 307);
+            this.label1.Location = new System.Drawing.Point(227, 331);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(176, 13);
             this.label1.TabIndex = 3;
@@ -249,14 +250,27 @@ namespace Document_circulation
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
+            // yt_Button1
+            // 
+            this.yt_Button1.BackColor = System.Drawing.Color.IndianRed;
+            this.yt_Button1.ForeColor = System.Drawing.Color.White;
+            this.yt_Button1.Location = new System.Drawing.Point(354, 331);
+            this.yt_Button1.Name = "yt_Button1";
+            this.yt_Button1.Rounding = 100;
+            this.yt_Button1.RoundingEnable = true;
+            this.yt_Button1.Size = new System.Drawing.Size(115, 55);
+            this.yt_Button1.TabIndex = 14;
+            this.yt_Button1.Text = "yt_Button1";
+            // 
             // Form1
             // 
             this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(475, 351);
+            this.ClientSize = new System.Drawing.Size(475, 398);
             this.ControlBox = false;
+            this.Controls.Add(this.yt_Button1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.checkBox1);
@@ -302,6 +316,7 @@ namespace Document_circulation
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button2;
+        private yt_Button yt_Button1;
     }
 }
 
