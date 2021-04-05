@@ -43,7 +43,6 @@ namespace Document_circulation
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -91,7 +90,6 @@ namespace Document_circulation
             // richTextBox1
             // 
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.richTextBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.richTextBox1.Location = new System.Drawing.Point(11, 224);
             this.richTextBox1.Name = "richTextBox1";
@@ -106,7 +104,6 @@ namespace Document_circulation
             // 
             this.richTextBox2.BackColor = System.Drawing.SystemColors.Control;
             this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox2.Cursor = System.Windows.Forms.Cursors.Default;
             this.richTextBox2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.richTextBox2.Location = new System.Drawing.Point(69, 206);
             this.richTextBox2.Name = "richTextBox2";
@@ -159,7 +156,6 @@ namespace Document_circulation
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label5.Location = new System.Drawing.Point(178, 226);
@@ -174,7 +170,6 @@ namespace Document_circulation
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label4.Location = new System.Drawing.Point(178, 203);
@@ -183,22 +178,6 @@ namespace Document_circulation
             this.label4.TabIndex = 12;
             this.label4.Text = "Инструкция по использованию";
             this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.ForestGreen;
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(230, 264);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(173, 40);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Авторизация";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel1
             // 
@@ -252,19 +231,19 @@ namespace Document_circulation
             // 
             // yt_Button1
             // 
-            this.yt_Button1.BackColor = System.Drawing.Color.IndianRed;
+            this.yt_Button1.BackColor = System.Drawing.Color.Tomato;
+            this.yt_Button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.yt_Button1.ForeColor = System.Drawing.Color.White;
-            this.yt_Button1.Location = new System.Drawing.Point(354, 331);
+            this.yt_Button1.Location = new System.Drawing.Point(230, 279);
             this.yt_Button1.Name = "yt_Button1";
-            this.yt_Button1.Rounding = 100;
+            this.yt_Button1.Rounding = 30;
             this.yt_Button1.RoundingEnable = true;
-            this.yt_Button1.Size = new System.Drawing.Size(115, 55);
+            this.yt_Button1.Size = new System.Drawing.Size(173, 30);
             this.yt_Button1.TabIndex = 14;
-            this.yt_Button1.Text = "yt_Button1";
+            this.yt_Button1.Text = "Авторизация";
             // 
             // Form1
             // 
-            this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
@@ -281,7 +260,6 @@ namespace Document_circulation
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -303,7 +281,6 @@ namespace Document_circulation
 
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.RichTextBox richTextBox1;

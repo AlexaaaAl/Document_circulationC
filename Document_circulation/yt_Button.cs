@@ -25,12 +25,12 @@ namespace Document_circulation
             }
         }
         private int roundingPercent = 100;
-        public int Rounding 
+        public int Rounding
         {
             get => roundingPercent;
             set
             {
-                if(value>=0 && value <= 100)
+                if (value >= 0 && value <= 100)
                 {
                     roundingPercent = value;
                     Refresh();
@@ -53,8 +53,8 @@ namespace Document_circulation
             Graphics graph = e.Graphics;
             graph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             graph.Clear(Parent.BackColor);
-            Rectangle rect = new Rectangle(0 ,0,Width-1,Height-1);
-            
+            Rectangle rect = new Rectangle(0, 0, Width - 1, Height - 1);
+
             // Закругление
             float roundingValue = 0.1F;
             if (RoundingEnable && roundingPercent > 0)
