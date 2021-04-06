@@ -78,10 +78,11 @@ namespace Document_circulation
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(227, 331);
+            this.label1.Location = new System.Drawing.Point(227, 325);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(176, 13);
+            this.label1.Size = new System.Drawing.Size(184, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Соединение";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -231,16 +232,17 @@ namespace Document_circulation
             // 
             // yt_Button1
             // 
-            this.yt_Button1.BackColor = System.Drawing.Color.Tomato;
+            this.yt_Button1.BackColor = System.Drawing.Color.OliveDrab;
             this.yt_Button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.yt_Button1.ForeColor = System.Drawing.Color.White;
-            this.yt_Button1.Location = new System.Drawing.Point(230, 279);
+            this.yt_Button1.Location = new System.Drawing.Point(230, 266);
             this.yt_Button1.Name = "yt_Button1";
-            this.yt_Button1.Rounding = 30;
+            this.yt_Button1.Rounding = 15;
             this.yt_Button1.RoundingEnable = true;
-            this.yt_Button1.Size = new System.Drawing.Size(173, 30);
+            this.yt_Button1.Size = new System.Drawing.Size(181, 40);
             this.yt_Button1.TabIndex = 14;
             this.yt_Button1.Text = "Авторизация";
+            this.yt_Button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
