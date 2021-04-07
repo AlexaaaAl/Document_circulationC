@@ -30,8 +30,30 @@ namespace Document_circulation.Controlles
                     fontTextPreview = value;
                 }
             }
-
-            public Color BorderColor { get; set; } = FlatColors.Blue;
+        private bool roundingEnable = false;
+        public bool RoundingEnable
+        {
+            get => roundingEnable;
+            set
+            {
+                roundingEnable = value;
+                Refresh();
+            }
+        }
+        private int roundingPercent = 100;
+        public int Rounding
+        {
+            get => roundingPercent;
+            set
+            {
+                if (value >= 0 && value <= 100)
+                {
+                    roundingPercent = value;
+                    Refresh();
+                }
+            }
+        }
+        public Color BorderColor { get; set; } = FlatColors.Blue;
             public Color BorderColorNotActive { get; set; } = FlatColors.GrayDark;
 
             public string TextInput
@@ -194,9 +216,16 @@ namespace Document_circulation.Controlles
 
                 Size TextPreviewRectSize = graph.MeasureString(TextPreview, FontTextPreviewActual).ToSize();
                 Rectangle rectTextPreview = new Rectangle(5, (int)LocationTextPreviewAnim.Value, TextPreviewRectSize.Width + 3, TextPreviewRectSize.Height);
-
-                // Обводка
-                graph.DrawRectangle(new Pen(tbInput.Focused == true ? BorderColor : BorderColorNotActive), rectBase);
+            // закругление
+            
+            float roundingValue = 0.1F;
+            if (RoundingEnable && roundingPercent > 0)
+            {
+                roundingValue = Height / 100F * roundingPercent;
+            }
+            GraphicsPath rectPath = Drawer.RoundedRectangle(rectBase, roundingValue);
+            // Обводка
+            graph.DrawRectangle(new Pen(tbInput.Focused == true ? BorderColor : BorderColorNotActive), rectBase);
 
                 // Заголовок/Описание
                 graph.DrawRectangle(new Pen(Parent.BackColor), rectTextPreview);

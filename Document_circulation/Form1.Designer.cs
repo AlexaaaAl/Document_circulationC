@@ -48,7 +48,6 @@ namespace Document_circulation
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.yt_Button1 = new Document_circulation.yt_Button();
-            this.egoldsGoogleTextBox1 = new Document_circulation.Controlles.EgoldsGoogleTextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -81,7 +80,7 @@ namespace Document_circulation
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(227, 309);
+            this.label1.Location = new System.Drawing.Point(227, 318);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(184, 13);
             this.label1.TabIndex = 3;
@@ -236,7 +235,7 @@ namespace Document_circulation
             this.yt_Button1.BackColor = System.Drawing.Color.OliveDrab;
             this.yt_Button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.yt_Button1.ForeColor = System.Drawing.Color.White;
-            this.yt_Button1.Location = new System.Drawing.Point(230, 266);
+            this.yt_Button1.Location = new System.Drawing.Point(230, 275);
             this.yt_Button1.Name = "yt_Button1";
             this.yt_Button1.Rounding = 15;
             this.yt_Button1.RoundingEnable = true;
@@ -245,24 +244,6 @@ namespace Document_circulation
             this.yt_Button1.Text = "Авторизация";
             this.yt_Button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // egoldsGoogleTextBox1
-            // 
-            this.egoldsGoogleTextBox1.BackColor = System.Drawing.Color.White;
-            this.egoldsGoogleTextBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.egoldsGoogleTextBox1.BorderColorNotActive = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
-            this.egoldsGoogleTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.egoldsGoogleTextBox1.Font = new System.Drawing.Font("Arial", 11.25F);
-            this.egoldsGoogleTextBox1.FontTextPreview = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.egoldsGoogleTextBox1.ForeColor = System.Drawing.Color.Black;
-            this.egoldsGoogleTextBox1.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.egoldsGoogleTextBox1.Location = new System.Drawing.Point(261, 325);
-            this.egoldsGoogleTextBox1.Name = "egoldsGoogleTextBox1";
-            this.egoldsGoogleTextBox1.Size = new System.Drawing.Size(150, 40);
-            this.egoldsGoogleTextBox1.TabIndex = 15;
-            this.egoldsGoogleTextBox1.TextInput = "";
-            this.egoldsGoogleTextBox1.TextPreview = "Логин";
-            this.egoldsGoogleTextBox1.UseSystemPasswordChar = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -270,7 +251,6 @@ namespace Document_circulation
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(475, 367);
             this.ControlBox = false;
-            this.Controls.Add(this.egoldsGoogleTextBox1);
             this.Controls.Add(this.yt_Button1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -316,7 +296,6 @@ namespace Document_circulation
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button2;
         private yt_Button yt_Button1;
-        private Controlles.EgoldsGoogleTextBox egoldsGoogleTextBox1;
     }
 }
 
