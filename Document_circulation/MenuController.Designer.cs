@@ -99,7 +99,7 @@ namespace Document_circulation
             this.panel2.Controls.Add(this.menuStrip2);
             this.panel2.Location = new System.Drawing.Point(-1, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1286, 32);
+            this.panel2.Size = new System.Drawing.Size(1273, 32);
             this.panel2.TabIndex = 1;
             // 
             // label2
@@ -108,7 +108,7 @@ namespace Document_circulation
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(914, 8);
+            this.label2.Location = new System.Drawing.Point(901, 8);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label2.Size = new System.Drawing.Size(53, 21);
@@ -125,7 +125,7 @@ namespace Document_circulation
             this.выходToolStripMenuItem1});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1286, 29);
+            this.menuStrip2.Size = new System.Drawing.Size(1273, 29);
             this.menuStrip2.TabIndex = 0;
             this.menuStrip2.Text = "menuStrip2";
             this.menuStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip2_ItemClicked);
@@ -233,7 +233,7 @@ namespace Document_circulation
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(47, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(34, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -282,7 +282,7 @@ namespace Document_circulation
             this.dataGridView1.RowTemplate.DividerHeight = 1;
             this.dataGridView1.RowTemplate.Height = 40;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1286, 537);
+            this.dataGridView1.Size = new System.Drawing.Size(1273, 537);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -309,7 +309,7 @@ namespace Document_circulation
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1441, 116);
+            this.panel1.Size = new System.Drawing.Size(1428, 116);
             this.panel1.TabIndex = 0;
             // 
             // radioButton1
@@ -319,7 +319,7 @@ namespace Document_circulation
             this.radioButton1.Checked = true;
             this.radioButton1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioButton1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.radioButton1.Location = new System.Drawing.Point(1096, 0);
+            this.radioButton1.Location = new System.Drawing.Point(795, 4);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(191, 25);
             this.radioButton1.TabIndex = 13;
@@ -334,7 +334,7 @@ namespace Document_circulation
             this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.checkBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.checkBox2.Location = new System.Drawing.Point(971, 23);
+            this.checkBox2.Location = new System.Drawing.Point(670, 27);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(119, 25);
             this.checkBox2.TabIndex = 8;
@@ -349,7 +349,7 @@ namespace Document_circulation
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.checkBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.checkBox1.Location = new System.Drawing.Point(971, 3);
+            this.checkBox1.Location = new System.Drawing.Point(670, 7);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(109, 25);
             this.checkBox1.TabIndex = 7;
@@ -365,7 +365,7 @@ namespace Document_circulation
             this.orders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(109)))), ((int)(((byte)(48)))));
             this.orders.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.orders.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.orders.Location = new System.Drawing.Point(1096, 42);
+            this.orders.Location = new System.Drawing.Point(795, 46);
             this.orders.Name = "orders";
             this.orders.Size = new System.Drawing.Size(99, 25);
             this.orders.TabIndex = 6;
@@ -381,7 +381,7 @@ namespace Document_circulation
             this.incomingMailMoscow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(114)))), ((int)(((byte)(52)))));
             this.incomingMailMoscow.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.incomingMailMoscow.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.incomingMailMoscow.Location = new System.Drawing.Point(1096, 84);
+            this.incomingMailMoscow.Location = new System.Drawing.Point(795, 88);
             this.incomingMailMoscow.Name = "incomingMailMoscow";
             this.incomingMailMoscow.Size = new System.Drawing.Size(446, 25);
             this.incomingMailMoscow.TabIndex = 5;
@@ -397,7 +397,7 @@ namespace Document_circulation
             this.incomingMail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(109)))), ((int)(((byte)(48)))));
             this.incomingMail.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.incomingMail.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.incomingMail.Location = new System.Drawing.Point(1096, 63);
+            this.incomingMail.Location = new System.Drawing.Point(795, 67);
             this.incomingMail.Name = "incomingMail";
             this.incomingMail.Size = new System.Drawing.Size(364, 25);
             this.incomingMail.TabIndex = 4;
@@ -415,7 +415,7 @@ namespace Document_circulation
             this.internalDocuments.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("internalDocuments.BackgroundImage")));
             this.internalDocuments.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.internalDocuments.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.internalDocuments.Location = new System.Drawing.Point(1096, 22);
+            this.internalDocuments.Location = new System.Drawing.Point(795, 26);
             this.internalDocuments.Name = "internalDocuments";
             this.internalDocuments.Size = new System.Drawing.Size(327, 25);
             this.internalDocuments.TabIndex = 3;
@@ -524,7 +524,7 @@ namespace Document_circulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1284, 680);
+            this.ClientSize = new System.Drawing.Size(1271, 680);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

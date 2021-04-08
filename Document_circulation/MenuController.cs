@@ -322,7 +322,7 @@ namespace Document_circulation
             if (x != Screen.PrimaryScreen.WorkingArea.Width) { 
                 x = Screen.PrimaryScreen.WorkingArea.Width;
                 int y = Screen.PrimaryScreen.WorkingArea.Height;
-                ClientSize = new System.Drawing.Size(x, y);
+                ClientSize = new Size(x, y);
             }
         }
         protected void MenuController_Closed(object sender, EventArgs e)
