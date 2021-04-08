@@ -440,7 +440,7 @@ namespace Document_circulation
             }
             else
             {
-                MessageBox.Show("Заполните наименование", "");
+                MessageBox.Show("Заполните исходящий номер", "");
             }
         }
         private void userComboBox2_TextChanged_1(object sender, EventArgs e)

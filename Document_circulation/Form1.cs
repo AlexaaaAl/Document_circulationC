@@ -78,6 +78,7 @@ namespace Document_circulation
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
             int f=0;
             MySqlConnection conn = DBUtils.GetDBConnection();
             conn.Open();
@@ -95,11 +96,32 @@ namespace Document_circulation
 
                         if (!File.Exists("logpass.txt"))
                         {
+                            
+                            Console.ReadLine();
                             // Create a file to write to.
                             using (StreamWriter sw = File.CreateText("logpass.txt"))
                             {
                                 sw.WriteLine(login);
                                 sw.WriteLine(password);
+                            }
+                        }
+                        else
+                        {
+                            string[] strok = File.ReadAllLines("logpass.txt");
+
+                            if (strok.Length == 0)
+                            {
+                                Console.ReadLine();
+                                // Create a file to write to.
+                                using (StreamWriter sw = File.CreateText("logpass.txt"))
+                                {
+                                    sw.WriteLine(login);
+                                    sw.WriteLine(password);
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("В файле {0} строк", strok.Length);
                             }
                         }
                         // Open the file to read from.

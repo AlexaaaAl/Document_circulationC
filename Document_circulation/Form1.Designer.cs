@@ -78,10 +78,11 @@ namespace Document_circulation
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(227, 331);
+            this.label1.Location = new System.Drawing.Point(227, 318);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(176, 13);
+            this.label1.Size = new System.Drawing.Size(184, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Соединение";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -91,7 +92,7 @@ namespace Document_circulation
             // 
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBox1.Location = new System.Drawing.Point(11, 224);
+            this.richTextBox1.Location = new System.Drawing.Point(9, 208);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
@@ -105,7 +106,7 @@ namespace Document_circulation
             this.richTextBox2.BackColor = System.Drawing.SystemColors.Control;
             this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBox2.Location = new System.Drawing.Point(69, 206);
+            this.richTextBox2.Location = new System.Drawing.Point(67, 190);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.ReadOnly = true;
             this.richTextBox2.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
@@ -223,7 +224,7 @@ namespace Document_circulation
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(42, 71);
+            this.pictureBox1.Location = new System.Drawing.Point(40, 55);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(112, 129);
             this.pictureBox1.TabIndex = 5;
@@ -231,23 +232,24 @@ namespace Document_circulation
             // 
             // yt_Button1
             // 
-            this.yt_Button1.BackColor = System.Drawing.Color.Tomato;
+            this.yt_Button1.BackColor = System.Drawing.Color.OliveDrab;
             this.yt_Button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.yt_Button1.ForeColor = System.Drawing.Color.White;
-            this.yt_Button1.Location = new System.Drawing.Point(230, 279);
+            this.yt_Button1.Location = new System.Drawing.Point(230, 275);
             this.yt_Button1.Name = "yt_Button1";
-            this.yt_Button1.Rounding = 30;
+            this.yt_Button1.Rounding = 15;
             this.yt_Button1.RoundingEnable = true;
-            this.yt_Button1.Size = new System.Drawing.Size(173, 30);
+            this.yt_Button1.Size = new System.Drawing.Size(181, 40);
             this.yt_Button1.TabIndex = 14;
             this.yt_Button1.Text = "Авторизация";
+            this.yt_Button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(475, 398);
+            this.ClientSize = new System.Drawing.Size(475, 367);
             this.ControlBox = false;
             this.Controls.Add(this.yt_Button1);
             this.Controls.Add(this.label5);
