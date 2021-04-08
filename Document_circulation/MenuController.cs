@@ -34,9 +34,9 @@ namespace Document_circulation
         {
             InitializeComponent();
             //FormBorderStyle = FormBorderStyle.Fixed3D;
-            timer1.Interval = 5000;
+           /* timer1.Interval = 5000;
             timer1.Tick += new EventHandler(timer1_Tick_1);
-            timer1.Start();
+            timer1.Start();*/
             this.dataGridView1.CellClick -= dataGridView1_CellClick;
             //this.onSearch();
             dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
@@ -48,7 +48,8 @@ namespace Document_circulation
         {
              //кнопка фильтрации
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter =
-                String.Format("Наименование like '{0}%'", textBox1.Text);
+                String.Format("`Входящий номер` like '{0}%'", textBox1.Text);
+            PaintRows();
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -65,6 +66,7 @@ namespace Document_circulation
             checkBox2.BackColor = Color.Transparent;
             incomingMail.BackColor = Color.Transparent;
             incomingMailMoscow.BackColor = Color.Transparent;
+            panel3.BackColor = Color.Transparent;
             orders.BackColor = Color.Transparent;
             internalDocuments.BackColor = Color.Transparent;
             radioButton1.BackColor = Color.Transparent;
@@ -369,6 +371,14 @@ namespace Document_circulation
 
         }
 
-     
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            MenuController_Load(null, null);
+        }
+
+        private void panel3_Enter(object sender, MouseEventArgs e)
+        {
+            panel3.BackColor = Color.White;
+        }
     }
 }

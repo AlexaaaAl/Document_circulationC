@@ -90,6 +90,10 @@ namespace Document_circulation
 
         private void AddDocument_Load(object sender, EventArgs e)
         {
+            label7.BackColor = Color.Transparent;
+            label1.BackColor = Color.Transparent;
+            label12.BackColor = Color.Transparent;
+            label9.BackColor = Color.Transparent;
             conn.Close();
             conn.Open();
             /*
@@ -545,6 +549,11 @@ namespace Document_circulation
         }
 
         private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

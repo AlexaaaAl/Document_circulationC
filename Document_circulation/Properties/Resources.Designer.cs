@@ -63,6 +63,16 @@ namespace Document_circulation.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _17_104874 {
+            get {
+                object obj = ResourceManager.GetObject("17_104874", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _419_4192081_pdf_icon_png_pdf_file_icon_png {
             get {
                 object obj = ResourceManager.GetObject("419-4192081_pdf-icon-png-pdf-file-icon-png", resourceCulture);
@@ -86,6 +96,36 @@ namespace Document_circulation.Properties {
         internal static System.Drawing.Bitmap pdff {
             get {
                 object obj = ResourceManager.GetObject("pdff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap refresh_paper_load_update_icon_141966 {
+            get {
+                object obj = ResourceManager.GetObject("refresh_paper_load_update_icon_141966", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap update_reload_refresh_icon_161111 {
+            get {
+                object obj = ResourceManager.GetObject("update_reload_refresh_icon_161111", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap update_reload_refresh_icon_161111__1_ {
+            get {
+                object obj = ResourceManager.GetObject("update_reload_refresh_icon_161111 (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

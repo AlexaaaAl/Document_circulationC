@@ -224,6 +224,7 @@ namespace Document_circulation
             int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();
             conn.Close();
             ChangeDocument_Load(null, null);
+            //MenuController.MenuController_Load(null, null);
         }
         public void UpdateData()
         {
