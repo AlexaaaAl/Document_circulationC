@@ -262,6 +262,12 @@
     <Compile Include="AddDocument.Designer.cs">
       <DependentUpon>AddDocument.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddDocUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddDocUser.Designer.cs">
+      <DependentUpon>AddDocUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -375,6 +381,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddDocument.resx">
       <DependentUpon>AddDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddDocUser.resx">
+      <DependentUpon>AddDocUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddUser.resx">
       <DependentUpon>AddUser.cs</DependentUpon>

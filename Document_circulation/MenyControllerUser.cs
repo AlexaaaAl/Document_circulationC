@@ -72,8 +72,8 @@ namespace Document_circulation
                 Q = " (id_recipient =" +
                      "(select id_user from log where login = '" + tulf2.getName() + "')); ";
             }
-            query = "SELECT id_document,number as Номер,incom_number as `Входящий номер`," +
-                "to_date as 'От', out_number as `Исходящий номер`,from_date as 'От:'," +
+            query = "SELECT id_document,incom_number as `Входящий номер`,namedoc as `Наименование`," +
+                "number as Номер, out_number as `Исходящий номер`,from_date as 'От:'," +
                    " concat(`SENDERLast`, ' ', left(`SENDERfirst`, 1), '. ', " +
                    "left(`SENDERMIDDLE`, 1), '.') as Отправитель," +
                    " concat(`RECIPLast`, ' ', left(`RECIPFirst`, 1), '. ', " +
@@ -91,6 +91,8 @@ namespace Document_circulation
                 dataGridView1.DataSource = DS.Tables[0];
                 PaintRows();
                 dataGridView1.Columns["Номер"].Visible = false;
+                dataGridView1.Columns["Исходящий номер"].Visible = false;
+                dataGridView1.Columns["От:"].Visible = false;
                 dataGridView1.Columns["id_document"].Visible = false;
                 dataGridView1.Columns["comments"].Visible = false;
                 dataGridView1.Columns["document_type"].Visible = false;
@@ -309,5 +311,19 @@ namespace Document_circulation
             f2.ID = ID;
             f2.Show();
         }
+
+        private void yt_Button1_Click(object sender, EventArgs e)
+        {
+            AddDocUser f2 = new AddDocUser();
+            f2.FIRST_NAME = FIRST_NAME;
+            f2.LAST_NAME = LAST_NAME;
+            f2.MIDDLE_NAME = MIDDLE_NAME;
+            f2.DEPARTMENT = DEPARTMENT;
+            f2.IP_SERVER = IP_SERVER;
+            f2.name = tulf2.getName();
+            f2.ID = ID;
+            f2.Show();
+        }
+
     }
 }
