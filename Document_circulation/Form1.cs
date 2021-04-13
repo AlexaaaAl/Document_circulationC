@@ -80,6 +80,7 @@ namespace Document_circulation
         {
             
             int f=0;
+            int id_user = 0;
             MySqlConnection conn = DBUtils.GetDBConnection();
             conn.Open();
             string CommandText = "SELECT * FROM log WHERE login='" + textBox1.Text + "' AND password='" + textBox2.Text + "'";
@@ -135,12 +136,23 @@ namespace Document_circulation
                         }*/
                     }
                     this.Hide();
-                   //this.Close();
-                   MenuController f2 = new MenuController();
-                   f2.tulf2.setIdUser(f);
-                   f2.tulf2.setName(textBox1.Text);
-                   //Application.Run(f2);
-                   f2.Show();
+                    //this.Close();
+                    if (f == 4)
+                    {
+                        MenuController f2 = new MenuController();
+                        f2.tulf2.setIdUser(f);
+                        f2.tulf2.setName(textBox1.Text);
+                        //Application.Run(f2);
+                        f2.Show();
+                    }
+                    else
+                    {
+                        MenuControllerUser f2 = new MenuControllerUser();
+                        f2.tulf2.setIdUser(f);
+                        f2.tulf2.setName(textBox1.Text);
+                        //Application.Run(f2);
+                        f2.Show();
+                    }
                 }
                 else
                 {
