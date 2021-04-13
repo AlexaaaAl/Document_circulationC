@@ -19,6 +19,8 @@ namespace Document_circulation
         public string out_number;
         public string ID;
         public string date;
+        public string date1;
+        public string date2;
         int outl = 0;
         int com = 0;
         int dateP = 0;
@@ -48,10 +50,12 @@ namespace Document_circulation
                     if (checkBox1.Checked == true) //если стоит флажок на сроке подписания
                     {
                         string q = "UPDATE documents " +
-                                    "set out_number='" + textBox1.Text + "'," +
-                                    " incom_number = '" + textBox2.Text + "'," +
+                                    "set incom_number='" + textBox2.Text + "'," +
+                                    " out_number = '" + textBox3.Text + "'," +
                                     "date='" + dateTimePicker1.Value.ToString("s") + "'," +
-                                    "comments='" + richTextBox1.Text + "' " +
+                                    "comments='" + richTextBox1.Text + "'," +
+                                    "from_date='"+  dateTimePicker3.Value.ToString("s") + "'," +
+                                    "to_date='"+ dateTimePicker2.Value.ToString("s") + "' " +
                                     "where number=" + number + ";";
                         MySqlCommand command = new MySqlCommand(q, conn);
                         // выполняем запрос
@@ -73,9 +77,11 @@ namespace Document_circulation
 
                     {
                         string q = "UPDATE documents " +
-                                   "set out_number='" + textBox1.Text + "'," +
-                                    " incom_number = '" + textBox2.Text + "'," +
-                                   "comments='" + richTextBox1.Text + "' " +
+                                   "set out_number='" + textBox3.Text + "'," +
+                                   " incom_number = '" + textBox2.Text + "'," +
+                                   "comments='" + richTextBox1.Text + "'," +
+                                   "from_date='" + dateTimePicker3.Value.ToString("s") + "'," +
+                                   "to_date='" + dateTimePicker2.Value.ToString("s") + "' " +
                                    "where number=" + number + ";";
                         MySqlCommand command = new MySqlCommand(q, conn);
                         // выполняем запрос
@@ -102,7 +108,8 @@ namespace Document_circulation
         private void ChangeOutline_Load(object sender, EventArgs e)
         {
             conn.Open();
-            string query = "SELECT date,incom_number FROM documents " +
+            string query = "SELECT date,incom_number,out_number," +
+                "from_date,to_date,namedoc FROM documents " +
                 " WHERE number='" + number + "' ;";
             using (var reader = new MySqlCommand(query, conn).ExecuteReader())
             {
@@ -116,11 +123,20 @@ namespace Document_circulation
                         
                         dateP = 0;
                         date = ((DateTime)reader["date"]).ToString();
+                        
                         checkBox1.Checked = true;
                     }
                 }
+                /*dateTimePicker2.Value = (DateTime)reader["from_date"];
+                dateTimePicker3.Value = (DateTime)reader["to_date"];
+                date1 = ((DateTime)reader["from_date"]).ToString();
+                date2 = ((DateTime)reader["to_date"]).ToString();*/
+                textBox1.Text= reader["namedoc"].ToString();
+                textBox2.Text = reader["incom_number"].ToString();
+                textBox3.Text = reader["out_number"].ToString();
             }
-            textBox1.Text = out_number;
+
+            //textBox1.Text = out_number;
             outl = 0;
             richTextBox1.Text = comment;
             com = 0;

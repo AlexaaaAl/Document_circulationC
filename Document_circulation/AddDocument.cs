@@ -334,7 +334,7 @@ namespace Document_circulation
                                                 textBox1.Text + "'," +
                                                 ID + "," +
                                                 Id_s[i] + ",'" +
-                                                dateTimePicker1.Value.ToString("s") + ",'" +
+                                                dateTimePicker1.Value.ToString("s") + "','" +
                                                 dateTimePicker2.Value.ToString("s") + "','" + 
                                                 richTextBox1.Text + "','" +
                                                typeComboBox1.Text + "','Оригинал','"+comboBox1.Text+
