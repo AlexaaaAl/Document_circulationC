@@ -16,7 +16,7 @@ namespace Document_circulation
     {
         public string number;
         public string comment;
-        public string outline;
+        public string out_number;
         public string ID;
         public string date;
         int outl = 0;
@@ -48,8 +48,8 @@ namespace Document_circulation
                     if (checkBox1.Checked == true) //если стоит флажок на сроке подписания
                     {
                         string q = "UPDATE documents " +
-                                    "set outline='" + textBox1.Text + "'," +
-                                    " number_id = '" + textBox2.Text + "'," +
+                                    "set out_number='" + textBox1.Text + "'," +
+                                    " incom_number = '" + textBox2.Text + "'," +
                                     "date='" + dateTimePicker1.Value.ToString("s") + "'," +
                                     "comments='" + richTextBox1.Text + "' " +
                                     "where number=" + number + ";";
@@ -73,8 +73,8 @@ namespace Document_circulation
 
                     {
                         string q = "UPDATE documents " +
-                                   "set outline='" + textBox1.Text + "'," +
-                                    " number_id = '" + textBox2.Text + "'," +
+                                   "set out_number='" + textBox1.Text + "'," +
+                                    " incom_number = '" + textBox2.Text + "'," +
                                    "comments='" + richTextBox1.Text + "' " +
                                    "where number=" + number + ";";
                         MySqlCommand command = new MySqlCommand(q, conn);
@@ -102,13 +102,13 @@ namespace Document_circulation
         private void ChangeOutline_Load(object sender, EventArgs e)
         {
             conn.Open();
-            string query = "SELECT date,number_id FROM documents " +
+            string query = "SELECT date,incom_number FROM documents " +
                 " WHERE number='" + number + "' ;";
             using (var reader = new MySqlCommand(query, conn).ExecuteReader())
             {
                 if (reader.Read())
                 {
-                    textBox2.Text = reader["number_id"].ToString();
+                    textBox2.Text = reader["incom_number"].ToString();
                     if (!reader.IsDBNull(reader.GetOrdinal("date")))
                         
                     {
@@ -120,7 +120,7 @@ namespace Document_circulation
                     }
                 }
             }
-            textBox1.Text = outline;
+            textBox1.Text = out_number;
             outl = 0;
             richTextBox1.Text = comment;
             com = 0;

@@ -30,10 +30,10 @@ namespace Document_circulation
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuController));
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,7 +65,6 @@ namespace Document_circulation
             this.v1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.v1TableAdapter = new Document_circulation.document_circulation_pathDataSet1TableAdapters.v1TableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.yt_Button1 = new Document_circulation.yt_Button();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -75,8 +74,7 @@ namespace Document_circulation
             this.internalDocuments = new System.Windows.Forms.RadioButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.yt_Button2 = new Document_circulation.yt_Button();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.yt_Button1 = new Document_circulation.yt_Button();
             this.panel2.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -100,7 +98,7 @@ namespace Document_circulation
             this.panel2.Controls.Add(this.menuStrip2);
             this.panel2.Location = new System.Drawing.Point(-1, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1273, 32);
+            this.panel2.Size = new System.Drawing.Size(1149, 32);
             this.panel2.TabIndex = 1;
             // 
             // label2
@@ -109,7 +107,7 @@ namespace Document_circulation
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(901, 8);
+            this.label2.Location = new System.Drawing.Point(777, 8);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label2.Size = new System.Drawing.Size(53, 21);
@@ -126,7 +124,7 @@ namespace Document_circulation
             this.выходToolStripMenuItem1});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1273, 29);
+            this.menuStrip2.Size = new System.Drawing.Size(1149, 29);
             this.menuStrip2.TabIndex = 0;
             this.menuStrip2.Text = "menuStrip2";
             this.menuStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip2_ItemClicked);
@@ -192,14 +190,14 @@ namespace Document_circulation
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
-            this.оПрограммеToolStripMenuItem.Text = "О программе";
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.оПрограммеToolStripMenuItem.Text = "Инструкция";
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
             // контактыToolStripMenuItem
             // 
             this.контактыToolStripMenuItem.Name = "контактыToolStripMenuItem";
-            this.контактыToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.контактыToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.контактыToolStripMenuItem.Text = "Контакты";
             this.контактыToolStripMenuItem.Click += new System.EventHandler(this.контактыToolStripMenuItem_Click);
             // 
@@ -234,7 +232,7 @@ namespace Document_circulation
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(34, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(202, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -248,42 +246,42 @@ namespace Document_circulation
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.ColumnHeadersHeight = 40;
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.Location = new System.Drawing.Point(-1, 147);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.RowTemplate.DividerHeight = 1;
             this.dataGridView1.RowTemplate.Height = 40;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1273, 537);
+            this.dataGridView1.Size = new System.Drawing.Size(1149, 537);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -351,8 +349,6 @@ namespace Document_circulation
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(87)))), ((int)(((byte)(57)))), ((int)(((byte)(0)))));
             this.panel1.BackgroundImage = global::Document_circulation.Properties.Resources.Новый_проект__3_;
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.yt_Button2);
             this.panel1.Controls.Add(this.yt_Button1);
             this.panel1.Controls.Add(this.radioButton1);
             this.panel1.Controls.Add(this.checkBox2);
@@ -365,22 +361,8 @@ namespace Document_circulation
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1428, 116);
+            this.panel1.Size = new System.Drawing.Size(1304, 116);
             this.panel1.TabIndex = 0;
-            // 
-            // yt_Button1
-            // 
-            this.yt_Button1.BackColor = System.Drawing.Color.Gray;
-            this.yt_Button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.yt_Button1.ForeColor = System.Drawing.Color.White;
-            this.yt_Button1.Location = new System.Drawing.Point(342, 6);
-            this.yt_Button1.Name = "yt_Button1";
-            this.yt_Button1.Rounding = 100;
-            this.yt_Button1.RoundingEnable = false;
-            this.yt_Button1.Size = new System.Drawing.Size(305, 46);
-            this.yt_Button1.TabIndex = 16;
-            this.yt_Button1.Text = "Создать новый документ";
-            this.yt_Button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // radioButton1
             // 
@@ -389,7 +371,7 @@ namespace Document_circulation
             this.radioButton1.Checked = true;
             this.radioButton1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioButton1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.radioButton1.Location = new System.Drawing.Point(793, 0);
+            this.radioButton1.Location = new System.Drawing.Point(702, 4);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(191, 25);
             this.radioButton1.TabIndex = 13;
@@ -404,7 +386,7 @@ namespace Document_circulation
             this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.checkBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.checkBox2.Location = new System.Drawing.Point(653, 26);
+            this.checkBox2.Location = new System.Drawing.Point(562, 30);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(119, 25);
             this.checkBox2.TabIndex = 8;
@@ -419,7 +401,7 @@ namespace Document_circulation
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.checkBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.checkBox1.Location = new System.Drawing.Point(653, 6);
+            this.checkBox1.Location = new System.Drawing.Point(562, 10);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(109, 25);
             this.checkBox1.TabIndex = 7;
@@ -435,7 +417,7 @@ namespace Document_circulation
             this.orders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(109)))), ((int)(((byte)(48)))));
             this.orders.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.orders.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.orders.Location = new System.Drawing.Point(793, 42);
+            this.orders.Location = new System.Drawing.Point(702, 46);
             this.orders.Name = "orders";
             this.orders.Size = new System.Drawing.Size(99, 25);
             this.orders.TabIndex = 6;
@@ -451,7 +433,7 @@ namespace Document_circulation
             this.incomingMailMoscow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(114)))), ((int)(((byte)(52)))));
             this.incomingMailMoscow.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.incomingMailMoscow.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.incomingMailMoscow.Location = new System.Drawing.Point(793, 84);
+            this.incomingMailMoscow.Location = new System.Drawing.Point(702, 88);
             this.incomingMailMoscow.Name = "incomingMailMoscow";
             this.incomingMailMoscow.Size = new System.Drawing.Size(446, 25);
             this.incomingMailMoscow.TabIndex = 5;
@@ -467,7 +449,7 @@ namespace Document_circulation
             this.incomingMail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(109)))), ((int)(((byte)(48)))));
             this.incomingMail.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.incomingMail.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.incomingMail.Location = new System.Drawing.Point(793, 63);
+            this.incomingMail.Location = new System.Drawing.Point(702, 67);
             this.incomingMail.Name = "incomingMail";
             this.incomingMail.Size = new System.Drawing.Size(364, 25);
             this.incomingMail.TabIndex = 4;
@@ -485,7 +467,7 @@ namespace Document_circulation
             this.internalDocuments.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("internalDocuments.BackgroundImage")));
             this.internalDocuments.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.internalDocuments.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.internalDocuments.Location = new System.Drawing.Point(793, 22);
+            this.internalDocuments.Location = new System.Drawing.Point(702, 26);
             this.internalDocuments.Name = "internalDocuments";
             this.internalDocuments.Size = new System.Drawing.Size(327, 25);
             this.internalDocuments.TabIndex = 3;
@@ -495,7 +477,7 @@ namespace Document_circulation
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(106, 10);
+            this.textBox1.Location = new System.Drawing.Point(70, 14);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(230, 29);
             this.textBox1.TabIndex = 1;
@@ -510,42 +492,31 @@ namespace Document_circulation
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(104)))), ((int)(((byte)(46)))));
             this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(39, 13);
+            this.label1.Location = new System.Drawing.Point(3, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "Поиск";
             // 
-            // yt_Button2
+            // yt_Button1
             // 
-            this.yt_Button2.BackColor = System.Drawing.Color.Gray;
-            this.yt_Button2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.yt_Button2.ForeColor = System.Drawing.Color.White;
-            this.yt_Button2.Location = new System.Drawing.Point(342, 58);
-            this.yt_Button2.Name = "yt_Button2";
-            this.yt_Button2.Rounding = 100;
-            this.yt_Button2.RoundingEnable = false;
-            this.yt_Button2.Size = new System.Drawing.Size(305, 46);
-            this.yt_Button2.TabIndex = 17;
-            this.yt_Button2.Text = "Получить документы с сервера";
-            this.yt_Button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Gray;
-            this.panel3.BackgroundImage = global::Document_circulation.Properties.Resources.update_reload_refresh_icon_161111__1_;
-            this.panel3.Location = new System.Drawing.Point(302, 63);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(34, 33);
-            this.panel3.TabIndex = 15;
-            this.panel3.Click += new System.EventHandler(this.button2_Click_1);
-            this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_Enter);
+            this.yt_Button1.BackColor = System.Drawing.Color.Gray;
+            this.yt_Button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.yt_Button1.ForeColor = System.Drawing.Color.White;
+            this.yt_Button1.Location = new System.Drawing.Point(306, 10);
+            this.yt_Button1.Name = "yt_Button1";
+            this.yt_Button1.Rounding = 100;
+            this.yt_Button1.RoundingEnable = false;
+            this.yt_Button1.Size = new System.Drawing.Size(247, 46);
+            this.yt_Button1.TabIndex = 16;
+            this.yt_Button1.Text = "Создать новый документ";
+            this.yt_Button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MenuController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1271, 680);
+            this.ClientSize = new System.Drawing.Size(1147, 680);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -553,9 +524,9 @@ namespace Document_circulation
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip2;
-            this.MinimumSize = new System.Drawing.Size(1278, 696);
             this.Name = "MenuController";
-            this.Text = " ";
+            this.Text = " АСУП Алиса";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MenuController_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -619,7 +590,5 @@ namespace Document_circulation
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.RadioButton radioButton1;
         private yt_Button yt_Button1;
-        private System.Windows.Forms.Panel panel3;
-        private yt_Button yt_Button2;
     }
 }

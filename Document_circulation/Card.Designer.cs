@@ -45,7 +45,7 @@ namespace Document_circulation
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 85);
+            this.label1.Location = new System.Drawing.Point(12, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 21);
             this.label1.TabIndex = 1;
@@ -55,7 +55,7 @@ namespace Document_circulation
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(12, 120);
+            this.label2.Location = new System.Drawing.Point(12, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 21);
             this.label2.TabIndex = 2;
@@ -65,7 +65,7 @@ namespace Document_circulation
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(12, 154);
+            this.label3.Location = new System.Drawing.Point(12, 114);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(118, 21);
             this.label3.TabIndex = 3;
@@ -75,7 +75,7 @@ namespace Document_circulation
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(12, 189);
+            this.label4.Location = new System.Drawing.Point(12, 149);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 21);
             this.label4.TabIndex = 4;
@@ -86,7 +86,7 @@ namespace Document_circulation
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(77, 85);
+            this.label5.Location = new System.Drawing.Point(77, 45);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 21);
             this.label5.TabIndex = 5;
@@ -96,7 +96,7 @@ namespace Document_circulation
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(119, 120);
+            this.label6.Location = new System.Drawing.Point(119, 80);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 21);
             this.label6.TabIndex = 6;
@@ -106,7 +106,7 @@ namespace Document_circulation
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(136, 154);
+            this.label7.Location = new System.Drawing.Point(136, 114);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 21);
             this.label7.TabIndex = 7;
@@ -119,13 +119,13 @@ namespace Document_circulation
             this.panel1.BackgroundImage = global::Document_circulation.Properties.Resources.Новый_проект__3___1_;
             this.panel1.Location = new System.Drawing.Point(-8, -25);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(469, 87);
+            this.panel1.Size = new System.Drawing.Size(469, 60);
             this.panel1.TabIndex = 0;
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(91, 181);
+            this.textBox1.Location = new System.Drawing.Point(91, 141);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(211, 29);
             this.textBox1.TabIndex = 9;
@@ -133,7 +133,7 @@ namespace Document_circulation
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(308, 181);
+            this.button1.Location = new System.Drawing.Point(308, 141);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(110, 29);
             this.button1.TabIndex = 10;
@@ -145,7 +145,7 @@ namespace Document_circulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 238);
+            this.ClientSize = new System.Drawing.Size(450, 187);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label7);

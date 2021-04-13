@@ -108,17 +108,17 @@ namespace Document_circulation
             
             conn.Close();
             conn.Open();
-            string later ="Select number,number_id,outline,comments, date_added,date," +
+            string later ="Select number,incom_number,out_number,comments, date_added,date," +
                 "to_date,from_date,status,document_type " +
                 "from documents where id_document="+ID_Doc+";";
-            string outline = "";
+            string out_number = "";
             string comments = "";
             string date_added = "";
             string date = "";
             string status = "";
             string document_type = "";
             string number = "";
-            string number_id = "";
+            string incom_number = "";
             string q = "";
             string to_date= "";
             string from_date = "";
@@ -128,7 +128,7 @@ namespace Document_circulation
                 {
                     if (reader.Read())
                     {
-                        outline = reader["outline"].ToString();
+                        out_number = reader["out_number"].ToString();
                         comments = reader["comments"].ToString();
                         date = reader["date"].ToString();
                         //MessageBox.Show(date, "ДАТАЭ");
@@ -136,7 +136,7 @@ namespace Document_circulation
                         status = reader["status"].ToString();
                         document_type = reader["document_type"].ToString();
                         number = reader["number"].ToString();
-                        number_id= reader["number_id"].ToString();
+                        incom_number= reader["incom_number"].ToString();
                         to_date = reader["to_date"].ToString();
                         from_date = reader["from_date"].ToString();
                     }
@@ -163,11 +163,11 @@ namespace Document_circulation
                         DateTime enteredDate = DateTime.Parse(date);
                        
                         q = "INSERT INTO `documents`" +
-                            " ( `number`,`number_id`,`outline`, `id_sender`, " +
+                            " ( `number`,`incom_number`,`out_number`, `id_sender`, " +
                             "`id_recipient`,`date`,`comments`,`document_type`," +
                             "`from_date`,`to_date`,`origin`)" +
                             " VALUES" +
-                            "(" + number + ",'" + number_id+"','"+outline + "'," +
+                            "(" + number + ",'" + incom_number+"','"+out_number + "'," +
                             ID + "," + id_send + ",'" +
                             enteredDate.ToString("s") + "','" + comments + "','" +
                             document_type +
@@ -177,18 +177,18 @@ namespace Document_circulation
                     else
                     {
                         q = "INSERT INTO `documents`" +
-                            " ( `number`,`number_id`,`outline`, `id_sender`, " +
+                            " ( `number`,`incom_number`,`out_number`, `id_sender`, " +
                             "`id_recipient`,`comments`,`document_type`," +
                             "`from_date`,`to_date`,`origin`)" +
                             " VALUES" +
-                            "(" + number + ",'" + number_id + "','" + outline + "'," +
+                            "(" + number + ",'" + incom_number + "','" + out_number + "'," +
                             ID + "," + id_send + ",'" + comments + "','" +
                             document_type + "','" + from_dateDate.ToString("s") + "','" +
                             to_dateDate.ToString("s") + "','Пересланный');";
                     }
                     try
                     {
-                        SendMail.SEND_MAIlTORECIP(e_mail, outline);
+                        SendMail.SEND_MAIlTORECIP(e_mail, out_number);
                     }
                     catch { }
                     MySqlCommand command = new MySqlCommand(q, conn);
@@ -224,9 +224,9 @@ namespace Document_circulation
                         {
                             DateTime enteredDate = DateTime.Parse(date);
                             q = "INSERT INTO `documents`" +
-                                           " ( `number`,`outline`, `id_sender`, `id_recipient`,`date`,`comments`,`document_type`)" +
+                                           " ( `number`,`out_number`, `id_sender`, `id_recipient`,`date`,`comments`,`document_type`)" +
                                            " VALUES" +
-                                           "(" + number + ",'" + outline + "'," +
+                                           "(" + number + ",'" + out_number + "'," +
                                            ID + "," + id_send[j] + ",'" +
                                            enteredDate.ToString("s") + "','" + comments + "','" +
                                           document_type + "');";
@@ -234,14 +234,14 @@ namespace Document_circulation
                         else
                         {
                             q = "INSERT INTO `documents`" +
-                                             " ( `number`,`outline`, `id_sender`, `id_recipient`,`comments`,`document_type`)" +
+                                             " ( `number`,`out_number`, `id_sender`, `id_recipient`,`comments`,`document_type`)" +
                                              " VALUES" +
-                                             "(" + number + ",'" + outline + "'," +
+                                             "(" + number + ",'" + out_number + "'," +
                                              ID + "," + id_send[j] + ",'" + comments + "','" +
                                             document_type + "');";
 
                         }
-                        SendMail.SEND_MAIlTORECIP(e_mail[j], outline);
+                        SendMail.SEND_MAIlTORECIP(e_mail[j], out_number);
                         MySqlCommand command = new MySqlCommand(q, conn);
                         command.ExecuteNonQuery();
                     }                                     

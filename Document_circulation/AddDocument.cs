@@ -326,7 +326,7 @@ namespace Document_circulation
                                 {
 
                                     string q = "INSERT INTO `documents`" +
-                                                "    ( `number`,`number_id`,`outline`, " +
+                                                "    ( `number`,`incom_number`,`out_number`, " +
                                                 "`id_sender`, `id_recipient`,`date`,`from_date`,`comments`," +
                                                 "`document_type`,`origin`,`sign`,`to_date`)" +
                                                 "    VALUES" +
@@ -373,7 +373,7 @@ namespace Document_circulation
 
                                     //MessageBox.Show(id_send.ToString(), "id");
                                     string q = "INSERT INTO `documents`" +
-                                                   "    ( `number`,`number_id`,`outline`, " +
+                                                   "    ( `number`,`incom_number`,`out_number`, " +
                                                    "`id_sender`, `id_recipient`,`comments`,`from_date`," +
                                                    "`document_type`,`origin`,`sign`,`to_date`)" +
                                                    "    VALUES" +

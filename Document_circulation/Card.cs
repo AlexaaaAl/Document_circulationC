@@ -70,7 +70,7 @@ namespace Document_circulation
                 int y = command.ExecuteNonQuery();
                 if (y != 0)
                 {
-                    //SendMail.SEND_MAIlTORECIP(E_Mail, "Добавлен коментарий " + outline);
+                    //SendMail.SEND_MAIlTORECIP(E_Mail, "Добавлен коментарий " + out_number);
                 }
                 MessageBox.Show("E_MAIL сохранен", "Выполнено");
             }

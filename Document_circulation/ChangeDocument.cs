@@ -17,7 +17,7 @@ namespace Document_circulation
     {
         public string number;
         public string comment;
-        public string outline;
+        public string out_number;
         public string name;
         public string ID;
         public string ID_Doc;
@@ -45,7 +45,7 @@ namespace Document_circulation
         private void ChangeDocument_Load(object sender, EventArgs e)
         {
             //label3.Text = this.number/*+ID*/;
-            label8.Text = this.outline;
+            label8.Text = this.out_number;
             richTextBox1.Text = this.comment;
             conn.Close();
             conn.Open();
@@ -63,7 +63,7 @@ namespace Document_circulation
                     uploadbutoncheck.Enabled = false;
                 } 
             }
-            string question = "select `e_mail`,`number_id`,`comments_doc`," +
+            string question = "select `e_mail`,`incom_number`,`comments_doc`," +
                 "`from_date`,`to_date`,`origin`,`sign` from `documents` " +
                 "inner join `users` on `id_recipient`=`id` where `id_document`=" + 
                 ID_Doc + ";";
@@ -71,7 +71,7 @@ namespace Document_circulation
             {
                 if (reader.Read())
                 {
-                    label3.Text= reader["number_id"].ToString()+ " " + reader["origin"].ToString();
+                    label3.Text= reader["incom_number"].ToString()+ " " + reader["origin"].ToString();
                     label7.Text = reader["sign"].ToString();
                     //comments_doc = reader["comments_doc"].ToString();
                     richTextBoxComment.Text=comments_doc;
@@ -159,7 +159,7 @@ namespace Document_circulation
             ChangeOutline f2 = new ChangeOutline(this.label1,this.richTextBox1);
             f2.ID = ID;
             f2.number = number;
-            f2.outline = outline;
+            f2.out_number = out_number;
             f2.comment = comment;
             f2.Show();
         }
@@ -346,7 +346,7 @@ namespace Document_circulation
                 int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();
                 if (y != 0)
                 {
-                    //SendMail.SEND_MAIlTORECIP(E_Mail, "Добавлен коментарий " + outline);
+                    //SendMail.SEND_MAIlTORECIP(E_Mail, "Добавлен коментарий " + out_number);
                 }
                 MessageBox.Show("Коментарий добавлен", "Выполнено");
             }
