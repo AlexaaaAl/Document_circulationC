@@ -52,10 +52,10 @@ namespace Document_circulation
                         string q = "UPDATE documents " +
                                     "set incom_number='" + textBox2.Text + "'," +
                                     " out_number = '" + textBox3.Text + "'," +
-                                    "date='" + dateTimePicker1.Value.ToString("s") + "'," +
-                                    "comments='" + richTextBox1.Text + "'," +
-                                    "from_date='"+  dateTimePicker3.Value.ToString("s") + "'," +
-                                    "to_date='"+ dateTimePicker2.Value.ToString("s") + "' " +
+                                    " date='" + dateTimePicker1.Value.ToString("s") + "'," +
+                                    " comments='" + richTextBox1.Text + "'," +
+                                    " from_date='"+  dateTimePicker3.Value.ToString("s") + "'," +
+                                    " to_date='"+ dateTimePicker2.Value.ToString("s") + "' " +
                                     "where number=" + number + ";";
                         MySqlCommand command = new MySqlCommand(q, conn);
                         // выполняем запрос
@@ -77,18 +77,18 @@ namespace Document_circulation
 
                     {
                         string q = "UPDATE documents " +
-                                   "set out_number='" + textBox3.Text + "'," +
-                                   " incom_number = '" + textBox2.Text + "'," +
-                                   "comments='" + richTextBox1.Text + "'," +
-                                   "from_date='" + dateTimePicker3.Value.ToString("s") + "'," +
-                                   "to_date='" + dateTimePicker2.Value.ToString("s") + "' " +
-                                   "where number=" + number + ";";
+                                   "set out_number='@textBox3.Text'," +
+                                   " incom_number = '@ textBox2.Text'," +
+                                   " comments='@richTextBox1.Text', " +
+                                   " from_date='" + dateTimePicker3.Value.ToString("s") + "'," +
+                                   " to_date='" + dateTimePicker2.Value.ToString("s") + "' " +
+                                   "where number=@ number + ;";
                         MySqlCommand command = new MySqlCommand(q, conn);
                         // выполняем запрос
                         try
                         {
                             command.ExecuteNonQuery();
-                            MessageBox.Show("Фаил изменён!", "Изменение"); // Выводим сообщение о звершении.
+                            MessageBox.Show("Файл изменён!", "Изменение"); // Выводим сообщение о звершении.
                             this.Close();
                             lab1.Text = textBox1.Text;
                             richt1.Text = richTextBox1.Text;
@@ -127,10 +127,10 @@ namespace Document_circulation
                         checkBox1.Checked = true;
                     }
                 }
-                /*dateTimePicker2.Value = (DateTime)reader["from_date"];
+                dateTimePicker2.Value = (DateTime)reader["from_date"];
                 dateTimePicker3.Value = (DateTime)reader["to_date"];
                 date1 = ((DateTime)reader["from_date"]).ToString();
-                date2 = ((DateTime)reader["to_date"]).ToString();*/
+                date2 = ((DateTime)reader["to_date"]).ToString();
                 textBox1.Text= reader["namedoc"].ToString();
                 textBox2.Text = reader["incom_number"].ToString();
                 textBox3.Text = reader["out_number"].ToString();
