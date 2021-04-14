@@ -26,6 +26,7 @@ namespace Document_circulation
         int dateP = 0;
         private Label lab1;
         private RichTextBox richt1;
+        ChangeDocument f2 = new ChangeDocument();
         MySqlConnection conn = DBUtils.GetDBConnection();
         public ChangeOutline(Label lab,RichTextBox richt)
         {
@@ -37,12 +38,12 @@ namespace Document_circulation
         private void button1_Click(object sender, EventArgs e)
         {
             conn.Open();
-            if (dateP == 0 && com == 0 && outl == 0)
+            /*if (dateP == 0 && com == 0 && outl == 0)
             {
                 MessageBox.Show("Изменения не были внесены", "Ошибка");
             }
             else
-            {
+            {*/
                 DialogResult result = MessageBox.Show("Изменить?", "Подтвердите действие", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
@@ -77,18 +78,19 @@ namespace Document_circulation
 
                     {
                         string q = "UPDATE documents " +
-                                   "set out_number='@textBox3.Text'," +
-                                   " incom_number = '@ textBox2.Text'," +
-                                   " comments='@richTextBox1.Text', " +
-                                   " from_date='" + dateTimePicker3.Value.ToString("s") + "'," +
-                                   " to_date='" + dateTimePicker2.Value.ToString("s") + "' " +
-                                   "where number=@ number + ;";
+                                    "set incom_number='" + textBox2.Text + "'," +
+                                    " out_number = '" + textBox3.Text + "'," +
+                                    " comments='" + richTextBox1.Text + "'," +
+                                    " from_date='" + dateTimePicker3.Value.ToString("s") + "'," +
+                                    " to_date='" + dateTimePicker2.Value.ToString("s") + "' " +
+                                    "where number=" + number + ";";
                         MySqlCommand command = new MySqlCommand(q, conn);
                         // выполняем запрос
                         try
                         {
                             command.ExecuteNonQuery();
                             MessageBox.Show("Файл изменён!", "Изменение"); // Выводим сообщение о звершении.
+                            f2.UpdateData();
                             this.Close();
                             lab1.Text = textBox1.Text;
                             richt1.Text = richTextBox1.Text;
@@ -100,7 +102,7 @@ namespace Document_circulation
                         }
 
                     }
-                }
+                //}
             }
             conn.Close();
         }

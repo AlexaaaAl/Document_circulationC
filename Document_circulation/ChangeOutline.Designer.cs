@@ -217,6 +217,7 @@ namespace Document_circulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(472, 359);
             this.Controls.Add(this.yt_Button1);
             this.Controls.Add(this.label8);
