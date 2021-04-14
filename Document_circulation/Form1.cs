@@ -98,7 +98,7 @@ namespace Document_circulation
                         if (!File.Exists("logpass.txt"))
                         {
                             
-                            Console.ReadLine();
+                            // Console.ReadLine();
                             // Create a file to write to.
                             using (StreamWriter sw = File.CreateText("logpass.txt"))
                             {
@@ -112,7 +112,7 @@ namespace Document_circulation
 
                             if (strok.Length == 0)
                             {
-                                Console.ReadLine();
+                                //Console.ReadLine();
                                 // Create a file to write to.
                                 using (StreamWriter sw = File.CreateText("logpass.txt"))
                                 {
@@ -122,7 +122,11 @@ namespace Document_circulation
                             }
                             else
                             {
-                                Console.WriteLine("В файле {0} строк", strok.Length);
+                                using (StreamWriter sw = File.CreateText("logpass.txt"))
+                                {
+                                    sw.WriteLine(login);
+                                    sw.WriteLine(password);
+                                }
                             }
                         }
                         // Open the file to read from.
@@ -210,9 +214,13 @@ namespace Document_circulation
                 using (StreamReader sr = File.OpenText("logpass.txt"))
                 {
                     //string s;
-                    textBox1.Text= File.ReadAllLines("logpass.txt").Skip(0).First();
-                    textBox2.Text = File.ReadAllLines("logpass.txt").Skip(1).First();
-                    
+                    string[] strok = File.ReadAllLines("logpass.txt");
+
+                    if (strok.Length != 0)
+                    {
+                        textBox1.Text = File.ReadAllLines("logpass.txt").Skip(0).First();
+                        textBox2.Text = File.ReadAllLines("logpass.txt").Skip(1).First();
+                    }
                    
                 }
             }
