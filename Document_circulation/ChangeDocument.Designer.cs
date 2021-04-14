@@ -30,14 +30,6 @@ namespace Document_circulation
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangeDocument));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.uploadbutoncheck = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,106 +40,24 @@ namespace Document_circulation
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBoxComment = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.yt_Button11 = new Document_circulation.yt_Button();
+            this.yt_Button5 = new Document_circulation.yt_Button();
+            this.yt_Button9 = new Document_circulation.yt_Button();
+            this.yt_Button10 = new Document_circulation.yt_Button();
+            this.yt_Button8 = new Document_circulation.yt_Button();
+            this.yt_Button7 = new Document_circulation.yt_Button();
+            this.yt_Button6 = new Document_circulation.yt_Button();
+            this.yt_Button4 = new Document_circulation.yt_Button();
+            this.yt_Button3 = new Document_circulation.yt_Button();
+            this.yt_Button2 = new Document_circulation.yt_Button();
+            this.yt_Button1 = new Document_circulation.yt_Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(386, 58);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(129, 88);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Изменить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Red;
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(521, 58);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(132, 88);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Удалить";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(386, 159);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(267, 31);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Скачать документы";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(386, 281);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(267, 62);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Загрузить подписанный документ";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Location = new System.Drawing.Point(386, 233);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(267, 37);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Посмотреть документы";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // uploadbutoncheck
-            // 
-            this.uploadbutoncheck.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.uploadbutoncheck.Location = new System.Drawing.Point(386, 349);
-            this.uploadbutoncheck.Name = "uploadbutoncheck";
-            this.uploadbutoncheck.Size = new System.Drawing.Size(267, 52);
-            this.uploadbutoncheck.TabIndex = 5;
-            this.uploadbutoncheck.Text = "Скачать подписанный документ";
-            this.uploadbutoncheck.UseVisualStyleBackColor = true;
-            this.uploadbutoncheck.Click += new System.EventHandler(this.uploadbutoncheck_Click);
-            // 
-            // button7
-            // 
-            this.button7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button7.Location = new System.Drawing.Point(386, 407);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(129, 50);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "Переслать";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button8
-            // 
-            this.button8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button8.Location = new System.Drawing.Point(521, 407);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(132, 50);
-            this.button8.TabIndex = 7;
-            this.button8.Text = "Подтвердить";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // label1
             // 
@@ -203,9 +113,9 @@ namespace Document_circulation
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.panel1.Location = new System.Drawing.Point(0, -2);
+            this.panel1.Location = new System.Drawing.Point(0, -7);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(679, 54);
+            this.panel1.Size = new System.Drawing.Size(679, 59);
             this.panel1.TabIndex = 12;
             // 
             // label9
@@ -260,41 +170,6 @@ namespace Document_circulation
             this.label5.Size = new System.Drawing.Size(186, 21);
             this.label5.TabIndex = 16;
             this.label5.Text = "Добавить коментарий";
-            // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(16, 393);
-            this.button6.MaximumSize = new System.Drawing.Size(240, 38);
-            this.button6.MinimumSize = new System.Drawing.Size(207, 38);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(240, 38);
-            this.button6.TabIndex = 17;
-            this.button6.Text = "Сохранить коментарий";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button9
-            // 
-            this.button9.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button9.Location = new System.Drawing.Point(386, 196);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(267, 31);
-            this.button9.TabIndex = 18;
-            this.button9.Text = "Скачать и открыть";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // button10
-            // 
-            this.button10.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button10.Location = new System.Drawing.Point(16, 437);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(330, 41);
-            this.button10.TabIndex = 19;
-            this.button10.Text = "Посмотреть изменения/коментарии\r\n";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // label6
             // 
@@ -352,33 +227,188 @@ namespace Document_circulation
             this.label12.TabIndex = 23;
             this.label12.Text = "от:";
             // 
+            // yt_Button11
+            // 
+            this.yt_Button11.BackColor = System.Drawing.Color.Gray;
+            this.yt_Button11.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.yt_Button11.ForeColor = System.Drawing.Color.White;
+            this.yt_Button11.Location = new System.Drawing.Point(16, 436);
+            this.yt_Button11.Name = "yt_Button11";
+            this.yt_Button11.Rounding = 100;
+            this.yt_Button11.RoundingEnable = false;
+            this.yt_Button11.Size = new System.Drawing.Size(364, 35);
+            this.yt_Button11.TabIndex = 36;
+            this.yt_Button11.Text = "Посмотреть изменения\\коментарии";
+            this.yt_Button11.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // yt_Button5
+            // 
+            this.yt_Button5.BackColor = System.Drawing.Color.Gray;
+            this.yt_Button5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.yt_Button5.ForeColor = System.Drawing.Color.White;
+            this.yt_Button5.Location = new System.Drawing.Point(16, 396);
+            this.yt_Button5.Name = "yt_Button5";
+            this.yt_Button5.Rounding = 100;
+            this.yt_Button5.RoundingEnable = false;
+            this.yt_Button5.Size = new System.Drawing.Size(364, 30);
+            this.yt_Button5.TabIndex = 35;
+            this.yt_Button5.Text = "Сохранить коментарий";
+            this.yt_Button5.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // yt_Button9
+            // 
+            this.yt_Button9.BackColor = System.Drawing.Color.Gray;
+            this.yt_Button9.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.yt_Button9.ForeColor = System.Drawing.Color.White;
+            this.yt_Button9.Location = new System.Drawing.Point(497, 336);
+            this.yt_Button9.Name = "yt_Button9";
+            this.yt_Button9.Rounding = 100;
+            this.yt_Button9.RoundingEnable = false;
+            this.yt_Button9.Size = new System.Drawing.Size(116, 56);
+            this.yt_Button9.TabIndex = 34;
+            this.yt_Button9.Text = "Подтвердить";
+            this.yt_Button9.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // yt_Button10
+            // 
+            this.yt_Button10.BackColor = System.Drawing.Color.Gray;
+            this.yt_Button10.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.yt_Button10.ForeColor = System.Drawing.Color.White;
+            this.yt_Button10.Location = new System.Drawing.Point(389, 336);
+            this.yt_Button10.Name = "yt_Button10";
+            this.yt_Button10.Rounding = 100;
+            this.yt_Button10.RoundingEnable = false;
+            this.yt_Button10.Size = new System.Drawing.Size(102, 56);
+            this.yt_Button10.TabIndex = 33;
+            this.yt_Button10.Text = "Переслать";
+            this.yt_Button10.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // yt_Button8
+            // 
+            this.yt_Button8.BackColor = System.Drawing.Color.Gray;
+            this.yt_Button8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.yt_Button8.ForeColor = System.Drawing.Color.White;
+            this.yt_Button8.Location = new System.Drawing.Point(389, 281);
+            this.yt_Button8.Name = "yt_Button8";
+            this.yt_Button8.Rounding = 100;
+            this.yt_Button8.RoundingEnable = false;
+            this.yt_Button8.Size = new System.Drawing.Size(224, 49);
+            this.yt_Button8.TabIndex = 32;
+            this.yt_Button8.Text = "Скачать подписанный документ";
+            this.yt_Button8.Click += new System.EventHandler(this.uploadbutoncheck_Click);
+            // 
+            // yt_Button7
+            // 
+            this.yt_Button7.BackColor = System.Drawing.Color.Gray;
+            this.yt_Button7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.yt_Button7.ForeColor = System.Drawing.Color.White;
+            this.yt_Button7.Location = new System.Drawing.Point(389, 226);
+            this.yt_Button7.Name = "yt_Button7";
+            this.yt_Button7.Rounding = 100;
+            this.yt_Button7.RoundingEnable = false;
+            this.yt_Button7.Size = new System.Drawing.Size(224, 49);
+            this.yt_Button7.TabIndex = 31;
+            this.yt_Button7.Text = "Загрузить подписанный документ";
+            this.yt_Button7.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // yt_Button6
+            // 
+            this.yt_Button6.BackColor = System.Drawing.Color.Gray;
+            this.yt_Button6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.yt_Button6.ForeColor = System.Drawing.Color.White;
+            this.yt_Button6.Location = new System.Drawing.Point(389, 190);
+            this.yt_Button6.Name = "yt_Button6";
+            this.yt_Button6.Rounding = 100;
+            this.yt_Button6.RoundingEnable = false;
+            this.yt_Button6.Size = new System.Drawing.Size(224, 30);
+            this.yt_Button6.TabIndex = 30;
+            this.yt_Button6.Text = "Посмотреть документы";
+            this.yt_Button6.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // yt_Button4
+            // 
+            this.yt_Button4.BackColor = System.Drawing.Color.Gray;
+            this.yt_Button4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.yt_Button4.ForeColor = System.Drawing.Color.White;
+            this.yt_Button4.Location = new System.Drawing.Point(389, 156);
+            this.yt_Button4.Name = "yt_Button4";
+            this.yt_Button4.Rounding = 100;
+            this.yt_Button4.RoundingEnable = false;
+            this.yt_Button4.Size = new System.Drawing.Size(224, 30);
+            this.yt_Button4.TabIndex = 28;
+            this.yt_Button4.Text = "Скачать и открыть";
+            this.yt_Button4.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // yt_Button3
+            // 
+            this.yt_Button3.BackColor = System.Drawing.Color.Gray;
+            this.yt_Button3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.yt_Button3.ForeColor = System.Drawing.Color.White;
+            this.yt_Button3.Location = new System.Drawing.Point(389, 120);
+            this.yt_Button3.Name = "yt_Button3";
+            this.yt_Button3.Rounding = 100;
+            this.yt_Button3.RoundingEnable = false;
+            this.yt_Button3.Size = new System.Drawing.Size(224, 30);
+            this.yt_Button3.TabIndex = 27;
+            this.yt_Button3.Text = "Скачать документы";
+            this.yt_Button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // yt_Button2
+            // 
+            this.yt_Button2.BackColor = System.Drawing.Color.DarkRed;
+            this.yt_Button2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.yt_Button2.ForeColor = System.Drawing.Color.White;
+            this.yt_Button2.Location = new System.Drawing.Point(504, 58);
+            this.yt_Button2.Name = "yt_Button2";
+            this.yt_Button2.Rounding = 100;
+            this.yt_Button2.RoundingEnable = false;
+            this.yt_Button2.Size = new System.Drawing.Size(109, 56);
+            this.yt_Button2.TabIndex = 26;
+            this.yt_Button2.Text = "Удалить";
+            this.yt_Button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // yt_Button1
+            // 
+            this.yt_Button1.BackColor = System.Drawing.Color.Gray;
+            this.yt_Button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.yt_Button1.ForeColor = System.Drawing.Color.White;
+            this.yt_Button1.Location = new System.Drawing.Point(389, 58);
+            this.yt_Button1.Name = "yt_Button1";
+            this.yt_Button1.Rounding = 100;
+            this.yt_Button1.RoundingEnable = false;
+            this.yt_Button1.Size = new System.Drawing.Size(109, 56);
+            this.yt_Button1.TabIndex = 25;
+            this.yt_Button1.Text = "Изменить";
+            this.yt_Button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ChangeDocument
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(660, 509);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(637, 483);
+            this.Controls.Add(this.yt_Button11);
+            this.Controls.Add(this.yt_Button5);
+            this.Controls.Add(this.yt_Button9);
+            this.Controls.Add(this.yt_Button10);
+            this.Controls.Add(this.yt_Button8);
+            this.Controls.Add(this.yt_Button7);
+            this.Controls.Add(this.yt_Button6);
+            this.Controls.Add(this.yt_Button4);
+            this.Controls.Add(this.yt_Button3);
+            this.Controls.Add(this.yt_Button2);
+            this.Controls.Add(this.yt_Button1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.richTextBoxComment);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.uploadbutoncheck);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -393,15 +423,6 @@ namespace Document_circulation
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button uploadbutoncheck;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -410,9 +431,6 @@ namespace Document_circulation
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.RichTextBox richTextBoxComment;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
@@ -420,5 +438,16 @@ namespace Document_circulation
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
+        private yt_Button yt_Button1;
+        private yt_Button yt_Button2;
+        private yt_Button yt_Button3;
+        private yt_Button yt_Button4;
+        private yt_Button yt_Button6;
+        private yt_Button yt_Button7;
+        private yt_Button yt_Button8;
+        private yt_Button yt_Button9;
+        private yt_Button yt_Button10;
+        private yt_Button yt_Button5;
+        private yt_Button yt_Button11;
     }
 }

@@ -141,7 +141,7 @@ namespace Document_circulation
                     }
                     this.Hide();
                     //this.Close();
-                    if (f == 4)
+                    if (f == 18)
                     {
                         MenuController f2 = new MenuController();
                         f2.tulf2.setIdUser(f);

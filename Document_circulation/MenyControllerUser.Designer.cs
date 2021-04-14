@@ -52,13 +52,13 @@ namespace Document_circulation
             this.окноАвторизацииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.закрытьПрограммуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.yt_Button1 = new Document_circulation.yt_Button();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.yt_Button1 = new Document_circulation.yt_Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -112,6 +112,7 @@ namespace Document_circulation
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1132, 521);
             this.dataGridView1.TabIndex = 7;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick_1);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // panel2
@@ -215,13 +216,13 @@ namespace Document_circulation
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
             this.оПрограммеToolStripMenuItem.Text = "Инструкция";
             // 
             // контактыToolStripMenuItem
             // 
             this.контактыToolStripMenuItem.Name = "контактыToolStripMenuItem";
-            this.контактыToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.контактыToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
             this.контактыToolStripMenuItem.Text = "Контакты";
             // 
             // выходToolStripMenuItem1
@@ -263,6 +264,20 @@ namespace Document_circulation
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1288, 84);
             this.panel1.TabIndex = 4;
+            // 
+            // yt_Button1
+            // 
+            this.yt_Button1.BackColor = System.Drawing.Color.Gray;
+            this.yt_Button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.yt_Button1.ForeColor = System.Drawing.Color.White;
+            this.yt_Button1.Location = new System.Drawing.Point(319, 6);
+            this.yt_Button1.Name = "yt_Button1";
+            this.yt_Button1.Rounding = 100;
+            this.yt_Button1.RoundingEnable = false;
+            this.yt_Button1.Size = new System.Drawing.Size(247, 33);
+            this.yt_Button1.TabIndex = 16;
+            this.yt_Button1.Text = "Создать новый документ";
+            this.yt_Button1.Click += new System.EventHandler(this.yt_Button1_Click);
             // 
             // checkBox2
             // 
@@ -326,20 +341,6 @@ namespace Document_circulation
             this.menuStrip1.Size = new System.Drawing.Size(166, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // yt_Button1
-            // 
-            this.yt_Button1.BackColor = System.Drawing.Color.Gray;
-            this.yt_Button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.yt_Button1.ForeColor = System.Drawing.Color.White;
-            this.yt_Button1.Location = new System.Drawing.Point(319, 6);
-            this.yt_Button1.Name = "yt_Button1";
-            this.yt_Button1.Rounding = 100;
-            this.yt_Button1.RoundingEnable = false;
-            this.yt_Button1.Size = new System.Drawing.Size(247, 33);
-            this.yt_Button1.TabIndex = 16;
-            this.yt_Button1.Text = "Создать новый документ";
-            this.yt_Button1.Click += new System.EventHandler(this.yt_Button1_Click);
             // 
             // MenuControllerUser
             // 

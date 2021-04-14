@@ -325,5 +325,47 @@ namespace Document_circulation
             f2.Show();
         }
 
+        private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            conn.Close();
+            conn.Open();
+            string q = "UPDATE documents " +
+                        "set status='выполняется'" +
+                        "where id_document=" + dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString() +
+                        " AND id_recipient=" + tulf2.getIdUser() +
+                        " AND status <> 'подтверждён'" +
+                        " AND status <> 'выполняется';";
+            MySqlCommand command = new MySqlCommand(q, conn);
+            // выполняем запрос
+            int UspeshnoeIzmenenie = command.ExecuteNonQuery();
+            //MessageBox.Show(UspeshnoeIzmenenie.ToString(),"-");
+            if (UspeshnoeIzmenenie != 0)
+            {
+                string query = "INSERT INTO `coments`" +
+                               "    (`Id_doc` ,`number`,`Statuscol`, `usercol`)" +
+                               "    VALUES (" +
+                               dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString() +
+                               "," + dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Номер"].Value.ToString()
+                               + ",'выполняется'," + ID + ");";
+                MySqlCommand command1 = new MySqlCommand(query, conn);
+                // выполняем запрос
+                int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();
+            }
+            ChangeDocument f2 = new ChangeDocument();
+            f2.number = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Номер"].Value.ToString();
+            f2.out_number = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Исходящий номер"].Value.ToString();
+            f2.comment = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["comments"].Value.ToString();
+            f2.ID_Doc = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString();
+            f2.MIDDLE_NAME = MIDDLE_NAME;
+            f2.FIRST_NAME = FIRST_NAME;
+            f2.LAST_NAME = LAST_NAME;
+            f2.DEPARTMENT = DEPARTMENT;
+            f2.IP_SERVER = IP_SERVER;
+            conn.Close();
+            f2.name = tulf2.getName();
+            f2.ID = ID;
+            f2.Show();
+
+        }
     }
 }

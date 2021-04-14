@@ -264,10 +264,6 @@ namespace Document_circulation
             Form1 f2 = new Form1();
             f2.Show();
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) //выбор строки в таблице
-        {                                                                     
-        }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             conn.Close();

@@ -56,11 +56,11 @@ namespace Document_circulation
                 if (reader.Read())
 
                 {
-                    uploadbutoncheck.Enabled = true;
+                    yt_Button8.Enabled = true;
                 }
                 else
                 {
-                    uploadbutoncheck.Enabled = false;
+                    yt_Button8.Enabled = false;
                 } 
             }
             string question = "select `e_mail`,`incom_number`,`comments_doc`," +
