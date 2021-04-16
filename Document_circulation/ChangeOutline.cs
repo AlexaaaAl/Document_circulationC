@@ -49,7 +49,7 @@ namespace Document_circulation
                                     " comments='" + richTextBox1.Text + "'," +
                                     " from_date='"+  dateTimePicker3.Value.ToString("s") + "'," +
                                     " to_date='"+ dateTimePicker2.Value.ToString("s") + "' " +
-                                    "where number=" + number + ";";
+                                    "where number=" + number ;
                         MySqlCommand command = new MySqlCommand(q, conn);
                         // выполняем запрос
                         try
@@ -96,7 +96,7 @@ namespace Document_circulation
 
                     }
                 //}
-            }
+                }
             conn.Close();
         }
 
