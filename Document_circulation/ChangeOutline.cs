@@ -13,12 +13,12 @@ namespace Document_circulation
         public string date;
         public string date1;
         public string date2;
-        int outl = 0;
+      /*  int outl = 0;
         int com = 0;
-        int dateP = 0;
+        int dateP = 0;*/
         private Label lab1;
         private RichTextBox richt1;
-        ChangeDocument f2;
+        private ChangeDocument f2= new ChangeDocument();
         MySqlConnection conn = DBUtils.GetDBConnection();
         public ChangeOutline(Label lab,RichTextBox richt)
         {
@@ -49,7 +49,7 @@ namespace Document_circulation
                                     " comments='" + richTextBox1.Text + "'," +
                                     " from_date='"+  dateTimePicker3.Value.ToString("s") + "'," +
                                     " to_date='"+ dateTimePicker2.Value.ToString("s") + "' " +
-                                    "where number=" + number ;
+                                    "where number=" + number + ";" ;
                         MySqlCommand command = new MySqlCommand(q, conn);
                         // выполняем запрос
                         try
@@ -76,7 +76,7 @@ namespace Document_circulation
                                     " comments='" + richTextBox1.Text + "'," +
                                     " from_date='" + dateTimePicker3.Value.ToString("s") + "'," +
                                     " to_date='" + dateTimePicker2.Value.ToString("s") + "' " +
-                                    "where number=" + number;
+                                    "where number=" + number + ";";
                         MySqlCommand command = new MySqlCommand(q, conn);
                         // выполняем запрос
                         try
@@ -116,7 +116,7 @@ namespace Document_circulation
                     {
                         dateTimePicker1.Value = (DateTime)reader["date"];
                         
-                        dateP = 0;
+                        //dateP = 0;
                         date = ((DateTime)reader["date"]).ToString();
                         
                         checkBox1.Checked = true;
@@ -132,26 +132,26 @@ namespace Document_circulation
             }
 
             //textBox1.Text = out_number;
-            outl = 0;
+            //outl = 0;
             richTextBox1.Text = comment;
-            com = 0;
+           // com = 0;
             label4.Text = number;
             conn.Close();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            outl += 1; 
+          //  outl += 1; 
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            dateP += 1;
+          //  dateP += 1;
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            com += 1;
+           // com += 1;
         }
     }
 }
