@@ -1,14 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Net.Mail;
 
 namespace Document_circulation
 {
@@ -26,7 +18,7 @@ namespace Document_circulation
         int dateP = 0;
         private Label lab1;
         private RichTextBox richt1;
-        ChangeDocument f2 = new ChangeDocument();
+        ChangeDocument f2;
         MySqlConnection conn = DBUtils.GetDBConnection();
         public ChangeOutline(Label lab,RichTextBox richt)
         {
@@ -66,6 +58,7 @@ namespace Document_circulation
                             MessageBox.Show("Фаил изменён!", "Изменение"); // Выводим сообщение о звершении.
                             lab1.Text = textBox1.Text;
                             richt1.Text = richTextBox1.Text;
+                            f2.UpdateData();
                             this.Close();
                             
                         }
@@ -83,7 +76,7 @@ namespace Document_circulation
                                     " comments='" + richTextBox1.Text + "'," +
                                     " from_date='" + dateTimePicker3.Value.ToString("s") + "'," +
                                     " to_date='" + dateTimePicker2.Value.ToString("s") + "' " +
-                                    "where number=" + number + ";";
+                                    "where number=" + number;
                         MySqlCommand command = new MySqlCommand(q, conn);
                         // выполняем запрос
                         try
