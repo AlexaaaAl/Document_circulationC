@@ -42,14 +42,13 @@ namespace Document_circulation
                    
                     if (checkBox1.Checked == true) //если стоит флажок на сроке подписания
                     {
-                        string q = "UPDATE documents " +
-                                    "set incom_number='" + textBox2.Text + "'," +
-                                    " out_number = '" + textBox3.Text + "'," +
-                                    " date='" + dateTimePicker1.Value.ToString("s") + "'," +
-                                    " comments='" + richTextBox1.Text + "'," +
-                                    " from_date='"+  dateTimePicker3.Value.ToString("s") + "'," +
-                                    " to_date='"+ dateTimePicker2.Value.ToString("s") + "' " +
-                                    "where number=" + number + ";" ;
+                        string q = "UPDATE documents set incom_number='" + textBox2.Text + 
+                        "', out_number = '" + textBox3.Text + 
+                        //"', date='" + dateTimePicker1.Value.ToString("s") + 
+                        "', comments='" + richTextBox1.Text + 
+                       // "', from_date='"+  dateTimePicker3.Value.ToString("s") + 
+                       // "', to_date='"+ dateTimePicker2.Value.ToString("s") + 
+                        "' where number=" + number + ";" ;
                         MySqlCommand command = new MySqlCommand(q, conn);
                         // выполняем запрос
                         try
@@ -58,8 +57,12 @@ namespace Document_circulation
                             MessageBox.Show("Фаил изменён!", "Изменение"); // Выводим сообщение о звершении.
                             lab1.Text = textBox1.Text;
                             richt1.Text = richTextBox1.Text;
-                            f2.UpdateData();
-                            this.Close();
+                        using (ChangeDocument f3 = new ChangeDocument())
+                        {
+                            f3.UpdateData();
+                        }
+
+                        this.Close();
                             
                         }
                         catch (Exception ex)
@@ -70,20 +73,23 @@ namespace Document_circulation
                     else
 
                     {
-                        string q = "UPDATE documents " +
-                                    "set incom_number='" + textBox2.Text + "'," +
-                                    " out_number = '" + textBox3.Text + "'," +
-                                    " comments='" + richTextBox1.Text + "'," +
-                                    " from_date='" + dateTimePicker3.Value.ToString("s") + "'," +
-                                    " to_date='" + dateTimePicker2.Value.ToString("s") + "' " +
-                                    "where number=" + number + ";";
+                        string q = "UPDATE documents SET incom_number='" + textBox2.Text +  //ПРОБЛЕМА ИСПРАВИТЬ!!!!!!! 
+                        "', out_number = '" + textBox3.Text + 
+                        "', comments='" + richTextBox1.Text + 
+                       // "', from_date='" + dateTimePicker3.Value.ToString("s") + 
+                       // "', to_date='" + dateTimePicker2.Value.ToString("s") + 
+                        "' where number=" + number + ";";
                         MySqlCommand command = new MySqlCommand(q, conn);
                         // выполняем запрос
                         try
                         {
                             command.ExecuteNonQuery();
                             MessageBox.Show("Файл изменён!", "Изменение"); // Выводим сообщение о звершении.
-                            f2.UpdateData();
+                            using (ChangeDocument f3=new ChangeDocument())
+                        {
+                            f3.UpdateData();
+                        }
+                       
                             this.Close();
                             lab1.Text = textBox1.Text;
                             richt1.Text = richTextBox1.Text;
@@ -122,10 +128,14 @@ namespace Document_circulation
                         checkBox1.Checked = true;
                     }
                 }
-                dateTimePicker2.Value = (DateTime)reader["from_date"];
-                dateTimePicker3.Value = (DateTime)reader["to_date"];
-                date1 = ((DateTime)reader["from_date"]).ToString();
-                date2 = ((DateTime)reader["to_date"]).ToString();
+                if (reader["from_date"] != DBNull.Value)
+                {
+                    dateTimePicker2.Value = (DateTime)reader["from_date"];
+                    dateTimePicker3.Value = (DateTime)reader["to_date"];
+                    date1 = ((DateTime)reader["from_date"]).ToString();
+                    date2 = ((DateTime)reader["to_date"]).ToString();
+                }
+                
                 textBox1.Text= reader["namedoc"].ToString();
                 textBox2.Text = reader["incom_number"].ToString();
                 textBox3.Text = reader["out_number"].ToString();
