@@ -36,7 +36,7 @@ namespace Document_circulation
             InitializeComponent();
             userName = Environment.UserName;
         }
-       
+
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -45,12 +45,12 @@ namespace Document_circulation
         private void ChangeDocument_Load(object sender, EventArgs e)
         {
             //label3.Text = this.number/*+ID*/;
-            label8.Text = this.out_number;
+           
             richTextBox1.Text = this.comment;
             conn.Close();
             conn.Open();
             string query = "SELECT id FROM answer_recirient " +
-                " WHERE id_doc='"+ ID_Doc + "'";
+                " WHERE id_doc='" + ID_Doc + "'";
             using (var reader = new MySqlCommand(query, conn).ExecuteReader())
             {
                 if (reader.Read())
@@ -61,21 +61,22 @@ namespace Document_circulation
                 else
                 {
                     yt_Button8.Enabled = false;
-                } 
+                }
             }
-            string question = "select `e_mail`,`incom_number`,`comments_doc`," +
-                "`from_date`,`to_date`,`origin`,`sign` from `documents` " +
-                "inner join `users` on `id_recipient`=`id` where `id_document`=" + 
+            string question = "select e_mail,incom_number,out_number,comments_doc," +
+                "from_date,to_date,origin,sign from documents " +
+                "inner join users on id_recipient=id where id_document=" +
                 ID_Doc + ";";
             using (var reader = new MySqlCommand(question, conn).ExecuteReader())
             {
                 if (reader.Read())
                 {
-                    label3.Text= reader["incom_number"].ToString()+ " " + reader["origin"].ToString();
+                    label8.Text = reader["out_number"].ToString();
+                    label3.Text = reader["incom_number"].ToString() + " " + reader["origin"].ToString();
                     label7.Text = reader["sign"].ToString();
                     //comments_doc = reader["comments_doc"].ToString();
-                    richTextBoxComment.Text=comments_doc;
-                    label9.Text= reader["to_date"].ToString();
+                    richTextBoxComment.Text = comments_doc;
+                    label9.Text = reader["to_date"].ToString();
                     label11.Text = reader["from_date"].ToString();
                     // E_Mail = reader["e_mail"].ToString();
                     //label1.Text+= " "+reader["origin"].ToString();
@@ -86,32 +87,32 @@ namespace Document_circulation
             {
                 if (reader.Read())
                 {
-                    DEP= reader["Dep"].ToString();
+                    DEP = reader["Dep"].ToString();
                 }
             }
             conn.Close();
-            
+
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             //кнопка скачать файл
-          /*  FolderBrowserDialog DirDialog = new FolderBrowserDialog();
-            DirDialog.Description = "Выбор директории";*/
+            /*  FolderBrowserDialog DirDialog = new FolderBrowserDialog();
+              DirDialog.Description = "Выбор директории";*/
             //DirDialog.SelectedPath = @"C:\"+DEPARTMENT;
             string SelectedPath = "C:\\Users\\" + userName + "\\Documents\\" + DEP;
-            if (!Directory.Exists(SelectedPath)) 
+            if (!Directory.Exists(SelectedPath))
                 Directory.CreateDirectory(SelectedPath);
 
-           
-           /* if (DirDialog.ShowDialog() == DialogResult.OK)
-            {*/
+
+            /* if (DirDialog.ShowDialog() == DialogResult.OK)
+             {*/
             conn.Close();
             conn.Open();
             string query = "select path,file from document_file " +
                     "inner join all_one on document_file.id = all_one.id_file " +
                     "inner join documents on all_one.id_doc = documents.number " +
-                    "where documents.number ="+number+";";
+                    "where documents.number =" + number + ";";
             using (var reader = new MySqlCommand(query, conn).ExecuteReader())
             {
                 while (reader.Read())
@@ -121,7 +122,7 @@ namespace Document_circulation
                         //Move the file.
                         string s = Path.Combine(reader["path"].ToString());
                         //reader["path"].ToString().Replace("/", "\\\\") + "\\\\" + reader["file"].ToString().Replace("/", "\\\\");
-                        string t=Interaction.InputBox("Название файла", "", reader["file"].ToString());
+                        string t = Interaction.InputBox("Название файла", "", reader["file"].ToString());
                         if (t.Length > 0)
                         {
 
@@ -135,11 +136,11 @@ namespace Document_circulation
                         {
                             // cancel
                         }
-                        
+
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show( ex.ToString(), "The process failed: {0}");
+                        MessageBox.Show(ex.ToString(), "The process failed: {0}");
                     }
                 }
             }
@@ -156,12 +157,20 @@ namespace Document_circulation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ChangeOutline f2 = new ChangeOutline(this.label1,this.richTextBox1);
+            ChangeOutline f2 = new ChangeOutline(this.label1, this.richTextBox1);
+            f2.ID_Doc = ID_Doc;
+            f2.MIDDLE_NAME = MIDDLE_NAME;
+            f2.FIRST_NAME = FIRST_NAME;
+            f2.LAST_NAME = LAST_NAME;
+            f2.DEPARTMENT = DEPARTMENT;
+            f2.IP_SERVER = IP_SERVER;
             f2.ID = ID;
             f2.number = number;
             f2.out_number = out_number;
             f2.comment = comment;
+            f2.name = name;
             f2.Show();
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -172,7 +181,7 @@ namespace Document_circulation
             {
                 conn.Close();
                 conn.Open();
-                string q = "DELETE From documents where id_document = " + ID_Doc+";";
+                string q = "DELETE From documents where id_document = " + ID_Doc + ";";
                 string snull = "DELETE From all_one where isnull(id_doc); ";
                 MySqlCommand command = new MySqlCommand(q, conn);
                 MySqlCommand commandnull = new MySqlCommand(snull, conn);
@@ -184,7 +193,7 @@ namespace Document_circulation
                     MessageBox.Show("Файл удален!", "TsManager"); // Выводим сообщение о звершении.
                     this.Close();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "TsManager");
                 }
@@ -210,17 +219,17 @@ namespace Document_circulation
             conn.Open();
             string q = "UPDATE documents " +
                         "set status='подтверждён'" +
-                        "where id_document=" + ID_Doc +";";
+                        "where id_document=" + ID_Doc + ";";
             MySqlCommand command = new MySqlCommand(q, conn);
             // выполняем запрос
             command.ExecuteNonQuery();
             string query = "INSERT INTO `coments`" +
                                 "    (`Id_doc` ,`number`,`Statuscol`, `usercol`)" +
-                                "    VALUES (" + ID_Doc+","+number+
+                                "    VALUES (" + ID_Doc + "," + number +
                                  ",'подтверждён'," + ID + ");";
-           
+
             MySqlCommand command1 = new MySqlCommand(query, conn);
-           // выполняем запрос
+            // выполняем запрос
             int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();
             conn.Close();
             ChangeDocument_Load(null, null);
@@ -229,7 +238,8 @@ namespace Document_circulation
         public void UpdateData()
         {
             // код обновления
-            ChangeDocument_Load(null, null);
+
+            // ChangeDocument_Load(null, null);
         }
         private void button4_Click(object sender, EventArgs e)
         {
@@ -264,11 +274,11 @@ namespace Document_circulation
                 File.Copy(filePath, f, true);
                 conn.Close();
                 conn.Open();
-                string insertAnswerRecip="INSERT INTO `answer_recirient`" +
+                string insertAnswerRecip = "INSERT INTO `answer_recirient`" +
                     "    ( `id_doc`,`path`, `document`,`comments`)" +
                     "    VALUES" +
                     "           (" + ID_Doc + ",'" +
-                    f.Replace("\\","\\\\") + "','" + fileName + "','" + result + "');";
+                    f.Replace("\\", "\\\\") + "','" + fileName + "','" + result + "');";
                 try
                 {
                     MySqlCommand command = new MySqlCommand(insertAnswerRecip, conn);
@@ -280,7 +290,7 @@ namespace Document_circulation
 
                 }
                 // выполняем запрос
-                
+
                 conn.Close();
 
             }
@@ -329,7 +339,7 @@ namespace Document_circulation
             conn.Close();
             conn.Open();
             string q = "UPDATE documents " +
-                       "set comments_doc='"+ richTextBoxComment.Text + " '"+
+                       "set comments_doc='" + richTextBoxComment.Text + " '" +
                        "where id_document=" + ID_Doc + ";";
             string query = "INSERT INTO `coments`" +
                                "    (`Id_doc` ,`number`,`ComentsCol`, `usercol`)" +
@@ -361,7 +371,7 @@ namespace Document_circulation
         private void button9_Click(object sender, EventArgs e)
         {
             //кнопка скачать файл
-         
+
             string SelectedPath = "C:\\Users\\" + userName + "\\Documents\\" + DEP;
             if (!Directory.Exists(SelectedPath))
                 Directory.CreateDirectory(SelectedPath);
@@ -415,6 +425,11 @@ namespace Document_circulation
             Coments f2 = new Coments();
             f2.id_doc = ID_Doc;
             f2.Show();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

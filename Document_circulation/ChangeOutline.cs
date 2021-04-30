@@ -13,14 +13,22 @@ namespace Document_circulation
         public string date;
         public string date1;
         public string date2;
-      /*  int outl = 0;
-        int com = 0;
-        int dateP = 0;*/
+        public string ID_Doc;
+        public string FIRST_NAME;
+        public string LAST_NAME;
+        public string MIDDLE_NAME;
+        public string DEPARTMENT;
+        public string DEP;
+        public string IP_SERVER;
+        public string name;
+        /*  int outl = 0;
+          int com = 0;
+          int dateP = 0;*/
         private Label lab1;
         private RichTextBox richt1;
-        private ChangeDocument f2= new ChangeDocument();
+        private ChangeDocument f2 = new ChangeDocument();
         MySqlConnection conn = DBUtils.GetDBConnection();
-        public ChangeOutline(Label lab,RichTextBox richt)
+        public ChangeOutline(Label lab, RichTextBox richt)
         {
             lab1 = lab;
             richt1 = richt;
@@ -36,73 +44,99 @@ namespace Document_circulation
             }
             else
             {*/
-                DialogResult result = MessageBox.Show("Изменить?", "Подтвердите действие", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+            DialogResult result = MessageBox.Show("Изменить?", "Подтвердите действие", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+
+                if (checkBox1.Checked == true) //если стоит флажок на сроке подписания
                 {
-                   
-                    if (checkBox1.Checked == true) //если стоит флажок на сроке подписания
+                    string q = "UPDATE documents set incom_number='" + textBox2.Text +
+                    "', out_number = '" + textBox3.Text +
+                    //"', date='" + dateTimePicker1.Value.ToString("s") + 
+                    "', comments='" + richTextBox1.Text +
+                    // "', from_date='"+  dateTimePicker3.Value.ToString("s") + 
+                    // "', to_date='"+ dateTimePicker2.Value.ToString("s") + 
+                    "' where number=" + number + ";";
+                    MySqlCommand command = new MySqlCommand(q, conn);
+                    // выполняем запрос
+                    try
                     {
-                        string q = "UPDATE documents set incom_number='" + textBox2.Text + 
-                        "', out_number = '" + textBox3.Text + 
-                        //"', date='" + dateTimePicker1.Value.ToString("s") + 
-                        "', comments='" + richTextBox1.Text + 
-                       // "', from_date='"+  dateTimePicker3.Value.ToString("s") + 
-                       // "', to_date='"+ dateTimePicker2.Value.ToString("s") + 
-                        "' where number=" + number + ";" ;
-                        MySqlCommand command = new MySqlCommand(q, conn);
-                        // выполняем запрос
-                        try
-                        {
-                            command.ExecuteNonQuery();
-                            MessageBox.Show("Фаил изменён!", "Изменение"); // Выводим сообщение о звершении.
-                            lab1.Text = textBox1.Text;
-                            richt1.Text = richTextBox1.Text;
-                        using (ChangeDocument f3 = new ChangeDocument())
-                        {
-                            f3.UpdateData();
-                        }
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Файл изменён!", "Изменение"); // Выводим сообщение о звершении.
+                        ChangeDocument f2 = new ChangeDocument();
+                        f2.number = number;
+                        f2.comment = richTextBox1.Text;
+                        f2.ID_Doc = ID_Doc;
+                        f2.MIDDLE_NAME = MIDDLE_NAME;
+                        f2.FIRST_NAME = FIRST_NAME;
+                        f2.LAST_NAME = LAST_NAME;
+                        f2.DEPARTMENT = DEPARTMENT;
+                        f2.IP_SERVER = IP_SERVER;
+                        conn.Close();
+                        f2.name = name;
+                        f2.ID = ID;
+                        f2.Show();
 
                         this.Close();
-                            
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message, "Изменение");
-                        }
-                    }
-                    else
+                        lab1.Text = textBox1.Text;
+                        richt1.Text = richTextBox1.Text;
 
+                    }
+                    catch (Exception ex)
                     {
-                        string q = "UPDATE documents SET incom_number='" + textBox2.Text +  //ПРОБЛЕМА ИСПРАВИТЬ!!!!!!! 
-                        "', out_number = '" + textBox3.Text + 
-                        "', comments='" + richTextBox1.Text + 
-                       // "', from_date='" + dateTimePicker3.Value.ToString("s") + 
-                       // "', to_date='" + dateTimePicker2.Value.ToString("s") + 
-                        "' where number=" + number + ";";
-                        MySqlCommand command = new MySqlCommand(q, conn);
-                        // выполняем запрос
-                        try
-                        {
-                            command.ExecuteNonQuery();
-                            MessageBox.Show("Файл изменён!", "Изменение"); // Выводим сообщение о звершении.
-                            using (ChangeDocument f3=new ChangeDocument())
-                        {
-                            f3.UpdateData();
-                        }
-                       
-                            this.Close();
-                            lab1.Text = textBox1.Text;
-                            richt1.Text = richTextBox1.Text;
+                        //     MessageBox.Show(ex.Message, "Изменение");
+                        // using (ChangeDocument f3 = new ChangeDocument())
+                        // {
+                        //     f3.UpdateData();
+                        //  }
+                    }
+                }
+                else
 
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message, "Изменение");
-                        }
+                {
+                    string q = "UPDATE documents SET incom_number='" + textBox2.Text +  //ПРОБЛЕМА ИСПРАВИТЬ!!!!!!! 
+                    "', out_number = '" + textBox3.Text +
+                    "', comments='" + richTextBox1.Text +
+                    // "', from_date='" + dateTimePicker3.Value.ToString("s") + 
+                    // "', to_date='" + dateTimePicker2.Value.ToString("s") + 
+                    "' where number=" + number + ";";
+                    MySqlCommand command = new MySqlCommand(q, conn);
+                    // выполняем запрос
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Файл изменён!", "Изменение"); // Выводим сообщение о звершении.
+                        ChangeDocument f2 = new ChangeDocument();
+                        f2.number = number;
+                        f2.comment = richTextBox1.Text;
+                        f2.ID_Doc = ID_Doc;
+                        f2.MIDDLE_NAME = MIDDLE_NAME;
+                        f2.FIRST_NAME = FIRST_NAME;
+                        f2.LAST_NAME = LAST_NAME;
+                        f2.DEPARTMENT = DEPARTMENT;
+                        f2.IP_SERVER = IP_SERVER;
+                        conn.Close();
+                        f2.name = name;
+                        f2.ID = ID;
+                        f2.Show();
+
+                        this.Close();
+                        lab1.Text = textBox1.Text;
+                        richt1.Text = richTextBox1.Text;
 
                     }
-                //}
+                    catch (Exception ex)
+                    {
+                        //     MessageBox.Show(ex.Message, "Изменение");
+                        // using (ChangeDocument f3 = new ChangeDocument())
+                        // {
+                        //     f3.UpdateData();
+                        //  }
+                    }
+
                 }
+                //}
+            }
             conn.Close();
         }
 
@@ -118,13 +152,13 @@ namespace Document_circulation
                 {
                     textBox2.Text = reader["incom_number"].ToString();
                     if (!reader.IsDBNull(reader.GetOrdinal("date")))
-                        
+
                     {
                         dateTimePicker1.Value = (DateTime)reader["date"];
-                        
+
                         //dateP = 0;
                         date = ((DateTime)reader["date"]).ToString();
-                        
+
                         checkBox1.Checked = true;
                     }
                 }
@@ -135,8 +169,8 @@ namespace Document_circulation
                     date1 = ((DateTime)reader["from_date"]).ToString();
                     date2 = ((DateTime)reader["to_date"]).ToString();
                 }
-                
-                textBox1.Text= reader["namedoc"].ToString();
+
+                textBox1.Text = reader["namedoc"].ToString();
                 textBox2.Text = reader["incom_number"].ToString();
                 textBox3.Text = reader["out_number"].ToString();
             }
@@ -144,24 +178,24 @@ namespace Document_circulation
             //textBox1.Text = out_number;
             //outl = 0;
             richTextBox1.Text = comment;
-           // com = 0;
+            // com = 0;
             label4.Text = number;
             conn.Close();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-          //  outl += 1; 
+            //  outl += 1; 
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-          //  dateP += 1;
+            //  dateP += 1;
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-           // com += 1;
+            // com += 1;
         }
     }
 }

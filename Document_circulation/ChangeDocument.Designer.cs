@@ -170,6 +170,7 @@ namespace Document_circulation
             this.label5.Size = new System.Drawing.Size(186, 21);
             this.label5.TabIndex = 16;
             this.label5.Text = "Добавить коментарий";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 

@@ -291,7 +291,7 @@ namespace Document_circulation
             }
             ChangeDocument f2 = new ChangeDocument();
             f2.number = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Номер"].Value.ToString();
-            f2.out_number = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Исходящий номер"].Value.ToString();
+            //f2.out_number = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["Исходящий номер"].Value.ToString();
             f2.comment = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["comments"].Value.ToString();
             f2.ID_Doc = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["id_document"].Value.ToString();
             f2.MIDDLE_NAME = MIDDLE_NAME;
