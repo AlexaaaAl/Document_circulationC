@@ -90,7 +90,7 @@ namespace Document_circulation
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -105,13 +105,14 @@ namespace Document_circulation
             {
                 ID = "24";
             }
-            
+
             conn.Close();
             conn.Open();
-            string later ="Select number,incom_number,out_number,comments, date_added,date," +
+            string later = "Select namedoc,number,incom_number,out_number,comments, date_added,date," +
                 "to_date,from_date,status,document_type " +
-                "from documents where id_document="+ID_Doc+";";
+                "from documents where id_document=" + ID_Doc + ";";
             string out_number = "";
+            string namedoc = "";
             string comments = "";
             string date_added = "";
             string date = "";
@@ -120,138 +121,193 @@ namespace Document_circulation
             string number = "";
             string incom_number = "";
             string q = "";
-            string to_date= "";
+            string to_date = "";
             string from_date = "";
-            try
+            // try
+            // {
+            using (var reader = new MySqlCommand(later, conn).ExecuteReader())
             {
-                using (var reader = new MySqlCommand(later, conn).ExecuteReader())
+                if (reader.Read())
+                {
+                    namedoc = reader["namedoc"].ToString();
+                    out_number = reader["out_number"].ToString();
+                    comments = reader["comments"].ToString();
+                    date = reader["date"].ToString();
+                    //MessageBox.Show(date, "ДАТАЭ");
+                    date_added = reader["date_added"].ToString();
+                    status = reader["status"].ToString();
+                    document_type = reader["document_type"].ToString();
+                    number = reader["number"].ToString();
+                    incom_number = reader["incom_number"].ToString();
+                    to_date = reader["to_date"].ToString();
+                    from_date = reader["from_date"].ToString();
+                }
+            }
+            for (int i = 0; i < listBox1.Items.Count; i++)
+            {
+                string words = ids.Items[i].ToString();
+                string query = "SELECT id,E_MAIL From users where id = " +
+                            words + ";";
+                int id_send = 0;
+                string e_mail = "";
+                using (var reader = new MySqlCommand(query, conn).ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        out_number = reader["out_number"].ToString();
-                        comments = reader["comments"].ToString();
-                        date = reader["date"].ToString();
-                        //MessageBox.Show(date, "ДАТАЭ");
-                        date_added = reader["date_added"].ToString();
-                        status = reader["status"].ToString();
-                        document_type = reader["document_type"].ToString();
-                        number = reader["number"].ToString();
-                        incom_number= reader["incom_number"].ToString();
-                        to_date = reader["to_date"].ToString();
-                        from_date = reader["from_date"].ToString();
+                        id_send = int.Parse(reader["id"].ToString());
+                        e_mail = reader["E_MAIL"].ToString();
+
                     }
                 }
-                for (int i = 0; i < listBox1.Items.Count; i++)
+             
+                if (!String.IsNullOrEmpty(from_date))
                 {
-                    string words = ids.Items[i].ToString();
-                    string query = "SELECT id,E_MAIL From users where id = " +
-                                words + ";";
-                    int id_send = 0;
-                    string e_mail = "";
-                    using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+                    DateTime from_dateDate = DateTime.Parse(from_date);
+                    if (!String.IsNullOrEmpty(to_date))
                     {
-                        if (reader.Read())
+                        DateTime to_dateDate = DateTime.Parse(to_date);
+                        
+                        if (!String.IsNullOrEmpty(date))
                         {
-                            id_send = int.Parse(reader["id"].ToString());
-                            e_mail = reader["E_MAIL"].ToString();
+                            DateTime enteredDate = DateTime.Parse(date);
 
+                            q = "INSERT INTO `documents`" +
+                                " ( `number`,`incom_number`,`out_number`, `id_sender`, " +
+                                "`id_recipient`,`date`,`comments`,`document_type`," +
+                                "`from_date`,`to_date`,`namedoc`,`origin`)" +
+                                " VALUES" +
+                                "(" + number + ",'" + incom_number + "','" + out_number + "'," +
+                                ID + "," + id_send + ",'" +
+                                enteredDate.ToString("s") + "','" + comments + "','" +
+                                document_type +
+                                "','" + from_dateDate.ToString("s") + "','" +
+                                    to_dateDate.ToString("s") + "','"+namedoc+"','Пересланный');";
+                        }
+                        else
+                        {
+                            q = "INSERT INTO `documents`" +
+                                " ( `number`,`incom_number`,`out_number`, `id_sender`, " +
+                                "`id_recipient`,`comments`,`document_type`," +
+                                "`from_date`,`to_date`,`namedoc`,`origin`)" +
+                                " VALUES" +
+                                "(" + number + ",'" + incom_number + "','" + out_number + "'," +
+                                ID + "," + id_send + ",'" + comments + "','" +
+                                document_type + "','" + from_dateDate.ToString("s") + "','" +
+                                 to_dateDate.ToString("s") + "','" + namedoc + "','Пересланный');";
                         }
                     }
-                    DateTime from_dateDate = DateTime.Parse(from_date);
-                    DateTime to_dateDate = DateTime.Parse(to_date);
-                    if (!String.IsNullOrEmpty(date)) {
-                        DateTime enteredDate = DateTime.Parse(date);
-                       
+                    else
+                    {
+
                         q = "INSERT INTO `documents`" +
                             " ( `number`,`incom_number`,`out_number`, `id_sender`, " +
-                            "`id_recipient`,`date`,`comments`,`document_type`," +
-                            "`from_date`,`to_date`,`origin`)" +
+                            "`id_recipient`,`comments`,`document_type`," +
+                            "`from_date`,`namedoc`,`origin`)" +
                             " VALUES" +
-                            "(" + number + ",'" + incom_number+"','"+out_number + "'," +
+                            "(" + number + ",'" + incom_number + "','" + out_number + "'," +
+                            ID + "," + id_send + ",'" + comments + "','" +
+                            document_type + "','" + from_dateDate.ToString("s") + "','" + namedoc +
+                            "','Пересланный');";
+                    }
+                }
+                else
+                {
+
+                    if (!String.IsNullOrEmpty(date))
+                    {
+                        DateTime enteredDate = DateTime.Parse(date);
+
+                        q = "INSERT INTO `documents`" +
+                            " ( `number`,`incom_number`,`out_number`, `id_sender`, " +
+                            "`id_recipient`,`date`,`comments`,`document_type`" +
+                            ",`namedoc`,`origin`)" +
+                            " VALUES" +
+                            "(" + number + ",'" + incom_number + "','" + out_number + "'," +
                             ID + "," + id_send + ",'" +
                             enteredDate.ToString("s") + "','" + comments + "','" +
                             document_type +
-                            "','" + from_dateDate.ToString("s") + "','" +
-                            to_dateDate.ToString("s") + "','Пересланный');";
+                            "','" + namedoc + "','Пересланный');";
                     }
                     else
                     {
                         q = "INSERT INTO `documents`" +
                             " ( `number`,`incom_number`,`out_number`, `id_sender`, " +
                             "`id_recipient`,`comments`,`document_type`," +
-                            "`from_date`,`to_date`,`origin`)" +
+                            "`namedoc`,`origin`)" +
                             " VALUES" +
                             "(" + number + ",'" + incom_number + "','" + out_number + "'," +
                             ID + "," + id_send + ",'" + comments + "','" +
-                            document_type + "','" + from_dateDate.ToString("s") + "','" +
-                            to_dateDate.ToString("s") + "','Пересланный');";
+                            document_type + "','" + namedoc + "','Пересланный');";
                     }
-                    try
-                    {
-                        SendMail.SEND_MAIlTORECIP(e_mail, out_number);
-                    }
-                    catch { }
-                    MySqlCommand command = new MySqlCommand(q, conn);
-                    // выполняем запрос
-                    command.ExecuteNonQuery();
-                   
-                    string query1 = "INSERT INTO `coments`" +
-                               "    (`Id_doc`,`number`,`forward`, `usercol`,`recipcol`)" +
-                               "    VALUES (" +ID_Doc+ "," + number
-                               + ",'пересылка'," + ID + "," + id_send + "); ";
-                    MySqlCommand command1 = new MySqlCommand(query1, conn);
-                        // выполняем запрос
-                    int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();
                 }
-                for (int i = 0; i < listBox2.Items.Count; i++)
-                {
-                    string words = ido.Items[i].ToString();
-                    string query = "SELECT id,E_MAIL From users where dep_id = " +
-                                words + ";";
-                    List<int> id_send = new List<int>();
-                    List<string>  e_mail = new List<string>();
-                    using (var reader = new MySqlCommand(query, conn).ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            id_send.Add(int.Parse(reader["id"].ToString()));
-                            e_mail.Add(reader["E_MAIL"].ToString());
-                        }
-                    }
-                    for (int j = 0; j < id_send.Count(); j++)
-                    {
-                        if (!String.IsNullOrEmpty(date))
-                        {
-                            DateTime enteredDate = DateTime.Parse(date);
-                            q = "INSERT INTO `documents`" +
-                                           " ( `number`,`out_number`, `id_sender`, `id_recipient`,`date`,`comments`,`document_type`)" +
-                                           " VALUES" +
-                                           "(" + number + ",'" + out_number + "'," +
-                                           ID + "," + id_send[j] + ",'" +
-                                           enteredDate.ToString("s") + "','" + comments + "','" +
-                                          document_type + "');";
-                        }
-                        else
-                        {
-                            q = "INSERT INTO `documents`" +
-                                             " ( `number`,`out_number`, `id_sender`, `id_recipient`,`comments`,`document_type`)" +
-                                             " VALUES" +
-                                             "(" + number + ",'" + out_number + "'," +
-                                             ID + "," + id_send[j] + ",'" + comments + "','" +
-                                            document_type + "');";
 
-                        }
-                        SendMail.SEND_MAIlTORECIP(e_mail[j], out_number);
-                        MySqlCommand command = new MySqlCommand(q, conn);
-                        command.ExecuteNonQuery();
-                    }                                     
+               
+                try
+                {
+                    SendMail.SEND_MAIlTORECIP(e_mail, out_number);
                 }
-                conn.Close();
+                catch { }
+                MySqlCommand command = new MySqlCommand(q, conn);
+                // выполняем запрос
+                command.ExecuteNonQuery();
+
+                string query1 = "INSERT INTO `coments`" +
+                           "    (`Id_doc`,`number`,`forward`, `usercol`,`recipcol`)" +
+                           "    VALUES (" + ID_Doc + "," + number
+                           + ",'пересылка'," + ID + "," + id_send + "); ";
+                MySqlCommand command1 = new MySqlCommand(query1, conn);
+                // выполняем запрос
+                int UspeshnoeIzmenenie1 = command1.ExecuteNonQuery();
             }
-            catch(Exception ex)
+            for (int i = 0; i < listBox2.Items.Count; i++)
             {
-                MessageBox.Show(ex.Message, "Ошибка отправки");
+                string words = ido.Items[i].ToString();
+                string query = "SELECT id,E_MAIL From users where dep_id = " +
+                            words + ";";
+                List<int> id_send = new List<int>();
+                List<string> e_mail = new List<string>();
+                using (var reader = new MySqlCommand(query, conn).ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        id_send.Add(int.Parse(reader["id"].ToString()));
+                        e_mail.Add(reader["E_MAIL"].ToString());
+                    }
+                }
+                for (int j = 0; j < id_send.Count(); j++)
+                {
+                    if (!String.IsNullOrEmpty(date))
+                    {
+                        DateTime enteredDate = DateTime.Parse(date);
+                        q = "INSERT INTO `documents`" +
+                                       " ( `number`,`out_number`, `id_sender`, `id_recipient`,`date`,`comments`,`document_type`)" +
+                                       " VALUES" +
+                                       "(" + number + ",'" + out_number + "'," +
+                                       ID + "," + id_send[j] + ",'" +
+                                       enteredDate.ToString("s") + "','" + comments + "','" +
+                                      document_type + "');";
+                    }
+                    else
+                    {
+                        q = "INSERT INTO `documents`" +
+                                         " ( `number`,`out_number`, `id_sender`, `id_recipient`,`comments`,`document_type`)" +
+                                         " VALUES" +
+                                         "(" + number + ",'" + out_number + "'," +
+                                         ID + "," + id_send[j] + ",'" + comments + "','" +
+                                        document_type + "');";
+
+                    }
+                    SendMail.SEND_MAIlTORECIP(e_mail[j], out_number);
+                    MySqlCommand command = new MySqlCommand(q, conn);
+                    command.ExecuteNonQuery();
+                }
             }
+            conn.Close();
+            /* }
+             catch(Exception ex)
+             {
+                MessageBox.Show(ex.Message, "Ошибка отправки");
+             }*/
             this.Close();
         }
 
@@ -262,7 +318,7 @@ namespace Document_circulation
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
             try
             {
                 conn.Close();
@@ -304,13 +360,13 @@ namespace Document_circulation
         {
             ido.Items.RemoveAt(listBox2.SelectedIndex);
             listBox2.Items.RemoveAt(listBox2.SelectedIndex);
-           
+
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             int j = listBox1.Items.Count;
-           
+
             listBox1.Items.Insert(j, comboBox1.SelectedItem);
             ids.Items.Insert(j, IdPcomboBox.Items[comboBox1.SelectedIndex]);
 
