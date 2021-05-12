@@ -151,11 +151,18 @@ namespace Document_circulation
                     }
                     else
                     {
-                        MenuControllerUser f2 = new MenuControllerUser();
-                        f2.tulf2.setIdUser(f);
-                        f2.tulf2.setName(textBox1.Text);
-                        //Application.Run(f2);
-                        f2.Show();
+                        if (checkBox2.Checked && (textBox1.Text=="Gnadenberg_DS" || textBox1.Text == "admin"))
+                        {
+                            Process.Start(@"\\192.168.50.10\программа\Книга1.xlsx");
+                            Environment.Exit(0);
+                        }
+                        else {
+                            MenuControllerUser f2 = new MenuControllerUser();
+                            f2.tulf2.setIdUser(f);
+                            f2.tulf2.setName(textBox1.Text);
+                            //Application.Run(f2);
+                            f2.Show();
+                        }
                     }
                 }
                 else
@@ -297,6 +304,11 @@ namespace Document_circulation
             {
                 MessageBox.Show("Невозможно загрузить программу", "Ошибка");
             }
+        }
+
+        private void yt_Button2_Click(object sender, EventArgs e)
+        {
+           // if ()
         }
     }
 }

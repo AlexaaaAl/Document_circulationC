@@ -48,8 +48,11 @@ namespace Document_circulation
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.yt_Button1 = new Document_circulation.yt_Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -59,7 +62,7 @@ namespace Document_circulation
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox1.Location = new System.Drawing.Point(182, 76);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(287, 29);
+            this.textBox1.Size = new System.Drawing.Size(269, 29);
             this.textBox1.TabIndex = 0;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -71,7 +74,7 @@ namespace Document_circulation
             this.textBox2.Location = new System.Drawing.Point(182, 135);
             this.textBox2.Name = "textBox2";
             this.textBox2.ShortcutsEnabled = false;
-            this.textBox2.Size = new System.Drawing.Size(287, 29);
+            this.textBox2.Size = new System.Drawing.Size(269, 29);
             this.textBox2.TabIndex = 1;
             this.textBox2.UseSystemPasswordChar = true;
             // 
@@ -80,7 +83,7 @@ namespace Document_circulation
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(227, 318);
+            this.label1.Location = new System.Drawing.Point(227, 321);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(184, 13);
             this.label1.TabIndex = 3;
@@ -190,7 +193,7 @@ namespace Document_circulation
             this.panel1.Controls.Add(this.label6);
             this.panel1.Location = new System.Drawing.Point(-5, -19);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(484, 68);
+            this.panel1.Size = new System.Drawing.Size(622, 68);
             this.panel1.TabIndex = 8;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -202,7 +205,7 @@ namespace Document_circulation
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(448, 27);
+            this.button2.Location = new System.Drawing.Point(586, 27);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(25, 20);
             this.button2.TabIndex = 1;
@@ -215,7 +218,7 @@ namespace Document_circulation
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(181, 27);
+            this.label6.Location = new System.Drawing.Point(250, 27);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(150, 25);
             this.label6.TabIndex = 0;
@@ -235,7 +238,7 @@ namespace Document_circulation
             this.yt_Button1.BackColor = System.Drawing.Color.OliveDrab;
             this.yt_Button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.yt_Button1.ForeColor = System.Drawing.Color.White;
-            this.yt_Button1.Location = new System.Drawing.Point(230, 275);
+            this.yt_Button1.Location = new System.Drawing.Point(230, 266);
             this.yt_Button1.Name = "yt_Button1";
             this.yt_Button1.Rounding = 15;
             this.yt_Button1.RoundingEnable = true;
@@ -244,12 +247,33 @@ namespace Document_circulation
             this.yt_Button1.Text = "Авторизация";
             this.yt_Button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.DarkOliveGreen;
+            this.panel2.Controls.Add(this.checkBox2);
+            this.panel2.Location = new System.Drawing.Point(457, 35);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(156, 339);
+            this.panel2.TabIndex = 2;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.checkBox2.Location = new System.Drawing.Point(18, 45);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(110, 25);
+            this.checkBox2.TabIndex = 0;
+            this.checkBox2.Text = "АвтоExcel";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(475, 367);
+            this.ClientSize = new System.Drawing.Size(613, 367);
             this.ControlBox = false;
             this.Controls.Add(this.yt_Button1);
             this.Controls.Add(this.label5);
@@ -264,6 +288,7 @@ namespace Document_circulation
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -274,6 +299,8 @@ namespace Document_circulation
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,6 +323,8 @@ namespace Document_circulation
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button2;
         private yt_Button yt_Button1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
 
